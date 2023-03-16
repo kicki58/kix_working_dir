@@ -1,0 +1,1 @@
+rem FOR %%i in (C:\slask\*.txt)  DO "C:\Program Files\PostgreSQL\11\bin\createdb.exe" -p 5432 -h localhost -U postgres -T urdar_template -E UTF8  "%%~ni"

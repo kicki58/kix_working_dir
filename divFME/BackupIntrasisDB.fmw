@@ -1,0 +1,907 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME\fme.exe" "C:\Users\krima354\Work Folders\Documents\GitHub\kix_working_dir\divFME\BackupIntrasisDB.fmw"
+#          --server "localhost"
+#          --port "5432"
+#          --user "postgres"
+#          --psswd "sa"
+#          --folder_backup "C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\sau_test_fme_backup"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION="&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;En import av SAU&apos;s databaser.&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vad som krävs&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;C:\Intrasis\backup_files&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Backupfiler med vissa namn ändrade (de som har _ innan datumet i slutet)&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;pgpass.conf - med lösen för den dbhanteraren som man går mot&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;i katalogen C:\Users\krima354\AppData\Roaming\postgresql &lt;/p&gt;"
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="1899.9 450.005"
+#!   DOC_TOP_LEFT="-824.021 -128.251"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="22618"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="ccb1bd7a-e7dd-4d1d-aa4b-2094c0fcb5ea"
+#!   FME_DOCUMENT_PRIORGUID="aeee49b3-f1cd-4db8-bb2a-a7967e56221d,0d371b12-c59b-484b-912e-712978af97bc,1dc8465b-7b72-4690-bdb8-d7f35a99b586,43b04379-e14d-4daa-afbc-3cc1e2f31f8b,f8a81d82-646e-422a-95cf-72fbc97821a4,9821c11a-4ba1-4234-95cb-4c79c953fc5e"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2022.1.0.0 (20220704 - Build 22618 - WIN64)"
+#!   LAST_SAVE_DATE="2023-03-16T15:48:31"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE="SAUimportIntrasis"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-1521.89 1037.51"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="POSTGRES"
+#!   DATASET="$(user)"
+#!   KEYWORD="POSTGRES_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE="postgres_type {FME_GEN_GEOMETRY} postgres_sql_where_clause &quot;&quot; postgres_sql_statement &quot;&quot;"
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_basename char(50) fme_color char(50) fme_dataset char(50) fme_feature_type char(50) fme_fill_color char(50) fme_geometry char(50) fme_primary_axis float8 fme_rotation float8 fme_secondary_axis float8 fme_start_angle float8 fme_sweep_angle float8 fme_text_size float8 fme_text_string char(50) fme_type char(50) multi_reader_full_id int4 multi_reader_id int4 multi_reader_keyword char(50) multi_reader_type char(50) postgres_oid int4 postgres_type char(50)"
+#!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP postgres_query_settings_group postgres_sql_where_clause%postgres_sql_statement Table&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT_EDIT_SQL_CFG postgres_sql_where_clause MODE,WHERE;FORMAT,POSTGRES WHERE Clause&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT_EDIT_SQL_CFG postgres_sql_statement MODE,SQL;FORMAT,POSTGRES SELECT Statement&quot; &quot;&quot; "
+#!   ATTR_INDEX_TYPES="BTree RTree Hash PrimaryKey Unique"
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="DATABASE"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="22618"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ADVANCED_PARMS"
+#!   VALUE="POSTGRES_IN_FEATURES_PER_FETCH POSTGRES_IN_BEGIN_SQL POSTGRES_IN_END_SQL POSTGRES_OUT_BULK_COPY POSTGRES_OUT_MISSING_ATTRIBUTE_BEHAVIOUR POSTGRES_OUT_TRANSACTION_INTERVAL POSTGRES_OUT_BEGIN_SQL POSTGRES_OUT_END_SQL"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE_ATTRS"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING_HISTORIC"
+#!   VALUE="ALL"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Table1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Table"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="NETWORK_AUTHENTICATION"
+#!   VALUE="NO"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="NETWORK_PROXY"
+#!   VALUE="NO"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="PARAMS_TO_NOT_PROPAGATE_ON_INSPECT"
+#!   VALUE="BEGIN_SQL END_SQL"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="SUPPORTS_SCHEMA_IN_FEATURE_TYPE_NAME"
+#!   VALUE="YES"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="bool"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xml"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="jsonb"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="bytea"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="bytea"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="bytea"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int2"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int2"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int2"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int4"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int4"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int8"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int8"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="numeric(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="numeric(20,0)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="oid"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="serial"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float4"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="money"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float8"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="time"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="timetz"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="timestamp"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="timestamptz"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uuid"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="bit(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varbit"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="POSTGRES"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varbit(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="POSTGRES"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="POSTGRES"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="postgres_none"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="POSTGRES"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="pg_database"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER="pg_catalog"
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="9"
+#!   FEAT_GEOMTYPE="postgres_none"
+#!   POSITION="-824.0211896251958 321.7540606835359"
+#!   BOUNDING_RECT="-824.0211896251958 321.7540606835359 604.28231825772946 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="POSTGRES_1"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   READ_SELECT_ATTRS="true"
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="oid" ATTR_TYPE="oid,Unique" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="datname" ATTR_TYPE="text,Unique" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="datdba" ATTR_TYPE="oid" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="encoding" ATTR_TYPE="int4" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="datcollate" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="datctype" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="datistemplate" ATTR_TYPE="bool" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="datallowconn" ATTR_TYPE="bool" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="datconnlimit" ATTR_TYPE="int4" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="datlastsysoid" ATTR_TYPE="oid" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="datfrozenxid" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="datminmxid" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="dattablespace" ATTR_TYPE="oid" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="datacl" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="postgres_query_settings_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="postgres_sql_statement" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="postgres_sql_where_clause" PARM_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI CHOICE server localhost%uuc-srv390 Server"
+#!   DEFAULT_VALUE="localhost"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI IGNORE NO_EDIT STRING postgres_db postgres_db"
+#!   DEFAULT_VALUE="postgres"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING port Port"
+#!   DEFAULT_VALUE="5432"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING user User"
+#!   DEFAULT_VALUE="postgres"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING psswd Password"
+#!   DEFAULT_VALUE="sa"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI DIRNAME_SRC_OR_ATTR folder_backup Mapp för backupper"
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\sau_test_fme_backup"
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJjaG9pY2VTZXR0aW5ncyI6eyJjaG9pY2VTZXQiOiJ1c2VyRGVmaW5lZCIsImNob2ljZXMiOlt7ImRpc3BsYXkiOiJsb2NhbGhvc3QiLCJ2YWx1ZSI6ImxvY2FsaG9zdCJ9LHsiZGlzcGxheSI6InV1Yy1zcnYzOTAiLCJ2YWx1ZSI6InV1Yy1zcnYzOTAifV0sInNvcnQiOiJuYXR1cmFsU29ydCJ9LCJkZWZhdWx0VmFsdWUiOiJsb2NhbGhvc3QiLCJoaWRkZW4iOmZhbHNlLCJuYW1lIjoic2VydmVyIiwicHJvbXB0IjoiU2VydmVyIiwicmVxdWlyZWQiOnRydWUsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJkcm9wZG93biIsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiZGVmYXVsdFZhbHVlIjoicG9zdGdyZXMiLCJoaWRkZW4iOnRydWUsIm5hbWUiOiJwb3N0Z3Jlc19kYiIsInByb21wdCI6InBvc3RncmVzX2RiIiwicmVxdWlyZWQiOnRydWUsInNob3dFZGl0QnV0dG9uIjpmYWxzZSwidHlwZSI6InRleHQiLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifSx7ImRlZmF1bHRWYWx1ZSI6IjU0MzIiLCJoaWRkZW4iOmZhbHNlLCJuYW1lIjoicG9ydCIsInByb21wdCI6IlBvcnQiLCJyZXF1aXJlZCI6dHJ1ZSwic2hvd0VkaXRCdXR0b24iOmZhbHNlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoidGV4dCIsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiZGVmYXVsdFZhbHVlIjoicG9zdGdyZXMiLCJoaWRkZW4iOmZhbHNlLCJuYW1lIjoidXNlciIsInByb21wdCI6IlVzZXIiLCJyZXF1aXJlZCI6dHJ1ZSwic2hvd0VkaXRCdXR0b24iOmZhbHNlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoidGV4dCIsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiZGVmYXVsdFZhbHVlIjoic2EiLCJoaWRkZW4iOmZhbHNlLCJuYW1lIjoicHNzd2QiLCJwcm9tcHQiOiJQYXNzd29yZCIsInJlcXVpcmVkIjp0cnVlLCJzaG93RWRpdEJ1dHRvbiI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJhY2Nlc3NNb2RlIjoicmVhZCIsImFsbG93VVJMIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiQzpcXFVzZXJzXFxrcmltYTM1NFxcV29yayBGb2xkZXJzXFxEb2N1bWVudHNcXGtpY2tpX2FyYmV0c2ZpbGVyXFxzbGFza1xcc2F1X3Rlc3RfZm1lX2JhY2t1cCIsImhpZGRlbiI6ZmFsc2UsIml0ZW1zVG9TZWxlY3QiOiJmb2xkZXJzIiwibmFtZSI6ImZvbGRlcl9iYWNrdXAiLCJwcm9tcHQiOiJNYXBwIGbDtnIgYmFja3VwcGVyIiwicmVxdWlyZWQiOnRydWUsInNlbGVjdE11bHRpcGxlIjpmYWxzZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJmaWxlIiwidmFsaWRhdGVFeGlzdGVuY2UiOnRydWUsInZhbHVlVHlwZSI6InN0cmluZyJ9XX0="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="server" 
+#!   DEFAULT_VALUE="localhost"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI CHOICE server localhost%uuc-srv390 Server"
+#! />
+#!     <INFO NAME="postgres_db" 
+#!   DEFAULT_VALUE="postgres"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI IGNORE NO_EDIT STRING postgres_db postgres_db"
+#! />
+#!     <INFO NAME="port" 
+#!   DEFAULT_VALUE="5432"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING port Port"
+#! />
+#!     <INFO NAME="user" 
+#!   DEFAULT_VALUE="postgres"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING user User"
+#! />
+#!     <INFO NAME="psswd" 
+#!   DEFAULT_VALUE="sa"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING psswd Password"
+#! />
+#!     <INFO NAME="folder_backup" 
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\sau_test_fme_backup"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI DIRNAME_SRC_OR_ATTR folder_backup Mapp för backupper"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="SystemCaller"
+#!   VERSION="3"
+#!   POSITION="621.88121881218808 278.12778127781274"
+#!   BOUNDING_RECT="621.88121881218808 278.12778127781274 454 71"
+#!   ORDER="500000000000012"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22618"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="oid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datdba" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="encoding" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datcollate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datctype" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datistemplate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datallowconn" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datconnlimit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datlastsysoid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datfrozenxid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datminmxid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="dattablespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datacl" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="bacupfilname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CMD" PARM_VALUE="&lt;quote&gt;&lt;quote&gt;c:&lt;backslash&gt;Program&lt;space&gt;Files&lt;backslash&gt;PostgreSQL&lt;backslash&gt;11&lt;backslash&gt;bin&lt;backslash&gt;pg_dump&lt;quote&gt;&lt;space&gt;-U&lt;space&gt;$(user)&lt;space&gt;-h&lt;space&gt;$(server)&lt;space&gt;-p&lt;space&gt;$(port)&lt;space&gt;-F&lt;space&gt;custom&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;datname&lt;closeparen&gt;&lt;space&gt;&lt;space&gt;&lt;gt&gt;&lt;quote&gt;$(folder_backup)&lt;backslash&gt;&lt;at&gt;Value&lt;openparen&gt;bacupfilname&lt;closeparen&gt;.backup&lt;quote&gt;&lt;quote&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SystemCaller_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="TestFilter"
+#!   VERSION="2"
+#!   POSITION="-673.73887136746634 -57.250750936044909"
+#!   BOUNDING_RECT="-673.73887136746634 -57.250750936044909 454 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22618"
+#! >
+#!     <OUTPUT_FEAT NAME="skippa"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="oid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datdba" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="encoding" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datcollate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datctype" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datistemplate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datallowconn" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datconnlimit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datlastsysoid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datfrozenxid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datminmxid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="dattablespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datacl" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;lt&gt;UNFILTERED&lt;gt&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="oid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="datname" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="datdba" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="encoding" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="datcollate" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="datctype" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="datistemplate" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="datallowconn" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="datconnlimit" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="datlastsysoid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="datfrozenxid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="datminmxid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="dattablespace" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="datacl" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="&lt;lt&gt;UNFILTERED&lt;gt&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PASSED_TEST_GROUP_OUTPUT" PARM_VALUE="FIRST"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1 OR 2 OR 3 OR 4&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;datname&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;postgres&lt;lf&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;datname&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;urdar_template&lt;lf&gt;CASE_INSENSITIVE_TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;datname&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;template0&lt;lf&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;datname&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;template1&quot;,skippa"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeManager"
+#!   VERSION="4"
+#!   POSITION="157.31384480226643 -57.250750936044909"
+#!   BOUNDING_RECT="157.31384480226643 -57.250750936044909 454 71"
+#!   ORDER="500000000000013"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22618"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="oid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datdba" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="encoding" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datcollate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datctype" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datistemplate" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datallowconn" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datconnlimit" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datlastsysoid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datfrozenxid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datminmxid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="dattablespace" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="datacl" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="bacupfilname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="oid oid  NO_OP datname datname  NO_OP datdba datdba  NO_OP encoding encoding  NO_OP datcollate datcollate  NO_OP datctype datctype  NO_OP datistemplate datistemplate  NO_OP datallowconn datallowconn  NO_OP datconnlimit datconnlimit  NO_OP datlastsysoid datlastsysoid  NO_OP datfrozenxid datfrozenxid  NO_OP datminmxid datminmxid  NO_OP dattablespace dattablespace  NO_OP datacl datacl  NO_OP  bacupfilname &lt;at&gt;Value&lt;openparen&gt;datname&lt;closeparen&gt;_&lt;at&gt;DateTimeFormat&lt;openparen&gt;&lt;at&gt;DateTimeNow&lt;openparen&gt;&lt;closeparen&gt;&lt;comma&gt;&lt;space&gt;%Y%m%d&lt;closeparen&gt; SET_TO"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 1 &lt;lt&gt;lt&lt;gt&gt;UNFILTERED&lt;lt&gt;gt&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE POSTGRES_IN_HOST_POSTGRES_1,POSTGRES_IN_PORT_POSTGRES_1,SourceDataset_POSTGRES_1,POSTGRES_IN_USER_NAME_POSTGRES_1,POSTGRES_IN_PASSWORD_POSTGRES_1,POSTGRES_IN_SSL_OPTIONS_POSTGRES_1,POSTGRES_IN_SSLMODE_POSTGRES_1,POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1,POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1,POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1,POSTGRES_IN_SSL_PASSWORD_POSTGRES_1,POSTGRES_IN_FME_CONNECTION_GROUP_POSTGRES_1,POSTGRES_IN_FME_GROUP_NAMED1_POSTGRES_1,POSTGRES_IN_WHERE_CLAUSE_POSTGRES_1,POSTGRES_IN_ADVANCED_POSTGRES_1,POSTGRES_IN_FEATURES_PER_FETCH_POSTGRES_1,POSTGRES_IN_BEGIN_SQL_POSTGRES_1,POSTGRES_IN_END_SQL_POSTGRES_1,POSTGRES_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGRES_1
+# ============================================================================
+DEFAULT_MACRO server localhost
+
+DEFAULT_MACRO postgres_db postgres
+
+DEFAULT_MACRO port 5432
+
+DEFAULT_MACRO user postgres
+
+DEFAULT_MACRO psswd sa
+
+DEFAULT_MACRO folder_backup C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\sau_test_fme_backup
+
+# ============================================================================
+INCLUDE [ if {{$(server$encode)} == {}} { puts_real {Parameter 'server' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(postgres_db$encode)} == {}} { puts_real {Parameter 'postgres_db' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(port$encode)} == {}} { puts_real {Parameter 'port' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(user$encode)} == {}} { puts_real {Parameter 'user' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(psswd$encode)} == {}} { puts_real {Parameter 'psswd' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(folder_backup$encode)} == {}} { puts_real {Parameter 'folder_backup' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} POSTGRES
+MULTI_READER_KEYWORD{0} POSTGRES_1
+MULTI_READER_GEN_DIRECTIVES{0} BEGIN_SQL,,POSTGRES_EXPOSE_FORMAT_ATTRS,,WHERE_CLAUSE,,ADVANCED,,END_SQL,,FEATURES_PER_FETCH,10000,READ_TIME_WITH_TIMEZONE,Yes,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,NAMED_CONNECTION,postgres<lt>at<gt>localhost,SCHEMAS_FOR_TABLE_LISTING,information_schema<space>pg_catalog<space>pg_temp_1<space>pg_toast<space>pg_toast_temp_1<space>public,CREATE_FEATURE_TABLES_FROM_DATA,Yes,EXPOSE_ATTRS_GROUP,,_MERGE_SCHEMAS,YES,TABLELIST,pg_catalog.pg_database
+WRITER_TYPE NULL
+WRITER_KEYWORD NULL_DEST
+NULL_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "POSTGRES_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER POSTGRES POSTGRES_1
+DEFAULT_MACRO POSTGRES_IN_HOST_POSTGRES_1 $(server)
+POSTGRES_1_HOST "$(POSTGRES_IN_HOST_POSTGRES_1)"
+GUI TEXT POSTGRES_IN_HOST_POSTGRES_1 Host:
+DEFAULT_MACRO POSTGRES_IN_PORT_POSTGRES_1 $(port)
+POSTGRES_1_PORT "$(POSTGRES_IN_PORT_POSTGRES_1)"
+GUI INTEGER POSTGRES_IN_PORT_POSTGRES_1 Port:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_POSTGRES_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER POSTGRES POSTGRES_1
+DEFAULT_MACRO SourceDataset_POSTGRES_1 $(user)
+POSTGRES_1_DATASET "$(SourceDataset_POSTGRES_1)"
+GUI TEXT SourceDataset_POSTGRES_1 Database:
+DEFAULT_MACRO POSTGRES_IN_USER_NAME_POSTGRES_1 postgres
+POSTGRES_1_USER_NAME "$(POSTGRES_IN_USER_NAME_POSTGRES_1)"
+GUI TEXT POSTGRES_IN_USER_NAME_POSTGRES_1 Username:
+DEFAULT_MACRO POSTGRES_IN_PASSWORD_POSTGRES_1 $(psswd)
+POSTGRES_1_PASSWORD "$(POSTGRES_IN_PASSWORD_POSTGRES_1)"
+GUI OPTIONAL PASSWORD_ENCODED POSTGRES_IN_PASSWORD_POSTGRES_1 Password:
+DEFAULT_MACRO POSTGRES_IN_SSL_OPTIONS_POSTGRES_1 
+POSTGRES_1_SSL_OPTIONS "$(POSTGRES_IN_SSL_OPTIONS_POSTGRES_1)"
+GUI OPTIONAL DISCLOSUREGROUP POSTGRES_IN_SSL_OPTIONS_POSTGRES_1 POSTGRES_IN_SSLMODE_POSTGRES_1%POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1%POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1%POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1%POSTGRES_IN_SSL_PASSWORD_POSTGRES_1 SSL Options
+DEFAULT_MACRO POSTGRES_IN_SSLMODE_POSTGRES_1 prefer
+POSTGRES_1_SSLMODE "$(POSTGRES_IN_SSLMODE_POSTGRES_1)"
+GUI ACTIVECHOICE_LOOKUP POSTGRES_IN_SSLMODE_POSTGRES_1 Disable<u0020>,disable,POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1,POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1,POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1,POSTGRES_IN_SSL_PASSWORD_POSTGRES_1%Allow<u0020>,allow%Prefer<u0020>,prefer%Require<u0020>,require%Verify-CA<u0020>,verify-ca%Verify-Full<u0020>,verify-full SSL Mode:
+DEFAULT_MACRO POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1 
+POSTGRES_1_CA_CERTIFICATE "$(POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1)"
+GUI OPTIONAL FILENAME_MUSTEXIST POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1 Certificate_File(*.pem)|*.pem|All_files(*.*)|*.* CA Certificate:
+DEFAULT_MACRO POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1 
+POSTGRES_1_CLIENT_CERTIFICATE "$(POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1)"
+GUI OPTIONAL FILENAME_MUSTEXIST POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1 Certificate_File(*.pem)|*.pem|All_files(*.*)|*.* Client Certificate:
+DEFAULT_MACRO POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1 
+POSTGRES_1_CLIENT_PRIV_KEY "$(POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1)"
+GUI OPTIONAL FILENAME_MUSTEXIST POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1 Private_Key_File(*.pem)|*.pem|All_files(*.*)|*.* Client Private Key:
+DEFAULT_MACRO POSTGRES_IN_SSL_PASSWORD_POSTGRES_1 
+POSTGRES_1_SSL_PASSWORD "$(POSTGRES_IN_SSL_PASSWORD_POSTGRES_1)"
+GUI OPTIONAL PASSWORD_ENCODED POSTGRES_IN_SSL_PASSWORD_POSTGRES_1 SSL Password:
+# The dataset this mapping file was generated from was:
+DEFAULT_MACRO POSTGRES_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_POSTGRES_1 Yes
+POSTGRES_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(POSTGRES_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_POSTGRES_1)"
+DEFAULT_MACRO POSTGRES_IN_READ_TIME_WITH_TIMEZONE_POSTGRES_1 Yes
+POSTGRES_1_READ_TIME_WITH_TIMEZONE "$(POSTGRES_IN_READ_TIME_WITH_TIMEZONE_POSTGRES_1)"
+DEFAULT_MACRO POSTGRES_IN_FME_CONNECTION_GROUP_POSTGRES_1 
+GUI OPTIONAL DISCLOSUREGROUP POSTGRES_IN_FME_CONNECTION_GROUP_POSTGRES_1 POSTGRES_IN_NAMED_CONNECTION%POSTGRES_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGRES_1 Database Connection
+DEFAULT_MACRO POSTGRES_IN_FME_GROUP_NAMED1_POSTGRES_1 FME_DISCLOSURE_CLOSED
+GUI OPTIONAL DISCLOSUREGROUP POSTGRES_IN_FME_GROUP_NAMED1_POSTGRES_1 POSTGRES_IN_TABLELIST%POSTGRES_IN_WHERE_CLAUSE_POSTGRES_1 Constraints
+DEFAULT_MACRO POSTGRES_IN_WHERE_CLAUSE_POSTGRES_1 
+POSTGRES_1_WHERE_CLAUSE "$(POSTGRES_IN_WHERE_CLAUSE_POSTGRES_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG POSTGRES_IN_WHERE_CLAUSE_POSTGRES_1 MODE,WHERE;FORMAT,POSTGRES WHERE Clause:
+DEFAULT_MACRO POSTGRES_IN_EXPOSE_ATTRS_GROUP_POSTGRES_1 
+POSTGRES_1_EXPOSE_ATTRS_GROUP "$(POSTGRES_IN_EXPOSE_ATTRS_GROUP_POSTGRES_1)"
+DEFAULT_MACRO POSTGRES_IN_ADVANCED_POSTGRES_1 FME_DISCLOSURE_OPEN
+GUI OPTIONAL DISCLOSUREGROUP POSTGRES_IN_ADVANCED_POSTGRES_1 POSTGRES_IN_FEATURES_PER_FETCH_POSTGRES_1%POSTGRES_IN_BEGIN_SQL_POSTGRES_1%POSTGRES_IN_END_SQL_POSTGRES_1 Advanced
+DEFAULT_MACRO POSTGRES_IN_FEATURES_PER_FETCH_POSTGRES_1 100
+POSTGRES_1_FEATURES_PER_FETCH "$(POSTGRES_IN_FEATURES_PER_FETCH_POSTGRES_1)"
+GUI FLOAT POSTGRES_IN_FEATURES_PER_FETCH_POSTGRES_1 Number Of Records To Fetch At A Time
+DEFAULT_MACRO POSTGRES_IN_BEGIN_SQL_POSTGRES_1 
+POSTGRES_1_BEGIN_SQL "$(POSTGRES_IN_BEGIN_SQL_POSTGRES_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG POSTGRES_IN_BEGIN_SQL_POSTGRES_1 MODE,SQL;FORMAT,POSTGRES SQL To Run Before Read
+DEFAULT_MACRO POSTGRES_IN_END_SQL_POSTGRES_1 
+POSTGRES_1_END_SQL "$(POSTGRES_IN_END_SQL_POSTGRES_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG POSTGRES_IN_END_SQL_POSTGRES_1 MODE,SQL;FORMAT,POSTGRES SQL To Run After Read
+DEFAULT_MACRO POSTGRES_IN_CREATE_FEATURE_TABLES_FROM_DATA_POSTGRES_1 Yes
+POSTGRES_1_CREATE_FEATURE_TABLES_FROM_DATA "$(POSTGRES_IN_CREATE_FEATURE_TABLES_FROM_DATA_POSTGRES_1)"
+# ============================================================================
+DEFAULT_MACRO POSTGRES_IN_ATTRIBUTE_READING_POSTGRES_1 DEFLINE_ATTRS
+POSTGRES_1_ATTRIBUTE_READING "$(POSTGRES_IN_ATTRIBUTE_READING_POSTGRES_1)"
+# ============================================================================
+POSTGRES_1_GENERATE_FME_BUILD_NUM 22618
+DEFAULT_MACRO POSTGRES_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGRES_1 information_schema pg_catalog pg_temp_1 pg_toast pg_toast_temp_1 public
+GUI OPTIONAL TEXT POSTGRES_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGRES_1 Schemas for Tables:
+POSTGRES_1_SCHEMAS_FOR_TABLE_LISTING $(POSTGRES_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGRES_1)
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)BackupIntrasisDB.log"
+LOG_APPEND NO
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2022.1.0.0 (20220704 - Build 22618 - WIN64)"
+MAPPING_FILE_ID SAUimportIntrasis
+DEFAULT_MACRO DATASET_KEYWORD_POSTGRES_1 POSTGRES_1
+# -------------------------------------------------------------------------
+
+POSTGRES_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME BackupIntrasisDB
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_POSTGRES_1)   INPUT FEATURE_TYPE *    ROUTE POSTGRES POSTGRES_1::pg_catalog.pg_database multi_reader_keyword,$(DATASET_KEYWORD_POSTGRES_1) TO FME_GENERIC ::pg_catalog.pg_database ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+POSTGRES_1_MERGE_DEF POSTGRES_1::pg_catalog.pg_database EXACT pg_catalog.pg_database DEFLINE postgres_type,postgres_none,postgres_sql_where_clause,,postgres_sql_statement,,oid,oid<comma>Unique,datname,text<comma>Unique,datdba,oid,encoding,int4,datcollate,text,datctype,text,datistemplate,bool,datallowconn,bool,datconnlimit,int4,datlastsysoid,oid,datfrozenxid,text,datminmxid,text,dattablespace,oid,datacl,text
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "pg_catalog.pg_database_POSTGRES_1 Splitter"    INPUT FEATURE_TYPE pg_catalog.pg_database    OUTPUT FEATURE_TYPE pg_catalog.pg_database_POSTGRES_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { TestFilter_INPUT }    INPUT  FEATURE_TYPE pg_catalog.pg_database_POSTGRES_1    OUTPUT FEATURE_TYPE TestFilter_INPUTLINE
+FACTORY_DEF {*} TestFactory FACTORY_NAME TestFilter INPUT FEATURE_TYPE TestFilter_INPUTLINE FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT PASSED_TEST_GROUP_OUTPUT FIRST TEST_GROUP TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>datname<closeparen>,TestFilter) = postgres ENCODED } TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>datname<closeparen>,TestFilter) = urdar_template ENCODED } CASE_INSENSITIVE_TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>datname<closeparen>,TestFilter) = template0 ENCODED } TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>datname<closeparen>,TestFilter) = template1 ENCODED } BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1 OR 2 OR 3 OR 4" OUTPUT PASSED_0 FEATURE_TYPE TestFilter_skippa OUTPUT FAILED FEATURE_TYPE TestFilter_<lt>UNFILTERED<gt>
+FACTORY_DEF * TeeFactory   FACTORY_NAME "TestFilter skippa Transformer Output Nuker"   INPUT FEATURE_TYPE TestFilter_skippa
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager }    INPUT  FEATURE_TYPE TestFilter_<lt>UNFILTERED<gt>    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "" "bacupfilname" "<at>Value<openparen>datname<closeparen>_<at>DateTimeFormat<openparen><at>DateTimeNow<openparen><closeparen><comma><space>%Y%m%d<closeparen>" "SET_TO" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_OUTPUT        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { SystemCaller_3 }    INPUT  FEATURE_TYPE AttributeManager_OUTPUT    OUTPUT { FEATURE_TYPE SystemCaller_3_OUTPUT         @System(LOG_PREFIX,SystemCaller_3,ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,<quote><quote>c:<backslash>Program<space>Files<backslash>PostgreSQL<backslash>11<backslash>bin<backslash>pg_dump<quote><space>-U<space>$(user$encode)<space>-h<space>$(server$encode)<space>-p<space>$(port$encode)<space>-F<space>custom<space><at>Value<openparen>datname<closeparen><space><space><gt><quote>$(folder_backup$encode)<backslash><at>Value<openparen>bacupfilname<closeparen>.backup<quote><quote>,SystemCaller_3)")          }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "SystemCaller_3 OUTPUT Transformer Output Nuker"   INPUT FEATURE_TYPE SystemCaller_3_OUTPUT
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+

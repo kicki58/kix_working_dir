@@ -1,0 +1,767 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME\fme.exe" "C:\Users\krima354\Work Folders\Documents\GitHub\kix_working_dir\divFME\restoreDBfromBackupFile.fmw"
+#          --SourceDataset_PATH "C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\dap\intrasis_leveranser\intrasis_postgres_backup\SAU"
+#          --num2remove "15"
+#          --server "localhost"
+#          --port "5433"
+#          --user "postgres"
+#          --psswd "Admin"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION="&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;En import av SAU&apos;s databaser.&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vad som krävs&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;C:\Intrasis\backup_files&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Backupfiler med vissa namn ändrade (de som har _ innan datumet i slutet)&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;pgpass.conf - med lösen för den dbhanteraren som man går mot&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;i katalogen C:\Users\krima354\AppData\Roaming\postgresql &lt;/p&gt;"
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="2459.02 531.505"
+#!   DOC_TOP_LEFT="-480.005 -467.879"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="22618"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="d851f70f-0cab-4380-a007-59a49a68afae"
+#!   FME_DOCUMENT_PRIORGUID="aeee49b3-f1cd-4db8-bb2a-a7967e56221d,0d371b12-c59b-484b-912e-712978af97bc,1dc8465b-7b72-4690-bdb8-d7f35a99b586,43b04379-e14d-4daa-afbc-3cc1e2f31f8b,f8a81d82-646e-422a-95cf-72fbc97821a4,9821c11a-4ba1-4234-95cb-4c79c953fc5e"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2022.1.0.0 (20220704 - Build 22618 - WIN64)"
+#!   LAST_SAVE_DATE="2023-03-16T14:53:59"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE="SAUimportIntrasis"
+#!   USAGE=""
+#!   USE_MARKDOWN="NO"
+#!   VIEW_POSITION="-831.258 303.128"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="PATH"
+#!   DATASET="$(SourceDataset_PATH)"
+#!   KEYWORD="PATH_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="false"
+#!   DEFLINE_TEMPLATE=""
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_basename char(50) fme_color char(50) fme_dataset char(50) fme_feature_type char(50) fme_fill_color char(50) fme_geometry char(50) fme_primary_axis number(31,15) fme_rotation number(31,15) fme_secondary_axis number(31,15) fme_start_angle number(31,15) fme_sweep_angle number(31,15) fme_text_size number(31,15) fme_text_string char(50) fme_type char(50) multi_reader_full_id number(11,0) multi_reader_id number(11,0) multi_reader_keyword char(50) multi_reader_type char(50) path_geom char(13)"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="DIRONLY"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="22618"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="PATH"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Specify the Folder or Files pathnames"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_FEATURE_TYPE_EDITING"
+#!   VALUE="NO"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(20)"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(12)"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(31,15)"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(15,7)"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="logical"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="PATH"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="PATH"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="PATH"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="2"
+#!   FEAT_GEOMTYPE="path_none"
+#!   POSITION="-480.00500005000066 -319.37584375843761"
+#!   BOUNDING_RECT="-480.00500005000066 -319.37584375843761 454 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="PATH_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_unix" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_windows" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_rootname" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_filename" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_extension" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_directory_unix" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_directory_windows" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_type" ATTR_TYPE="char(10)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="PATH_1"
+#!   OVERRIDE="-PATH_1_DATASET"
+#!   DATASET="PATH_1/SAU"
+#! />
+#! </READER_DATASETS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIDIRECTORY SourceDataset_PATH INCLUDE_WEB_BROWSER Source Folder and File Pathnames Folder"
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\dap\intrasis_leveranser\intrasis_postgres_backup\SAU"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI INTEGER_OR_ATTR num2remove numChar2remove"
+#!   DEFAULT_VALUE="15"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI CHOICE_OR_ATTR server localhost%uuc-srv390 Server"
+#!   DEFAULT_VALUE="localhost"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING_OR_ATTR port Port"
+#!   DEFAULT_VALUE="5433"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING_OR_ATTR user User"
+#!   DEFAULT_VALUE="postgres"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING psswd Password"
+#!   DEFAULT_VALUE="Admin"
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJhY2Nlc3NNb2RlIjoicmVhZCIsImRlZmF1bHRWYWx1ZSI6IkM6XFxVc2Vyc1xca3JpbWEzNTRcXFdvcmsgRm9sZGVyc1xcRG9jdW1lbnRzXFxraWNraV9hcmJldHNmaWxlclxcZGFwXFxpbnRyYXNpc19sZXZlcmFuc2VyXFxpbnRyYXNpc19wb3N0Z3Jlc19iYWNrdXBcXFNBVSIsImhpZGRlbiI6ZmFsc2UsImluY2x1ZGVXZWJCcm93c2VyIjp0cnVlLCJpdGVtc1RvU2VsZWN0IjoiZm9sZGVycyIsIm5hbWUiOiJTb3VyY2VEYXRhc2V0X1BBVEgiLCJwcm9tcHQiOiJTb3VyY2UgRm9sZGVyIGFuZCBGaWxlIFBhdGhuYW1lcyBGb2xkZXIiLCJyZXF1aXJlZCI6dHJ1ZSwic2VsZWN0TXVsdGlwbGUiOnRydWUsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJmaWxlIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifSx7ImRlZmF1bHRWYWx1ZSI6IjE1IiwiaGlkZGVuIjpmYWxzZSwibXVsdGlwbGVPZiI6MSwibmFtZSI6Im51bTJyZW1vdmUiLCJwcm9tcHQiOiJudW1DaGFyMnJlbW92ZSIsInJlcXVpcmVkIjp0cnVlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6Im51bWJlciIsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiY2hvaWNlU2V0dGluZ3MiOnsiY2hvaWNlU2V0IjoidXNlckRlZmluZWQiLCJjaG9pY2VzIjpbeyJkaXNwbGF5IjoibG9jYWxob3N0IiwidmFsdWUiOiJsb2NhbGhvc3QifSx7ImRpc3BsYXkiOiJ1dWMtc3J2MzkwIiwidmFsdWUiOiJ1dWMtc3J2MzkwIn1dLCJzb3J0IjoibmF0dXJhbFNvcnQifSwiZGVmYXVsdFZhbHVlIjoibG9jYWxob3N0IiwiaGlkZGVuIjpmYWxzZSwibmFtZSI6InNlcnZlciIsInByb21wdCI6IlNlcnZlciIsInJlcXVpcmVkIjp0cnVlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6ImRyb3Bkb3duIiwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJkZWZhdWx0VmFsdWUiOiI1NDMzIiwiaGlkZGVuIjpmYWxzZSwibmFtZSI6InBvcnQiLCJwcm9tcHQiOiJQb3J0IiwicmVxdWlyZWQiOnRydWUsInNob3dFZGl0QnV0dG9uIjpmYWxzZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJkZWZhdWx0VmFsdWUiOiJwb3N0Z3JlcyIsImhpZGRlbiI6ZmFsc2UsIm5hbWUiOiJ1c2VyIiwicHJvbXB0IjoiVXNlciIsInJlcXVpcmVkIjp0cnVlLCJzaG93RWRpdEJ1dHRvbiI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoidGV4dCIsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiZGVmYXVsdFZhbHVlIjoiQWRtaW4iLCJoaWRkZW4iOmZhbHNlLCJuYW1lIjoicHNzd2QiLCJwcm9tcHQiOiJQYXNzd29yZCIsInJlcXVpcmVkIjp0cnVlLCJzaG93RWRpdEJ1dHRvbiI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwidmFsdWVUeXBlIjoic3RyaW5nIn1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="SourceDataset_PATH" 
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\dap\intrasis_leveranser\intrasis_postgres_backup\SAU"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI MULTIDIRECTORY SourceDataset_PATH INCLUDE_WEB_BROWSER Source Folder and File Pathnames Folder"
+#! />
+#!     <INFO NAME="num2remove" 
+#!   DEFAULT_VALUE="15"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI INTEGER_OR_ATTR num2remove numChar2remove"
+#! />
+#!     <INFO NAME="server" 
+#!   DEFAULT_VALUE="localhost"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI CHOICE_OR_ATTR server localhost%uuc-srv390 Server"
+#! />
+#!     <INFO NAME="port" 
+#!   DEFAULT_VALUE="5433"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING_OR_ATTR port Port"
+#! />
+#!     <INFO NAME="user" 
+#!   DEFAULT_VALUE="postgres"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING_OR_ATTR user User"
+#! />
+#!     <INFO NAME="psswd" 
+#!   DEFAULT_VALUE="Admin"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING psswd Password"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeManager"
+#!   VERSION="4"
+#!   POSITION="171.87671876718809 63.625757441249334"
+#!   BOUNDING_RECT="171.87671876718809 63.625757441249334 454 71"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="path_unix path_unix  NO_OP path_windows path_windows  NO_OP path_rootname path_rootname  NO_OP path_filename path_filename  NO_OP path_extension path_extension  NO_OP path_directory_unix path_directory_unix  NO_OP path_directory_windows path_directory_windows  NO_OP path_type path_type  NO_OP  db_name &lt;at&gt;LowerCase&lt;openparen&gt;&lt;at&gt;Left&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;path_rootname&lt;closeparen&gt;&lt;comma&gt;&lt;at&gt;StringLength&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;path_rootname&lt;closeparen&gt;&lt;closeparen&gt;-$(num2remove)&lt;closeparen&gt;&lt;closeparen&gt; SET_TO"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="SystemCaller"
+#!   VERSION="3"
+#!   POSITION="1525.0152501525017 63.625757441249334"
+#!   BOUNDING_RECT="1525.0152501525017 63.625757441249334 454 71"
+#!   ORDER="500000000000011"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22618"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="hejda" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR" PARM_VALUE="hejda"/>
+#!     <XFORM_PARM PARM_NAME="CMD" PARM_VALUE="&lt;quote&gt;&lt;quote&gt;C:&lt;solidus&gt;Program&lt;space&gt;Files&lt;solidus&gt;PostgreSQL&lt;solidus&gt;12&lt;solidus&gt;bin&lt;solidus&gt;pg_restore.exe&lt;quote&gt;&lt;space&gt;-h&lt;space&gt;$(server)&lt;space&gt;&lt;space&gt;-p&lt;space&gt;$(port)&lt;space&gt;-U&lt;space&gt;$(user)&lt;space&gt;&lt;space&gt;-w&lt;space&gt;-d&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;db_name&lt;closeparen&gt;&lt;space&gt;-O&lt;space&gt;-x&lt;space&gt;-c&lt;space&gt;--no-security-labels&lt;space&gt;&lt;quote&gt;&lt;at&gt;Value&lt;openparen&gt;path_windows&lt;closeparen&gt;&lt;quote&gt;&lt;quote&gt;&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SystemCaller"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="SystemCaller"
+#!   VERSION="3"
+#!   POSITION="868.75868758687579 -396.87896878968797"
+#!   BOUNDING_RECT="868.75868758687579 -396.87896878968797 454 71"
+#!   ORDER="500000000000012"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22618"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CMD" PARM_VALUE="&lt;quote&gt;&lt;quote&gt;C:&lt;solidus&gt;Program&lt;space&gt;Files&lt;solidus&gt;PostgreSQL&lt;solidus&gt;12&lt;solidus&gt;bin&lt;solidus&gt;psql.exe&lt;quote&gt;&lt;space&gt;-h&lt;space&gt;$(server)&lt;space&gt;&lt;space&gt;-p&lt;space&gt;$(port)&lt;space&gt;-U&lt;space&gt;$(user)&lt;space&gt;-c&lt;space&gt;&lt;quote&gt;CREATE&lt;space&gt;DATABASE&lt;space&gt;&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;db_name&lt;closeparen&gt;&lt;space&gt;&lt;space&gt;WITH&lt;space&gt;TEMPLATE&lt;space&gt;=&lt;space&gt;urdar_template&lt;space&gt;ENCODING&lt;space&gt;=&lt;space&gt;&lt;apos&gt;UTF8&lt;apos&gt;&lt;quote&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SystemCaller_3"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE PATH_IN_FME_GROUP_NAMED1_PATH_1,PATH_IN_GLOB_PATTERN_PATH_1,PATH_IN_RECURSE_DIRECTORIES_PATH_1,PATH_IN_TYPE_PATH_1,SourceDataset_PATH_1,PATH_IN_NETWORK_AUTHENTICATION_PATH_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_PATH C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\dap\intrasis_leveranser\intrasis_postgres_backup\SAU
+
+DEFAULT_MACRO num2remove 15
+
+DEFAULT_MACRO server localhost
+
+DEFAULT_MACRO port 5433
+
+DEFAULT_MACRO user postgres
+
+DEFAULT_MACRO psswd Admin
+
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_PATH$encode)} == {}} { puts_real {Parameter 'SourceDataset_PATH' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(num2remove$encode)} == {}} { puts_real {Parameter 'num2remove' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(server$encode)} == {}} { puts_real {Parameter 'server' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(port$encode)} == {}} { puts_real {Parameter 'port' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(user$encode)} == {}} { puts_real {Parameter 'user' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(psswd$encode)} == {}} { puts_real {Parameter 'psswd' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} PATH
+MULTI_READER_KEYWORD{0} PATH_1
+MULTI_READER_GEN_DIRECTIVES{0} EXPOSE_ATTRS_GROUP,,USE_NON_STRING_ATTR,yes,OFFSET_DATETIME,yes,RECURSE_DIRECTORIES,NO,NO_EMPTY_PROPERTIES,YES,RETRIEVE_FILE_PROPERTIES,NO,PATH_EXPOSE_FORMAT_ATTRS,,TYPE,ANY,_MERGE_SCHEMAS,YES,GLOB_PATTERN,*.backup
+WRITER_TYPE NULL
+WRITER_KEYWORD NULL_DEST
+NULL_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "PATH_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PATH PATH_1
+DEFAULT_MACRO PATH_IN_FME_GROUP_NAMED1_PATH_1 FME_DISCLOSURE_OPEN
+GUI OPTIONAL DISCLOSUREGROUP PATH_IN_FME_GROUP_NAMED1_PATH_1 PATH_IN_GLOB_PATTERN_PATH_1%PATH_IN_RECURSE_DIRECTORIES_PATH_1%PATH_IN_TYPE_PATH_1%PATH_IN_RETRIEVE_FILE_PROPERTIES Path Parameters
+# =============================================================================
+DEFAULT_MACRO PATH_IN_OFFSET_DATETIME_PATH_1 yes
+PATH_1_OFFSET_DATETIME "$(PATH_IN_OFFSET_DATETIME_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_USE_NON_STRING_ATTR_PATH_1 yes
+PATH_1_USE_NON_STRING_ATTR "$(PATH_IN_USE_NON_STRING_ATTR_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_GLOB_PATTERN_PATH_1 *.backup
+PATH_1_GLOB_PATTERN "$(PATH_IN_GLOB_PATTERN_PATH_1)"
+GUI OPTIONAL TEXT_ENCODED PATH_IN_GLOB_PATTERN_PATH_1 Path Filter:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_RECURSE_DIRECTORIES_PATH_1 NO
+PATH_1_RECURSE_DIRECTORIES "$(PATH_IN_RECURSE_DIRECTORIES_PATH_1)"
+GUI CHOICE PATH_IN_RECURSE_DIRECTORIES_PATH_1 YES%NO Recurse Into Subfolders:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_TYPE_PATH_1 ANY
+PATH_1_TYPE "$(PATH_IN_TYPE_PATH_1)"
+GUI LOOKUP_CHOICE PATH_IN_TYPE_PATH_1 Any,ANY%Directory,DIRECTORY%File,FILE Allowed Path Type:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_RETRIEVE_FILE_PROPERTIES_PATH_1 NO
+PATH_1_RETRIEVE_FILE_PROPERTIES "$(PATH_IN_RETRIEVE_FILE_PROPERTIES_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_NO_EMPTY_PROPERTIES_PATH_1 YES
+PATH_1_NO_EMPTY_PROPERTIES "$(PATH_IN_NO_EMPTY_PROPERTIES_PATH_1)"
+DEFAULT_MACRO PATH_IN_EXPOSE_ATTRS_GROUP_PATH_1 
+PATH_1_EXPOSE_ATTRS_GROUP "$(PATH_IN_EXPOSE_ATTRS_GROUP_PATH_1)"
+# =====================================================================
+# The following GUI line prompts for the folder from which to
+# read
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_PATH_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PATH PATH_1
+DEFAULT_MACRO SourceDataset_PATH_1 $(SourceDataset_PATH)
+GUI MULTIDIR SourceDataset_PATH_1 Source Folder and File Pathnames Folder:
+# ===========================================================================
+DEFAULT_MACRO PATH_IN_NETWORK_AUTHENTICATION_PATH_1 
+PATH_1_NETWORK_AUTHENTICATION "$(PATH_IN_NETWORK_AUTHENTICATION_PATH_1)"
+GUI OPTIONAL AUTHENTICATOR PATH_IN_NETWORK_AUTHENTICATION_PATH_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO PATH_IN_ATTRIBUTE_READING_PATH_1 ALL
+PATH_1_ATTRIBUTE_READING "$(PATH_IN_ATTRIBUTE_READING_PATH_1)"
+# ============================================================================
+PATH_1_GENERATE_FME_BUILD_NUM 22618
+PATH_1_DATASET "$(SourceDataset_PATH_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)restoreDBfromBackupFile.log"
+LOG_APPEND NO
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2022.1.0.0 (20220704 - Build 22618 - WIN64)"
+MAPPING_FILE_ID SAUimportIntrasis
+DEFAULT_MACRO DATASET_KEYWORD_PATH_1 PATH_1
+# -------------------------------------------------------------------------
+
+PATH_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME restoreDBfromBackupFile
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_PATH_1)   INPUT FEATURE_TYPE *    ROUTE PATH PATH_1::PATH multi_reader_keyword,$(DATASET_KEYWORD_PATH_1) TO FME_GENERIC ::PATH ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+PATH_1_MERGE_DEF PATH_1::PATH EXACT PATH
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "PATH_PATH_1 Splitter"    INPUT FEATURE_TYPE PATH    OUTPUT FEATURE_TYPE PATH_PATH_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager_2 }    INPUT  FEATURE_TYPE PATH_PATH_1    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "" "db_name" "<at>LowerCase<openparen><at>Left<openparen><at>Value<openparen>path_rootname<closeparen><comma><at>StringLength<openparen><at>Value<openparen>path_rootname<closeparen><closeparen>-$(num2remove$encode)<closeparen><closeparen>" "SET_TO" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_2_OUTPUT        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { SystemCaller_3 }    INPUT  FEATURE_TYPE AttributeManager_2_OUTPUT    OUTPUT { FEATURE_TYPE SystemCaller_3_OUTPUT         @System(LOG_PREFIX,SystemCaller_3,ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,<quote><quote>C:<solidus>Program<space>Files<solidus>PostgreSQL<solidus>12<solidus>bin<solidus>psql.exe<quote><space>-h<space>$(server$encode)<space><space>-p<space>$(port$encode)<space>-U<space>$(user$encode)<space>-c<space><quote>CREATE<space>DATABASE<space><space><at>Value<openparen>db_name<closeparen><space><space>WITH<space>TEMPLATE<space>=<space>urdar_template<space>ENCODING<space>=<space><apos>UTF8<apos><quote>,SystemCaller_3)")          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { SystemCaller }    INPUT  FEATURE_TYPE SystemCaller_3_OUTPUT    OUTPUT { FEATURE_TYPE SystemCaller_OUTPUT         "hejda"         @System(LOG_PREFIX,SystemCaller,ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,<quote><quote>C:<solidus>Program<space>Files<solidus>PostgreSQL<solidus>12<solidus>bin<solidus>pg_restore.exe<quote><space>-h<space>$(server$encode)<space><space>-p<space>$(port$encode)<space>-U<space>$(user$encode)<space><space>-w<space>-d<space><at>Value<openparen>db_name<closeparen><space>-O<space>-x<space>-c<space>--no-security-labels<space><quote><at>Value<openparen>path_windows<closeparen><quote><quote><lf>,SystemCaller)")          }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "SystemCaller OUTPUT Transformer Output Nuker"   INPUT FEATURE_TYPE SystemCaller_OUTPUT
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+

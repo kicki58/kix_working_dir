@@ -1,0 +1,3 @@
+rem sqlcmd -U intrasis -P sisartni -S win8 -H SQLEXPRESS -Q "CREATE DATABASE A2010_124_Herresta_fu2  ON (FILENAME = 'c:\intrasis2\SLM\A2010_124_Herresta_fu2.mdf'),   (FILENAME = 'c:\Intrasis2\SLM\A2010_124_Herresta_fu2_log.ldf')  FOR ATTACH;"
+rem sqlcmd -U intrasis -P sisartni -S win8 -H SQLEXPRESS -Q "CREATE DATABASE A2010_124_Herresta  ON (FILENAME = 'c:\intrasis2\SLM\A2010_124_Herresta.mdf'),   (FILENAME = 'c:\Intrasis2\SLM\A2010_124_Herresta_log.ldf')  FOR ATTACH;"
+pause
