@@ -1,0 +1,264 @@
+#! encoding="UTF-8"
+#    Command line to run this workspace:
+#        "C:\Program Files\FME2022_1_3\fme.exe" "C:/Users/krima354/Work Folders/Documents/GitHub/kix_working_dir/divFME\wb-xlate-1680170016149_8120"
+#          --server "130.238.10.179"
+#          --port "5432"
+#          --user "kicki"
+#          --psswd "pri22mef"
+#          --folder_backup "C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\urdar_backup_20230330"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+
+MACRO FME_MF_NAME BackupIntrasisDB.fmw
+MACRO FME_MF_NAME_MASTER BackupIntrasisDB.fmw
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE POSTGRES_IN_HOST_POSTGRES_1,POSTGRES_IN_PORT_POSTGRES_1,SourceDataset_POSTGRES_1,POSTGRES_IN_USER_NAME_POSTGRES_1,POSTGRES_IN_PASSWORD_POSTGRES_1,POSTGRES_IN_SSL_OPTIONS_POSTGRES_1,POSTGRES_IN_SSLMODE_POSTGRES_1,POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1,POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1,POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1,POSTGRES_IN_SSL_PASSWORD_POSTGRES_1,POSTGRES_IN_FME_CONNECTION_GROUP_POSTGRES_1,POSTGRES_IN_FME_GROUP_NAMED1_POSTGRES_1,POSTGRES_IN_WHERE_CLAUSE_POSTGRES_1,POSTGRES_IN_ADVANCED_POSTGRES_1,POSTGRES_IN_FEATURES_PER_FETCH_POSTGRES_1,POSTGRES_IN_BEGIN_SQL_POSTGRES_1,POSTGRES_IN_END_SQL_POSTGRES_1,POSTGRES_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGRES_1
+# ============================================================================
+DEFAULT_MACRO server 130.238.10.179
+
+DEFAULT_MACRO postgres_db postgres
+
+DEFAULT_MACRO port 5432
+
+DEFAULT_MACRO user kicki
+
+DEFAULT_MACRO psswd pri22mef
+
+DEFAULT_MACRO folder_backup C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\urdar_backup_20230330
+
+DEFAULT_MACRO FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO FME_ENGINE 
+
+DEFAULT_MACRO FME_JOB_ID 
+
+DEFAULT_MACRO FME_SECURITY_ROLES 
+
+DEFAULT_MACRO FME_SECURITY_USER 
+
+DEFAULT_MACRO FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO FME_SERVER_HOST 
+
+DEFAULT_MACRO FME_SERVER_PORT 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO FME_TOPIC 
+
+DEFAULT_MACRO FME_TOPIC_MESSAGE 
+
+# ============================================================================
+INCLUDE [ if {{$(server$encode)} == {}} { puts_real {Parameter 'server' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(postgres_db$encode)} == {}} { puts_real {Parameter 'postgres_db' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(port$encode)} == {}} { puts_real {Parameter 'port' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(user$encode)} == {}} { puts_real {Parameter 'user' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(psswd$encode)} == {}} { puts_real {Parameter 'psswd' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(folder_backup$encode)} == {}} { puts_real {Parameter 'folder_backup' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} POSTGRES
+MULTI_READER_KEYWORD{0} POSTGRES_1
+MULTI_READER_GEN_DIRECTIVES{0} BEGIN_SQL,,POSTGRES_EXPOSE_FORMAT_ATTRS,,WHERE_CLAUSE,,ADVANCED,,END_SQL,,FEATURES_PER_FETCH,10000,READ_TIME_WITH_TIMEZONE,Yes,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,NAMED_CONNECTION,postgres<lt>at<gt>localhost,SCHEMAS_FOR_TABLE_LISTING,information_schema<space>pg_catalog<space>pg_temp_1<space>pg_toast<space>pg_toast_temp_1<space>public,CREATE_FEATURE_TABLES_FROM_DATA,Yes,EXPOSE_ATTRS_GROUP,,_MERGE_SCHEMAS,YES,TABLELIST,pg_catalog.pg_database
+WRITER_TYPE NULL
+WRITER_KEYWORD NULL_DEST
+NULL_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "POSTGRES_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER POSTGRES POSTGRES_1
+DEFAULT_MACRO POSTGRES_IN_HOST_POSTGRES_1 $(server)
+POSTGRES_1_HOST "$(POSTGRES_IN_HOST_POSTGRES_1)"
+GUI TEXT POSTGRES_IN_HOST_POSTGRES_1 Host:
+DEFAULT_MACRO POSTGRES_IN_PORT_POSTGRES_1 $(port)
+POSTGRES_1_PORT "$(POSTGRES_IN_PORT_POSTGRES_1)"
+GUI INTEGER POSTGRES_IN_PORT_POSTGRES_1 Port:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_POSTGRES_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER POSTGRES POSTGRES_1
+DEFAULT_MACRO SourceDataset_POSTGRES_1 $(postgres_db)
+POSTGRES_1_DATASET "$(SourceDataset_POSTGRES_1)"
+GUI TEXT SourceDataset_POSTGRES_1 Database:
+DEFAULT_MACRO POSTGRES_IN_USER_NAME_POSTGRES_1 $(user)
+POSTGRES_1_USER_NAME "$(POSTGRES_IN_USER_NAME_POSTGRES_1)"
+GUI TEXT POSTGRES_IN_USER_NAME_POSTGRES_1 Username:
+DEFAULT_MACRO POSTGRES_IN_PASSWORD_POSTGRES_1 $(psswd)
+POSTGRES_1_PASSWORD "$(POSTGRES_IN_PASSWORD_POSTGRES_1)"
+GUI OPTIONAL PASSWORD_ENCODED POSTGRES_IN_PASSWORD_POSTGRES_1 Password:
+DEFAULT_MACRO POSTGRES_IN_SSL_OPTIONS_POSTGRES_1 
+POSTGRES_1_SSL_OPTIONS "$(POSTGRES_IN_SSL_OPTIONS_POSTGRES_1)"
+GUI OPTIONAL DISCLOSUREGROUP POSTGRES_IN_SSL_OPTIONS_POSTGRES_1 POSTGRES_IN_SSLMODE_POSTGRES_1%POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1%POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1%POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1%POSTGRES_IN_SSL_PASSWORD_POSTGRES_1 SSL Options
+DEFAULT_MACRO POSTGRES_IN_SSLMODE_POSTGRES_1 prefer
+POSTGRES_1_SSLMODE "$(POSTGRES_IN_SSLMODE_POSTGRES_1)"
+GUI ACTIVECHOICE_LOOKUP POSTGRES_IN_SSLMODE_POSTGRES_1 Disable<u0020>,disable,POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1,POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1,POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1,POSTGRES_IN_SSL_PASSWORD_POSTGRES_1%Allow<u0020>,allow%Prefer<u0020>,prefer%Require<u0020>,require%Verify-CA<u0020>,verify-ca%Verify-Full<u0020>,verify-full SSL Mode:
+DEFAULT_MACRO POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1 
+POSTGRES_1_CA_CERTIFICATE "$(POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1)"
+GUI OPTIONAL FILENAME_MUSTEXIST POSTGRES_IN_CA_CERTIFICATE_POSTGRES_1 Certificate_File(*.pem)|*.pem|All_files(*.*)|*.* CA Certificate:
+DEFAULT_MACRO POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1 
+POSTGRES_1_CLIENT_CERTIFICATE "$(POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1)"
+GUI OPTIONAL FILENAME_MUSTEXIST POSTGRES_IN_CLIENT_CERTIFICATE_POSTGRES_1 Certificate_File(*.pem)|*.pem|All_files(*.*)|*.* Client Certificate:
+DEFAULT_MACRO POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1 
+POSTGRES_1_CLIENT_PRIV_KEY "$(POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1)"
+GUI OPTIONAL FILENAME_MUSTEXIST POSTGRES_IN_CLIENT_PRIV_KEY_POSTGRES_1 Private_Key_File(*.pem)|*.pem|All_files(*.*)|*.* Client Private Key:
+DEFAULT_MACRO POSTGRES_IN_SSL_PASSWORD_POSTGRES_1 
+POSTGRES_1_SSL_PASSWORD "$(POSTGRES_IN_SSL_PASSWORD_POSTGRES_1)"
+GUI OPTIONAL PASSWORD_ENCODED POSTGRES_IN_SSL_PASSWORD_POSTGRES_1 SSL Password:
+# The dataset this mapping file was generated from was:
+DEFAULT_MACRO POSTGRES_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_POSTGRES_1 Yes
+POSTGRES_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(POSTGRES_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_POSTGRES_1)"
+DEFAULT_MACRO POSTGRES_IN_READ_TIME_WITH_TIMEZONE_POSTGRES_1 Yes
+POSTGRES_1_READ_TIME_WITH_TIMEZONE "$(POSTGRES_IN_READ_TIME_WITH_TIMEZONE_POSTGRES_1)"
+DEFAULT_MACRO POSTGRES_IN_FME_CONNECTION_GROUP_POSTGRES_1 
+GUI OPTIONAL DISCLOSUREGROUP POSTGRES_IN_FME_CONNECTION_GROUP_POSTGRES_1 POSTGRES_IN_NAMED_CONNECTION%POSTGRES_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGRES_1 Database Connection
+DEFAULT_MACRO POSTGRES_IN_FME_GROUP_NAMED1_POSTGRES_1 FME_DISCLOSURE_CLOSED
+GUI OPTIONAL DISCLOSUREGROUP POSTGRES_IN_FME_GROUP_NAMED1_POSTGRES_1 POSTGRES_IN_TABLELIST%POSTGRES_IN_WHERE_CLAUSE_POSTGRES_1 Constraints
+DEFAULT_MACRO POSTGRES_IN_WHERE_CLAUSE_POSTGRES_1 
+POSTGRES_1_WHERE_CLAUSE "$(POSTGRES_IN_WHERE_CLAUSE_POSTGRES_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG POSTGRES_IN_WHERE_CLAUSE_POSTGRES_1 MODE,WHERE;FORMAT,POSTGRES WHERE Clause:
+DEFAULT_MACRO POSTGRES_IN_EXPOSE_ATTRS_GROUP_POSTGRES_1 
+POSTGRES_1_EXPOSE_ATTRS_GROUP "$(POSTGRES_IN_EXPOSE_ATTRS_GROUP_POSTGRES_1)"
+DEFAULT_MACRO POSTGRES_IN_ADVANCED_POSTGRES_1 FME_DISCLOSURE_OPEN
+GUI OPTIONAL DISCLOSUREGROUP POSTGRES_IN_ADVANCED_POSTGRES_1 POSTGRES_IN_FEATURES_PER_FETCH_POSTGRES_1%POSTGRES_IN_BEGIN_SQL_POSTGRES_1%POSTGRES_IN_END_SQL_POSTGRES_1 Advanced
+DEFAULT_MACRO POSTGRES_IN_FEATURES_PER_FETCH_POSTGRES_1 100
+POSTGRES_1_FEATURES_PER_FETCH "$(POSTGRES_IN_FEATURES_PER_FETCH_POSTGRES_1)"
+GUI FLOAT POSTGRES_IN_FEATURES_PER_FETCH_POSTGRES_1 Number Of Records To Fetch At A Time
+DEFAULT_MACRO POSTGRES_IN_BEGIN_SQL_POSTGRES_1 
+POSTGRES_1_BEGIN_SQL "$(POSTGRES_IN_BEGIN_SQL_POSTGRES_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG POSTGRES_IN_BEGIN_SQL_POSTGRES_1 MODE,SQL;FORMAT,POSTGRES SQL To Run Before Read
+DEFAULT_MACRO POSTGRES_IN_END_SQL_POSTGRES_1 
+POSTGRES_1_END_SQL "$(POSTGRES_IN_END_SQL_POSTGRES_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG POSTGRES_IN_END_SQL_POSTGRES_1 MODE,SQL;FORMAT,POSTGRES SQL To Run After Read
+DEFAULT_MACRO POSTGRES_IN_CREATE_FEATURE_TABLES_FROM_DATA_POSTGRES_1 Yes
+POSTGRES_1_CREATE_FEATURE_TABLES_FROM_DATA "$(POSTGRES_IN_CREATE_FEATURE_TABLES_FROM_DATA_POSTGRES_1)"
+# ============================================================================
+DEFAULT_MACRO POSTGRES_IN_ATTRIBUTE_READING_POSTGRES_1 DEFLINE_ATTRS
+POSTGRES_1_ATTRIBUTE_READING "$(POSTGRES_IN_ATTRIBUTE_READING_POSTGRES_1)"
+# ============================================================================
+POSTGRES_1_GENERATE_FME_BUILD_NUM 22618
+DEFAULT_MACRO POSTGRES_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGRES_1 information_schema pg_catalog pg_temp_1 pg_toast pg_toast_temp_1 public
+GUI OPTIONAL TEXT POSTGRES_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGRES_1 Schemas for Tables:
+POSTGRES_1_SCHEMAS_FOR_TABLE_LISTING $(POSTGRES_IN_SCHEMAS_FOR_TABLE_LISTING_POSTGRES_1)
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_END_BANNER 
+LOG_END_BANNER Feature caches have been recorded at every stage of the translation.
+LOG_END_BANNER To inspect the recorded features,
+LOG_END_BANNER click the feature cache icons next to the ports.
+LOG_END_BANNER 
+LOG_FILENAME "$(FME_MF_DIR)BackupIntrasisDB.log"
+LOG_APPEND NO
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+MAPPING_FILE_ID SAUimportIntrasis
+DEFAULT_MACRO DATASET_KEYWORD_POSTGRES_1 POSTGRES_1
+# -------------------------------------------------------------------------
+
+POSTGRES_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME BackupIntrasisDB
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_POSTGRES_1)   INPUT FEATURE_TYPE *    ROUTE POSTGRES POSTGRES_1::pg_catalog.pg_database multi_reader_keyword,$(DATASET_KEYWORD_POSTGRES_1) TO FME_GENERIC ::pg_catalog.pg_database ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *   OUTPUT NOT_ROUTED FEATURE_TYPE *     @LogCount("UnexpectedInput @FeatureType()")     @FeatureType(__TO_REMOVE__)
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Unwanted Router Input Nuker"   INPUT FEATURE_TYPE __TO_REMOVE__
+POSTGRES_1_MERGE_DEF POSTGRES_1::pg_catalog.pg_database EXACT pg_catalog.pg_database DEFLINE postgres_type,postgres_none,postgres_sql_where_clause,,postgres_sql_statement,,oid,oid<comma>Unique,datname,text<comma>Unique,datdba,oid,encoding,int4,datcollate,text,datctype,text,datistemplate,bool,datallowconn,bool,datconnlimit,int4,datlastsysoid,oid,datfrozenxid,text,datminmxid,text,dattablespace,oid,datacl,text
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "pg_catalog.pg_database Feature Recorder -1 2147549193" INPUT FEATURE_TYPE pg_catalog.pg_database FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-BackupIntrasisDB-QRUIDP/Main_pg_catalog.pg_database -1 9 -1  1  8815b881d738557504f3eaf0c2627e157c56da51.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { oid,uint32,datname,buffer,datdba,uint32,encoding,int32,datcollate,buffer,datctype,buffer,datistemplate,logical,datallowconn,logical,datconnlimit,int32,datlastsysoid,uint32,datfrozenxid,buffer,datminmxid,buffer,dattablespace,uint32,datacl,buffer }  FEAT_TYPE_DISPLAY_NAME { pg_catalog.pg_database } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "pg_catalog.pg_database_POSTGRES_1 Splitter"    INPUT FEATURE_TYPE pg_catalog.pg_database    OUTPUT FEATURE_TYPE pg_catalog.pg_database_POSTGRES_1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "pg_catalog.pg_database_POSTGRES_1 Feature Counter -1 7"   INPUT FEATURE_TYPE pg_catalog.pg_database_POSTGRES_1   NO_LOGGING    OUTPUT FEATURE_TYPE *     @LogCount("LINK -1 7")
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+.metadata XFORMER_BEGIN TestFilter;6:Main
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { TestFilter_INPUT }    INPUT  FEATURE_TYPE pg_catalog.pg_database_POSTGRES_1    OUTPUT FEATURE_TYPE TestFilter_INPUTLINE
+FACTORY_DEF {*} TestFactory FACTORY_NAME TestFilter INPUT FEATURE_TYPE TestFilter_INPUTLINE FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT PASSED_TEST_GROUP_OUTPUT FIRST TEST_GROUP TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>datname<closeparen>,TestFilter) = postgres ENCODED } TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>datname<closeparen>,TestFilter) = urdar_template ENCODED } CASE_INSENSITIVE_TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>datname<closeparen>,TestFilter) = template0 ENCODED } TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>datname<closeparen>,TestFilter) = template1 ENCODED } BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1 OR 2 OR 3 OR 4" OUTPUT PASSED_0 FEATURE_TYPE TestFilter_skippa OUTPUT FAILED FEATURE_TYPE TestFilter_<lt>UNFILTERED<gt>
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "TestFilter_skippa Feature Recorder -1 2147614726" INPUT FEATURE_TYPE TestFilter_skippa FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-BackupIntrasisDB-QRUIDP/Main_TestFilter -1 6 fo 0 skippa  1  c6d1095a374210228a4bc0c3006d63ac2f097c53.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { oid,uint32,datname,buffer,datdba,uint32,encoding,int32,datcollate,buffer,datctype,buffer,datistemplate,logical,datallowconn,logical,datconnlimit,int32,datlastsysoid,uint32,datfrozenxid,buffer,datminmxid,buffer,dattablespace,uint32,datacl,buffer }  FEAT_TYPE_DISPLAY_NAME { TestFilter_skippa } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "TestFilter_<lt>UNFILTERED<gt> Feature Recorder -1 2147680262" INPUT FEATURE_TYPE TestFilter_<lt>UNFILTERED<gt> FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-BackupIntrasisDB-QRUIDP/Main_TestFilter -1 6 fo 1 _lt_lt_gt_UNFILTERED_lt_gt_gt_  1  a0df03a3aff28fb27bfdd7df5145653563e967e0.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { oid,uint32,datname,buffer,datdba,uint32,encoding,int32,datcollate,buffer,datctype,buffer,datistemplate,logical,datallowconn,logical,datconnlimit,int32,datlastsysoid,uint32,datfrozenxid,buffer,datminmxid,buffer,dattablespace,uint32,datacl,buffer }  FEAT_TYPE_DISPLAY_NAME { TestFilter_<lt>Unfiltered<gt> } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+.metadata XFORMER_END TestFilter;6:Main
+FACTORY_DEF * TeeFactory   FACTORY_NAME "TestFilter_skippa Feature Counter -1 2147614726"   INPUT FEATURE_TYPE TestFilter_skippa     @LogCount("PORT -1 2147614726")   NO_LOGGING 
+FACTORY_DEF * TeeFactory   FACTORY_NAME "TestFilter_<lt>UNFILTERED<gt> Feature Counter -1 11"   INPUT FEATURE_TYPE TestFilter_<lt>UNFILTERED<gt>   NO_LOGGING    OUTPUT FEATURE_TYPE *     @LogCount("LINK -1 11")
+# -------------------------------------------------------------------------
+.metadata XFORMER_BEGIN AttributeManager;8:Main
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager }    INPUT  FEATURE_TYPE TestFilter_<lt>UNFILTERED<gt>    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "" "bacupfilname" "<at>Value<openparen>datname<closeparen>_<at>DateTimeFormat<openparen><at>DateTimeNow<openparen><closeparen><comma><space>%Y%m%d<closeparen>" "SET_TO" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_OUTPUT        }
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "AttributeManager_OUTPUT Feature Recorder -1 2147614728" INPUT FEATURE_TYPE AttributeManager_OUTPUT FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-BackupIntrasisDB-QRUIDP/Main_AttributeManager -1 8 fo 0 OUTPUT  1  8665b357d1f3d7eef234ea2fc9a9e63fb9b1f80e.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { oid,uint32,datname,buffer,datdba,uint32,encoding,int32,datcollate,buffer,datctype,buffer,datistemplate,logical,datallowconn,logical,datconnlimit,int32,datlastsysoid,uint32,datfrozenxid,buffer,datminmxid,buffer,dattablespace,uint32,datacl,buffer,bacupfilname,varchar<openparen>200<closeparen> }  FEAT_TYPE_DISPLAY_NAME { AttributeManager_Output } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+.metadata XFORMER_END AttributeManager;8:Main
+FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeManager_OUTPUT Feature Counter -1 15"   INPUT FEATURE_TYPE AttributeManager_OUTPUT   NO_LOGGING    OUTPUT FEATURE_TYPE *     @LogCount("LINK -1 15")
+# -------------------------------------------------------------------------
+.metadata XFORMER_BEGIN TestFilter_2;13:Main
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { TestFilter_2_INPUT }    INPUT  FEATURE_TYPE AttributeManager_OUTPUT    OUTPUT FEATURE_TYPE TestFilter_2_INPUTLINE
+FACTORY_DEF {*} TestFactory FACTORY_NAME TestFilter_2 INPUT FEATURE_TYPE TestFilter_2_INPUTLINE FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT PASSED_TEST_GROUP_OUTPUT FIRST TEST_GROUP TEST { @EvaluateExpression(FDIV,STRING_ENCODED,$(server),TestFilter_2) = 130.238.10.179 ENCODED } BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" OUTPUT PASSED_0 FEATURE_TYPE TestFilter_2___server_<space>=<space>urdar OUTPUT FAILED FEATURE_TYPE TestFilter_2_<lt>UNFILTERED<gt>
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "TestFilter_2___server_<space>=<space>urdar Feature Recorder -1 2147680269" INPUT FEATURE_TYPE TestFilter_2___server_<space>=<space>urdar FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-BackupIntrasisDB-QRUIDP/Main_TestFilter_2 -1 13 fo 0 __server__lt_space_gt_=_lt_space_gt_urdar  0  eac174eb4de17e6873e64e481afc680f812d1663.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { oid,uint32,datname,buffer,datdba,uint32,encoding,int32,datcollate,buffer,datctype,buffer,datistemplate,logical,datallowconn,logical,datconnlimit,int32,datlastsysoid,uint32,datfrozenxid,buffer,datminmxid,buffer,dattablespace,uint32,datacl,buffer,bacupfilname,varchar<openparen>200<closeparen> }  FEAT_TYPE_DISPLAY_NAME { TestFilter_2___server_<space>=<space>urdar } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "TestFilter_2_<lt>UNFILTERED<gt> Feature Recorder -1 2147614733" INPUT FEATURE_TYPE TestFilter_2_<lt>UNFILTERED<gt> FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-BackupIntrasisDB-QRUIDP/Main_TestFilter_2 -1 13 fo 1 _lt_lt_gt_UNFILTERED_lt_gt_gt_  0  cbd1b06453f5e663c547c9bf8d81dd364021dc27.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { oid,uint32,datname,buffer,datdba,uint32,encoding,int32,datcollate,buffer,datctype,buffer,datistemplate,logical,datallowconn,logical,datconnlimit,int32,datlastsysoid,uint32,datfrozenxid,buffer,datminmxid,buffer,dattablespace,uint32,datacl,buffer,bacupfilname,varchar<openparen>200<closeparen> }  FEAT_TYPE_DISPLAY_NAME { TestFilter_2_<lt>Unfiltered<gt> } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+.metadata XFORMER_END TestFilter_2;13:Main
+FACTORY_DEF * TeeFactory   FACTORY_NAME "TestFilter_2___server_<space>=<space>urdar Feature Counter -1 12"   INPUT FEATURE_TYPE TestFilter_2___server_<space>=<space>urdar   NO_LOGGING    OUTPUT FEATURE_TYPE *     @LogCount("LINK -1 12")
+FACTORY_DEF * TeeFactory   FACTORY_NAME "TestFilter_2_<lt>UNFILTERED<gt> Feature Counter -1 16"   INPUT FEATURE_TYPE TestFilter_2_<lt>UNFILTERED<gt>   NO_LOGGING    OUTPUT FEATURE_TYPE *     @LogCount("LINK -1 16")
+# -------------------------------------------------------------------------
+.metadata XFORMER_BEGIN SystemCaller_2;10:Main
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { SystemCaller_2 }    INPUT  FEATURE_TYPE TestFilter_2___server_<space>=<space>urdar    OUTPUT { FEATURE_TYPE SystemCaller_2_OUTPUT         @System(LOG_PREFIX,SystemCaller_2,ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,<quote><quote>c:<backslash>Program<space>Files<backslash>PostgreSQL<backslash>12<backslash>bin<backslash>pg_dump<quote><space>-U<space>$(user$encode)<space>-h<space>$(server)<space>-p<space>$(port$encode)<space>-F<space>custom<space><at>Value<openparen>datname<closeparen><space><space><gt><quote>$(folder_backup$encode)<backslash><at>Value<openparen>bacupfilname<closeparen>.backup<quote><quote>,SystemCaller_2)")          }
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "SystemCaller_2_OUTPUT Feature Recorder -1 2147614730" INPUT FEATURE_TYPE SystemCaller_2_OUTPUT FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-BackupIntrasisDB-QRUIDP/Main_SystemCaller_2 -1 10 fo 0 OUTPUT  0  dba1f7b67ab70f9c00b88fe619c9966ee740276f.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { oid,uint32,datname,buffer,datdba,uint32,encoding,int32,datcollate,buffer,datctype,buffer,datistemplate,logical,datallowconn,logical,datconnlimit,int32,datlastsysoid,uint32,datfrozenxid,buffer,datminmxid,buffer,dattablespace,uint32,datacl,buffer,bacupfilname,varchar<openparen>200<closeparen> }  FEAT_TYPE_DISPLAY_NAME { SystemCaller_2_Output } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+.metadata XFORMER_END SystemCaller_2;10:Main
+FACTORY_DEF * TeeFactory   FACTORY_NAME "SystemCaller_2_OUTPUT Feature Counter -1 2147614730"   INPUT FEATURE_TYPE SystemCaller_2_OUTPUT     @LogCount("PORT -1 2147614730")   NO_LOGGING 
+# -------------------------------------------------------------------------
+.metadata XFORMER_BEGIN SystemCaller_3;14:Main
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { SystemCaller_3 }    INPUT  FEATURE_TYPE TestFilter_2_<lt>UNFILTERED<gt>    OUTPUT { FEATURE_TYPE SystemCaller_3_OUTPUT         @System(LOG_PREFIX,SystemCaller_3,ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,<quote><quote>c:<backslash>Program<space>Files<backslash>PostgreSQL<backslash>11<backslash>bin<backslash>pg_dump<quote><space>-U<space>$(user$encode)<space>-h<space>$(server)<space>-p<space>$(port$encode)<space>-F<space>custom<space><at>Value<openparen>datname<closeparen><space><space><gt><quote>$(folder_backup$encode)<backslash><at>Value<openparen>bacupfilname<closeparen>.backup<quote><quote>,SystemCaller_3)")          }
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "SystemCaller_3_OUTPUT Feature Recorder -1 2147614734" INPUT FEATURE_TYPE SystemCaller_3_OUTPUT FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-BackupIntrasisDB-QRUIDP/Main_SystemCaller_3 -1 14 fo 0 OUTPUT  0  281b23e32e400816429a5a5177983c7e2d83c04f.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { oid,uint32,datname,buffer,datdba,uint32,encoding,int32,datcollate,buffer,datctype,buffer,datistemplate,logical,datallowconn,logical,datconnlimit,int32,datlastsysoid,uint32,datfrozenxid,buffer,datminmxid,buffer,dattablespace,uint32,datacl,buffer,bacupfilname,varchar<openparen>200<closeparen> }  FEAT_TYPE_DISPLAY_NAME { SystemCaller_3_Output } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+.metadata XFORMER_END SystemCaller_3;14:Main
+FACTORY_DEF * TeeFactory   FACTORY_NAME "SystemCaller_3_OUTPUT Feature Counter -1 2147614734"   INPUT FEATURE_TYPE SystemCaller_3_OUTPUT     @LogCount("PORT -1 2147614734")   NO_LOGGING 
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+

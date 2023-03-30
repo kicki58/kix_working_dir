@@ -1,0 +1,846 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME2022_1_3\fme.exe" "C:\Users\krima354\Work Folders\Documents\GitHub\kix_working_dir\divFME\intrasis_archive_runner.fmw"
+#          --SourceDataset_CSV2 "C:\Users\krima354\Work Folders\Documents\GitHub\kix_working_dir\urdar\db_on_urdar_funkarEj.csv"
+#          --DestDataset_OGCGEOPACKAGE "C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\urdar_arbetsfiler\create_siteinfo\intrasis_archive_rest2.gpkg"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="1529.51 517.257"
+#!   DOC_TOP_LEFT="20 -486.629"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="22630"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="8a525438-0f6a-4e22-875f-489a1f021d03"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+#!   LAST_SAVE_DATE="2023-03-30T10:19:48"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="-106.251 515.63"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="CSV2"
+#!   DATASET="$(SourceDataset_CSV2)"
+#!   KEYWORD="CSV2_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE=""
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="csv_line_number uint64 csv_number_of_fields uint32 csv_skipped_line string csv_total_number_of_columns uint32 csv_type string fme_basename varchar(50) fme_color varchar(50) fme_dataset varchar(50) fme_feature_type varchar(50) fme_fill_color varchar(50) fme_geometry varchar(50) fme_primary_axis string fme_rotation string fme_secondary_axis string fme_start_angle string fme_sweep_angle string fme_text_size string fme_text_string varchar(50) fme_type varchar(50) multi_reader_full_id string multi_reader_id string multi_reader_keyword varchar(50) multi_reader_type varchar(50)"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILEDIR"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="22630"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DEFAULT_ATTR_TYPE"
+#!   VALUE="string"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="File1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="CSV File"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the CSV file(s)"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a folder for the CSV file"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="time"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="real64"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="x_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="y_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="z_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="real32"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int64"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int32"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int16"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int8"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint64"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint32"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint16"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint8"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="boolean"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="CSV2"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_feature_table"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_point"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_no_map"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="CSV2"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="CSV"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="2"
+#!   FEAT_GEOMTYPE="csv_none"
+#!   POSITION="20 -235"
+#!   BOUNDING_RECT="20 -235 454 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="CSV2_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   READ_SELECT_ATTRS="true"
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="intrasisarchive" ATTR_TYPE="varchar(17)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="CSV2_1"
+#!   OVERRIDE="-CSV2_1_DATASET"
+#!   DATASET="CSV2_1/db_on_urdar_funkarEj.csv"
+#! />
+#! </READER_DATASETS>
+#! <CONNECTIONS>
+#! <CONNECTION
+#!   NAME="krima354 FME Server"
+#!   TYPE="WEB"
+#!   FAMILY="FME Server"
+#!   USAGE="INTERNAL"
+#! />
+#! </CONNECTIONS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_CSV2 INCLUDE_WEB_BROWSER%CSV/Compressed_CSV/TEXT_Files(*.csv;*.gz;*.txt)|*.csv;*.gz;*.txt|CSV_Files(*.csv)|*.csv|Compressed_CSV_Files(*.gz)|*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Text_Files(*.txt)|*.txt|All_Files(*)|* Source CSV (Comma Separated Value) File(s):"
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\GitHub\kix_working_dir\urdar\db_on_urdar_funkarEj.csv"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI FILENAME_OR_ATTR DestDataset_OGCGEOPACKAGE GeoPackage_Files(*.gpkg)|*.gpkg|All_files(*)|* GeoPackage File"
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\urdar_arbetsfiler\create_siteinfo\intrasis_archive_rest2.gpkg"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJhY2Nlc3NNb2RlIjoicmVhZCIsImRlZmF1bHRWYWx1ZSI6IkM6XFxVc2Vyc1xca3JpbWEzNTRcXFdvcmsgRm9sZGVyc1xcRG9jdW1lbnRzXFxHaXRIdWJcXGtpeF93b3JraW5nX2RpclxcdXJkYXJcXGRiX29uX3VyZGFyX2Z1bmthckVqLmNzdiIsImZpbHRlcnMiOlt7ImRlc2NyaXB0aW9uIjoiQ1NWL0NvbXByZXNzZWQgQ1NWL1RFWFQgRmlsZXMiLCJmaWx0ZXIiOlsiKi5jc3YiLCIqLmd6IiwiKi50eHQiXX0seyJkZXNjcmlwdGlvbiI6IkNTViBGaWxlcyIsImZpbHRlciI6WyIqLmNzdiJdfSx7ImRlc2NyaXB0aW9uIjoiQ29tcHJlc3NlZCBDU1YgRmlsZXMiLCJmaWx0ZXIiOlsiKi5neiJdfSx7ImRlc2NyaXB0aW9uIjoiQXJjaGl2ZSBGaWxlcyIsImZpbHRlciI6WyIqLjd6IiwiKi43emlwIiwiKi5yYXIiLCIqLnJ2eiIsIioudGFyIiwiKi50YXIuYnoyIiwiKi50YXIuZ3oiLCIqLnRneiIsIiouemlwIiwiKi56aXB4Il19LHsiZGVzY3JpcHRpb24iOiJDb21wcmVzc2VkIEZpbGVzIiwiZmlsdGVyIjpbIiouYnoyIiwiKi5neiJdfSx7ImRlc2NyaXB0aW9uIjoiVGV4dCBGaWxlcyIsImZpbHRlciI6WyIqLnR4dCJdfSx7ImRlc2NyaXB0aW9uIjoiQWxsIEZpbGVzIiwiZmlsdGVyIjpbIioiXX1dLCJpbmNsdWRlV2ViQnJvd3NlciI6dHJ1ZSwiaXRlbXNUb1NlbGVjdCI6ImZpbGVzIiwibmFtZSI6IlNvdXJjZURhdGFzZXRfQ1NWMiIsInByb21wdCI6IlNvdXJjZSBDU1YgKENvbW1hIFNlcGFyYXRlZCBWYWx1ZSkgRmlsZShzKToiLCJyZXF1aXJlZCI6dHJ1ZSwic2VsZWN0TXVsdGlwbGUiOnRydWUsInR5cGUiOiJmaWxlIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifSx7ImFjY2Vzc01vZGUiOiJ3cml0ZSIsImRlZmF1bHRWYWx1ZSI6IkM6XFxVc2Vyc1xca3JpbWEzNTRcXFdvcmsgRm9sZGVyc1xcRG9jdW1lbnRzXFxraWNraV9hcmJldHNmaWxlclxcdXJkYXJfYXJiZXRzZmlsZXJcXGNyZWF0ZV9zaXRlaW5mb1xcaW50cmFzaXNfYXJjaGl2ZV9yZXN0Mi5ncGtnIiwiZmlsdGVycyI6W3siZGVzY3JpcHRpb24iOiJHZW9QYWNrYWdlIEZpbGVzIiwiZmlsdGVyIjpbIiouZ3BrZyJdfSx7ImRlc2NyaXB0aW9uIjoiQWxsIGZpbGVzIiwiZmlsdGVyIjpbIioiXX1dLCJoaWRkZW4iOmZhbHNlLCJpdGVtc1RvU2VsZWN0IjoiZmlsZXMiLCJuYW1lIjoiRGVzdERhdGFzZXRfT0dDR0VPUEFDS0FHRSIsInByb21wdCI6Ikdlb1BhY2thZ2UgRmlsZSIsInJlcXVpcmVkIjp0cnVlLCJzZWxlY3RNdWx0aXBsZSI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoiZmlsZSIsInZhbGlkYXRlRXhpc3RlbmNlIjpmYWxzZSwidmFsdWVUeXBlIjoic3RyaW5nIn1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="SourceDataset_CSV2" 
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\GitHub\kix_working_dir\urdar\db_on_urdar_funkarEj.csv"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_CSV2 INCLUDE_WEB_BROWSER%CSV/Compressed_CSV/TEXT_Files(*.csv;*.gz;*.txt)|*.csv;*.gz;*.txt|CSV_Files(*.csv)|*.csv|Compressed_CSV_Files(*.gz)|*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Text_Files(*.txt)|*.txt|All_Files(*)|* Source CSV (Comma Separated Value) File(s):"
+#! />
+#!     <INFO NAME="DestDataset_OGCGEOPACKAGE" 
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\urdar_arbetsfiler\create_siteinfo\intrasis_archive_rest2.gpkg"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI FILENAME_OR_ATTR DestDataset_OGCGEOPACKAGE GeoPackage_Files(*.gpkg)|*.gpkg|All_files(*)|* GeoPackage File"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="WorkspaceRunner"
+#!   VERSION="4"
+#!   POSITION="984.38484384843832 30.627656276562732"
+#!   BOUNDING_RECT="984.38484384843832 30.627656276562732 464.59481825772946 71"
+#!   ORDER="500000000000001"
+#!   PARMS_EDITED="true"
+#!   ENABLED="false"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="SUCCEEDED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_failure_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="SUMMARY"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="_proc_count" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_processes{}" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="BLOCKING" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="LAST_KNOWN_PARAM_DEFS" PARM_VALUE="eyJwYXJhbWV0ZXJzIjpbeyJkZWZhdWx0VmFsdWUiOiJzMjAwODAzOSIsImVkaXRvciI6InBsYWludGV4dCIsImhpZGRlbiI6ZmFsc2UsIm5hbWUiOiJTb3VyY2VEYXRhc2V0X1BPU1RHSVMiLCJwcm9tcHQiOiJEYXRhYmFzZSIsInJlcXVpcmVkIjp0cnVlLCJzaG93RWRpdEJ1dHRvbiI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJhY2Nlc3NNb2RlIjoid3JpdGUiLCJkZWZhdWx0VmFsdWUiOiJDOlxcVXNlcnNcXGtyaW1hMzU0XFxXb3JrIEZvbGRlcnNcXERvY3VtZW50c1xca2lja2lfYXJiZXRzZmlsZXJcXHNsYXNrXFxpbnRyYXNpc19hcmNoaXZlLmdwa2ciLCJmaWx0ZXJzIjpbeyJkZXNjcmlwdGlvbiI6Ikdlb1BhY2thZ2UgRmlsZXMiLCJmaWx0ZXIiOlsiKi5ncGtnIl19LHsiZGVzY3JpcHRpb24iOiJBbGwgZmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV0sIml0ZW1zVG9TZWxlY3QiOiJmaWxlcyIsIm5hbWUiOiJEZXN0RGF0YXNldF9PR0NHRU9QQUNLQUdFIiwicHJvbXB0IjoiR2VvUGFja2FnZSBGaWxlOiIsInJlcXVpcmVkIjp0cnVlLCJzZWxlY3RNdWx0aXBsZSI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJmaWxlIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifV19"/>
+#!     <XFORM_PARM PARM_NAME="MAX_PROC" PARM_VALUE="7"/>
+#!     <XFORM_PARM PARM_NAME="MAX_TO_BATCH" PARM_VALUE="8"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="WORKSPACE_FILE" PARM_VALUE="$(FME_MF_DIR)intrasis_archive.fmw"/>
+#!     <XFORM_PARM PARM_NAME="WORKSPACE_PARAMETERS" PARM_VALUE="SourceDataset_POSTGIS,&lt;at&gt;Value&lt;openparen&gt;intrasisarchive&lt;closeparen&gt;,DestDataset_OGCGEOPACKAGE,$(DestDataset_OGCGEOPACKAGE)"/>
+#!     <XFORM_PARM PARM_NAME="WS_PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="WorkspaceRunner"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="FMEServerJobSubmitter"
+#!   VERSION="4"
+#!   POSITION="984.38484384843832 -415.62915629156294"
+#!   BOUNDING_RECT="984.38484384843832 -415.62915629156294 565.12606825772946 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="JOB_SUBMITTED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_job_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="SUMMARY"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_submitted_job_ids{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_succeeded_job_ids{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_failed_job_ids{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_message" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="ACTION" PARM_VALUE="SUBMIT_JOB"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BLOCKING" PARM_VALUE="FALSE"/>
+#!     <XFORM_PARM PARM_NAME="CONNECTION_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EMBED_CONNECTION_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="JOB_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LAST_KNOWN_PARAM_DEFS" PARM_VALUE="eyJwYXJhbWV0ZXJzIjpbeyJkZWZhdWx0VmFsdWUiOiJzMjAwODAzOSIsImVkaXRvciI6InBsYWludGV4dCIsImhpZGRlbiI6ZmFsc2UsIm5hbWUiOiJTb3VyY2VEYXRhc2V0X1BPU1RHSVMiLCJwcm9tcHQiOiJEYXRhYmFzZSIsInJlcXVpcmVkIjp0cnVlLCJzaG93RWRpdEJ1dHRvbiI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJhY2Nlc3NNb2RlIjoid3JpdGUiLCJkZWZhdWx0VmFsdWUiOiJDOlxcVXNlcnNcXGtyaW1hMzU0XFxXb3JrIEZvbGRlcnNcXERvY3VtZW50c1xca2lja2lfYXJiZXRzZmlsZXJcXHNsYXNrXFxpbnRyYXNpc19hcmNoaXZlLmdwa2ciLCJmaWx0ZXJzIjpbeyJkZXNjcmlwdGlvbiI6Ikdlb1BhY2thZ2UgRmlsZXMiLCJmaWx0ZXIiOlsiKi5ncGtnIl19LHsiZGVzY3JpcHRpb24iOiJBbGwgZmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV0sIml0ZW1zVG9TZWxlY3QiOiJmaWxlcyIsIm5hbWUiOiJEZXN0RGF0YXNldF9PR0NHRU9QQUNLQUdFIiwicHJvbXB0IjoiR2VvUGFja2FnZSBGaWxlOiIsInJlcXVpcmVkIjp0cnVlLCJzZWxlY3RNdWx0aXBsZSI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJmaWxlIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifV19"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PASSWORD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRIORITY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PROCESSING_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REPOSITORY" PARM_VALUE="urdar"/>
+#!     <XFORM_PARM PARM_NAME="SERVER_CONNECTION" PARM_VALUE="krima354&lt;space&gt;FME&lt;space&gt;Server"/>
+#!     <XFORM_PARM PARM_NAME="SERVER_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TM_TAG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TM_TTC" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TM_TTL" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USERNAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="WORKSPACE_NAME" PARM_VALUE="intrasis_archive.fmw"/>
+#!     <XFORM_PARM PARM_NAME="WORKSPACE_PARAMETERS" PARM_VALUE="SourceDataset_POSTGIS string &lt;at&gt;Value&lt;openparen&gt;intrasisarchive&lt;closeparen&gt; DestDataset_OGCGEOPACKAGE string $(DestDataset_OGCGEOPACKAGE)"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FMEServerJobSubmitter"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE SourceDataset_CSV2_1,CSV2_IN_FIELDS_GROUP_CSV2_1,CSV2_IN_DELIMITER_CSV2_1,CSV2_IN_FIELD_NAMES_LINE_CSV2_1,CSV2_IN_DATA_START_LINE_CSV2_1,CSV2_IN_ADVANCED_GROUP_CSV2_1,CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1,CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1,CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1,CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1,CSV2_IN_FIELD_NAMES_GROUP_CSV2_1,CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1,CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1,CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1,CSV2_IN_FIELD_VALUES_GROUP_CSV2_1,CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1,CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1,CSV2_IN_ENCODING_GROUP_CSV2_1,CSV2_IN_ENCODING_CSV2_1,CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1,CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1,CSV2_IN_READ_SKIPPED_LINES_CSV2_1,CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_CSV2 C:\Users\krima354\Work Folders\Documents\GitHub\kix_working_dir\urdar\db_on_urdar_funkarEj.csv
+
+DEFAULT_MACRO DestDataset_OGCGEOPACKAGE C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\urdar_arbetsfiler\create_siteinfo\intrasis_archive_rest2.gpkg
+
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_CSV2$encode)} == {}} { puts_real {Parameter 'SourceDataset_CSV2' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(DestDataset_OGCGEOPACKAGE$encode)} == {}} { puts_real {Parameter 'DestDataset_OGCGEOPACKAGE' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} CSV2
+MULTI_READER_KEYWORD{0} CSV2_1
+MULTI_READER_GEN_DIRECTIVES{0} REPLACE_ATTR_NAME_INVALID_CHARS,No,TRIM_FIELD_VALUE_QUALIFIERS,Yes,READ_SKIPPED_LINES,No,STRING_TYPE_ATTRIBUTE_HANDLING,EXPLICIT_WIDTH,ADVANCED_GROUP,,USE_CUSTOM_SCHEMA,NO,PRESERVE_SOURCE_ENCODING,No,DATE_INPUT_FORMAT,ISO,PREVIEW_PLACEHOLDER,,SUPPORTED_READER_ARCHIVE_EXTENSIONS,csv.gz<comma>txt.gz,EXPOSE_ATTRS_GROUP,,SCAN_ADDITIONAL_FIELDS,No,READ_EMPTY_VALUES_AS,Null,FIELD_NAMES_LINE,1,CHUNK_SIZE,100000,SKIPPED_LINES_GROUP,,FIELD_NAMES_GROUP,,_MERGE_SCHEMAS,YES,ENCODING,windows-1252,TRIM_FIELD_NAME_QUALIFIERS,Yes,SCAN_MAX_ROWS,10000,FIELD_QUALIFIER_CHARACTER,<lt>quote<gt>,TRIM_FIELD_NAME_WHITESPACE,Yes,DATASET_GROUP,,FIELD_QUALIFIER_ESCAPE_CHARACTER,<lt>quote<gt>,FEATURE_TYPE_NAME,FORMAT_NAME,SCAN_TYPES,Yes,FIELD_VALUES_GROUP,,TRIM_FEATURE_TYPE_NAME,Yes,CSV2_EXPOSE_FORMAT_ATTRS,,SCHEMA_GENERATION_GROUP,,DATA_START_LINE,2,SKIP_DUPLICATE_DELIMITERS,No,TYPE_ATTRIBUTE_HANDLING,STANDARD_TYPES,FIELDS_GROUP,,DELIMITER,auto,FIELD_SEPARATION_GROUP,,CASE_SENSITIVE_FIELD_NAMES,Yes,ENCODING_GROUP,,ENFORCE_STRICT_SCHEMA,No,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,SCHEMA,
+WRITER_TYPE NULL
+WRITER_KEYWORD NULL_DEST
+NULL_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "CSV2_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER CSV2 CSV2_1
+# =====================================================================
+# The following GUI line prompts for a file to be used as the source CSV file.
+# The user input is stored in a macro, which is then used to define
+# the dataset to be read.
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_CSV2_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER CSV2 CSV2_1
+DEFAULT_MACRO SourceDataset_CSV2_1 $(SourceDataset_CSV2)
+GUI MULTIFILE SourceDataset_CSV2_1 CSV/Compressed_CSV/TEXT_Files(*.csv;*.gz;*.txt)|*.csv;*.gz;*.txt|CSV_Files(*.csv)|*.csv|Compressed_CSV_Files(*.gz)|*.gz|Text_Files(*.txt)|*.txt|All_Files|* Source CSV (Comma Separated Value) File(s):
+DEFAULT_MACRO CSV2_IN_TRIM_FEATURE_TYPE_NAME_CSV2_1 Yes
+CSV2_1_TRIM_FEATURE_TYPE_NAME "$(CSV2_IN_TRIM_FEATURE_TYPE_NAME_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_REPLACE_ATTR_NAME_INVALID_CHARS_CSV2_1 No
+CSV2_1_REPLACE_ATTR_NAME_INVALID_CHARS "$(CSV2_IN_REPLACE_ATTR_NAME_INVALID_CHARS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_SUPPORTED_READER_ARCHIVE_EXTENSIONS_CSV2_1 csv.gz,txt.gz
+CSV2_1_SUPPORTED_READER_ARCHIVE_EXTENSIONS "$(CSV2_IN_SUPPORTED_READER_ARCHIVE_EXTENSIONS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_FEATURE_TYPE_NAME_CSV2_1 FORMAT_NAME
+CSV2_1_FEATURE_TYPE_NAME "$(CSV2_IN_FEATURE_TYPE_NAME_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_FIELDS_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELDS_GROUP_CSV2_1 CSV2_IN_DELIMITER_CSV2_1%CSV2_IN_FIELD_NAMES_LINE_CSV2_1%CSV2_IN_DATA_START_LINE_CSV2_1 Fields
+DEFAULT_MACRO CSV2_IN_DELIMITER_CSV2_1 auto
+CSV2_1_DELIMITER "$(CSV2_IN_DELIMITER_CSV2_1)"
+GUI STRING_OR_CHOICE_ENCODED CSV2_IN_DELIMITER_CSV2_1 auto%,%;%|%space%tab Delimiter Character:
+DEFAULT_MACRO CSV2_IN_FIELD_NAMES_LINE_CSV2_1 1
+CSV2_1_FIELD_NAMES_LINE "$(CSV2_IN_FIELD_NAMES_LINE_CSV2_1)"
+GUI OPTIONAL INT_OR_CHOICE CSV2_IN_FIELD_NAMES_LINE_CSV2_1 None%1%2%3%4%5 Field Names Line:
+GUI LOOKUP CSV2_IN_FIELD_NAMES_LINE_CSV2_1 None, 
+DEFAULT_MACRO CSV2_IN_DATA_START_LINE_CSV2_1 2
+CSV2_1_DATA_START_LINE "$(CSV2_IN_DATA_START_LINE_CSV2_1)"
+GUI RANGE_SLIDER CSV2_IN_DATA_START_LINE_CSV2_1 1%MAX%0 Data Start Line:
+DEFAULT_MACRO CSV2_IN_ADVANCED_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_ADVANCED_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1%CSV2_IN_FIELD_NAMES_GROUP_CSV2_1%CSV2_IN_FIELD_VALUES_GROUP_CSV2_1%CSV2_IN_ENCODING_GROUP_CSV2_1%CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1%CSV2_IN_SCHEMA_GENERATION_GROUP Advanced
+DEFAULT_MACRO CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1%CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1%CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 Field Separation
+DEFAULT_MACRO CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1 No
+CSV2_1_SKIP_DUPLICATE_DELIMITERS "$(CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1)"
+GUI CHOICE CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1 Yes%No Skip Duplicate Delimiters:
+DEFAULT_MACRO CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1 <quote>
+CSV2_1_FIELD_QUALIFIER_CHARACTER "$(CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1)"
+GUI OPTIONAL STRING_ENCODED CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1 Field Qualifier Character:
+DEFAULT_MACRO CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 <quote>
+CSV2_1_FIELD_QUALIFIER_ESCAPE_CHARACTER "$(CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1)"
+GUI OPTIONAL STRING_ENCODED CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 Field Qualifier Escape Character:
+DEFAULT_MACRO CSV2_IN_FIELD_NAMES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_NAMES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1%CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1%CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1 Field Names
+DEFAULT_MACRO CSV2_IN_TRIM_FIELD_NAME_QUALIFIERS_CSV2_1 Yes
+CSV2_1_TRIM_FIELD_NAME_QUALIFIERS "$(CSV2_IN_TRIM_FIELD_NAME_QUALIFIERS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1 Yes
+CSV2_1_CASE_SENSITIVE_FIELD_NAMES "$(CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1)"
+GUI CHOICE CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1 Yes%No Case Sensitive Field Names:
+DEFAULT_MACRO CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1 No
+CSV2_1_ENFORCE_STRICT_SCHEMA "$(CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1)"
+GUI CHOICE CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1 Yes%No Enforce Strict Schema:
+DEFAULT_MACRO CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1 Yes
+CSV2_1_TRIM_FIELD_NAME_WHITESPACE "$(CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1)"
+GUI CHOICE CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1 Yes%No Trim Whitespaces From Field Names:
+DEFAULT_MACRO CSV2_IN_FIELD_VALUES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_VALUES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1%CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1 Field Values
+DEFAULT_MACRO CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1 Null
+CSV2_1_READ_EMPTY_VALUES_AS "$(CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1)"
+GUI CHOICE CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1 Missing%Null Read Empty Values As:
+DEFAULT_MACRO CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1 Yes
+CSV2_1_TRIM_FIELD_VALUE_QUALIFIERS "$(CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1)"
+GUI CHOICE CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1 Yes%No Trim Field Qualifier Characters:
+DEFAULT_MACRO CSV2_IN_ENCODING_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_ENCODING_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_ENCODING_CSV2_1%CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1 Encoding
+DEFAULT_MACRO CSV2_IN_ENCODING_CSV2_1 windows-1252
+CSV2_1_ENCODING "$(CSV2_IN_ENCODING_CSV2_1)"
+GUI STRING_OR_ENCODING CSV2_IN_ENCODING_CSV2_1 fme-system%* Character Encoding:
+DEFAULT_MACRO CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1 No
+CSV2_1_PRESERVE_SOURCE_ENCODING "$(CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1)"
+GUI CHOICE CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1 Yes%No Preserve Source Encoding:
+DEFAULT_MACRO CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_READ_SKIPPED_LINES_CSV2_1 Skipped Lines
+DEFAULT_MACRO CSV2_IN_READ_SKIPPED_LINES_CSV2_1 No
+CSV2_1_READ_SKIPPED_LINES "$(CSV2_IN_READ_SKIPPED_LINES_CSV2_1)"
+GUI CHOICE CSV2_IN_READ_SKIPPED_LINES_CSV2_1 Yes%No Read Skipped Lines:
+DEFAULT_MACRO CSV2_IN_SCAN_MAX_ROWS_CSV2_1 10000
+CSV2_1_SCAN_MAX_ROWS "$(CSV2_IN_SCAN_MAX_ROWS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_SCAN_TYPES_CSV2_1 Yes
+CSV2_1_SCAN_TYPES "$(CSV2_IN_SCAN_TYPES_CSV2_1)"
+# ============================================================================
+# Determines whether numeric attributes should be interpreted as bounded or unbounded
+DEFAULT_MACRO CSV2_IN_TYPE_ATTRIBUTE_HANDLING_CSV2_1 STANDARD_TYPES
+CSV2_1_TYPE_ATTRIBUTE_HANDLING "$(CSV2_IN_TYPE_ATTRIBUTE_HANDLING_CSV2_1)"
+# ============================================================================
+# Determines whether string attributes should be interpreted as bounded or unbounded
+DEFAULT_MACRO CSV2_IN_STRING_TYPE_ATTRIBUTE_HANDLING_CSV2_1 EXPLICIT_WIDTH
+CSV2_1_STRING_TYPE_ATTRIBUTE_HANDLING "$(CSV2_IN_STRING_TYPE_ATTRIBUTE_HANDLING_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_DATE_INPUT_FORMAT_CSV2_1 ISO
+CSV2_1_DATE_INPUT_FORMAT "$(CSV2_IN_DATE_INPUT_FORMAT_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_SCAN_ADDITIONAL_FIELDS_CSV2_1 No
+CSV2_1_SCAN_ADDITIONAL_FIELDS "$(CSV2_IN_SCAN_ADDITIONAL_FIELDS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_EXPOSE_ATTRS_GROUP_CSV2_1 
+CSV2_1_EXPOSE_ATTRS_GROUP "$(CSV2_IN_EXPOSE_ATTRS_GROUP_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_CSV2_1 Yes
+CSV2_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(CSV2_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_CHUNK_SIZE_CSV2_1 100000
+CSV2_1_CHUNK_SIZE "$(CSV2_IN_CHUNK_SIZE_CSV2_1)"
+# ===========================================================================
+DEFAULT_MACRO CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1 
+CSV2_1_NETWORK_AUTHENTICATION "$(CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1)"
+GUI OPTIONAL AUTHENTICATOR CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO CSV2_IN_ATTRIBUTE_READING_CSV2_1 DEFLINE
+CSV2_1_ATTRIBUTE_READING "$(CSV2_IN_ATTRIBUTE_READING_CSV2_1)"
+# ============================================================================
+CSV2_1_GENERATE_FME_BUILD_NUM 22630
+CSV2_1_DATASET "$(SourceDataset_CSV2_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)intrasis_archive_runner.log"
+LOG_APPEND NO
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+DEFAULT_MACRO DATASET_KEYWORD_CSV2_1 CSV2_1
+# -------------------------------------------------------------------------
+
+CSV2_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME intrasis_archive_runner
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_CSV2_1)   INPUT FEATURE_TYPE *    ROUTE CSV2 CSV2_1::CSV multi_reader_keyword,$(DATASET_KEYWORD_CSV2_1) TO FME_GENERIC ::CSV ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+CSV2_1_MERGE_DEF CSV2_1::CSV EXACT CSV DEFLINE fme_attribute_reading,defined,intrasisarchive,varchar<openparen>17<closeparen>
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "CSV_CSV2_1 Splitter"    INPUT FEATURE_TYPE CSV    OUTPUT FEATURE_TYPE CSV_CSV2_1_0_yvsMpFt/4Gw=    OUTPUT FEATURE_TYPE CSV_CSV2_1_1_GVR6dhZPGYA=
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} ServerFactory    FACTORY_NAME { FMEServerJobSubmitter }       INPUT  FEATURE_TYPE CSV_CSV2_1_0_yvsMpFt/4Gw=    ACTION { SUBMIT_JOB }    CONNECTION { "krima354<space>FME<space>Server" }    REPOSITORY { "urdar" }    WORKSPACE_NAME { "intrasis_archive.fmw" }    BLOCKING { FALSE }    WORKSPACE_PARAMETERS { "SourceDataset_POSTGIS string @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>intrasisarchive<closeparen>,FMEServerJobSubmitter) DestDataset_OGCGEOPACKAGE string @EvaluateExpression(FDIV,STRING_ENCODED,$(DestDataset_OGCGEOPACKAGE$encode),FMEServerJobSubmitter)" }    OUTPUT { REJECTED FEATURE_TYPE FMEServerJobSubmitter_<REJECTED>        }
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME FMEServerJobSubmitter_<Rejected> INPUT FEATURE_TYPE FMEServerJobSubmitter_<REJECTED>  NO_LOGGING   OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, FMEServerJobSubmitter<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "WorkspaceRunner (Disabled) Nuker"   INPUT FEATURE_TYPE CSV_CSV2_1_1_GVR6dhZPGYA=
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
