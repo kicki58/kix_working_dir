@@ -1,0 +1,2260 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME2022_1_3\fme.exe" "C:\Users\krima354\Work Folders\Documents\GitHub\kix_working_dir\divFME\ogcgeopackage_path2filecopy.fmw"
+#          --SourceDataset_OGCGEOPACKAGE "C:\Users\krima354\Box\Urdar\uuid_check\manuell_georef.gpkg"
+#          --SourceDataset_PATH "C:\Users\krima354\Box\Urdar\alla_gpkg_20231129"
+#          --DestDataset_FILECOPY "C:\Users\krima354\Box\Urdar\uuid_check\manuell_georef"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="3763.04 726.634"
+#!   DOC_TOP_LEFT="-186.252 -827.258"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="22630"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="f990047c-81d9-4869-bfab-ca1859b925d6"
+#!   FME_DOCUMENT_PRIORGUID="80bb0a58-da75-40c1-b147-6e71e2ef3f17,7db85d44-c216-4f02-81de-2bdc144720a9,211b3434-ffd3-4a6b-834e-519e9333cfea"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+#!   LAST_SAVE_DATE="2023-12-04T11:22:25"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="-621.881 478.13"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="OGCGEOPACKAGE"
+#!   DATASET="$(SourceDataset_OGCGEOPACKAGE)"
+#!   KEYWORD="OGCGEOPACKAGE_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE="geopackage_type {FME_GEN_GEOMETRY}"
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_basename text(50) fme_color text(50) fme_dataset text(50) fme_feature_type text(50) fme_fill_color text(50) fme_geometry text(50) fme_primary_axis double fme_rotation double fme_secondary_axis double fme_start_angle double fme_sweep_angle double fme_text_size double fme_text_string text(50) fme_type text(50) geopackage_type text(255) multi_reader_full_id mediumint multi_reader_id mediumint multi_reader_keyword text(50) multi_reader_type text(50)"
+#!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP geopackage_reader_table_group geopackage_where_clause Table&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT_ENCODED geopackage_where_clause WHERE Clause&quot; &quot;&quot; "
+#!   ATTR_INDEX_TYPES="Indexed PrimaryKey"
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILE"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="22630"
+#!   COORDSYS="EPSG:3006"
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ADVANCED_PARMS"
+#!   VALUE="OGCGEOPACKAGE_OUT_TRANSACTION_SIZE"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ALLOW_DATASET_CONFLICT"
+#!   VALUE="YES"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Table1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Table"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the GeoPackage file(s)"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a name for the GeoPackage file"
+#! />
+#! </DATASET>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="PATH"
+#!   DATASET="$(SourceDataset_PATH)"
+#!   KEYWORD="PATH_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="false"
+#!   DEFLINE_TEMPLATE=""
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_basename char(50) fme_color char(50) fme_dataset char(50) fme_feature_type char(50) fme_fill_color char(50) fme_geometry char(50) fme_primary_axis number(31,15) fme_rotation number(31,15) fme_secondary_axis number(31,15) fme_start_angle number(31,15) fme_sweep_angle number(31,15) fme_text_size number(31,15) fme_text_string char(50) fme_type char(50) multi_reader_full_id number(11,0) multi_reader_id number(11,0) multi_reader_keyword char(50) multi_reader_type char(50) path_geom char(13)"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="DIRONLY"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="22630"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="PATH"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Specify the Folder or Files pathnames"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_FEATURE_TYPE_EDITING"
+#!   VALUE="NO"
+#! />
+#! </DATASET>
+#! <DATASET
+#!   IS_SOURCE="false"
+#!   ROLE="WRITER"
+#!   FORMAT="FILECOPY"
+#!   DATASET="$(DestDataset_FILECOPY)"
+#!   KEYWORD="FILECOPY_1"
+#!   MULTI_GEOM_ALLOWED="true"
+#!   ATTR_MAX_LENGTH="512"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE=""
+#!   DEFLINE_ATTRS="false"
+#!   EXPOSABLE_ATTRS="filecopy_dest_filename char(128) filecopy_source_dataset char(512) filecopy_type string fme_basename char(50) fme_color char(50) fme_dataset char(50) fme_feature_type char(50) fme_fill_color char(50) fme_geometry char(50) fme_primary_axis real64 fme_rotation real64 fme_secondary_axis real64 fme_start_angle real64 fme_sweep_angle real64 fme_text_size real64 fme_text_string char(50) fme_type char(50)"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="DIRONLY"
+#!   FTTR_TYPE=""
+#!   GENERATE_FME_BUILD_NUM="22630"
+#!   COORDSYS=""
+#!   FANOUT_EXPRESSION=""
+#!   FANOUT_GROUP="NO"
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="subfolder"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Subfolder"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="MIME_TYPE"
+#!   VALUE="text/plain"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_AUTO_EXPOSE"
+#!   VALUE="filecopy_source_dataset char(512)"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a folder for the File Copy"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_FEATURE_TYPE_EDITING"
+#!   VALUE="NO"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="blob"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="blob(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="blob(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="double"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="double"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="boolean"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="tinyint"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="smallint"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="smallint"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="mediumint"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="mediumint"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text(20)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(20)"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(12)"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(31,15)"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(15,7)"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="logical"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="time"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="real64"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="real32"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int32"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="logical"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int16"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int32"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int16"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="FILECOPY"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int16"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="FILECOPY"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_multipoint"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_point"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_multipoint"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_multicurve"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_multilinestring"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_curve"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_linestring"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_compoundcurve"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_circularstring"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_multilinestring"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_multilinestring"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_multisurface"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_multipolygon"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_surface"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_polygon"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_curvepolygon"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_curvepolygon"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_curvepolygon"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_polygon"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_polygon"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_polygon"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_geometrycollection"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_geometry"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_polygon"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="geopackage_geometry"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="OGCGEOPACKAGE"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="FILECOPY"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="filecopy_none"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="FILECOPY"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="archives_check_uuid_"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="3"
+#!   FEAT_GEOMTYPE="geopackage_point"
+#!   POSITION="-186.25206252062523 -238.12503125031247"
+#!   BOUNDING_RECT="-186.25206252062523 -238.12503125031247 551.67294325772946 71"
+#!   ORDER="500000000000006"
+#!   COLLAPSED="true"
+#!   KEYWORD="OGCGEOPACKAGE_1"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   READ_SELECT_ATTRS="true"
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="id" ATTR_TYPE="int" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="intrasisarchive" ATTR_TYPE="text(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="pk" ATTR_TYPE="mediumint" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="SiteId" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Plats" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Lst Dnr" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Raä Dnr" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Inventarienummer" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Projektkod" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Projektnamn" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Projektledare" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Uppdragsgivare" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Exploateringstyp" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Undersökningstyp" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Slutdatum" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Beskrivning" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="fid" ATTR_TYPE="int" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="geom_intrasisarchive" ATTR_TYPE="text(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="agg_feat" ATTR_TYPE="int" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="UUID_kix" ATTR_TYPE="text(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master_site_name" ATTR_TYPE="text(54)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master_site_archive" ATTR_TYPE="text(17)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master_uppdrag_nr" ATTR_TYPE="int" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master_kmr_uppdragsnummer" ATTR_TYPE="int" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master_UUID" ATTR_TYPE="text(37)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master_kmr_id" ATTR_TYPE="text(37)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master_Uppdaterat UUID" ATTR_TYPE="text(37)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master_Kommentar" ATTR_TYPE="text(685)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master_H" ATTR_TYPE="text(4)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master_col9" ATTR_TYPE="text(74)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master__length_uppdrag_nr" ATTR_TYPE="text(20)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="link_fornsok" ATTR_TYPE="text(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="master_uppdrag_ny" ATTR_TYPE="text(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="_relationships.undersokningsomraden_id" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="_relationships.de9im" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="_relationships.pass{}" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="_related_suppliers" ATTR_TYPE="int" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="ok_kix" ATTR_TYPE="text(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_intrasisarchive" ATTR_TYPE="text(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_pk" ATTR_TYPE="mediumint" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_SiteId" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Plats" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Lst Dnr" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Raä Dnr" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Inventarienummer" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Projektkod" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Projektnamn" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Projektledare" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Uppdragsgivare" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Exploateringstyp" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Undersökningstyp" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Slutdatum" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_Beskrivning" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_fid" ATTR_TYPE="int" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="project_info_id" ATTR_TYPE="int" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="_traff_med_uo_id" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="geopackage_reader_table_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="geopackage_where_clause" PARM_VALUE=""/>
+#! </FEATURE_TYPE>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="PATH"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="2"
+#!   FEAT_GEOMTYPE="path_none"
+#!   POSITION="-136.25156251562515 -601.50100000999998"
+#!   BOUNDING_RECT="-136.25156251562515 -601.50100000999998 454 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="PATH_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_unix" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_windows" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_rootname" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_filename" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_extension" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_directory_unix" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_directory_windows" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_type" ATTR_TYPE="char(10)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="false"
+#!   NODE_NAME="subfolder"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="true"
+#!   IDENTIFIER="7"
+#!   FEAT_GEOMTYPE="&lt;NO_GEOMETRY&gt;"
+#!   POSITION="2818.7471874718735 -100.62365623656251"
+#!   BOUNDING_RECT="2818.7471874718735 -100.62365623656251 758.03900039000428 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="false"
+#!   KEYWORD="FILECOPY_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   SCHEMA_ATTRIBUTE_SOURCE="1"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="filecopy_source_dataset" ATTR_TYPE="char(512)"  EXPOSABLE_ATTR="true" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="filecopy_dest_filename" ATTR_TYPE="char(128)"  EXPOSABLE_ATTR="true" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="filecopy_type" ATTR_TYPE="string"  EXPOSABLE_ATTR="true" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="PATH_1"
+#!   OVERRIDE="-PATH_1_DATASET"
+#!   DATASET="PATH_1/alla_gpkg_20231129"
+#! />
+#! <DATASET
+#!   NAME="OGCGEOPACKAGE_1"
+#!   OVERRIDE="-OGCGEOPACKAGE_1_DATASET"
+#!   DATASET="OGCGEOPACKAGE_1/manuell_georef.gpkg"
+#! />
+#! </READER_DATASETS>
+#! <WRITER_DATASETS>
+#! <DATASET
+#!   NAME="FILECOPY_1"
+#!   OVERRIDE="-FILECOPY_1_DATASET"
+#!   DATASET="FILECOPY_1/manuell_georef"
+#! />
+#! </WRITER_DATASETS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_OGCGEOPACKAGE INCLUDE_WEB_BROWSER%Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|GeoPackage_Files(*.gpkg)|*.gpkg|All_files(*)|* GeoPackage File:"
+#!   DEFAULT_VALUE="C:\Users\krima354\Box\Urdar\uuid_check\manuell_georef.gpkg"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIDIRECTORY SourceDataset_PATH INCLUDE_WEB_BROWSER Source Folder and File Pathnames Folder:"
+#!   DEFAULT_VALUE="C:\Users\krima354\Box\Urdar\alla_gpkg_20231129"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI DIRNAME DestDataset_FILECOPY Destination File Copy Folder:"
+#!   DEFAULT_VALUE="C:\Users\krima354\Box\Urdar\uuid_check\manuell_georef"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJhY2Nlc3NNb2RlIjoicmVhZCIsImRlZmF1bHRWYWx1ZSI6IkM6XFxVc2Vyc1xca3JpbWEzNTRcXEJveFxcVXJkYXJcXHV1aWRfY2hlY2tcXG1hbnVlbGxfZ2VvcmVmLmdwa2ciLCJmaWx0ZXJzIjpbeyJkZXNjcmlwdGlvbiI6IkFyY2hpdmUgRmlsZXMiLCJmaWx0ZXIiOlsiKi43eiIsIiouN3ppcCIsIioucmFyIiwiKi5ydnoiLCIqLnRhciIsIioudGFyLmJ6MiIsIioudGFyLmd6IiwiKi50Z3oiLCIqLnppcCIsIiouemlweCJdfSx7ImRlc2NyaXB0aW9uIjoiQ29tcHJlc3NlZCBGaWxlcyIsImZpbHRlciI6WyIqLmJ6MiIsIiouZ3oiXX0seyJkZXNjcmlwdGlvbiI6Ikdlb1BhY2thZ2UgRmlsZXMiLCJmaWx0ZXIiOlsiKi5ncGtnIl19LHsiZGVzY3JpcHRpb24iOiJBbGwgZmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV0sImluY2x1ZGVXZWJCcm93c2VyIjp0cnVlLCJpdGVtc1RvU2VsZWN0IjoiZmlsZXMiLCJuYW1lIjoiU291cmNlRGF0YXNldF9PR0NHRU9QQUNLQUdFIiwicHJvbXB0IjoiR2VvUGFja2FnZSBGaWxlOiIsInJlcXVpcmVkIjp0cnVlLCJzZWxlY3RNdWx0aXBsZSI6dHJ1ZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6ImZpbGUiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2UsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiYWNjZXNzTW9kZSI6InJlYWQiLCJkZWZhdWx0VmFsdWUiOiJDOlxcVXNlcnNcXGtyaW1hMzU0XFxCb3hcXFVyZGFyXFxhbGxhX2dwa2dfMjAyMzExMjkiLCJpbmNsdWRlV2ViQnJvd3NlciI6dHJ1ZSwiaXRlbXNUb1NlbGVjdCI6ImZvbGRlcnMiLCJuYW1lIjoiU291cmNlRGF0YXNldF9QQVRIIiwicHJvbXB0IjoiU291cmNlIEZvbGRlciBhbmQgRmlsZSBQYXRobmFtZXMgRm9sZGVyOiIsInJlcXVpcmVkIjp0cnVlLCJzZWxlY3RNdWx0aXBsZSI6dHJ1ZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6ImZpbGUiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2UsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiYWNjZXNzTW9kZSI6IndyaXRlIiwiZGVmYXVsdFZhbHVlIjoiQzpcXFVzZXJzXFxrcmltYTM1NFxcQm94XFxVcmRhclxcdXVpZF9jaGVja1xcbWFudWVsbF9nZW9yZWYiLCJpdGVtc1RvU2VsZWN0IjoiZm9sZGVycyIsIm5hbWUiOiJEZXN0RGF0YXNldF9GSUxFQ09QWSIsInByb21wdCI6IkRlc3RpbmF0aW9uIEZpbGUgQ29weSBGb2xkZXI6IiwicmVxdWlyZWQiOnRydWUsInNlbGVjdE11bHRpcGxlIjpmYWxzZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6ImZpbGUiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2UsInZhbHVlVHlwZSI6InN0cmluZyJ9XX0="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="SourceDataset_OGCGEOPACKAGE" 
+#!   DEFAULT_VALUE="C:\Users\krima354\Box\Urdar\uuid_check\manuell_georef.gpkg"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_OGCGEOPACKAGE INCLUDE_WEB_BROWSER%Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|GeoPackage_Files(*.gpkg)|*.gpkg|All_files(*)|* GeoPackage File:"
+#! />
+#!     <INFO NAME="SourceDataset_PATH" 
+#!   DEFAULT_VALUE="C:\Users\krima354\Box\Urdar\alla_gpkg_20231129"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI MULTIDIRECTORY SourceDataset_PATH INCLUDE_WEB_BROWSER Source Folder and File Pathnames Folder:"
+#! />
+#!     <INFO NAME="DestDataset_FILECOPY" 
+#!   DEFAULT_VALUE="C:\Users\krima354\Box\Urdar\uuid_check\manuell_georef"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI DIRNAME DestDataset_FILECOPY Destination File Copy Folder:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="FeatureMerger"
+#!   VERSION="20"
+#!   POSITION="1037.5103751037504 -368.75368753687542"
+#!   BOUNDING_RECT="1037.5103751037504 -368.75368753687542 486.984375 71"
+#!   ORDER="500000000000001"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="pk" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SiteId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Plats" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Projektkod" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Projektledare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="geom_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="agg_feat" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="UUID_kix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_archive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_uppdragsnummer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_UUID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_Uppdaterat UUID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_Kommentar" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_H" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_col9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master__length_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="link_fornsok" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_ny" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.undersokningsomraden_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.de9im" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.pass{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_related_suppliers" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ok_kix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_pk" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_SiteId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Plats" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektkod" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektledare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_fid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_traff_med_uo_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="pk" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="SiteId" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Plats" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Projektkod" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Projektledare" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="geom_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="agg_feat" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="UUID_kix" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_archive" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_uppdragsnummer" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master_UUID" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master_Uppdaterat UUID" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master_Kommentar" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master_H" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master_col9" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master__length_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="link_fornsok" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_ny" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.undersokningsomraden_id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.de9im" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.pass{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_related_suppliers" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="ok_kix" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_pk" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_SiteId" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Plats" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektkod" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektledare" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_fid" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_traff_med_uo_id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="pk" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="SiteId" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Plats" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Projektkod" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Projektledare" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fid" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="geom_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="agg_feat" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="UUID_kix" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_archive" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_uppdragsnummer" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master_UUID" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master_Uppdaterat UUID" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master_Kommentar" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master_H" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master_col9" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master__length_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="link_fornsok" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_ny" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.undersokningsomraden_id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.de9im" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.pass{}" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_related_suppliers" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="ok_kix" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_pk" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_SiteId" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Plats" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektkod" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektledare" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_fid" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_traff_med_uo_id" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;intrasisarchive&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;path_rootname&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="8"
+#!   TYPE="AttributeManager"
+#!   VERSION="4"
+#!   POSITION="2081.2708127081269 -237.50237502375037"
+#!   BOUNDING_RECT="2081.2708127081269 -237.50237502375037 454 71"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="pk" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SiteId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Plats" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Projektkod" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Projektledare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="geom_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="agg_feat" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="UUID_kix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_archive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_uppdragsnummer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_UUID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_Uppdaterat UUID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_Kommentar" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_H" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_col9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master__length_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="link_fornsok" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_ny" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.undersokningsomraden_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.de9im" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.pass{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_related_suppliers" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ok_kix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_pk" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_SiteId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Plats" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektkod" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektledare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_fid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_traff_med_uo_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filecopy_source_dataset" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="filecopy_dest_filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="id id  NO_OP intrasisarchive intrasisarchive  NO_OP pk pk  NO_OP SiteId SiteId  NO_OP Plats Plats  NO_OP Lst&lt;space&gt;Dnr Lst&lt;space&gt;Dnr  NO_OP Ra&lt;u00e4&gt;&lt;space&gt;Dnr Ra&lt;u00e4&gt;&lt;space&gt;Dnr  NO_OP Inventarienummer Inventarienummer  NO_OP Projektkod Projektkod  NO_OP Projektnamn Projektnamn  NO_OP Projektledare Projektledare  NO_OP Uppdragsgivare Uppdragsgivare  NO_OP Exploateringstyp Exploateringstyp  NO_OP Unders&lt;u00f6&gt;kningstyp Unders&lt;u00f6&gt;kningstyp  NO_OP Slutdatum Slutdatum  NO_OP Beskrivning Beskrivning  NO_OP fid fid  NO_OP geom_intrasisarchive geom_intrasisarchive  NO_OP agg_feat agg_feat  NO_OP UUID_kix UUID_kix  NO_OP master_site_name master_site_name  NO_OP master_site_archive master_site_archive  NO_OP master_uppdrag_nr master_uppdrag_nr  NO_OP master_kmr_uppdragsnummer master_kmr_uppdragsnummer  NO_OP master_UUID master_UUID  NO_OP master_kmr_id master_kmr_id  NO_OP master_Uppdaterat&lt;space&gt;UUID master_Uppdaterat&lt;space&gt;UUID  NO_OP master_Kommentar master_Kommentar  NO_OP master_H master_H  NO_OP master_col9 master_col9  NO_OP master__length_uppdrag_nr master__length_uppdrag_nr  NO_OP link_fornsok link_fornsok  NO_OP master_uppdrag_ny master_uppdrag_ny  NO_OP _relationships.undersokningsomraden_id _relationships.undersokningsomraden_id  NO_OP _relationships.de9im _relationships.de9im  NO_OP _relationships.pass&lt;opencurly&gt;&lt;closecurly&gt; _relationships.pass&lt;opencurly&gt;&lt;closecurly&gt;  NO_OP _related_suppliers _related_suppliers  NO_OP ok_kix ok_kix  NO_OP project_info_intrasisarchive project_info_intrasisarchive  NO_OP project_info_pk project_info_pk  NO_OP project_info_SiteId project_info_SiteId  NO_OP project_info_Plats project_info_Plats  NO_OP project_info_Lst&lt;space&gt;Dnr project_info_Lst&lt;space&gt;Dnr  NO_OP project_info_Ra&lt;u00e4&gt;&lt;space&gt;Dnr project_info_Ra&lt;u00e4&gt;&lt;space&gt;Dnr  NO_OP project_info_Inventarienummer project_info_Inventarienummer  NO_OP project_info_Projektkod project_info_Projektkod  NO_OP project_info_Projektnamn project_info_Projektnamn  NO_OP project_info_Projektledare project_info_Projektledare  NO_OP project_info_Uppdragsgivare project_info_Uppdragsgivare  NO_OP project_info_Exploateringstyp project_info_Exploateringstyp  NO_OP project_info_Unders&lt;u00f6&gt;kningstyp project_info_Unders&lt;u00f6&gt;kningstyp  NO_OP project_info_Slutdatum project_info_Slutdatum  NO_OP project_info_Beskrivning project_info_Beskrivning  NO_OP project_info_fid project_info_fid  NO_OP project_info_id project_info_id  NO_OP _traff_med_uo_id _traff_med_uo_id  NO_OP path_unix path_unix  NO_OP path_windows filecopy_source_dataset  RENAME_SET_VALUE path_rootname path_rootname  NO_OP path_filename filecopy_dest_filename  RENAME_SET_VALUE path_extension path_extension  NO_OP path_directory_unix path_directory_unix  NO_OP path_directory_windows path_directory_windows  NO_OP path_type path_type  NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="FeatureReader"
+#!   VERSION="13"
+#!   POSITION="2359.398593985939 -756.25756257562534"
+#!   BOUNDING_RECT="2359.398593985939 -756.25756257562534 430 71"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;SCHEMA&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="pk" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SiteId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Plats" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Projektkod" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Projektledare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="geom_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="agg_feat" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="UUID_kix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_archive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_uppdragsnummer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_UUID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_Uppdaterat UUID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_Kommentar" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_H" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_col9" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master__length_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="link_fornsok" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_ny" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.undersokningsomraden_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.de9im" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.pass{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_related_suppliers" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ok_kix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_pk" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_SiteId" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Plats" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektkod" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektledare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_fid" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_traff_med_uo_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.fme_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.native_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_format_short_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_format_long_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_schema_handling" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;OTHER&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <OUTPUT_FEAT NAME="INITIATOR"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="pk" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="SiteId" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Plats" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Projektkod" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Projektledare" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fid" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="geom_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="agg_feat" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="UUID_kix" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_name" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_archive" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_uppdragsnummer" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master_UUID" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master_Uppdaterat UUID" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master_Kommentar" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master_H" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master_col9" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master__length_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="link_fornsok" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_ny" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.undersokningsomraden_id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.de9im" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.pass{}" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_related_suppliers" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="ok_kix" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_pk" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_SiteId" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Plats" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektkod" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektledare" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_fid" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_traff_med_uo_id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_matched_records" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="pk" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="SiteId" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Plats" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Projektkod" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Projektledare" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="fid" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="geom_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="agg_feat" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="UUID_kix" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_name" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master_site_archive" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_uppdragsnummer" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master_UUID" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master_kmr_id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master_Uppdaterat UUID" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master_Kommentar" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master_H" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master_col9" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master__length_uppdrag_nr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="link_fornsok" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="master_uppdrag_ny" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.undersokningsomraden_id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.de9im" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_relationships.pass{}" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_related_suppliers" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="ok_kix" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_intrasisarchive" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_pk" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_SiteId" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Plats" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Lst Dnr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Raä Dnr" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Inventarienummer" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektkod" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektnamn" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Projektledare" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Uppdragsgivare" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Exploateringstyp" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Undersökningstyp" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Slutdatum" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_Beskrivning" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_fid" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="project_info_id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_traff_med_uo_id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_reader_error" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRS_TO_EXPOSE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Only Use Result"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_IGNORE_NULLS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AVAILABLE_FEATURE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CACHE_TIMEOUT_HRS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMBINE_GEOM" PARM_VALUE="Use Result"/>
+#!     <XFORM_PARM PARM_NAME="CONSTRAINTS_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DATASET" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;intrasisarchive&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="DYNGROUP_0" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ENABLE_CACHE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="FEATURETYPES" PARM_VALUE="public.GeoObject"/>
+#!     <XFORM_PARM PARM_NAME="FORCE_REFRESH_OUTPUTS" PARM_VALUE="no"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT" PARM_VALUE="POSTGIS"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_DIRECTIVES" PARM_VALUE="METAFILE,POSTGIS"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="POSTGIS_CLIENT_CERTIFICATE,&quot;OPTIONAL FILENAME_MUSTEXIST Certificate_File(*.pem)|*.pem|All_files(*.*)|*.*&quot;,POSTGIS&lt;space&gt;Client&lt;space&gt;Certificate:,POSTGIS_CREATE_FEATURE_TABLES_FROM_DATA,&quot;OPTIONAL NO_EDIT TEXT&quot;,POSTGIS&lt;space&gt;,POSTGIS_END_SQL,&quot;OPTIONAL TEXT_EDIT_SQL_CFG_ENCODED MODE,SQL;FORMAT,POSTGIS&quot;,POSTGIS&lt;space&gt;SQL&lt;space&gt;To&lt;space&gt;Run&lt;space&gt;After&lt;space&gt;Read,POSTGIS_WHERE_CLAUSE,&quot;OPTIONAL TEXT_EDIT_SQL_CFG_ENCODED MODE,WHERE;FORMAT,POSTGIS&quot;,POSTGIS&lt;space&gt;WHERE&lt;space&gt;Clause:,POSTGIS_PASSWORD,&quot;OPTIONAL PASSWORD_ENCODED&quot;,POSTGIS&lt;space&gt;Password:,POSTGIS_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,&quot;OPTIONAL NO_EDIT TEXT&quot;,POSTGIS&lt;space&gt;,POSTGIS_POSTGIS_EXPOSE_FORMAT_ATTRS,&quot;OPTIONAL LITERAL EXPOSED_ATTRS POSTGIS%Source&quot;,POSTGIS&lt;space&gt;Additional&lt;space&gt;Attributes&lt;space&gt;to&lt;space&gt;Expose:,POSTGIS_EXPOSE_ATTRS_GROUP,&quot;OPTIONAL DISCLOSUREGROUP POSTGIS_EXPOSE_FORMAT_ATTRS&quot;,POSTGIS&lt;space&gt;Schema&lt;space&gt;Attributes,POSTGIS_ADVANCED,&quot;OPTIONAL DISCLOSUREGROUP FEATURES_PER_FETCH%BEGIN_SQL%END_SQL&quot;,POSTGIS&lt;space&gt;Advanced,POSTGIS_USE_SEARCH_ENVELOPE,&quot;OPTIONAL ACTIVEDISCLOSUREGROUP SEARCH_ENVELOPE_MINX%SEARCH_ENVELOPE_MINY%SEARCH_ENVELOPE_MAXX%SEARCH_ENVELOPE_MAXY%SEARCH_ENVELOPE_COORDINATE_SYSTEM%CLIP_TO_ENVELOPE%SEARCH_METHOD%SEARCH_METHOD_FILTER%SEARCH_ORDER%SEARCH_FEATURE%DUMMY_SEARCH_ENVELOPE_PARAMETER&quot;,POSTGIS&lt;space&gt;Use&lt;space&gt;Search&lt;space&gt;Envelope,POSTGIS_BEGIN_SQL,&quot;OPTIONAL TEXT_EDIT_SQL_CFG_ENCODED MODE,SQL;FORMAT,POSTGIS&quot;,POSTGIS&lt;space&gt;SQL&lt;space&gt;To&lt;space&gt;Run&lt;space&gt;Before&lt;space&gt;Read,POSTGIS_SSL_OPTIONS,&quot;OPTIONAL DISCLOSUREGROUP SSLMODE%CA_CERTIFICATE%CLIENT_CERTIFICATE%CLIENT_PRIV_KEY%SSL_PASSWORD&quot;,POSTGIS&lt;space&gt;SSL&lt;space&gt;Options,POSTGIS_TABLELIST,&quot;IGNORE TEXT&quot;,POSTGIS&lt;space&gt;Tables:,POSTGIS_READ_TIME_WITH_TIMEZONE,&quot;OPTIONAL NO_EDIT TEXT&quot;,POSTGIS&lt;space&gt;,POSTGIS_FEATURES_PER_FETCH,&quot;OPTIONAL FLOAT&quot;,POSTGIS&lt;space&gt;Number&lt;space&gt;Of&lt;space&gt;Records&lt;space&gt;To&lt;space&gt;Fetch&lt;space&gt;At&lt;space&gt;A&lt;space&gt;Time,POSTGIS_DISABLE_COLLECTION_SPLITTING,&quot;OPTIONAL NO_EDIT TEXT&quot;,POSTGIS&lt;space&gt;,POSTGIS_USER_NAME,&quot;OPTIONAL TEXT&quot;,POSTGIS&lt;space&gt;Username:,POSTGIS_SSLMODE,&quot;OPTIONAL ACTIVECHOICE_LOOKUP Disable&lt;u0020&gt;,disable,CA_CERTIFICATE,CLIENT_CERTIFICATE,CLIENT_PRIV_KEY,SSL_PASSWORD%Allow&lt;u0020&gt;,allow%Prefer&lt;u0020&gt;,prefer%Require&lt;u0020&gt;,require%Verify-CA&lt;u0020&gt;,verify-ca%Verify-Full&lt;u0020&gt;,verify-full&quot;,POSTGIS&lt;space&gt;SSL&lt;space&gt;Mode:,POSTGIS_CLIENT_PRIV_KEY,&quot;OPTIONAL FILENAME_MUSTEXIST Private_Key_File(*.pem)|*.pem|All_files(*.*)|*.*&quot;,POSTGIS&lt;space&gt;Client&lt;space&gt;Private&lt;space&gt;Key:,POSTGIS_USE_TRUE_POSTGIS_TYPES,&quot;OPTIONAL NO_EDIT TEXT&quot;,POSTGIS&lt;space&gt;,POSTGIS_SSL_PASSWORD,&quot;OPTIONAL PASSWORD_ENCODED&quot;,POSTGIS&lt;space&gt;SSL&lt;space&gt;Password:,POSTGIS_PORT,&quot;OPTIONAL INTEGER&quot;,POSTGIS&lt;space&gt;Port:,POSTGIS_HOST,&quot;OPTIONAL TEXT&quot;,POSTGIS&lt;space&gt;Host:,POSTGIS_SCHEMAS_FOR_TABLE_LISTING,&quot;IGNORE TEXT&quot;,POSTGIS&lt;space&gt;Schemas&lt;space&gt;for&lt;space&gt;Tables:,POSTGIS_CA_CERTIFICATE,&quot;OPTIONAL FILENAME_MUSTEXIST Certificate_File(*.pem)|*.pem|All_files(*.*)|*.*&quot;,POSTGIS&lt;space&gt;CA&lt;space&gt;Certificate:"/>
+#!     <XFORM_PARM PARM_NAME="FTTR_SEPARATOR" PARM_VALUE="SPACE"/>
+#!     <XFORM_PARM PARM_NAME="GENERIC_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="INTERACT" PARM_VALUE="NONE"/>
+#!     <XFORM_PARM PARM_NAME="MAX_FEATURES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MERGE_HANDLING_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUTPORTS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_DISPLAY" PARM_VALUE="Schema and Data Features"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_PORTS_MODE" PARM_VALUE="PORTS_FROM_FTTR"/>
+#!     <XFORM_PARM PARM_NAME="PORTS_FROM_FTTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_ADVANCED" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_BEGIN_SQL" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_CA_CERTIFICATE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_CLIENT_CERTIFICATE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_CLIENT_PRIV_KEY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_CREATE_FEATURE_TABLES_FROM_DATA" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_DISABLE_COLLECTION_SPLITTING" PARM_VALUE="yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_END_SQL" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_EXPOSE_ATTRS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_FEATURES_PER_FETCH" PARM_VALUE="10000"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_HOST" PARM_VALUE="uuc-srv390"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_PASSWORD" PARM_VALUE="fme_decrypt(MDowfCN8I3xcG3GQ/TeRRUJUZ5LDPtdvpscbh7Nj9gG/INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl/0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07/nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D/WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMsz7edL9feDC60TwUcfAeNW/KmL3PTSLT3Hpne1KfojZ9dVH75n9toG+iq0HxAfgVsL0YxBwka9Wg4J4bHxq77aW/X1NTVd2YcPKcJKf9xfnuVlmFrEQZndLsF8OINmu7Mjg4jtTpLeG82QqCOtdWqpiNkysj3tF6IBn2toRl6Ei0LY4XSje+Aqjw2WT73vRHu/yGaVaOYCs1GoLvJjRfhBGTq4B7dTD1oV/nORuxapWx68tRNPFWZ5CVePsJDeC/zxVetSyLFojcAX3CevL+/YOfGsrqQHljcCAMtXW6O86SQqwtYcO9vz8CmOD01mCE3nM0960H4xpGzdwaQHALyFj+xyCEakMQ3/)"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_PORT" PARM_VALUE="5433"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_POSTGIS_EXPOSE_FORMAT_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_READ_TIME_WITH_TIMEZONE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_SCHEMAS_FOR_TABLE_LISTING" PARM_VALUE="public"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_SSLMODE" PARM_VALUE="prefer"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_SSL_OPTIONS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_SSL_PASSWORD" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_TABLELIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_USER_NAME" PARM_VALUE="postgres"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_USE_SEARCH_ENVELOPE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_USE_TRUE_POSTGIS_TYPES" PARM_VALUE="yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGIS_WHERE_CLAUSE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="READER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="READ_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SELECTED_PORTS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SINGLE_PORT" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SUPPORTED_SPATIAL_INTERACTIONS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="WHERE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureReader"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="5"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 INITIATOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="8"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="-1"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE SourceDataset_OGCGEOPACKAGE_1,OGCGEOPACKAGE_IN_FME_CONNECTION_GROUP_OGCGEOPACKAGE_1,OGCGEOPACKAGE_IN_ADVANCED_GROUP_OGCGEOPACKAGE_1,OGCGEOPACKAGE_IN_ENFORCE_FOREIGN_KEY_INTEGRITY_OGCGEOPACKAGE_1,OGCGEOPACKAGE_IN_USE_SEARCH_ENVELOPE_OGCGEOPACKAGE_1,OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_1,OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_1,OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_1,OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_1,OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_1,OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_1,OGCGEOPACKAGE_IN_NETWORK_AUTHENTICATION_OGCGEOPACKAGE_1,PATH_IN_FME_GROUP_NAMED1_PATH_1,PATH_IN_GLOB_PATTERN_PATH_1,PATH_IN_RECURSE_DIRECTORIES_PATH_1,PATH_IN_TYPE_PATH_1,SourceDataset_PATH_1,PATH_IN_NETWORK_AUTHENTICATION_PATH_1,DestDataset_FILECOPY_1,FILECOPY_OUT_FME_GROUP_NAMED1_FILECOPY_1,FILECOPY_OUT_FILE_OPERATION_FILECOPY_1,FILECOPY_OUT_COPY_SOURCE_DIRECTORY_FILECOPY_1,FILECOPY_OUT_COPY_SUBDIRECTORIES_FILECOPY_1,FILECOPY_OUT_FAIL_NONEXISTENT_SOURCE_FILECOPY_1,FILECOPY_OUT_FME_GROUP_NAMED2_FILECOPY_1,FILECOPY_OUT_OVERWRITE_FILE_FILECOPY_1,FILECOPY_OUT_FEATURE_TYPE_NAMES_AS_FOLDERS_FILECOPY_1,FILECOPY_OUT_FAIL_INVALID_DESTINATION_FILECOPY_1,FILECOPY_OUT_FME_GROUP_NAMED3_FILECOPY_1,FILECOPY_OUT_MIME_TYPE_FILECOPY_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_OGCGEOPACKAGE C:\Users\krima354\Box\Urdar\uuid_check\manuell_georef.gpkg
+
+DEFAULT_MACRO SourceDataset_PATH C:\Users\krima354\Box\Urdar\alla_gpkg_20231129
+
+DEFAULT_MACRO DestDataset_FILECOPY C:\Users\krima354\Box\Urdar\uuid_check\manuell_georef
+
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_OGCGEOPACKAGE$encode)} == {}} { puts_real {Parameter 'SourceDataset_OGCGEOPACKAGE' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(SourceDataset_PATH$encode)} == {}} { puts_real {Parameter 'SourceDataset_PATH' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(DestDataset_FILECOPY$encode)} == {}} { puts_real {Parameter 'DestDataset_FILECOPY' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} OGCGEOPACKAGE
+MULTI_READER_KEYWORD{0} OGCGEOPACKAGE_1
+MULTI_READER_GEN_DIRECTIVES{0} SEARCH_ENVELOPE_MINX,0,ADVANCED_GROUP,,READER_REPLACE_INVALID_CHARS,NO,CLIP_TO_ENVELOPE,NO,SEARCH_ENVELOPE_MINY,0,TABLELIST,,READ_NULLS,YES,EXPOSE_PRIMARY_KEY_ATTRIBUTE,YES,READ_BOOLEANS_AS_YES_NO,YES,SEARCH_ENVELOPE_MAXY,0,EXPOSE_ATTRS_GROUP,,OPEN_SINGLE_RASTER_AS_SUBDATASET,YES,SEARCH_ENVELOPE_MAXX,0,ENCODE_FEATURE_TYPE_AND_ATTR_NAMES,YES,SEARCH_ENVELOPE_COORDINATE_SYSTEM,,ENFORCE_FOREIGN_KEY_INTEGRITY,YES,OGCGEOPACKAGE_EXPOSE_FORMAT_ATTRS,,USE_SEARCH_ENVELOPE,NO,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,_MERGE_SCHEMAS,YES
+MULTI_READER_TYPE{1} PATH
+MULTI_READER_KEYWORD{1} PATH_1
+MULTI_READER_GEN_DIRECTIVES{1} TYPE,ANY,GLOB_PATTERN,*,EXPOSE_ATTRS_GROUP,,RECURSE_DIRECTORIES,NO,USE_NON_STRING_ATTR,yes,NO_EMPTY_PROPERTIES,YES,PATH_EXPOSE_FORMAT_ATTRS,,OFFSET_DATETIME,yes,RETRIEVE_FILE_PROPERTIES,NO,_MERGE_SCHEMAS,YES
+WRITER_TYPE MULTI_WRITER
+MULTI_WRITER_DATASET_ORDER BY_ID
+MULTI_WRITER_FIRST_WRITER_ID 0
+MULTI_WRITER_TYPE{0} FILECOPY
+MULTI_WRITER_KEYWORD{0} FILECOPY_1
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "OGCGEOPACKAGE_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER OGCGEOPACKAGE OGCGEOPACKAGE_1
+# ============================================================================
+# The following GUI line prompts for a folder to be used as the
+# source of the GEOPACKAGE Files.
+# The user input is stored in a macro, which is then used to define
+# the dataset to be read.
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_OGCGEOPACKAGE_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER OGCGEOPACKAGE OGCGEOPACKAGE_1
+DEFAULT_MACRO SourceDataset_OGCGEOPACKAGE_1 $(SourceDataset_OGCGEOPACKAGE)
+GUI MULTIFILE SourceDataset_OGCGEOPACKAGE_1 GeoPackage_Files(*.gpkg)|*.gpkg|All_files(*)|* GeoPackage File:
+DEFAULT_MACRO OGCGEOPACKAGE_IN_FME_CONNECTION_GROUP_OGCGEOPACKAGE_1 
+GUI OPTIONAL DISCLOSUREGROUP OGCGEOPACKAGE_IN_FME_CONNECTION_GROUP_OGCGEOPACKAGE_1 OGCGEOPACKAGE_IN_NAMED_CONNECTION Database Connection
+DEFAULT_MACRO OGCGEOPACKAGE_IN_TABLELIST_OGCGEOPACKAGE_1 
+OGCGEOPACKAGE_1_TABLELIST "$(OGCGEOPACKAGE_IN_TABLELIST_OGCGEOPACKAGE_1)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_ADVANCED_GROUP_OGCGEOPACKAGE_1 
+GUI OPTIONAL DISCLOSUREGROUP OGCGEOPACKAGE_IN_ADVANCED_GROUP_OGCGEOPACKAGE_1 FME_DISCLOSURE_CLOSED%OGCGEOPACKAGE_IN_ENFORCE_FOREIGN_KEY_INTEGRITY_OGCGEOPACKAGE_1 Advanced
+DEFAULT_MACRO OGCGEOPACKAGE_IN_ENFORCE_FOREIGN_KEY_INTEGRITY_OGCGEOPACKAGE_1 YES
+OGCGEOPACKAGE_1_ENFORCE_FOREIGN_KEY_INTEGRITY "$(OGCGEOPACKAGE_IN_ENFORCE_FOREIGN_KEY_INTEGRITY_OGCGEOPACKAGE_1)"
+GUI LOOKUP_CHOICE OGCGEOPACKAGE_IN_ENFORCE_FOREIGN_KEY_INTEGRITY_OGCGEOPACKAGE_1 Yes,YES%No,NO Enforce Foreign Key Integrity:
+DEFAULT_MACRO OGCGEOPACKAGE_IN_EXPOSE_ATTRS_GROUP_OGCGEOPACKAGE_1 
+OGCGEOPACKAGE_1_EXPOSE_ATTRS_GROUP "$(OGCGEOPACKAGE_IN_EXPOSE_ATTRS_GROUP_OGCGEOPACKAGE_1)"
+# Include this file in source setting section to add external search envelope processing
+# Zero as a default means we don't do any search -- this makes workbench happier
+DEFAULT_MACRO OGCGEOPACKAGE_IN_USE_SEARCH_ENVELOPE_OGCGEOPACKAGE_1 NO
+OGCGEOPACKAGE_1_USE_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_USE_SEARCH_ENVELOPE_OGCGEOPACKAGE_1)"
+GUI ACTIVEDISCLOSUREGROUP OGCGEOPACKAGE_IN_USE_SEARCH_ENVELOPE_OGCGEOPACKAGE_1 OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_1%OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_1%OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_1%OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_1%OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_1%OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_1%OGCGEOPACKAGE_IN_SEARCH_METHOD%OGCGEOPACKAGE_IN_SEARCH_METHOD_FILTER%OGCGEOPACKAGE_IN_SEARCH_ORDER%OGCGEOPACKAGE_IN_SEARCH_FEATURE%OGCGEOPACKAGE_IN_DUMMY_SEARCH_ENVELOPE_PARAMETER Use Search Envelope
+# ===========================================================================
+GUI LOOKUP OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_1 <Unused>,0 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_1 0
+OGCGEOPACKAGE_1_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_1)"
+GUI OPTIONAL FLOAT OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_1 Minimum X:
+# ===========================================================================
+GUI LOOKUP OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_1 <Unused>,0 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_1 0
+OGCGEOPACKAGE_1_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_1)"
+GUI OPTIONAL FLOAT OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_1 Minimum Y:
+# ===========================================================================
+GUI LOOKUP OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_1 <Unused>,0 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_1 0
+OGCGEOPACKAGE_1_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_1)"
+GUI OPTIONAL FLOAT OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_1 Maximum X:
+# ===========================================================================
+GUI LOOKUP OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_1 <Unused>,0 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_1 0
+OGCGEOPACKAGE_1_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_1)"
+GUI OPTIONAL FLOAT OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_1 Maximum Y:
+# ===========================================================================
+GUI LOOKUP OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_1 <Unused>, 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_1 
+OGCGEOPACKAGE_1_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_1)"
+GUI OPTIONAL COORDSYS OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_1 Search Envelope Coordinate System:
+# ===========================================================================
+# BUG18999: We now have a soft clip to fall back on like native spatial index
+# thus we are reintroducing the clip to envelop as an option for users.
+# Defualt to soft clip as per the existing database readers we are emulating
+GUI LOOKUP OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_1 <Unused>,NO 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_1 NO
+OGCGEOPACKAGE_1_CLIP_TO_ENVELOPE "$(OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_1)"
+GUI OPTIONAL CHECKBOX OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_1 YES%NO Clip to Search Envelope
+DEFAULT_MACRO OGCGEOPACKAGE_IN_READ_BOOLEANS_AS_YES_NO_OGCGEOPACKAGE_1 YES
+OGCGEOPACKAGE_1_READ_BOOLEANS_AS_YES_NO "$(OGCGEOPACKAGE_IN_READ_BOOLEANS_AS_YES_NO_OGCGEOPACKAGE_1)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_READ_NULLS_OGCGEOPACKAGE_1 YES
+OGCGEOPACKAGE_1_READ_NULLS "$(OGCGEOPACKAGE_IN_READ_NULLS_OGCGEOPACKAGE_1)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_OGCGEOPACKAGE_1 Yes
+OGCGEOPACKAGE_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(OGCGEOPACKAGE_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_OGCGEOPACKAGE_1)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_ENCODE_FEATURE_TYPE_AND_ATTR_NAMES_OGCGEOPACKAGE_1 YES
+OGCGEOPACKAGE_1_ENCODE_FEATURE_TYPE_AND_ATTR_NAMES "$(OGCGEOPACKAGE_IN_ENCODE_FEATURE_TYPE_AND_ATTR_NAMES_OGCGEOPACKAGE_1)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_OPEN_SINGLE_RASTER_AS_SUBDATASET_OGCGEOPACKAGE_1 YES
+OGCGEOPACKAGE_1_OPEN_SINGLE_RASTER_AS_SUBDATASET "$(OGCGEOPACKAGE_IN_OPEN_SINGLE_RASTER_AS_SUBDATASET_OGCGEOPACKAGE_1)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_READER_REPLACE_INVALID_CHARS_OGCGEOPACKAGE_1 NO
+OGCGEOPACKAGE_1_READER_REPLACE_INVALID_CHARS "$(OGCGEOPACKAGE_IN_READER_REPLACE_INVALID_CHARS_OGCGEOPACKAGE_1)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_EXPOSE_PRIMARY_KEY_ATTRIBUTE_OGCGEOPACKAGE_1 YES
+OGCGEOPACKAGE_1_EXPOSE_PRIMARY_KEY_ATTRIBUTE "$(OGCGEOPACKAGE_IN_EXPOSE_PRIMARY_KEY_ATTRIBUTE_OGCGEOPACKAGE_1)"
+# ===========================================================================
+DEFAULT_MACRO OGCGEOPACKAGE_IN_NETWORK_AUTHENTICATION_OGCGEOPACKAGE_1 
+OGCGEOPACKAGE_1_NETWORK_AUTHENTICATION "$(OGCGEOPACKAGE_IN_NETWORK_AUTHENTICATION_OGCGEOPACKAGE_1)"
+GUI OPTIONAL AUTHENTICATOR OGCGEOPACKAGE_IN_NETWORK_AUTHENTICATION_OGCGEOPACKAGE_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO OGCGEOPACKAGE_IN_ATTRIBUTE_READING_OGCGEOPACKAGE_1 DEFLINE
+OGCGEOPACKAGE_1_ATTRIBUTE_READING "$(OGCGEOPACKAGE_IN_ATTRIBUTE_READING_OGCGEOPACKAGE_1)"
+# ============================================================================
+OGCGEOPACKAGE_1_GENERATE_FME_BUILD_NUM 22630
+OGCGEOPACKAGE_1_DATASET "$(SourceDataset_OGCGEOPACKAGE_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "PATH_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PATH PATH_1
+DEFAULT_MACRO PATH_IN_FME_GROUP_NAMED1_PATH_1 
+GUI OPTIONAL DISCLOSUREGROUP PATH_IN_FME_GROUP_NAMED1_PATH_1 PATH_IN_GLOB_PATTERN_PATH_1%PATH_IN_RECURSE_DIRECTORIES_PATH_1%PATH_IN_TYPE_PATH_1%PATH_IN_RETRIEVE_FILE_PROPERTIES Path Parameters
+# =============================================================================
+DEFAULT_MACRO PATH_IN_OFFSET_DATETIME_PATH_1 yes
+PATH_1_OFFSET_DATETIME "$(PATH_IN_OFFSET_DATETIME_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_USE_NON_STRING_ATTR_PATH_1 yes
+PATH_1_USE_NON_STRING_ATTR "$(PATH_IN_USE_NON_STRING_ATTR_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_GLOB_PATTERN_PATH_1 *
+PATH_1_GLOB_PATTERN "$(PATH_IN_GLOB_PATTERN_PATH_1)"
+GUI OPTIONAL TEXT_ENCODED PATH_IN_GLOB_PATTERN_PATH_1 Path Filter:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_RECURSE_DIRECTORIES_PATH_1 NO
+PATH_1_RECURSE_DIRECTORIES "$(PATH_IN_RECURSE_DIRECTORIES_PATH_1)"
+GUI CHOICE PATH_IN_RECURSE_DIRECTORIES_PATH_1 YES%NO Recurse Into Subfolders:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_TYPE_PATH_1 ANY
+PATH_1_TYPE "$(PATH_IN_TYPE_PATH_1)"
+GUI LOOKUP_CHOICE PATH_IN_TYPE_PATH_1 Any,ANY%Directory,DIRECTORY%File,FILE Allowed Path Type:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_RETRIEVE_FILE_PROPERTIES_PATH_1 NO
+PATH_1_RETRIEVE_FILE_PROPERTIES "$(PATH_IN_RETRIEVE_FILE_PROPERTIES_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_NO_EMPTY_PROPERTIES_PATH_1 YES
+PATH_1_NO_EMPTY_PROPERTIES "$(PATH_IN_NO_EMPTY_PROPERTIES_PATH_1)"
+DEFAULT_MACRO PATH_IN_EXPOSE_ATTRS_GROUP_PATH_1 
+PATH_1_EXPOSE_ATTRS_GROUP "$(PATH_IN_EXPOSE_ATTRS_GROUP_PATH_1)"
+# =====================================================================
+# The following GUI line prompts for the folder from which to
+# read
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_PATH_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PATH PATH_1
+DEFAULT_MACRO SourceDataset_PATH_1 $(SourceDataset_PATH)
+GUI MULTIDIR SourceDataset_PATH_1 Source Folder and File Pathnames Folder:
+# ===========================================================================
+DEFAULT_MACRO PATH_IN_NETWORK_AUTHENTICATION_PATH_1 
+PATH_1_NETWORK_AUTHENTICATION "$(PATH_IN_NETWORK_AUTHENTICATION_PATH_1)"
+GUI OPTIONAL AUTHENTICATOR PATH_IN_NETWORK_AUTHENTICATION_PATH_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO PATH_IN_ATTRIBUTE_READING_PATH_1 ALL
+PATH_1_ATTRIBUTE_READING "$(PATH_IN_ATTRIBUTE_READING_PATH_1)"
+# ============================================================================
+PATH_1_GENERATE_FME_BUILD_NUM 22630
+PATH_1_DATASET "$(SourceDataset_PATH_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "FILECOPY_1"
+#! END_WB_HEADER
+#! START_DEST_HEADER FILECOPY FILECOPY_1
+#! END_DEST_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO DestDataset
+INCLUDE [ if {"$(DestDataset)" != ""} {                          \
+ puts {DEFAULT_MACRO DestDataset_FILECOPY_1 $(DestDataset)}         \
+ } ]
+#! END_WB_HEADER
+#! START_DEST_HEADER FILECOPY FILECOPY_1
+DEFAULT_MACRO DestDataset_FILECOPY_1 $(DestDataset_FILECOPY)
+GUI DIRNAME DestDataset_FILECOPY_1 Destination File Copy Folder:
+# =====================================================================
+DEFAULT_MACRO FILECOPY_OUT_FME_GROUP_NAMED1_FILECOPY_1 
+GUI OPTIONAL DISCLOSUREGROUP FILECOPY_OUT_FME_GROUP_NAMED1_FILECOPY_1 FILECOPY_OUT_FILE_OPERATION_FILECOPY_1%FILECOPY_OUT_COPY_SOURCE_DIRECTORY_FILECOPY_1%FILECOPY_OUT_COPY_SUBDIRECTORIES_FILECOPY_1%FILECOPY_OUT_FAIL_NONEXISTENT_SOURCE_FILECOPY_1 Source Parameters
+# =====================================================================
+# =====================================================================
+# The following GUI line prompts for the overwrite flag.
+# The default is YES.
+# Possible values are YES or NO.
+# Any value other than NO or no is interpreted as YES.
+DEFAULT_MACRO FILECOPY_OUT_FILE_OPERATION_FILECOPY_1 COPY
+FILECOPY_1_FILE_OPERATION "$(FILECOPY_OUT_FILE_OPERATION_FILECOPY_1)"
+GUI LOOKUP_CHOICE FILECOPY_OUT_FILE_OPERATION_FILECOPY_1 Copy,COPY%Move,MOVE File Operation:
+# =====================================================================
+# The following GUI line prompts for the copy source folder flag.
+# The default is YES.
+# Possible values are YES or NO.
+# Any value other than NO or no is interpreted as YES.
+DEFAULT_MACRO FILECOPY_OUT_COPY_SOURCE_DIRECTORY_FILECOPY_1 NO
+FILECOPY_1_COPY_SOURCE_DIRECTORY "$(FILECOPY_OUT_COPY_SOURCE_DIRECTORY_FILECOPY_1)"
+GUI CHOICE FILECOPY_OUT_COPY_SOURCE_DIRECTORY_FILECOPY_1 YES%NO Copy Source Folder:
+# =====================================================================
+# The following GUI line prompts for the copy subfolders flag.
+# The default is YES.
+# Possible values are YES or NO.
+# Any value other than NO or no is interpreted as YES.
+DEFAULT_MACRO FILECOPY_OUT_COPY_SUBDIRECTORIES_FILECOPY_1 YES
+FILECOPY_1_COPY_SUBDIRECTORIES "$(FILECOPY_OUT_COPY_SUBDIRECTORIES_FILECOPY_1)"
+GUI CHOICE FILECOPY_OUT_COPY_SUBDIRECTORIES_FILECOPY_1 YES%NO Copy Subfolders:
+# =====================================================================
+# The following GUI line prompts for the error on non-existent source flag.
+# The default is NO.
+# Possible values are YES or NO.
+# Any value other than NO or no is interpreted as YES.
+DEFAULT_MACRO FILECOPY_OUT_FAIL_NONEXISTENT_SOURCE_FILECOPY_1 NO
+FILECOPY_1_FAIL_NONEXISTENT_SOURCE "$(FILECOPY_OUT_FAIL_NONEXISTENT_SOURCE_FILECOPY_1)"
+GUI CHOICE FILECOPY_OUT_FAIL_NONEXISTENT_SOURCE_FILECOPY_1 YES%NO Error on Non-Existent Source:
+# =====================================================================
+DEFAULT_MACRO FILECOPY_OUT_FME_GROUP_NAMED2_FILECOPY_1 
+GUI OPTIONAL DISCLOSUREGROUP FILECOPY_OUT_FME_GROUP_NAMED2_FILECOPY_1 FILECOPY_OUT_OVERWRITE_FILE_FILECOPY_1%FILECOPY_OUT_FEATURE_TYPE_NAMES_AS_FOLDERS_FILECOPY_1%FILECOPY_OUT_FAIL_INVALID_DESTINATION_FILECOPY_1 Destination Parameters
+# =====================================================================
+# =====================================================================
+# The following GUI line prompts for the overwrite flag.
+# The default is YES.
+# Possible values are YES or NO.
+# Any value other than NO or no is interpreted as YES.
+DEFAULT_MACRO FILECOPY_OUT_OVERWRITE_FILE_FILECOPY_1 YES
+FILECOPY_1_OVERWRITE_FILE "$(FILECOPY_OUT_OVERWRITE_FILE_FILECOPY_1)"
+GUI CHOICE FILECOPY_OUT_OVERWRITE_FILE_FILECOPY_1 YES%NO Overwrite Existing File:
+# =====================================================================
+# Use feature type names as sub folders of the writer dataset
+DEFAULT_MACRO FILECOPY_OUT_FEATURE_TYPE_NAMES_AS_FOLDERS_FILECOPY_1 YES
+FILECOPY_1_FEATURE_TYPE_NAMES_AS_FOLDERS "$(FILECOPY_OUT_FEATURE_TYPE_NAMES_AS_FOLDERS_FILECOPY_1)"
+GUI CHOICE FILECOPY_OUT_FEATURE_TYPE_NAMES_AS_FOLDERS_FILECOPY_1 YES%NO Feature Type Names as Subfolders:
+# =====================================================================
+# The following GUI line prompts for the error on invalid destination flag.
+# The default is NO.
+# Possible values are YES or NO.
+# Any value other than NO or no is interpreted as YES.
+DEFAULT_MACRO FILECOPY_OUT_FAIL_INVALID_DESTINATION_FILECOPY_1 NO
+FILECOPY_1_FAIL_INVALID_DESTINATION "$(FILECOPY_OUT_FAIL_INVALID_DESTINATION_FILECOPY_1)"
+GUI CHOICE FILECOPY_OUT_FAIL_INVALID_DESTINATION_FILECOPY_1 YES%NO Error on Invalid Destination:
+# =====================================================================
+DEFAULT_MACRO FILECOPY_OUT_FME_GROUP_NAMED3_FILECOPY_1 
+GUI OPTIONAL DISCLOSUREGROUP FILECOPY_OUT_FME_GROUP_NAMED3_FILECOPY_1 FILECOPY_OUT_MIME_TYPE_FILECOPY_1 FME Server Parameters
+# =====================================================================
+# =====================================================================
+# Set the mime type. Note -- it is actually only used inside of workspaces
+# as a FORMAT_PARAMETER which even then is parsed only by the FME Server
+# Repository Manager
+# The list of mime types below is far from complete but was determined from
+# http://en.wikipedia.org/wiki/Internet_media_type as the common types.
+DEFAULT_MACRO FILECOPY_OUT_MIME_TYPE_FILECOPY_1 text/plain
+FILECOPY_1_MIME_TYPE "$(FILECOPY_OUT_MIME_TYPE_FILECOPY_1)"
+GUI OPTIONAL STRING_OR_CHOICE FILECOPY_OUT_MIME_TYPE_FILECOPY_1 application/json%application/pdf%application/x-dvi%application/x-shockwave-flash%application/x-rar-compressed%application/x-tar%application/zip%audio/mpeg%audio/vnd.rn-realaudio%audio/x-ms-wma%audio/x-wav%image/gif%image/jpeg%image/png%image/svg+xml%image/tiff%text/css%text/csv%text/html%text/plain%text/xml%video/mp4%video/mpeg%video/quicktime%video/x-ms-wmv MIME Type:
+# ============================================================================
+# Opt in for destination dataset type vs format type validation
+DEFAULT_MACRO FILECOPY_OUT_DESTINATION_DATASETTYPE_VALIDATION_FILECOPY_1 Yes
+FILECOPY_1_DESTINATION_DATASETTYPE_VALIDATION "$(FILECOPY_OUT_DESTINATION_DATASETTYPE_VALIDATION_FILECOPY_1)"
+DEFAULT_MACRO FILECOPY_OUT_COORDINATE_SYSTEM_GRANULARITY_FILECOPY_1 FEATURE
+FILECOPY_1_COORDINATE_SYSTEM_GRANULARITY "$(FILECOPY_OUT_COORDINATE_SYSTEM_GRANULARITY_FILECOPY_1)"
+# ============================================================================
+FILECOPY_1_GENERATE_FME_BUILD_NUM 22630
+FILECOPY_1_DATASET "$(DestDataset_FILECOPY_1)"
+#! END_DEST_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)ogcgeopackage_path2filecopy.log"
+LOG_APPEND YES
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+DEFAULT_MACRO DATASET_KEYWORD_OGCGEOPACKAGE_1 OGCGEOPACKAGE_1
+DEFAULT_MACRO DATASET_KEYWORD_PATH_1 PATH_1
+DEFAULT_MACRO DATASET_KEYWORD_FILECOPY_1 FILECOPY_1
+# -------------------------------------------------------------------------
+
+OGCGEOPACKAGE_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+PATH_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+OGCGEOPACKAGE_1_COORDINATE_SYSTEM EPSG:3006
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME ogcgeopackage_path2filecopy
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE OGCGEOPACKAGE OGCGEOPACKAGE_1::archives_check_uuid_ multi_reader_keyword,$(DATASET_KEYWORD_OGCGEOPACKAGE_1) TO FME_GENERIC ::archives_check_uuid_ ALIAS_GEOMETRY    ROUTE PATH PATH_1::PATH multi_reader_keyword,$(DATASET_KEYWORD_PATH_1) TO FME_GENERIC ::PATH ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+OGCGEOPACKAGE_1_MERGE_DEF OGCGEOPACKAGE_1::archives_check_uuid_ EXACT archives_check_uuid_ DEFLINE geopackage_type,geopackage_point,geopackage_where_clause,,fme_attribute_reading,defined,id,int,intrasisarchive,text<openparen>200<closeparen>,pk,mediumint,SiteId,text,Plats,text,Lst<space>Dnr,text,Ra<u00e4><space>Dnr,text,Inventarienummer,text,Projektkod,text,Projektnamn,text,Projektledare,text,Uppdragsgivare,text,Exploateringstyp,text,Unders<u00f6>kningstyp,text,Slutdatum,text,Beskrivning,text,fid,int,geom_intrasisarchive,text<openparen>200<closeparen>,agg_feat,int,UUID_kix,text<openparen>200<closeparen>,master_site_name,text<openparen>54<closeparen>,master_site_archive,text<openparen>17<closeparen>,master_uppdrag_nr,int,master_kmr_uppdragsnummer,int,master_UUID,text<openparen>37<closeparen>,master_kmr_id,text<openparen>37<closeparen>,master_Uppdaterat<space>UUID,text<openparen>37<closeparen>,master_Kommentar,text<openparen>685<closeparen>,master_H,text<openparen>4<closeparen>,master_col9,text<openparen>74<closeparen>,master__length_uppdrag_nr,text<openparen>20<closeparen>,link_fornsok,text<openparen>200<closeparen>,master_uppdrag_ny,text<openparen>200<closeparen>,_relationships.undersokningsomraden_id,text,_relationships.de9im,text,_relationships.pass<opencurly><closecurly>,text,_related_suppliers,int,ok_kix,text<openparen>200<closeparen>,project_info_intrasisarchive,text<openparen>200<closeparen>,project_info_pk,mediumint,project_info_SiteId,text,project_info_Plats,text,project_info_Lst<space>Dnr,text,project_info_Ra<u00e4><space>Dnr,text,project_info_Inventarienummer,text,project_info_Projektkod,text,project_info_Projektnamn,text,project_info_Projektledare,text,project_info_Uppdragsgivare,text,project_info_Exploateringstyp,text,project_info_Unders<u00f6>kningstyp,text,project_info_Slutdatum,text,project_info_Beskrivning,text,project_info_fid,int,project_info_id,int,_traff_med_uo_id,text
+PATH_1_MERGE_DEF PATH_1::PATH EXACT PATH
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "PATH_PATH_1 Splitter"    INPUT FEATURE_TYPE PATH    OUTPUT FEATURE_TYPE PATH_PATH_1
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "archives_check_uuid__OGCGEOPACKAGE_1 Splitter"    INPUT FEATURE_TYPE archives_check_uuid_    OUTPUT FEATURE_TYPE archives_check_uuid__OGCGEOPACKAGE_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { FeatureMerger }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE archives_check_uuid__OGCGEOPACKAGE_1    INPUT REFERENCEE FEATURE_TYPE PATH_PATH_1    REFERENCE_INFO { $(FeatureMerger_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>intrasisarchive<closeparen>,FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>path_rootname<closeparen>,FeatureMerger) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE FeatureMerger_MERGED         }    OUTPUT { REJECTED FEATURE_TYPE FeatureMerger_<REJECTED>         }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "FeatureMerger MERGED Splitter"   INPUT FEATURE_TYPE FeatureMerger_MERGED   OUTPUT FEATURE_TYPE FeatureMerger_MERGED_0_tY5W/3lY1K0=   OUTPUT FEATURE_TYPE FeatureMerger_MERGED_1_Qz7KETrKJsY=
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME FeatureMerger_<Rejected> INPUT FEATURE_TYPE FeatureMerger_<REJECTED>  NO_LOGGING   OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, FeatureMerger<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager }    INPUT  FEATURE_TYPE FeatureMerger_MERGED_0_tY5W/3lY1K0=    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "path_windows" "filecopy_source_dataset" "" "RENAME_SET_VALUE" }      ATTR_ACTION { "path_filename" "filecopy_dest_filename" "" "RENAME_SET_VALUE" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_OUTPUT        }
+# -------------------------------------------------------------------------
+MACRO FeatureReader_OUTPUT_PORTS_ENCODED 
+MACRO FeatureReader_DIRECTIVES CREATE_FEATURE_TABLES_FROM_DATA,Yes,PASSWORD,fme_decrypt<openparen>MDowfCN8I3xcG3GQ<solidus>TeRRUJUZ5LDPtdvpscbh7Nj9gG<solidus>INBkAGA+fkaDrNbhZtfa3rmkUUrCxKWaAFwiYsKgWJNl<solidus>0mRpxUuP+IT2c+Qhh26JEZtUWAmpuoaQCdQ3ykKWm2zaoAM5MBCGaGEuYe+6AS07<solidus>nLNRJwqp1jdwP1FgVCbXRvZtWfKjEZlNJYQ+EicVc6cv2DxCYJyTljvXwF8mKxenML6FKJiHARQCO8OMJidKKZQJP1SeYIhqB0YrtGw4cGV2ZquQKifvRjB2Tl6wBAWDmeCg+R1jvft1tR17SISyTDv77K+mV80w2aaUSgybbF7coM0BrQPcpehfjlW+YxV73+9mPMFXKQeznZ22T8MJor57O44p8U2NQCw35HiFBs0oVP9VkkY0D<solidus>WzGRevseyX1pIEWJSQSFwkJVhiyXavMDz5E5SEYgTZHfVeGBXCDuIEEbfRRkPU5yD2nw2ZAVimDRD7UQhEEY6PosGqU17He4y35WEfAggQ40+EKuupOQSZRsKotTTqlYGHJtX49ymuKqfyZzOAUSUzDMcj8gfDgzOCcuhw2sK3fJaMsz7edL9feDC60TwUcfAeNW<solidus>KmL3PTSLT3Hpne1KfojZ9dVH75n9toG+iq0HxAfgVsL0YxBwka9Wg4J4bHxq77aW<solidus>X1NTVd2YcPKcJKf9xfnuVlmFrEQZndLsF8OINmu7Mjg4jtTpLeG82QqCOtdWqpiNkysj3tF6IBn2toRl6Ei0LY4XSje+Aqjw2WT73vRHu<solidus>yGaVaOYCs1GoLvJjRfhBGTq4B7dTD1oV<solidus>nORuxapWx68tRNPFWZ5CVePsJDeC<solidus>zxVetSyLFojcAX3CevL+<solidus>YOfGsrqQHljcCAMtXW6O86SQqwtYcO9vz8CmOD01mCE3nM0960H4xpGzdwaQHALyFj+xyCEakMQ3<solidus><closeparen>,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,USE_SEARCH_ENVELOPE,NO,READ_TIME_WITH_TIMEZONE,Yes,FEATURES_PER_FETCH,10000,DISABLE_COLLECTION_SPLITTING,yes,USER_NAME,postgres,SSLMODE,prefer,USE_TRUE_POSTGIS_TYPES,yes,PORT,5433,HOST,uuc-srv390,SCHEMAS_FOR_TABLE_LISTING,public
+# Always provide an INTERACTION, otherwise the factory defaults to ENVELOPE_INTERSECTS
+INCLUDE [if { ( {NONE} == {<Unused>} ) || ( {($INTERACT)} == {} ) } {             puts {MACRO FCTQUERY_INTERACTION_LINE FCTQUERY_INTERACTION NONE};          } else {             puts {MACRO FCTQUERY_INTERACTION_LINE FCTQUERY_INTERACTION "NONE"};          }         ]
+# Consolidate the attribute merge options to what the factory expects
+DEFAULT_MACRO FeatureReader_COMBINE_ATTRS
+INCLUDE [       if { {RESULT_ONLY} == {MERGE} } {          puts "MACRO FeatureReader_COMBINE_ATTRS <Unused>";       } else {          puts "MACRO FeatureReader_COMBINE_ATTRS RESULT_ONLY";       };    ]
+INCLUDE [    puts {DEFAULT_MACRO FeatureReaderDataset_FeatureReader @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>intrasisarchive<closeparen>,FeatureReader)}; ]
+FACTORY_DEF {*} QueryFactory    FACTORY_NAME { FeatureReader }    INPUT  FEATURE_TYPE FeatureMerger_MERGED_1_Qz7KETrKJsY=    $(FCTQUERY_INTERACTION_LINE)    COMBINE_ATTRIBUTES  { $(FeatureReader_COMBINE_ATTRS) }    IGNORE_NULLS        { <Unused> }    QUERYFCT_ATTRIBUTE_PREFIX { <Unused> }    COMBINE_GEOMETRY    { RESULT_ONLY }    ENABLE_CACHE        { NO }    QUERYFCT_TABLE_SEPARATOR { SPACE }    READER_TYPE         { POSTGIS  }    READER_DATASET      { "$(FeatureReaderDataset_FeatureReader)" }    QUERYFCT_IDS        { "public.GeoObject" }    READER_DIRECTIVES   { METAFILE,POSTGIS }    QUERYFCT_OUTPUT     { "BASED_ON_CONNECTIONS" }    CONTINUE_ON_READER_ERROR YES    QUERYFCT_RESULT_TAGS { $(FeatureReader_OUTPUT_PORTS_ENCODED) }    QUERYFCT_SET_FME_FEATURE_TYPE YES    READER_PARAMS_WWJD     { $(FeatureReader_DIRECTIVES) }    TREAT_READER_PARAM_AMPERSANDS_AS_LITERALS YES    OUTPUT { READER_ERROR FEATURE_TYPE FeatureReader_<REJECTED>           }
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME FeatureReader_<Rejected> INPUT FEATURE_TYPE FeatureReader_<REJECTED>  NO_LOGGING   OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, FeatureReader<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC AttributeManager_OUTPUT TO FILECOPY __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>subfolder<closeparen> GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
+# -------------------------------------------------------------------------
+FILECOPY_1_DEF subfolder

@@ -1,15 +1,16 @@
 #! <?xml version="1.0" encoding="UTF-8" ?>
 #! <WORKSPACE
 #    Command line to run this workspace:
-#        "C:\Program Files\FME2022_1_3\fme.exe" "C:\Users\krima354\Work Folders\Documents\GitHub\kix_working_dir\divFME\restoreDBfromBackupFile.fmw"
-#          --SourceDataset_PATH "C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\dap\intrasis_leveranser\intrasis_postgres_backup\SAU"
-#          --num2remove "15"
+#        "C:\Program Files\FME2022_1_3\fme.exe" "C:\Users\krima354\Work Folders\Documents\GitHub\kix_working_dir\divFME\restore_drop_backup_idb\restoreDBfromBackupFileAll.fmw"
+#          --SourceDataset_PATH "C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\urdar_backup_20231110\gor_om"
+#          --database_version "12"
+#          --num2remove "9"
 #          --server "uuc-srv390.user.uu.se"
 #          --port "5432"
 #          --user "postgres"
 #          --FME_LAUNCH_VIEWER_APP "YES"
 #    
-#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
 #!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
 #!   ATTR_TYPE_ENCODING="SDF"
 #!   BEGIN_PYTHON=""
@@ -18,15 +19,15 @@
 #!   DESCRIPTION="&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;En import av SAU&apos;s databaser.&lt;/span&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vad som krävs&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;C:\Intrasis\backup_files&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Backupfiler med vissa namn ändrade (de som har _ innan datumet i slutet)&lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;pgpass.conf - med lösen för den dbhanteraren som man går mot&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;i katalogen C:\Users\krima354\AppData\Roaming\postgresql &lt;/p&gt;"
 #!   DESTINATION="NONE"
 #!   DESTINATION_ROUTING_FILE=""
-#!   DOC_EXTENTS="2459.02 790.882"
-#!   DOC_TOP_LEFT="-480.005 -727.257"
+#!   DOC_EXTENTS="2459.02 454.002"
+#!   DOC_TOP_LEFT="-480.005 -390.376"
 #!   END_PYTHON=""
 #!   END_TCL=""
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="22630"
 #!   FME_BULK_MODE_THRESHOLD="2000"
-#!   FME_DOCUMENT_GUID="02006319-cff9-46ce-85d3-b364be6fbf4b"
-#!   FME_DOCUMENT_PRIORGUID="aeee49b3-f1cd-4db8-bb2a-a7967e56221d,0d371b12-c59b-484b-912e-712978af97bc,1dc8465b-7b72-4690-bdb8-d7f35a99b586,43b04379-e14d-4daa-afbc-3cc1e2f31f8b,f8a81d82-646e-422a-95cf-72fbc97821a4,9821c11a-4ba1-4234-95cb-4c79c953fc5e,d851f70f-0cab-4380-a007-59a49a68afae,cc862bd2-090f-48f0-ab06-279f9f2efd35,c00b65df-b275-456f-a385-2bed2d9ce795"
+#!   FME_DOCUMENT_GUID="19d796ee-8cc7-4f03-a9c7-282ea150c52d"
+#!   FME_DOCUMENT_PRIORGUID="aeee49b3-f1cd-4db8-bb2a-a7967e56221d,0d371b12-c59b-484b-912e-712978af97bc,1dc8465b-7b72-4690-bdb8-d7f35a99b586,43b04379-e14d-4daa-afbc-3cc1e2f31f8b,f8a81d82-646e-422a-95cf-72fbc97821a4,9821c11a-4ba1-4234-95cb-4c79c953fc5e,d851f70f-0cab-4380-a007-59a49a68afae,cc862bd2-090f-48f0-ab06-279f9f2efd35,c00b65df-b275-456f-a385-2bed2d9ce795,02006319-cff9-46ce-85d3-b364be6fbf4b,1fe07879-f84d-447b-8b5b-a5886fb7af8f"
 #!   FME_GEOMETRY_HANDLING="Enhanced"
 #!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
 #!   FME_NAMES_ENCODING="UTF-8"
@@ -36,7 +37,7 @@
 #!   HISTORY=""
 #!   IGNORE_READER_FAILURE="No"
 #!   LAST_SAVE_BUILD="FME(R) 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
-#!   LAST_SAVE_DATE="2023-05-25T15:38:21"
+#!   LAST_SAVE_DATE="2023-11-23T08:02:46"
 #!   LOG_FILE=""
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   MARKDOWN_DESCRIPTION=""
@@ -55,7 +56,7 @@
 #!   TITLE="SAUimportIntrasis"
 #!   USAGE=""
 #!   USE_MARKDOWN="NO"
-#!   VIEW_POSITION="-862.509 262.503"
+#!   VIEW_POSITION="-921.884 206.252"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   ZOOM_SCALE="100"
@@ -360,7 +361,7 @@
 #!   FEAT_GEOMTYPE="path_none"
 #!   POSITION="-480.00500005000066 -319.37584375843761"
 #!   BOUNDING_RECT="-480.00500005000066 -319.37584375843761 454 71"
-#!   ORDER="500000000000000"
+#!   ORDER="500000000000014"
 #!   COLLAPSED="true"
 #!   KEYWORD="PATH_1"
 #!   PARMS_EDITED="true"
@@ -382,23 +383,125 @@
 #! </FEATURE_TYPE>
 #! </FEATURE_TYPES>
 #! <FMESERVER>
+#! <SERVICES>
+#! <SERVICE
+#!   NAME="fmejobsubmitter"
+#! >
+#! <PROPERTIES>
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="ADVANCED"
+#!   VALUE=""
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="FAILURE_TOPICS"
+#!   VALUE=""
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="HTTP_DATASET"
+#!   VALUE="PATH_1"
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="NOTIFICATION_WRITER"
+#!   VALUE=""
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="SUCCESS_TOPICS"
+#!   VALUE=""
+#! />
+#! </PROPERTIES>
+#! </SERVICE>
+#! </SERVICES>
+#! <REPOSITORY
+#!   NAME="urdar"
+#! />
+#! <ITEM
+#!   NAME="restoreDBfromBackupFileAll.fmw"
+#! />
+#! <MODIFICATIONS>
+#! <MODIFICATION
+#!   UID=":DatasetMgr_PATH_1:SourceDataset_PATH_1"
+#!   VALUE="$(SourceDataset_PATH)"
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SERVER_DEST_DIR"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_BACKUP"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_DASHBOARD"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_DATA"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_ENGINE"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_LOG"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_SYSTEM"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_SHAREDRESOURCE_TEMP"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:FME_TOPIC_MESSAGE"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":GlobalParameterMgr:SourceDataset_PATH"
+#!   VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\dap\intrasis_leveranser\intrasis_postgres_backup\SAU"
+#! />
+#! <MODIFICATION
+#!   UID=":WBDoc:DESTINATION_ROUTING_FILE"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":WBDoc:LOG_FILE"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":WBDoc:SOURCE_ROUTING_FILE"
+#!   VALUE=""
+#! />
+#! </MODIFICATIONS>
 #! <READER_DATASETS>
 #! <DATASET
 #!   NAME="PATH_1"
 #!   OVERRIDE="-PATH_1_DATASET"
-#!   DATASET="PATH_1/SAU"
+#!   DATASET="PATH_1/gor_om"
 #! />
 #! </READER_DATASETS>
 #! </FMESERVER>
 #! <GLOBAL_PARAMETERS>
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI MULTIDIRECTORY SourceDataset_PATH INCLUDE_WEB_BROWSER Source Folder and File Pathnames Folder"
-#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\dap\intrasis_leveranser\intrasis_postgres_backup\SAU"
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\urdar_backup_20231110\gor_om"
 #!   IS_STAND_ALONE="false"
 #! />
 #! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI CHOICE_OR_ATTR database_version 11%12 Version postgres"
+#!   DEFAULT_VALUE="12"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI INTEGER_OR_ATTR num2remove numChar2remove"
-#!   DEFAULT_VALUE="15"
+#!   DEFAULT_VALUE="9"
 #!   IS_STAND_ALONE="true"
 #! />
 #! <GLOBAL_PARAMETER
@@ -418,17 +521,23 @@
 #! />
 #! </GLOBAL_PARAMETERS>
 #! <USER_PARAMETERS
-#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJhY2Nlc3NNb2RlIjoicmVhZCIsImRlZmF1bHRWYWx1ZSI6IkM6XFxVc2Vyc1xca3JpbWEzNTRcXFdvcmsgRm9sZGVyc1xcRG9jdW1lbnRzXFxraWNraV9hcmJldHNmaWxlclxcZGFwXFxpbnRyYXNpc19sZXZlcmFuc2VyXFxpbnRyYXNpc19wb3N0Z3Jlc19iYWNrdXBcXFNBVSIsImhpZGRlbiI6ZmFsc2UsImluY2x1ZGVXZWJCcm93c2VyIjp0cnVlLCJpdGVtc1RvU2VsZWN0IjoiZm9sZGVycyIsIm5hbWUiOiJTb3VyY2VEYXRhc2V0X1BBVEgiLCJwcm9tcHQiOiJTb3VyY2UgRm9sZGVyIGFuZCBGaWxlIFBhdGhuYW1lcyBGb2xkZXIiLCJyZXF1aXJlZCI6dHJ1ZSwic2VsZWN0TXVsdGlwbGUiOnRydWUsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJmaWxlIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifSx7ImRlZmF1bHRWYWx1ZSI6IjE1IiwiaGlkZGVuIjpmYWxzZSwibXVsdGlwbGVPZiI6MSwibmFtZSI6Im51bTJyZW1vdmUiLCJwcm9tcHQiOiJudW1DaGFyMnJlbW92ZSIsInJlcXVpcmVkIjp0cnVlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6Im51bWJlciIsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiY2hvaWNlU2V0dGluZ3MiOnsiY2hvaWNlU2V0IjoidXNlckRlZmluZWQiLCJjaG9pY2VzIjpbeyJkaXNwbGF5IjoibG9jYWxob3N0IiwidmFsdWUiOiJsb2NhbGhvc3QifSx7ImRpc3BsYXkiOiJ1dWMtc3J2MzkwIiwidmFsdWUiOiJ1dWMtc3J2MzkwLnVzZXIudXUuc2UifV0sInNvcnQiOiJuYXR1cmFsU29ydCJ9LCJkZWZhdWx0VmFsdWUiOiJ1dWMtc3J2MzkwLnVzZXIudXUuc2UiLCJoaWRkZW4iOmZhbHNlLCJuYW1lIjoic2VydmVyIiwicHJvbXB0IjoiU2VydmVyIiwicmVxdWlyZWQiOnRydWUsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoiZHJvcGRvd24iLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifSx7ImRlZmF1bHRWYWx1ZSI6IjU0MzIiLCJoaWRkZW4iOmZhbHNlLCJuYW1lIjoicG9ydCIsInByb21wdCI6IlBvcnQiLCJyZXF1aXJlZCI6dHJ1ZSwic2hvd0VkaXRCdXR0b24iOmZhbHNlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6InRleHQiLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifSx7ImRlZmF1bHRWYWx1ZSI6InBvc3RncmVzIiwiaGlkZGVuIjpmYWxzZSwibmFtZSI6InVzZXIiLCJwcm9tcHQiOiJVc2VyIiwicmVxdWlyZWQiOnRydWUsInNob3dFZGl0QnV0dG9uIjpmYWxzZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwidmFsdWVUeXBlIjoic3RyaW5nIn1dfQ=="
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJhY2Nlc3NNb2RlIjoicmVhZCIsImRlZmF1bHRWYWx1ZSI6IkM6XFxVc2Vyc1xca3JpbWEzNTRcXFdvcmsgRm9sZGVyc1xcRG9jdW1lbnRzXFxraWNraV9hcmJldHNmaWxlclxcc2xhc2tcXHVyZGFyX2JhY2t1cF8yMDIzMTExMFxcZ29yX29tIiwiaGlkZGVuIjpmYWxzZSwiaW5jbHVkZVdlYkJyb3dzZXIiOnRydWUsIml0ZW1zVG9TZWxlY3QiOiJmb2xkZXJzIiwibmFtZSI6IlNvdXJjZURhdGFzZXRfUEFUSCIsInByb21wdCI6IlNvdXJjZSBGb2xkZXIgYW5kIEZpbGUgUGF0aG5hbWVzIEZvbGRlciIsInJlcXVpcmVkIjp0cnVlLCJzZWxlY3RNdWx0aXBsZSI6dHJ1ZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6ImZpbGUiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2UsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiY2hvaWNlU2V0dGluZ3MiOnsiY2hvaWNlU2V0IjoidXNlckRlZmluZWQiLCJjaG9pY2VzIjpbeyJkaXNwbGF5IjoiMTEiLCJ2YWx1ZSI6IjExIn0seyJkaXNwbGF5IjoiMTIiLCJ2YWx1ZSI6IjEyIn1dLCJzb3J0IjoibmF0dXJhbFNvcnQifSwiZGVmYXVsdFZhbHVlIjoiMTIiLCJoaWRkZW4iOmZhbHNlLCJuYW1lIjoiZGF0YWJhc2VfdmVyc2lvbiIsInByb21wdCI6IlZlcnNpb24gcG9zdGdyZXMiLCJyZXF1aXJlZCI6dHJ1ZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJkcm9wZG93biIsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiZGVmYXVsdFZhbHVlIjoiOSIsImhpZGRlbiI6ZmFsc2UsIm11bHRpcGxlT2YiOjEsIm5hbWUiOiJudW0ycmVtb3ZlIiwicHJvbXB0IjoibnVtQ2hhcjJyZW1vdmUiLCJyZXF1aXJlZCI6dHJ1ZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJudW1iZXIiLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifSx7ImNob2ljZVNldHRpbmdzIjp7ImNob2ljZVNldCI6InVzZXJEZWZpbmVkIiwiY2hvaWNlcyI6W3siZGlzcGxheSI6ImxvY2FsaG9zdCIsInZhbHVlIjoibG9jYWxob3N0In0seyJkaXNwbGF5IjoidXVjLXNydjM5MCIsInZhbHVlIjoidXVjLXNydjM5MC51c2VyLnV1LnNlIn1dLCJzb3J0IjoibmF0dXJhbFNvcnQifSwiZGVmYXVsdFZhbHVlIjoidXVjLXNydjM5MC51c2VyLnV1LnNlIiwiaGlkZGVuIjpmYWxzZSwibmFtZSI6InNlcnZlciIsInByb21wdCI6IlNlcnZlciIsInJlcXVpcmVkIjp0cnVlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6ImRyb3Bkb3duIiwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJkZWZhdWx0VmFsdWUiOiI1NDMyIiwiaGlkZGVuIjpmYWxzZSwibmFtZSI6InBvcnQiLCJwcm9tcHQiOiJQb3J0IiwicmVxdWlyZWQiOnRydWUsInNob3dFZGl0QnV0dG9uIjpmYWxzZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJkZWZhdWx0VmFsdWUiOiJwb3N0Z3JlcyIsImhpZGRlbiI6ZmFsc2UsIm5hbWUiOiJ1c2VyIiwicHJvbXB0IjoiVXNlciIsInJlcXVpcmVkIjp0cnVlLCJzaG93RWRpdEJ1dHRvbiI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoidGV4dCIsInZhbHVlVHlwZSI6InN0cmluZyJ9XX0="
 #! >
 #! <PARAMETER_INFO>
 #!     <INFO NAME="SourceDataset_PATH" 
-#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\dap\intrasis_leveranser\intrasis_postgres_backup\SAU"
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\urdar_backup_20231110\gor_om"
 #!   SCOPE="DEPENDENT"
 #!   GENERATED_GUI_LINE="true"
 #!   GUI_LINE="GUI MULTIDIRECTORY SourceDataset_PATH INCLUDE_WEB_BROWSER Source Folder and File Pathnames Folder"
 #! />
+#!     <INFO NAME="database_version" 
+#!   DEFAULT_VALUE="12"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI CHOICE_OR_ATTR database_version 11%12 Version postgres"
+#! />
 #!     <INFO NAME="num2remove" 
-#!   DEFAULT_VALUE="15"
+#!   DEFAULT_VALUE="9"
 #!   SCOPE="STAND_ALONE"
 #!   GENERATED_GUI_LINE="true"
 #!   GUI_LINE="GUI INTEGER_OR_ATTR num2remove numChar2remove"
@@ -503,7 +612,7 @@
 #!   ORDER="500000000000011"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="22618"
+#!   LAST_PARM_EDIT="22630"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -518,7 +627,7 @@
 #!     <XFORM_ATTR ATTR_NAME="db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="hejda" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTR" PARM_VALUE="hejda"/>
-#!     <XFORM_PARM PARM_NAME="CMD" PARM_VALUE="&lt;quote&gt;&lt;quote&gt;C:&lt;solidus&gt;Program&lt;space&gt;Files&lt;solidus&gt;PostgreSQL&lt;solidus&gt;11&lt;solidus&gt;bin&lt;solidus&gt;pg_restore.exe&lt;quote&gt;&lt;space&gt;-h&lt;space&gt;$(server)&lt;space&gt;&lt;space&gt;-p&lt;space&gt;$(port)&lt;space&gt;-U&lt;space&gt;$(user)&lt;space&gt;&lt;space&gt;-w&lt;space&gt;-d&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;db_name&lt;closeparen&gt;&lt;space&gt;-O&lt;space&gt;-x&lt;space&gt;-c&lt;space&gt;--no-security-labels&lt;space&gt;&lt;quote&gt;&lt;at&gt;Value&lt;openparen&gt;path_windows&lt;closeparen&gt;&lt;quote&gt;&lt;quote&gt;&lt;lf&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CMD" PARM_VALUE="&lt;quote&gt;&lt;quote&gt;C:&lt;solidus&gt;Program&lt;space&gt;Files&lt;solidus&gt;PostgreSQL&lt;solidus&gt;$(database_version)&lt;solidus&gt;bin&lt;solidus&gt;pg_restore.exe&lt;quote&gt;&lt;space&gt;-h&lt;space&gt;$(server)&lt;space&gt;&lt;space&gt;-p&lt;space&gt;$(port)&lt;space&gt;-U&lt;space&gt;$(user)&lt;space&gt;&lt;space&gt;-w&lt;space&gt;-d&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;db_name&lt;closeparen&gt;&lt;space&gt;-O&lt;space&gt;-x&lt;space&gt;-c&lt;space&gt;--no-security-labels&lt;space&gt;&lt;quote&gt;&lt;at&gt;Value&lt;openparen&gt;path_windows&lt;closeparen&gt;&lt;quote&gt;&lt;quote&gt;&lt;lf&gt;"/>
 #!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
@@ -528,12 +637,12 @@
 #!   IDENTIFIER="14"
 #!   TYPE="SystemCaller"
 #!   VERSION="3"
-#!   POSITION="843.75843758437577 -656.25656256562581"
-#!   BOUNDING_RECT="843.75843758437577 -656.25656256562581 454 71"
+#!   POSITION="843.75843758437566 -259.37584375843761"
+#!   BOUNDING_RECT="843.75843758437566 -259.37584375843761 454 71"
 #!   ORDER="500000000000012"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
-#!   LAST_PARM_EDIT="22618"
+#!   LAST_PARM_EDIT="22630"
 #! >
 #!     <OUTPUT_FEAT NAME="OUTPUT"/>
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
@@ -547,7 +656,7 @@
 #!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_ATTR ATTR_NAME="db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
 #!     <XFORM_PARM PARM_NAME="ATTR" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="CMD" PARM_VALUE="&lt;quote&gt;&lt;quote&gt;C:&lt;solidus&gt;Program&lt;space&gt;Files&lt;solidus&gt;PostgreSQL&lt;solidus&gt;11&lt;solidus&gt;bin&lt;solidus&gt;psql.exe&lt;quote&gt;&lt;space&gt;-h&lt;space&gt;$(server)&lt;space&gt;&lt;space&gt;-p&lt;space&gt;$(port)&lt;space&gt;-U&lt;space&gt;$(user)&lt;space&gt;-c&lt;space&gt;&lt;quote&gt;CREATE&lt;space&gt;DATABASE&lt;space&gt;&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;db_name&lt;closeparen&gt;&lt;space&gt;&lt;space&gt;WITH&lt;space&gt;TEMPLATE&lt;space&gt;=&lt;space&gt;urdar_template&lt;space&gt;ENCODING&lt;space&gt;=&lt;space&gt;&lt;apos&gt;UTF8&lt;apos&gt;&lt;quote&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CMD" PARM_VALUE="&lt;quote&gt;&lt;quote&gt;C:&lt;solidus&gt;Program&lt;space&gt;Files&lt;solidus&gt;PostgreSQL&lt;solidus&gt;$(database_version)&lt;solidus&gt;bin&lt;solidus&gt;psql.exe&lt;quote&gt;&lt;space&gt;-h&lt;space&gt;$(server)&lt;space&gt;&lt;space&gt;-p&lt;space&gt;$(port)&lt;space&gt;-U&lt;space&gt;$(user)&lt;space&gt;-c&lt;space&gt;&lt;quote&gt;CREATE&lt;space&gt;DATABASE&lt;space&gt;&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;db_name&lt;closeparen&gt;&lt;space&gt;&lt;space&gt;WITH&lt;space&gt;TEMPLATE&lt;space&gt;=&lt;space&gt;urdar_template&lt;space&gt;ENCODING&lt;space&gt;=&lt;space&gt;&lt;apos&gt;UTF8&lt;apos&gt;&lt;quote&gt;"/>
 #!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
@@ -615,9 +724,11 @@ FME_PYTHON_VERSION 39
 ARCGIS_COMPATIBILITY ARCGIS_AUTO
 GUI IGNORE PATH_IN_FME_GROUP_NAMED1_PATH_1,PATH_IN_GLOB_PATTERN_PATH_1,PATH_IN_RECURSE_DIRECTORIES_PATH_1,PATH_IN_TYPE_PATH_1,SourceDataset_PATH_1,PATH_IN_NETWORK_AUTHENTICATION_PATH_1
 # ============================================================================
-DEFAULT_MACRO SourceDataset_PATH C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\dap\intrasis_leveranser\intrasis_postgres_backup\SAU
+DEFAULT_MACRO SourceDataset_PATH C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\urdar_backup_20231110\gor_om
 
-DEFAULT_MACRO num2remove 15
+DEFAULT_MACRO database_version 12
+
+DEFAULT_MACRO num2remove 9
 
 DEFAULT_MACRO server uuc-srv390.user.uu.se
 
@@ -627,6 +738,7 @@ DEFAULT_MACRO user postgres
 
 # ============================================================================
 INCLUDE [ if {{$(SourceDataset_PATH$encode)} == {}} { puts_real {Parameter 'SourceDataset_PATH' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(database_version$encode)} == {}} { puts_real {Parameter 'database_version' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(num2remove$encode)} == {}} { puts_real {Parameter 'num2remove' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(server$encode)} == {}} { puts_real {Parameter 'server' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(port$encode)} == {}} { puts_real {Parameter 'port' must be given a value.}; exit 1; }; ]
@@ -702,8 +814,8 @@ PATH_1_DATASET "$(SourceDataset_PATH_1)"
 #! END_WB_HEADER
 #! END_HEADER
 
-LOG_FILENAME "$(FME_MF_DIR)restoreDBfromBackupFile.log"
-LOG_APPEND NO
+LOG_FILENAME "$(FME_MF_DIR)restoreDBfromBackupFileAll.log"
+LOG_APPEND YES
 LOG_FILTER_MASK -1
 LOG_MAX_FEATURES 200
 LOG_MAX_RECORDED_FEATURES 200
@@ -726,7 +838,7 @@ MULTI_READER_CONTINUE_ON_READER_FAILURE No
 
 # -------------------------------------------------------------------------
 
-MACRO WORKSPACE_NAME restoreDBfromBackupFile
+MACRO WORKSPACE_NAME restoreDBfromBackupFileAll
 MACRO FME_VIEWER_APP fmedatainspector
 # -------------------------------------------------------------------------
 
@@ -739,9 +851,9 @@ DEFAULT_MACRO WB_CURRENT_CONTEXT
 # -------------------------------------------------------------------------
 FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager_2 }    INPUT  FEATURE_TYPE PATH_PATH_1    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "" "db_name" "<at>LowerCase<openparen><at>Left<openparen><at>Value<openparen>path_rootname<closeparen><comma><at>StringLength<openparen><at>Value<openparen>path_rootname<closeparen><closeparen>-$(num2remove$encode)<closeparen><closeparen>" "SET_TO" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_2_OUTPUT        }
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME { SystemCaller_3 }    INPUT  FEATURE_TYPE AttributeManager_2_OUTPUT    OUTPUT { FEATURE_TYPE SystemCaller_3_OUTPUT         @System(LOG_PREFIX,SystemCaller_3,ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,<quote><quote>C:<solidus>Program<space>Files<solidus>PostgreSQL<solidus>11<solidus>bin<solidus>psql.exe<quote><space>-h<space>$(server)<space><space>-p<space>$(port$encode)<space>-U<space>$(user$encode)<space>-c<space><quote>CREATE<space>DATABASE<space><space><at>Value<openparen>db_name<closeparen><space><space>WITH<space>TEMPLATE<space>=<space>urdar_template<space>ENCODING<space>=<space><apos>UTF8<apos><quote>,SystemCaller_3)")          }
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { SystemCaller_3 }    INPUT  FEATURE_TYPE AttributeManager_2_OUTPUT    OUTPUT { FEATURE_TYPE SystemCaller_3_OUTPUT         @System(LOG_PREFIX,SystemCaller_3,ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,<quote><quote>C:<solidus>Program<space>Files<solidus>PostgreSQL<solidus>$(database_version$encode)<solidus>bin<solidus>psql.exe<quote><space>-h<space>$(server)<space><space>-p<space>$(port$encode)<space>-U<space>$(user$encode)<space>-c<space><quote>CREATE<space>DATABASE<space><space><at>Value<openparen>db_name<closeparen><space><space>WITH<space>TEMPLATE<space>=<space>urdar_template<space>ENCODING<space>=<space><apos>UTF8<apos><quote>,SystemCaller_3)")          }
 # -------------------------------------------------------------------------
-FACTORY_DEF {*} TeeFactory    FACTORY_NAME { SystemCaller }    INPUT  FEATURE_TYPE SystemCaller_3_OUTPUT    OUTPUT { FEATURE_TYPE SystemCaller_OUTPUT         "hejda"         @System(LOG_PREFIX,SystemCaller,ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,<quote><quote>C:<solidus>Program<space>Files<solidus>PostgreSQL<solidus>11<solidus>bin<solidus>pg_restore.exe<quote><space>-h<space>$(server)<space><space>-p<space>$(port$encode)<space>-U<space>$(user$encode)<space><space>-w<space>-d<space><at>Value<openparen>db_name<closeparen><space>-O<space>-x<space>-c<space>--no-security-labels<space><quote><at>Value<openparen>path_windows<closeparen><quote><quote><lf>,SystemCaller)")          }
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { SystemCaller }    INPUT  FEATURE_TYPE SystemCaller_3_OUTPUT    OUTPUT { FEATURE_TYPE SystemCaller_OUTPUT         "hejda"         @System(LOG_PREFIX,SystemCaller,ENCODED,"@EvaluateExpression(FDIV,STRING_ENCODED,<quote><quote>C:<solidus>Program<space>Files<solidus>PostgreSQL<solidus>$(database_version$encode)<solidus>bin<solidus>pg_restore.exe<quote><space>-h<space>$(server)<space><space>-p<space>$(port$encode)<space>-U<space>$(user$encode)<space><space>-w<space>-d<space><at>Value<openparen>db_name<closeparen><space>-O<space>-x<space>-c<space>--no-security-labels<space><quote><at>Value<openparen>path_windows<closeparen><quote><quote><lf>,SystemCaller)")          }
 FACTORY_DEF * TeeFactory   FACTORY_NAME "SystemCaller OUTPUT Transformer Output Nuker"   INPUT FEATURE_TYPE SystemCaller_OUTPUT
 # -------------------------------------------------------------------------
 

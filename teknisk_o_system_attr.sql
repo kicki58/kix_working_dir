@@ -10,12 +10,21 @@ FROM public."Attribute" as a, public."AttributeValue" as av
 where "ObjectId"=1 and a."AttributeId"=av."AttributeId";
 
 koordinatsystem
-SELECT  a."Label",av."Value", a."MetaId", a."ObjectId",a."AttributeId"
-FROM public."Attribute" as a, public."AttributeValue" as av 
-where "MetaId"=489 and a."AttributeId"=av."AttributeId";
+SELECT av."Value"::integer FROM "Object" o JOIN "SysDefs" sd ON sd."SystemId" = 489
+    JOIN "Attribute" a ON o."ObjectId" = a."ObjectId" AND a."MetaId" = sd."MetaId"
+    JOIN "AttributeValue" av ON a."AttributeId" = av."AttributeId" WHERE o."ClassId" = 4
 
 sätta koordinatsystem
-update "AttributeValue" as av
-  set "Value" = '3006'
-from public."Attribute" as a
-where "MetaId"=489 and a."AttributeId"=av."AttributeId";
+	
+update  "AttributeValue"  SET "Value"='3006' 
+where "AttributeValueId"= (
+Select av."AttributeValueId" 
+from  "SysDefs" sd,  "Attribute" a, "Object" o , "AttributeValue" av
+where
+	sd."SystemId" = 489 
+    And  o."ObjectId" = a."ObjectId" 
+	AND a."MetaId" = sd."MetaId"
+    AND  a."AttributeId" = av."AttributeId" 
+	And o."ClassId" = 4 )
+	
+	
