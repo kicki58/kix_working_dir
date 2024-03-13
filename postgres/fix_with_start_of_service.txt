@@ -1,0 +1,16 @@
+
+
+Trix om urdar db-servern inte startar....
+
+öppna powershell kör
+runas /trustlevel:0x20000 powershell
+för att köra med lägre rättigheter- du får som admin inte starta postgres
+byt dir
+cd "C:\Program Files\PostgreSQL\12\bin\"
+kör 
+.\pg_ctl.exe start -D "C:\Program Files\PostgreSQL\12\data" -w -t 900
+Detta för att starta upp db-servern igen den får 15 min på sig....
+kör 
+.\pg_ctl.exe stop -D "C:\Program Files\PostgreSQL\12\data" 
+
+sedan kan du starta tjänsten i services
