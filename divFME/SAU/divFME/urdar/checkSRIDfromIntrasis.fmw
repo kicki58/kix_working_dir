@@ -1,0 +1,835 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME2022_1_3\fme.exe" "C:\Users\krima354\Work Folders\Documents\GitHub\kix_working_dir\divFME\urdar\checkSRIDfromIntrasis.fmw"
+#          --SourceDataset_POSTGIS_2 "v2003030"
+#          --HOST_POSTGISserver "uuc-srv390.user.uu.se"
+#          --USER_NAME_POSTGIS "postgres"
+#          --PORT "5433"
+#          --DestDataset_CSV2 "C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="2716.2 227.505"
+#!   DOC_TOP_LEFT="-658.808 -32.6284"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="22630"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="9d6a5263-46c4-407f-95e1-5805fb77dd6c"
+#!   FME_DOCUMENT_PRIORGUID="88650cc9-3fc5-4a97-857c-976b43f0d1d8,4de84f7e-9062-47d4-8aa2-659f360607cf,192bd398-4407-4e5c-9a9c-f91fa9a5b870,e1b00d14-8102-4bc5-8661-ffca1d830134,a3528af9-e3df-4ecc-b66a-cac1e073e844,477b74cb-ea2d-4e6a-bbc3-e688fb95bc23,2078bcff-5965-49eb-acb1-88586e03a66a,021d3450-19df-443a-8bb1-942a4816472b"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+#!   LAST_SAVE_DATE="2024-02-16T10:11:01"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="137.501 450.005"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="false"
+#!   ROLE="WRITER"
+#!   FORMAT="CSV2"
+#!   DATASET="$(DestDataset_CSV2)"
+#!   KEYWORD="CSV2_1"
+#!   MULTI_GEOM_ALLOWED="true"
+#!   ATTR_MAX_LENGTH="255"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE="csv_existing_file_handling Yes csv_write_field_names firstrow csv_date_output_format ISO"
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="csv_type string fme_basename varchar(50) fme_color varchar(50) fme_dataset varchar(50) fme_feature_type varchar(50) fme_fill_color varchar(50) fme_geometry varchar(50) fme_primary_axis string fme_rotation string fme_secondary_axis string fme_start_angle string fme_sweep_angle string fme_text_size string fme_text_string varchar(50) fme_type varchar(50)"
+#!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP csv_dataset_group csv_existing_file_handling Dataset&quot; &quot;&quot; &quot;GUI CHOICE csv_existing_file_handling Yes%No Overwrite Existing File&quot; Yes &quot;GUI OPTIONAL NAMEDGROUP csv_fields_group csv_write_field_names Fields&quot; &quot;&quot; &quot;GUI LOOKUP_CHOICE csv_write_field_names If&lt;space&gt;Writing&lt;space&gt;First&lt;space&gt;Row,firstrow%Yes,yes%No,no Write Field Names Row&quot; firstrow &quot;GUI OPTIONAL NAMEDGROUP csv_types_group csv_date_output_format Types&quot; &quot;&quot; &quot;GUI STRING_OR_LOOKUP_CHOICE_ENCODED csv_date_output_format FME&lt;space&gt;&lt;openparen&gt;auto&lt;space&gt;format&lt;closeparen&gt;,FME%ISO&lt;space&gt;&lt;openparen&gt;auto&lt;space&gt;format&lt;closeparen&gt;,ISO%\&quot;%Y%m%d&lt;space&gt;&lt;openparen&gt;FME&lt;space&gt;date&lt;closeparen&gt;,%Y%m%d\&quot;%\&quot;%H%M%S&lt;space&gt;&lt;openparen&gt;FME&lt;space&gt;time&lt;closeparen&gt;,%H%M%S\&quot;%\&quot;%H%M%S%z&lt;space&gt;&lt;openparen&gt;FME&lt;space&gt;time&lt;space&gt;with&lt;space&gt;offset&lt;closeparen&gt;,%H%M%S%z\&quot;%\&quot;%Y%m%d%H%M%S&lt;space&gt;&lt;openparen&gt;FME&lt;space&gt;datetime&lt;closeparen&gt;,%Y%m%d%H%M%S\&quot;%\&quot;%Y%m%d%H%M%S%z&lt;space&gt;&lt;openparen&gt;FME&lt;space&gt;datetime&lt;space&gt;with&lt;space&gt;offset&lt;closeparen&gt;,%Y%m%d%H%M%S%z\&quot;%\&quot;%Y-%m-%d&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;date&lt;closeparen&gt;,%Y-%m-%d\&quot;%\&quot;%H:%M:%S&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;time&lt;closeparen&gt;,%H:%M:%S\&quot;%\&quot;%H:%M:%S%Ez&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;time&lt;space&gt;with&lt;space&gt;offset&lt;closeparen&gt;,%H:%M:%S%Ez\&quot;%\&quot;%Y-%m-%dT%H:%M:%S&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;datetime&lt;closeparen&gt;,%Y-%m-%dT%H:%M:%S\&quot;%\&quot;%Y-%m-%dT%H:%M:%S%Ez&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;datetime&lt;space&gt;with&lt;space&gt;offset&lt;closeparen&gt;,%Y-%m-%dT%H:%M:%S%Ez\&quot;%\&quot;%Y-W%W-%u&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;week&lt;closeparen&gt;,%Y-W%W-%u\&quot;%\&quot;%Y-%j&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;ordinal&lt;space&gt;date&lt;closeparen&gt;,%Y-%j\&quot;%\&quot;%Y:%m:%d&lt;space&gt;%H:%M:%S&lt;space&gt;&lt;openparen&gt;Exif&lt;space&gt;datetime&lt;closeparen&gt;,%Y:%m:%d%H:%M:%S\&quot;%\&quot;%d/%m/%Y\&quot;%\&quot;%d.%m.%Y\&quot;%\&quot;%B&lt;space&gt;%e&lt;comma&gt;&lt;space&gt;%Y\&quot;%\&quot;%b-%e-%Y\&quot;%\&quot;%I:%M:%S%p\&quot;%\&quot;%s&lt;space&gt;&lt;openparen&gt;Epoch&lt;space&gt;Time&lt;closeparen&gt;,%s\&quot;%\&quot;%Es&lt;space&gt;&lt;openparen&gt;Unzoned&lt;space&gt;Epoch&lt;space&gt;Time&lt;closeparen&gt;,%Es\&quot; Date Output Format&quot; ISO "
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILEDIR"
+#!   FTTR_TYPE=""
+#!   GENERATE_FME_BUILD_NUM="22630"
+#!   COORDSYS=""
+#!   FANOUT_EXPRESSION="&lt;Unused&gt;"
+#!   FANOUT_GROUP="NO"
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ADVANCED_PARMS"
+#!   VALUE="CSV2_OUT_QUALIFY_FIELD_NAMES CSV2_OUT_QUALIFY_FIELD_VALUES CSV2_OUT_FIELD_QUALIFIER_CHARACTER CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER CSV2_OUT_ROW_TERMINATION CSV2_OUT_WRITE_SCHEMA_FILE CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DEFAULT_ATTR_TYPE"
+#!   VALUE="string"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="File1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="CSV File"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the CSV file(s)"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a folder for the CSV file"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="time"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="real64"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="x_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="y_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="z_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="real32"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int64"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int32"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int16"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int8"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="uint64"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="uint32"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="uint16"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="uint8"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="boolean"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="CSV2"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_feature_table"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_point"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_no_map"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="CSV2"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="false"
+#!   NODE_NAME="alla_srid_20240216"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="6"
+#!   FEAT_GEOMTYPE="All"
+#!   POSITION="1548.1232812328128 38.371610065741265"
+#!   BOUNDING_RECT="1548.1232812328128 38.371610065741265 509.26669325772946 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="false"
+#!   KEYWORD="CSV2_1"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   SCHEMA_ATTRIBUTE_SOURCE="0"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="databas" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="from_intrasis_epsg" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="csv_dataset_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="csv_date_output_format" PARM_VALUE="ISO"/>
+#!     <DEFLINE_PARM PARM_NAME="csv_existing_file_handling" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="csv_fields_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="csv_types_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="csv_write_field_names" PARM_VALUE="firstrow"/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <WRITER_DATASETS>
+#! <DATASET
+#!   NAME="CSV2_1"
+#!   OVERRIDE="-CSV2_1_DATASET"
+#!   DATASET="CSV2_1/slask"
+#! />
+#! </WRITER_DATASETS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING SourceDataset_POSTGIS_2 Database"
+#!   DEFAULT_VALUE="v2003030"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI LOOKUP_CHOICE_OR_ATTR HOST_POSTGISserver localhost,localhost%uuc-srv390,uuc-srv390.user.uu.se%urdar,130.238.10.179 Server"
+#!   DEFAULT_VALUE="uuc-srv390.user.uu.se"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING USER_NAME_POSTGIS Username"
+#!   DEFAULT_VALUE="postgres"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI INTEGER PORT Port"
+#!   DEFAULT_VALUE="5433"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI DIRNAME DestDataset_CSV2 Destination CSV (Comma Separated Value) Folder:"
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJkZWZhdWx0VmFsdWUiOiJ2MjAwMzAzMCIsImVkaXRvciI6InBsYWludGV4dCIsImhpZGRlbiI6ZmFsc2UsIm5hbWUiOiJTb3VyY2VEYXRhc2V0X1BPU1RHSVNfMiIsInByb21wdCI6IkRhdGFiYXNlIiwicmVxdWlyZWQiOnRydWUsInNob3dFZGl0QnV0dG9uIjpmYWxzZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6InRleHQiLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifSx7ImNob2ljZVNldHRpbmdzIjp7ImNob2ljZVNldCI6InVzZXJEZWZpbmVkIiwiY2hvaWNlcyI6W3siZGlzcGxheSI6ImxvY2FsaG9zdCIsInZhbHVlIjoibG9jYWxob3N0In0seyJkaXNwbGF5IjoidXVjLXNydjM5MCIsInZhbHVlIjoidXVjLXNydjM5MC51c2VyLnV1LnNlIn0seyJkaXNwbGF5IjoidXJkYXIiLCJ2YWx1ZSI6IjEzMC4yMzguMTAuMTc5In1dLCJzb3J0IjoibmF0dXJhbFNvcnQifSwiZGVmYXVsdFZhbHVlIjoidXVjLXNydjM5MC51c2VyLnV1LnNlIiwiaGlkZGVuIjpmYWxzZSwibmFtZSI6IkhPU1RfUE9TVEdJU3NlcnZlciIsInByb21wdCI6IlNlcnZlciIsInJlcXVpcmVkIjp0cnVlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6ImRyb3Bkb3duIiwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJkZWZhdWx0VmFsdWUiOiJwb3N0Z3JlcyIsImVkaXRvciI6InBsYWludGV4dCIsImhpZGRlbiI6ZmFsc2UsIm5hbWUiOiJVU0VSX05BTUVfUE9TVEdJUyIsInByb21wdCI6IlVzZXJuYW1lIiwicmVxdWlyZWQiOnRydWUsInNob3dFZGl0QnV0dG9uIjpmYWxzZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6InRleHQiLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifSx7ImRlZmF1bHRWYWx1ZSI6IjU0MzMiLCJoaWRkZW4iOmZhbHNlLCJtdWx0aXBsZU9mIjoxLCJuYW1lIjoiUE9SVCIsInByb21wdCI6IlBvcnQiLCJyZXF1aXJlZCI6dHJ1ZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6Im51bWJlciIsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiYWNjZXNzTW9kZSI6IndyaXRlIiwiZGVmYXVsdFZhbHVlIjoiQzpcXFVzZXJzXFxrcmltYTM1NFxcV29yayBGb2xkZXJzXFxEb2N1bWVudHNcXGtpY2tpX2FyYmV0c2ZpbGVyXFxzbGFzayIsIml0ZW1zVG9TZWxlY3QiOiJmb2xkZXJzIiwibmFtZSI6IkRlc3REYXRhc2V0X0NTVjIiLCJwcm9tcHQiOiJEZXN0aW5hdGlvbiBDU1YgKENvbW1hIFNlcGFyYXRlZCBWYWx1ZSkgRm9sZGVyOiIsInJlcXVpcmVkIjp0cnVlLCJzZWxlY3RNdWx0aXBsZSI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJmaWxlIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifV19"
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="SourceDataset_POSTGIS_2" 
+#!   DEFAULT_VALUE="v2003030"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING SourceDataset_POSTGIS_2 Database"
+#! />
+#!     <INFO NAME="HOST_POSTGISserver" 
+#!   DEFAULT_VALUE="uuc-srv390.user.uu.se"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI LOOKUP_CHOICE_OR_ATTR HOST_POSTGISserver localhost,localhost%uuc-srv390,uuc-srv390.user.uu.se%urdar,130.238.10.179 Server"
+#! />
+#!     <INFO NAME="USER_NAME_POSTGIS" 
+#!   DEFAULT_VALUE="postgres"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING USER_NAME_POSTGIS Username"
+#! />
+#!     <INFO NAME="PORT" 
+#!   DEFAULT_VALUE="5433"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI INTEGER PORT Port"
+#! />
+#!     <INFO NAME="DestDataset_CSV2" 
+#!   DEFAULT_VALUE="C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI DIRNAME DestDataset_CSV2 Destination CSV (Comma Separated Value) Folder:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="SQLCreator"
+#!   VERSION="3"
+#!   POSITION="-658.80801608186914 194.87699872222734"
+#!   BOUNDING_RECT="-658.80801608186914 194.87699872222734 430 71"
+#!   ORDER="500000000000066.13"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;SCHEMA&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.fme_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.native_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="RESULT"/>
+#!     <XFORM_ATTR ATTR_NAME="Value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="_reader_error" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Value" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_TYPES" PARM_VALUE="int32"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DATASET" PARM_VALUE="$(SourceDataset_POSTGIS_2)"/>
+#!     <XFORM_PARM PARM_NAME="DB_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DYNGROUP_0" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPOSED_ATTRIBUTE_LIST" PARM_VALUE="Value"/>
+#!     <XFORM_PARM PARM_NAME="FEATURETYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT" PARM_VALUE="POSTGRES"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_ATTRIBUTE_TYPES" PARM_VALUE="int4"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="POSTGRES_USER_NAME,&quot;OPTIONAL TEXT&quot;,POSTGRES&lt;space&gt;Username:,POSTGRES_SSLMODE,&quot;OPTIONAL ACTIVECHOICE_LOOKUP Disable&lt;u0020&gt;,disable,CA_CERTIFICATE,CLIENT_CERTIFICATE,CLIENT_PRIV_KEY,SSL_PASSWORD%Allow&lt;u0020&gt;,allow%Prefer&lt;u0020&gt;,prefer%Require&lt;u0020&gt;,require%Verify-CA&lt;u0020&gt;,verify-ca%Verify-Full&lt;u0020&gt;,verify-full&quot;,POSTGRES&lt;space&gt;SSL&lt;space&gt;Mode:,POSTGRES_CLIENT_PRIV_KEY,&quot;OPTIONAL FILENAME_MUSTEXIST Private_Key_File(*.pem)|*.pem|All_files(*.*)|*.*&quot;,POSTGRES&lt;space&gt;Client&lt;space&gt;Private&lt;space&gt;Key:,POSTGRES_READ_TIME_WITH_TIMEZONE,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_PORT,&quot;OPTIONAL INTEGER&quot;,POSTGRES&lt;space&gt;Port:,POSTGRES_PASSWORD,&quot;OPTIONAL PASSWORD_ENCODED&quot;,POSTGRES&lt;space&gt;Password:,POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_CLIENT_CERTIFICATE,&quot;OPTIONAL FILENAME_MUSTEXIST Certificate_File(*.pem)|*.pem|All_files(*.*)|*.*&quot;,POSTGRES&lt;space&gt;Client&lt;space&gt;Certificate:,POSTGRES_CA_CERTIFICATE,&quot;OPTIONAL FILENAME_MUSTEXIST Certificate_File(*.pem)|*.pem|All_files(*.*)|*.*&quot;,POSTGRES&lt;space&gt;CA&lt;space&gt;Certificate:,POSTGRES_SCHEMAS_FOR_TABLE_LISTING,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;Schemas&lt;space&gt;for&lt;space&gt;Tables:,POSTGRES_SSL_PASSWORD,&quot;OPTIONAL PASSWORD_ENCODED&quot;,POSTGRES&lt;space&gt;SSL&lt;space&gt;Password:,POSTGRES_SSL_OPTIONS,&quot;OPTIONAL DISCLOSUREGROUP SSLMODE%CA_CERTIFICATE%CLIENT_CERTIFICATE%CLIENT_PRIV_KEY%SSL_PASSWORD&quot;,POSTGRES&lt;space&gt;SSL&lt;space&gt;Options,POSTGRES_HOST,&quot;OPTIONAL TEXT&quot;,POSTGRES&lt;space&gt;Host:"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_DISPLAY" PARM_VALUE="Schema and Data Features"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CA_CERTIFICATE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CLIENT_CERTIFICATE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CLIENT_PRIV_KEY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_HOST" PARM_VALUE="$(HOST_POSTGISserver)"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_PASSWORD" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_PORT" PARM_VALUE="$(PORT)"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_READ_TIME_WITH_TIMEZONE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SCHEMAS_FOR_TABLE_LISTING" PARM_VALUE="public"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SSLMODE" PARM_VALUE="prefer"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SSL_OPTIONS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SSL_PASSWORD" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_USER_NAME" PARM_VALUE="$(USER_NAME_POSTGIS)"/>
+#!     <XFORM_PARM PARM_NAME="SQL_STATEMENT" PARM_VALUE="SELECT&lt;space&gt;av.&lt;quote&gt;Value&lt;quote&gt;::integer&lt;space&gt;FROM&lt;space&gt;&lt;quote&gt;Object&lt;quote&gt;&lt;space&gt;o&lt;space&gt;JOIN&lt;space&gt;&lt;quote&gt;SysDefs&lt;quote&gt;&lt;space&gt;sd&lt;space&gt;ON&lt;space&gt;sd.&lt;quote&gt;SystemId&lt;quote&gt;&lt;space&gt;=&lt;space&gt;489&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;JOIN&lt;space&gt;&lt;quote&gt;Attribute&lt;quote&gt;&lt;space&gt;a&lt;space&gt;ON&lt;space&gt;o.&lt;quote&gt;ObjectId&lt;quote&gt;&lt;space&gt;=&lt;space&gt;a.&lt;quote&gt;ObjectId&lt;quote&gt;&lt;space&gt;AND&lt;space&gt;a.&lt;quote&gt;MetaId&lt;quote&gt;&lt;space&gt;=&lt;space&gt;sd.&lt;quote&gt;MetaId&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;JOIN&lt;space&gt;&lt;quote&gt;AttributeValue&lt;quote&gt;&lt;space&gt;av&lt;space&gt;ON&lt;space&gt;a.&lt;quote&gt;AttributeId&lt;quote&gt;&lt;space&gt;=&lt;space&gt;av.&lt;quote&gt;AttributeId&lt;quote&gt;&lt;space&gt;WHERE&lt;space&gt;o.&lt;quote&gt;ClassId&lt;quote&gt;&lt;space&gt;=&lt;space&gt;4"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SQLCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="AttributeManager"
+#!   VERSION="4"
+#!   POSITION="299.95403168875464 194.87699872222734"
+#!   BOUNDING_RECT="299.95403168875464 194.87699872222734 454 71"
+#!   ORDER="500000000000088.13"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="databas" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="from_intrasis_epsg" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; databas $(SourceDataset_POSTGIS_2) RENAME_SET_VALUE Value from_intrasis_epsg  RENAME_SET_VALUE"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE="$(SourceDataset_POSTGIS_2)"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_4"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="5"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 1 RESULT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="-1"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE DestDataset_CSV2_1,CSV2_OUT_DATASET_GROUP_CSV2_1,CSV2_OUT_EXTENSION_CSV2_1,CSV2_OUT_FIELDS_GROUP_CSV2_1,CSV2_OUT_DELIMITER_CSV2_1,CSV2_OUT_ENCODING_GROUP_CSV2_1,CSV2_OUT_ENCODING_CSV2_1,CSV2_OUT_WRITE_BOM_FOR_UNICODE_CSV2_1,CSV2_OUT_ADVANCED_GROUP_CSV2_1,CSV2_OUT_QUALIFY_FIELD_NAMES_CSV2_1,CSV2_OUT_QUALIFY_FIELD_VALUES_CSV2_1,CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1,CSV2_OUT_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE_CSV2_1,CSV2_OUT_FIELD_QUALIFIER_CHARACTER_CSV2_1,CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1,CSV2_OUT_ROW_TERMINATION_CSV2_1,CSV2_OUT_WRITE_SCHEMA_FILE_CSV2_1,CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING_CSV2_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_POSTGIS_2 v2003030
+
+DEFAULT_MACRO HOST_POSTGISserver uuc-srv390.user.uu.se
+
+DEFAULT_MACRO USER_NAME_POSTGIS postgres
+
+DEFAULT_MACRO PORT 5433
+
+DEFAULT_MACRO DestDataset_CSV2 C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask
+
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_POSTGIS_2$encode)} == {}} { puts_real {Parameter 'SourceDataset_POSTGIS_2' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(HOST_POSTGISserver$encode)} == {}} { puts_real {Parameter 'HOST_POSTGISserver' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(USER_NAME_POSTGIS$encode)} == {}} { puts_real {Parameter 'USER_NAME_POSTGIS' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(PORT$encode)} == {}} { puts_real {Parameter 'PORT' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(DestDataset_CSV2$encode)} == {}} { puts_real {Parameter 'DestDataset_CSV2' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+WRITER_TYPE MULTI_WRITER
+MULTI_WRITER_DATASET_ORDER BY_ID
+MULTI_WRITER_FIRST_WRITER_ID 0
+MULTI_WRITER_TYPE{0} CSV2
+MULTI_WRITER_KEYWORD{0} CSV2_1
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "CSV2_1"
+#! END_WB_HEADER
+#! START_DEST_HEADER CSV2 CSV2_1
+# =====================================================================
+# The following GUI line prompts for a folder where the
+# CSV files will be stored
+#! END_DEST_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO DestDataset
+INCLUDE [ if {"$(DestDataset)" != ""} {                          \
+ puts {DEFAULT_MACRO DestDataset_CSV2_1 $(DestDataset)}         \
+ } ]
+#! END_WB_HEADER
+#! START_DEST_HEADER CSV2 CSV2_1
+DEFAULT_MACRO DestDataset_CSV2_1 $(DestDataset_CSV2)
+GUI DIRNAME DestDataset_CSV2_1 Destination CSV (Comma Separated Value) Folder:
+DEFAULT_MACRO CSV2_OUT_DATASET_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_OUT_DATASET_GROUP_CSV2_1 CSV2_OUT_EXTENSION_CSV2_1%CSV2_OUT_EXISTING_FILE_HANDLING Dataset
+DEFAULT_MACRO CSV2_OUT_EXTENSION_CSV2_1 csv
+CSV2_1_EXTENSION "$(CSV2_OUT_EXTENSION_CSV2_1)"
+GUI OPTIONAL TEXT CSV2_OUT_EXTENSION_CSV2_1 Extension:
+DEFAULT_MACRO CSV2_OUT_EXISTING_FILE_HANDLING_CSV2_1 Yes
+CSV2_1_EXISTING_FILE_HANDLING "$(CSV2_OUT_EXISTING_FILE_HANDLING_CSV2_1)"
+DEFAULT_MACRO CSV2_OUT_FIELDS_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_OUT_FIELDS_GROUP_CSV2_1 CSV2_OUT_DELIMITER_CSV2_1%CSV2_OUT_WRITE_FIELD_NAMES Fields
+DEFAULT_MACRO CSV2_OUT_DELIMITER_CSV2_1 <comma>
+CSV2_1_DELIMITER "$(CSV2_OUT_DELIMITER_CSV2_1)"
+GUI STRING_OR_CHOICE_ENCODED CSV2_OUT_DELIMITER_CSV2_1 ,%;%|%space%tab Delimiter Character:
+DEFAULT_MACRO CSV2_OUT_WRITE_FIELD_NAMES_CSV2_1 firstrow
+CSV2_1_WRITE_FIELD_NAMES "$(CSV2_OUT_WRITE_FIELD_NAMES_CSV2_1)"
+DEFAULT_MACRO CSV2_OUT_ENCODING_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_OUT_ENCODING_GROUP_CSV2_1 CSV2_OUT_ENCODING_CSV2_1%CSV2_OUT_WRITE_BOM_FOR_UNICODE_CSV2_1 Encoding
+DEFAULT_MACRO CSV2_OUT_ENCODING_CSV2_1 UTF-8
+CSV2_1_ENCODING "$(CSV2_OUT_ENCODING_CSV2_1)"
+GUI STRING_OR_ENCODING CSV2_OUT_ENCODING_CSV2_1 fme-system%* Character Encoding:
+DEFAULT_MACRO CSV2_OUT_WRITE_BOM_FOR_UNICODE_CSV2_1 Yes
+CSV2_1_WRITE_BOM_FOR_UNICODE "$(CSV2_OUT_WRITE_BOM_FOR_UNICODE_CSV2_1)"
+GUI CHOICE CSV2_OUT_WRITE_BOM_FOR_UNICODE_CSV2_1 Yes%No Write Byte Order Mark for Unicode:
+DEFAULT_MACRO CSV2_OUT_ADVANCED_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_OUT_ADVANCED_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_OUT_QUALIFY_FIELD_NAMES_CSV2_1%CSV2_OUT_QUALIFY_FIELD_VALUES_CSV2_1%CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1%CSV2_OUT_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE_CSV2_1%CSV2_OUT_FIELD_QUALIFIER_CHARACTER_CSV2_1%CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1%CSV2_OUT_ROW_TERMINATION_CSV2_1%CSV2_OUT_WRITE_SCHEMA_FILE_CSV2_1 Advanced
+DEFAULT_MACRO CSV2_OUT_QUALIFY_FIELD_NAMES_CSV2_1 if_needed
+CSV2_1_QUALIFY_FIELD_NAMES "$(CSV2_OUT_QUALIFY_FIELD_NAMES_CSV2_1)"
+GUI LOOKUP_CHOICE CSV2_OUT_QUALIFY_FIELD_NAMES_CSV2_1 Yes,yes%No,no%If<space>Needed,if_needed Qualify Field Names:
+DEFAULT_MACRO CSV2_OUT_QUALIFY_FIELD_VALUES_CSV2_1 if_needed
+CSV2_1_QUALIFY_FIELD_VALUES "$(CSV2_OUT_QUALIFY_FIELD_VALUES_CSV2_1)"
+GUI ACTIVECHOICE_LOOKUP CSV2_OUT_QUALIFY_FIELD_VALUES_CSV2_1 Yes,yes,CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1%No,no%If<space>Needed,if_needed,CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1 Qualify Field Values:
+DEFAULT_MACRO CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1 <Unused>
+CSV2_1_UNQUALIFIED_FIELD_VALUE_HANDLING "$(CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1)"
+GUI LOOKUP_CHOICE CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1 Remove<space>Unsafe<space>Characters,remove_unsafe%Preserve<space>Unsafe<space>Characters,preserve_unsafe Unqualified Field Value Handling:
+DEFAULT_MACRO CSV2_OUT_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE_CSV2_1 Yes
+CSV2_1_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE "$(CSV2_OUT_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE_CSV2_1)"
+GUI CHOICE CSV2_OUT_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE_CSV2_1 Yes%No Treat Embedded Field Qualifiers As Unsafe:
+DEFAULT_MACRO CSV2_OUT_FIELD_QUALIFIER_CHARACTER_CSV2_1 <quote>
+CSV2_1_FIELD_QUALIFIER_CHARACTER "$(CSV2_OUT_FIELD_QUALIFIER_CHARACTER_CSV2_1)"
+GUI STRING_ENCODED CSV2_OUT_FIELD_QUALIFIER_CHARACTER_CSV2_1 Field Qualifier Character:
+DEFAULT_MACRO CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 <quote>
+CSV2_1_FIELD_QUALIFIER_ESCAPE_CHARACTER "$(CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1)"
+GUI STRING_ENCODED CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 Field Qualifier Escape Character:
+DEFAULT_MACRO CSV2_OUT_ROW_TERMINATION_CSV2_1 System
+CSV2_1_ROW_TERMINATION "$(CSV2_OUT_ROW_TERMINATION_CSV2_1)"
+GUI CHOICE CSV2_OUT_ROW_TERMINATION_CSV2_1 System%Windows%Unix%Macintosh Row Termination:
+DEFAULT_MACRO CSV2_OUT_WRITE_SCHEMA_FILE_CSV2_1 NO
+CSV2_1_WRITE_SCHEMA_FILE "$(CSV2_OUT_WRITE_SCHEMA_FILE_CSV2_1)"
+GUI ACTIVEDISCLOSUREGROUP CSV2_OUT_WRITE_SCHEMA_FILE_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING_CSV2_1 Write Schema Configuration File
+DEFAULT_MACRO CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING_CSV2_1 <Unused>
+CSV2_1_EXISTING_SCHEMA_FILE_HANDLING "$(CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING_CSV2_1)"
+GUI CHOICE CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING_CSV2_1 Overwrite%Prepend Existing Schema File Handling:
+DEFAULT_MACRO CSV2_OUT_COORDINATE_SYSTEM_GRANULARITY_CSV2_1 FEATURE_TYPE
+CSV2_1_COORDINATE_SYSTEM_GRANULARITY "$(CSV2_OUT_COORDINATE_SYSTEM_GRANULARITY_CSV2_1)"
+# ============================================================================
+CSV2_1_GENERATE_FME_BUILD_NUM 22630
+CSV2_1_DATASET "$(DestDataset_CSV2_1)"
+#! END_DEST_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)checkSRIDfromIntrasis.log"
+LOG_APPEND YES
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+DEFAULT_MACRO DATASET_KEYWORD_CSV2_1 CSV2_1
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME checkSRIDfromIntrasis
+MACRO FME_VIEWER_APP fmedatainspector
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+MACRO SQLCreator_2_DIRECTIVES USER_NAME "$(USER_NAME_POSTGIS)" SSLMODE prefer READ_TIME_WITH_TIMEZONE Yes QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS Yes PORT "$(PORT)" CREATE_FEATURE_TABLES_FROM_DATA Yes SCHEMAS_FOR_TABLE_LISTING public HOST "$(HOST_POSTGISserver)"
+FACTORY_DEF {*} CreationFactory    FACTORY_NAME { SQLCreator_2_Creator }    OUTPUT { FEATURE_TYPE _____CREATED______ }
+FACTORY_DEF {*} QueryFactory    FACTORY_NAME { SQLCreator_2 }    INPUT FEATURE_TYPE _____CREATED______    QUERY_SQL            { SELECT<space>av.<quote>Value<quote>::integer<space>FROM<space><quote>Object<quote><space>o<space>JOIN<space><quote>SysDefs<quote><space>sd<space>ON<space>sd.<quote>SystemId<quote><space>=<space>489<lf><space><space><space><space>JOIN<space><quote>Attribute<quote><space>a<space>ON<space>o.<quote>ObjectId<quote><space>=<space>a.<quote>ObjectId<quote><space>AND<space>a.<quote>MetaId<quote><space>=<space>sd.<quote>MetaId<quote><lf><space><space><space><space>JOIN<space><quote>AttributeValue<quote><space>av<space>ON<space>a.<quote>AttributeId<quote><space>=<space>av.<quote>AttributeId<quote><space>WHERE<space>o.<quote>ClassId<quote><space>=<space>4 }    COMBINE_ATTRIBUTES   RESULT_ONLY    COMBINE_GEOMETRY     RESULT_ONLY    READER_TYPE          { POSTGRES   }    READER_DATASET       { "$(SourceDataset_POSTGIS_2$encode)" }    READER_PARAMS        { $(SQLCreator_2_DIRECTIVES) }    QUERYFCT_OUTPUT      { "BASED_ON_CONNECTIONS" }    QUERYFCT_PROPAGATE_IDS_ON_SQL_EXECUTE YES    CONTINUE_ON_READER_ERROR YES    OUTPUT { RESULT FEATURE_TYPE SQLCreator_2_RESULT        @SupplyAttributes(fme_feature_type,SQLCreator_2)         }    OUTPUT { READER_ERROR FEATURE_TYPE SQLCreator_2_<REJECTED>         }
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "SQLCreator_2_RESULT Brancher -1 5"   INPUT FEATURE_TYPE SQLCreator_2_RESULT   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME SQLCreator_2_<Rejected> INPUT FEATURE_TYPE SQLCreator_2_<REJECTED>  NO_LOGGING   OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, SQLCreator_2<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager_4 }    INPUT  FEATURE_TYPE SQLCreator_2_RESULT    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "" "databas" "$(SourceDataset_POSTGIS_2$encode)" "RENAME_SET_VALUE" }      ATTR_ACTION { "Value" "from_intrasis_epsg" "" "RENAME_SET_VALUE" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_4_OUTPUT        }
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC AttributeManager_4_OUTPUT TO CSV2 __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>alla_srid_20240216<closeparen> GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
+# -------------------------------------------------------------------------
+CSV2_1_DEF alla_srid_20240216   csv_existing_file_handling   No   csv_write_field_names        firstrow   csv_date_output_format       ISO   databas                      string   from_intrasis_epsg           string
