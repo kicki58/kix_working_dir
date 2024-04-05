@@ -23,7 +23,7 @@ VALID_OPERATIONS = ['add_staff', 'get_staff', 'get_user_projects', 'get_table', 
 
 BAD_TABLES = ['OBJTYPPROJ', 'OSTREG']
 
-FIREBIRD_CLIENT = 'C:/Github/SiteWorks-Py/resources/fbembed.dll'
+FIREBIRD_CLIENT = 'C:/Github/kix/SiteWorks-Py/resources/fbembed.dll'
 
 
 def setup_logging(log_level, logname):
@@ -487,14 +487,13 @@ def start():
         db_file.rename(string_to_latin(str(db_file)))
         latin_files[str(db_file)] = string_to_latin(str(db_file))
         working_dir = str(db_file.resolve().parent)
-    
-    
-    if config["result_dir"] is not None:                
-        result_dir = Path(config["result_dir"]).resolve()
+
+    if config["result_dir"] is not None:
+        result_dir = config["result_dir"]
     else:
         result_dir = Path(f"{Path.cwd()}/result")
 
-    if not result_dir.is_dir():
+    if not Path(result_dir).is_dir():
         result_dir.mkdir(parents=True, exist_ok=True)
 
     fileformat = config["fileformat"]
