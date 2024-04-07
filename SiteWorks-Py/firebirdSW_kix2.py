@@ -96,11 +96,12 @@ def save_to_file(raw_data, file_name, fileformat, attributes):
 
 def save_to_csv(raw_data, file_name, attribute_row):
     #with open(file_name, 'w', encoding='utf8') as outfile:
-    logging.info("attr row:" + attribute_row)
-    with open(file_name, 'w') as textfile:
+    #logging.info("attr row:" + attribute_row)
+    logging.info(f"trying to save: {file_name}")
+    with open(file_name, 'w',encoding='utf8') as textfile:
         textfile.write(attribute_row + '\n')
         textfile.close()
-    csvfile = open(file_name, 'a', newline='')   
+    csvfile = open(file_name, 'a', newline='',encoding='utf8')   
     csvwriter = csv.writer(csvfile)
     #csvwriter.writerow(attribute_row)
     csvwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
@@ -108,7 +109,7 @@ def save_to_csv(raw_data, file_name, attribute_row):
         csvwriter.writerow(raw_data[index])
         #logging.info(raw_data[index])
         
-    #logging.info(f"Saving result as: {file_name}")
+    logging.info(f"Saving result as: {file_name}")
     csvfile.close() 
     
 def save_to_json(raw_data, file_name):
@@ -207,8 +208,8 @@ def db_get_table(data_base, table_name):
             attribute_names.append(fieldDesc[fdb.DESCRIPTION_NAME])
             #logging.info( fieldDesc[fdb.DESCRIPTION_NAME].ljust(fieldDesc[fdb.DESCRIPTION_DISPLAY_SIZE]) )
         
-        attributes_row = ", ".join(['"'+ item.upper() + '"' for item in attribute_names])       
-        logging.info("attributes:" + attributes_row)
+        attributes_row = ", ".join([item.upper() for item in attribute_names])       
+        #logging.info("attributes:" + attributes_row)
         
         for row in cur:
             table_rows.append(list(row))
