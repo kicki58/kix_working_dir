@@ -1,0 +1,66 @@
+---
+# Konfigurationsfil - FirebirdSW
+  
+  # Operation modes: dir, batch or file
+  operation_mode: dir
+
+  # files is used in "operation_mode" "batch"
+  files: 
+    - 3510 Väg 56 Gruffet SU.SWDB
+    - 3453 Nyköping Åkroken 4.SWDB
+    - 3070 Posten 10 NY.SWDB
+    - 3575 Stäketfläcken Banvall.SWDB
+
+  # Need to be specified when "operation_mode" is "dir"
+  working_dir: C:\Github\kix\SiteWorks-Py\Databases
+  
+  database: C:\Github\kix\SiteWorks-Py\Databases\2696_Götes mack.SWDB
+  
+  # Valid operations in batch/file/single database mode:
+    # add_staff         
+    # get_staff         - List all Siteworks prjects and their staff
+    # get_user_projects - List all users and their projects
+    # get_projects      - List all Siteworks projects
+    # get_table         - Get content for a specific table
+    # get_table_names   - Get all table names
+    # get_alltables     - Get content of all tables
+
+  
+  operation: get_alltables
+
+# Write tables to separate files during operation "get_alltables"
+  split_tables: true
+
+# Specify name and location for result file. If empty - default name and location is used
+  result_file: 2696_Gotes mack.SWDB
+
+  result_dir: C:\Github\kix\SiteWorks-Py\result
+  
+  # Valid formats: yaml, json, csv
+  fileformat: csv
+  
+  # Search for occurencies of existing users based on a dictionary and add new ones
+  user_mapping: false
+  
+  # Name of table to read data from if operation is "get_table"
+  table: PROJSTAFF
+  
+
+    
+  # Add new users based on already present ones
+  user_map:
+    annahj: 
+      username: anna.hj
+      fullname: Anna Hed Jakobsson
+    asa: 
+      username: asa.berger
+      fullname: Åsa Berger
+    nicklas:
+      username: nicke
+      fullname: Nicklas Blidmo
+    
+  # Add users from a list
+  user_list:
+    - 
+      username: daniel
+      fullname: Daniel Matsenius  

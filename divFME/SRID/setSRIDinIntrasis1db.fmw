@@ -1,0 +1,398 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME2022_1_3\fme.exe" C:\Github\kix\divFME\SRID\setSRIDinIntrasis1db.fmw
+#          --HOST_POSTGISserver "uuc-srv390.user.uu.se"
+#          --USER_NAME_POSTGIS "postgres"
+#          --koordsyscode "3006"
+#          --PORT "5432"
+#          --databas "sau2007pal3091"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="2295.76 342.002"
+#!   DOC_TOP_LEFT="518.388 -589.756"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="22630"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="d5dc1f50-e365-4f02-a8a5-73f6590af746"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+#!   LAST_SAVE_DATE="2024-04-02T10:23:55"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="0 0"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI LOOKUP_CHOICE_OR_ATTR HOST_POSTGISserver localhost,localhost%uuc-srv390,uuc-srv390.user.uu.se%urdar,130.238.10.179 Server"
+#!   DEFAULT_VALUE="uuc-srv390.user.uu.se"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING USER_NAME_POSTGIS Username"
+#!   DEFAULT_VALUE="postgres"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING_OR_ATTR koordsyscode coordsys epsg code"
+#!   DEFAULT_VALUE="3006"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI INTEGER PORT Port"
+#!   DEFAULT_VALUE="5432"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_EDIT_OR_ATTR databas FME_SYNTAX%FME%FME_SUPPORTSNUMERIC%YES databas:"
+#!   DEFAULT_VALUE="sau2007pal3091"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJjaG9pY2VTZXR0aW5ncyI6eyJjaG9pY2VTZXQiOiJ1c2VyRGVmaW5lZCIsImNob2ljZXMiOlt7ImRpc3BsYXkiOiJsb2NhbGhvc3QiLCJ2YWx1ZSI6ImxvY2FsaG9zdCJ9LHsiZGlzcGxheSI6InV1Yy1zcnYzOTAiLCJ2YWx1ZSI6InV1Yy1zcnYzOTAudXNlci51dS5zZSJ9LHsiZGlzcGxheSI6InVyZGFyIiwidmFsdWUiOiIxMzAuMjM4LjEwLjE3OSJ9XSwic29ydCI6Im5hdHVyYWxTb3J0In0sImRlZmF1bHRWYWx1ZSI6InV1Yy1zcnYzOTAudXNlci51dS5zZSIsImhpZGRlbiI6ZmFsc2UsIm5hbWUiOiJIT1NUX1BPU1RHSVNzZXJ2ZXIiLCJwcm9tcHQiOiJTZXJ2ZXIiLCJyZXF1aXJlZCI6dHJ1ZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJkcm9wZG93biIsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiZGVmYXVsdFZhbHVlIjoicG9zdGdyZXMiLCJlZGl0b3IiOiJwbGFpbnRleHQiLCJoaWRkZW4iOmZhbHNlLCJuYW1lIjoiVVNFUl9OQU1FX1BPU1RHSVMiLCJwcm9tcHQiOiJVc2VybmFtZSIsInJlcXVpcmVkIjp0cnVlLCJzaG93RWRpdEJ1dHRvbiI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJkZWZhdWx0VmFsdWUiOiIzMDA2IiwiaGlkZGVuIjpmYWxzZSwibmFtZSI6Imtvb3Jkc3lzY29kZSIsInByb21wdCI6ImNvb3Jkc3lzIGVwc2cgY29kZSIsInJlcXVpcmVkIjp0cnVlLCJzaG93RWRpdEJ1dHRvbiI6ZmFsc2UsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoidGV4dCIsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiZGVmYXVsdFZhbHVlIjoiNTQzMiIsImhpZGRlbiI6ZmFsc2UsIm11bHRpcGxlT2YiOjEsIm5hbWUiOiJQT1JUIiwicHJvbXB0IjoiUG9ydCIsInJlcXVpcmVkIjp0cnVlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoibnVtYmVyIiwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJkZWZhdWx0VmFsdWUiOiJzYXUyMDA3cGFsMzA5MSIsImVkaXRvciI6InBsYWludGV4dCIsImhpZGRlbiI6ZmFsc2UsIm5hbWUiOiJkYXRhYmFzIiwicHJvbXB0IjoiZGF0YWJhczoiLCJyZXF1aXJlZCI6ZmFsc2UsInNob3dBcml0aG1ldGljRWRpdG9yIjp0cnVlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6InRleHQiLCJ2YWx1ZVR5cGUiOiJzdHJpbmdFbmNvZGVkIn1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="HOST_POSTGISserver" 
+#!   DEFAULT_VALUE="uuc-srv390.user.uu.se"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI LOOKUP_CHOICE_OR_ATTR HOST_POSTGISserver localhost,localhost%uuc-srv390,uuc-srv390.user.uu.se%urdar,130.238.10.179 Server"
+#! />
+#!     <INFO NAME="USER_NAME_POSTGIS" 
+#!   DEFAULT_VALUE="postgres"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING USER_NAME_POSTGIS Username"
+#! />
+#!     <INFO NAME="koordsyscode" 
+#!   DEFAULT_VALUE="3006"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING_OR_ATTR koordsyscode coordsys epsg code"
+#! />
+#!     <INFO NAME="PORT" 
+#!   DEFAULT_VALUE="5432"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI INTEGER PORT Port"
+#! />
+#!     <INFO NAME="databas" 
+#!   DEFAULT_VALUE="sau2007pal3091"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI OPTIONAL TEXT_EDIT_OR_ATTR databas FME_SYNTAX%FME%FME_SUPPORTSNUMERIC%YES databas:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="3"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Segoe UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;SQLExecutor&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2342.150985761567 -247.75373422511711"
+#!   TOP_LEFT="2342.150985761567 -247.75373422511711"
+#!   BOTTOM_RIGHT="2814.150985761567 -248.75373422511711"
+#!   BOUNDING_RECT="2342.150985761567 -247.75373422511711 472 1"
+#!   ORDER="500000000000090.13"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="2"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="2"
+#!   TYPE="SQLExecutor"
+#!   VERSION="9"
+#!   POSITION="2384.150985761567 -406.25448423261719"
+#!   BOUNDING_RECT="2384.150985761567 -406.25448423261719 430 71"
+#!   ORDER="500000000000089.13"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;SCHEMA&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.fme_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.native_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="RESULT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <OUTPUT_FEAT NAME="INITIATOR"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="databas" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="koordsys" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_matched_records" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="databas" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="koordsys" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_reader_error" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_IGNORE_NULLS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMBINE_ATTRS" PARM_VALUE="Result Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="COMBINE_GEOM" PARM_VALUE="Initiator Geometry Only"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DATASET" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;databas&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="DB_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DYNGROUP_0" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPOSED_ATTRIBUTE_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FEATURETYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT" PARM_VALUE="POSTGRES"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_USER_NAME,&quot;OPTIONAL TEXT&quot;,POSTGRES&lt;space&gt;Username:,POSTGRES_CA_CERTIFICATE,&quot;OPTIONAL FILENAME_MUSTEXIST Certificate_File(*.pem)|*.pem|All_files(*.*)|*.*&quot;,POSTGRES&lt;space&gt;CA&lt;space&gt;Certificate:,POSTGRES_CLIENT_PRIV_KEY,&quot;OPTIONAL FILENAME_MUSTEXIST Private_Key_File(*.pem)|*.pem|All_files(*.*)|*.*&quot;,POSTGRES&lt;space&gt;Client&lt;space&gt;Private&lt;space&gt;Key:,POSTGRES_PASSWORD,&quot;OPTIONAL PASSWORD_ENCODED&quot;,POSTGRES&lt;space&gt;Password:,POSTGRES_PORT,&quot;OPTIONAL INTEGER&quot;,POSTGRES&lt;space&gt;Port:,POSTGRES_SSLMODE,&quot;OPTIONAL ACTIVECHOICE_LOOKUP Disable&lt;u0020&gt;,disable,CA_CERTIFICATE,CLIENT_CERTIFICATE,CLIENT_PRIV_KEY,SSL_PASSWORD%Allow&lt;u0020&gt;,allow%Prefer&lt;u0020&gt;,prefer%Require&lt;u0020&gt;,require%Verify-CA&lt;u0020&gt;,verify-ca%Verify-Full&lt;u0020&gt;,verify-full&quot;,POSTGRES&lt;space&gt;SSL&lt;space&gt;Mode:,POSTGRES_CLIENT_CERTIFICATE,&quot;OPTIONAL FILENAME_MUSTEXIST Certificate_File(*.pem)|*.pem|All_files(*.*)|*.*&quot;,POSTGRES&lt;space&gt;Client&lt;space&gt;Certificate:,POSTGRES_HOST,&quot;OPTIONAL TEXT&quot;,POSTGRES&lt;space&gt;Host:,POSTGRES_SSL_PASSWORD,&quot;OPTIONAL PASSWORD_ENCODED&quot;,POSTGRES&lt;space&gt;SSL&lt;space&gt;Password:,POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_SSL_OPTIONS,&quot;OPTIONAL DISCLOSUREGROUP SSLMODE%CA_CERTIFICATE%CLIENT_CERTIFICATE%CLIENT_PRIV_KEY%SSL_PASSWORD&quot;,POSTGRES&lt;space&gt;SSL&lt;space&gt;Options,POSTGRES_READ_TIME_WITH_TIMEZONE,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_SCHEMAS_FOR_TABLE_LISTING,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;Schemas&lt;space&gt;for&lt;space&gt;Tables:"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_DISPLAY" PARM_VALUE="Schema and Data Features"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CA_CERTIFICATE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CLIENT_CERTIFICATE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CLIENT_PRIV_KEY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_HOST" PARM_VALUE="$(HOST_POSTGISserver)"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_PASSWORD" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_PORT" PARM_VALUE="$(PORT)"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_READ_TIME_WITH_TIMEZONE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SCHEMAS_FOR_TABLE_LISTING" PARM_VALUE="public"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SSLMODE" PARM_VALUE="prefer"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SSL_OPTIONS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SSL_PASSWORD" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_USER_NAME" PARM_VALUE="$(USER_NAME_POSTGIS)"/>
+#!     <XFORM_PARM PARM_NAME="SQL_STATEMENT" PARM_VALUE="FME_SQL_DELIMITER&lt;space&gt;&lt;semicolon&gt;&lt;lf&gt;update&lt;space&gt;&lt;space&gt;&lt;quote&gt;AttributeValue&lt;quote&gt;&lt;space&gt;&lt;space&gt;SET&lt;space&gt;&lt;quote&gt;Value&lt;quote&gt;=&lt;apos&gt;&lt;at&gt;Value&lt;openparen&gt;koordsys&lt;closeparen&gt;&lt;apos&gt;&lt;space&gt;&lt;lf&gt;where&lt;space&gt;&lt;quote&gt;AttributeValueId&lt;quote&gt;=&lt;space&gt;&lt;openparen&gt;&lt;lf&gt;Select&lt;space&gt;av.&lt;quote&gt;AttributeValueId&lt;quote&gt;&lt;space&gt;&lt;lf&gt;from&lt;space&gt;&lt;space&gt;&lt;quote&gt;SysDefs&lt;quote&gt;&lt;space&gt;sd&lt;comma&gt;&lt;space&gt;&lt;space&gt;&lt;quote&gt;Attribute&lt;quote&gt;&lt;space&gt;a&lt;comma&gt;&lt;space&gt;&lt;quote&gt;Object&lt;quote&gt;&lt;space&gt;o&lt;space&gt;&lt;comma&gt;&lt;space&gt;&lt;quote&gt;AttributeValue&lt;quote&gt;&lt;space&gt;av&lt;lf&gt;where&lt;lf&gt;&lt;tab&gt;sd.&lt;quote&gt;SystemId&lt;quote&gt;&lt;space&gt;=&lt;space&gt;489&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;And&lt;space&gt;&lt;space&gt;o.&lt;quote&gt;ObjectId&lt;quote&gt;&lt;space&gt;=&lt;space&gt;a.&lt;quote&gt;ObjectId&lt;quote&gt;&lt;space&gt;&lt;lf&gt;&lt;tab&gt;AND&lt;space&gt;a.&lt;quote&gt;MetaId&lt;quote&gt;&lt;space&gt;=&lt;space&gt;sd.&lt;quote&gt;MetaId&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;AND&lt;space&gt;&lt;space&gt;a.&lt;quote&gt;AttributeId&lt;quote&gt;&lt;space&gt;=&lt;space&gt;av.&lt;quote&gt;AttributeId&lt;quote&gt;&lt;space&gt;&lt;lf&gt;&lt;tab&gt;And&lt;space&gt;o.&lt;quote&gt;ClassId&lt;quote&gt;&lt;space&gt;=&lt;space&gt;4&lt;space&gt;&lt;closeparen&gt;&lt;semicolon&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SQLExecutor"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="Creator"
+#!   VERSION="6"
+#!   POSITION="518.38804813219031 -518.75560924386741"
+#!   BOUNDING_RECT="518.38804813219031 -518.75560924386741 430 71"
+#!   ORDER="500000000000091.13"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="CREATED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATEND" PARM_VALUE="no"/>
+#!     <XFORM_PARM PARM_NAME="COORDS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CRE_ATTR" PARM_VALUE="_creation_instance"/>
+#!     <XFORM_PARM PARM_NAME="GEOM" PARM_VALUE="&lt;lt&gt;?xml&lt;space&gt;version=&lt;quote&gt;1.0&lt;quote&gt;&lt;space&gt;encoding=&lt;quote&gt;US_ASCII&lt;quote&gt;&lt;space&gt;standalone=&lt;quote&gt;no&lt;quote&gt;&lt;space&gt;?&lt;gt&gt;&lt;lt&gt;geometry&lt;space&gt;dimension=&lt;quote&gt;2&lt;quote&gt;&lt;gt&gt;&lt;lt&gt;null&lt;solidus&gt;&lt;gt&gt;&lt;lt&gt;&lt;solidus&gt;geometry&lt;gt&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOMTYPE" PARM_VALUE="Geometry Object"/>
+#!     <XFORM_PARM PARM_NAME="NUM" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Creator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="AttributeManager"
+#!   VERSION="4"
+#!   POSITION="1359.5807200589097 -462.5050467382423"
+#!   BOUNDING_RECT="1359.5807200589097 -462.5050467382423 454 71"
+#!   ORDER="500000000000092.13"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="databas" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="koordsys" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="_creation_instance _creation_instance  NO_OP  databas $(databas) SET_TO  koordsys $(koordsyscode) SET_TO"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 CREATED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 INITIATOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+# ============================================================================
+DEFAULT_MACRO HOST_POSTGISserver uuc-srv390.user.uu.se
+
+DEFAULT_MACRO USER_NAME_POSTGIS postgres
+
+DEFAULT_MACRO koordsyscode 3006
+
+DEFAULT_MACRO PORT 5432
+
+DEFAULT_MACRO databas sau2007pal3091
+
+# ============================================================================
+INCLUDE [ if {{$(HOST_POSTGISserver$encode)} == {}} { puts_real {Parameter 'HOST_POSTGISserver' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(USER_NAME_POSTGIS$encode)} == {}} { puts_real {Parameter 'USER_NAME_POSTGIS' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(koordsyscode$encode)} == {}} { puts_real {Parameter 'koordsyscode' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(PORT$encode)} == {}} { puts_real {Parameter 'PORT' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+WRITER_TYPE NULL
+WRITER_KEYWORD NULL_DEST
+NULL_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)setSRIDinIntrasis1db.log"
+LOG_APPEND YES
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME setSRIDinIntrasis1db
+MACRO FME_VIEWER_APP fmedatainspector
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+Tcl2 proc Creator_CoordSysRemover {} {   global FME_CoordSys;   set FME_CoordSys {}; }
+MACRO Creator_XML     NOT_ACTIVATED
+MACRO Creator_CLASSIC NOT_ACTIVATED
+MACRO Creator_2D3D    2D_GEOMETRY
+MACRO Creator_COORDS  <Unused>
+INCLUDE [ if { {Geometry Object} == {Geometry Object} } {            puts {MACRO Creator_XML *} } ]
+INCLUDE [ if { {Geometry Object} == {2D Coordinate List} } {            puts {MACRO Creator_2D3D 2D_GEOMETRY};            puts {MACRO Creator_CLASSIC *} } ]
+INCLUDE [ if { {Geometry Object} == {3D Coordinate List} } {            puts {MACRO Creator_2D3D 3D_GEOMETRY};            puts {MACRO Creator_CLASSIC *} } ]
+INCLUDE [ if { {Geometry Object} == {2D Min/Max Box} } {            set comment {                We need to turn the COORDS which are                    minX minY maxX maxY                into a full polygon list of coordinates            };            set splitCoords [split [string trim {<Unused>}]];            if { [llength $splitCoords] > 4} {               set trimmedCoords {};               foreach item $splitCoords { if { $item != {} } {lappend trimmedCoords $item} };               set splitCoords $trimmedCoords;            };            if { [llength $splitCoords] != 4 } {                error {Creator: Coordinate list is expected to be a space delimited list of four numbers as 'minx miny maxx maxy' - `<Unused>' is invalid};            };            set minX [lindex $splitCoords 0];            set minY [lindex $splitCoords 1];            set maxX [lindex $splitCoords 2];            set maxY [lindex $splitCoords 3];            puts "MACRO Creator_COORDS $minX $minY $minX $maxY $maxX $maxY $maxX $minY $minX $minY";            puts {MACRO Creator_2D3D 2D_GEOMETRY};            puts {MACRO Creator_CLASSIC *} } ]
+FACTORY_DEF {$(Creator_XML)} CreationFactory    FACTORY_NAME { Creator_XML_Creator }    CREATE_AT_END { no }    OUTPUT { FEATURE_TYPE _____CREATED______        @Geometry(FROM_ENCODED_STRING,<lt>?xml<space>version=<quote>1.0<quote><space>encoding=<quote>US_ASCII<quote><space>standalone=<quote>no<quote><space>?<gt><lt>geometry<space>dimension=<quote>2<quote><gt><lt>null<solidus><gt><lt><solidus>geometry<gt>) }
+FACTORY_DEF {$(Creator_CLASSIC)} CreationFactory    FACTORY_NAME { Creator_CLASSIC_Creator }    $(Creator_2D3D) { $(Creator_COORDS) }    CREATE_AT_END { no }    OUTPUT { FEATURE_TYPE _____CREATED______ }
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { Creator_Cloner }    INPUT FEATURE_TYPE _____CREATED______        @Tcl2(Creator_CoordSysRemover)        @CoordSys()    NUMBER_OF_COPIES { 1 }    COPY_NUMBER_ATTRIBUTE { "_creation_instance" }    OUTPUT { FEATURE_TYPE Creator_CREATED        fme_feature_type Creator         }
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "Creator_CREATED Brancher -1 7"   INPUT FEATURE_TYPE Creator_CREATED   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager }    INPUT  FEATURE_TYPE Creator_CREATED    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "" "databas" "$(databas)" "SET_TO" }      ATTR_ACTION { "" "koordsys" "$(koordsyscode$encode)" "SET_TO" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_OUTPUT        }
+# -------------------------------------------------------------------------
+MACRO SQLExecutor_DIRECTIVES CREATE_FEATURE_TABLES_FROM_DATA Yes USER_NAME "$(USER_NAME_POSTGIS)" PORT "$(PORT)" SSLMODE prefer HOST "$(HOST_POSTGISserver)" QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS Yes READ_TIME_WITH_TIMEZONE Yes SCHEMAS_FOR_TABLE_LISTING public
+FACTORY_DEF {*} QueryFactory    FACTORY_NAME { SQLExecutor }    INPUT  FEATURE_TYPE AttributeManager_OUTPUT    QUERY_SQL            { "@EvaluateExpression(FDIV,STRING_ENCODED,FME_SQL_DELIMITER<space><semicolon><lf>update<space><space><quote>AttributeValue<quote><space><space>SET<space><quote>Value<quote>=<apos><at>Value<openparen>koordsys<closeparen><apos><space><lf>where<space><quote>AttributeValueId<quote>=<space><openparen><lf>Select<space>av.<quote>AttributeValueId<quote><space><lf>from<space><space><quote>SysDefs<quote><space>sd<comma><space><space><quote>Attribute<quote><space>a<comma><space><quote>Object<quote><space>o<space><comma><space><quote>AttributeValue<quote><space>av<lf>where<lf><tab>sd.<quote>SystemId<quote><space>=<space>489<space><lf><space><space><space><space>And<space><space>o.<quote>ObjectId<quote><space>=<space>a.<quote>ObjectId<quote><space><lf><tab>AND<space>a.<quote>MetaId<quote><space>=<space>sd.<quote>MetaId<quote><lf><space><space><space><space>AND<space><space>a.<quote>AttributeId<quote><space>=<space>av.<quote>AttributeId<quote><space><lf><tab>And<space>o.<quote>ClassId<quote><space>=<space>4<space><closeparen><semicolon>,SQLExecutor)" }    READER_TYPE          { POSTGRES }    READER_DATASET       { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>databas<closeparen>,SQLExecutor)" }    COMBINE_ATTRIBUTES   { RESULT_ONLY }    IGNORE_NULLS         { <Unused> }    COMBINE_GEOMETRY     { QUERY_ONLY }    QUERYFCT_OUTPUT      { "BASED_ON_CONNECTIONS" }    CONTINUE_ON_READER_ERROR YES    QUERYFCT_PROPAGATE_IDS_ON_SQL_EXECUTE YES    READER_PARAMS        { $(SQLExecutor_DIRECTIVES) }    OUTPUT { READER_ERROR FEATURE_TYPE SQLExecutor_<REJECTED>         }
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME SQLExecutor_<Rejected> INPUT FEATURE_TYPE SQLExecutor_<REJECTED>  NO_LOGGING   OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, SQLExecutor<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
