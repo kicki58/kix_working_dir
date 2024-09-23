@@ -1,0 +1,668 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <TRANSFORMER
+# TRANSFORMER_BEGIN SequenceController,1,Workflows,6c112115-5e94-4c78-bb43-0f70b149c179,"Linked by Default",No,NO_PARALLELISM,,No,19246,YES,No,2or3,No
+# <p>Causes Passthrough features to wait for a Controller feature, before they can pass. An optional condition can be set to cause the Passthrough features to be rejected.</p>
+# <h2>Example</h2>
+# <p>A user wishes to have a set of features run SQL commands on a database, but must wait for a FeatureWriter transformer to create the database table first.</p>
+# <p>The SQL features are connected to the SequenceController:Passthrough port and the FeatureWriter:Summary port is connected to the SequenceController:Controller port.</p>
+# <p>The SQL features thus have to wait until the FeatureWriter is complete before they can continue.</p>
+# <h1>Error Conditions</h1>
+# <p>An error condition can optionally be set up in the SequenceController to determine whether Passthrough features should be stopped from proceeding at all.</p>
+# <h2>Example</h2>
+# <p>The same user wishes to ensure that the database table was properly created by the FeatureWriter, in order to prevent possible problems carrying out SQL commands. </p>
+# <p>They create an attribute on the summary feature, to signify whether the table creation was correct (for example, if Features Written &gt; 0, then Success = True). In the SequenceController they set up the condition Success = False. </p>
+# <p>If the condition is true (the table was created correctly) then the Passthrough features are allowed to continue. If the condition is false (the table was not created correctly) then the Passthrough features are stopped.</p>
+# TRANSFORMER_END
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BLOCKED_LOOPING="No"
+#!   CATEGORY="Workflows"
+#!   DESCRIPTION="&lt;p&gt;Causes Passthrough features to wait for a Controller feature, before they can pass. An optional condition can be set to cause the Passthrough features to be rejected.&lt;/p&gt;&#10;&lt;h2&gt;Example&lt;/h2&gt;&#10;&lt;p&gt;A user wishes to have a set of features run SQL commands on a database, but must wait for a FeatureWriter transformer to create the database table first.&lt;/p&gt;&#10;&lt;p&gt;The SQL features are connected to the SequenceController:Passthrough port and the FeatureWriter:Summary port is connected to the SequenceController:Controller port.&lt;/p&gt;&#10;&lt;p&gt;The SQL features thus have to wait until the FeatureWriter is complete before they can continue.&lt;/p&gt;&#10;&lt;h1&gt;Error Conditions&lt;/h1&gt;&#10;&lt;p&gt;An error condition can optionally be set up in the SequenceController to determine whether Passthrough features should be stopped from proceeding at all.&lt;/p&gt;&#10;&lt;h2&gt;Example&lt;/h2&gt;&#10;&lt;p&gt;The same user wishes to ensure that the database table was properly created by the FeatureWriter, in order to prevent possible problems carrying out SQL commands. &lt;/p&gt;&#10;&lt;p&gt;They create an attribute on the summary feature, to signify whether the table creation was correct (for example, if Features Written &amp;gt; 0, then Success = True). In the SequenceController they set up the condition Success = False. &lt;/p&gt;&#10;&lt;p&gt;If the condition is true (the table was created correctly) then the Passthrough features are allowed to continue. If the condition is false (the table was not created correctly) then the Passthrough features are stopped.&lt;/p&gt;"
+#!   DOC_EXTENTS="3713 1418.76"
+#!   DOC_TOP_LEFT="-997.35 -1286.83"
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="19246"
+#!   FME_DOCUMENT_GUID="6c112115-5e94-4c78-bb43-0f70b149c179"
+#!   FME_DOCUMENT_PRIORGUID="c15de8ec-5e13-4114-9147-bc6564d13dcd"
+#!   FME_LINKED_TRANSFORMER_VERSION="1"
+#!   FME_PROCESS_COUNT="NO_PARALLELISM"
+#!   FME_PROCESS_GROUPS_ORDERED="No"
+#!   FME_PROCESS_GROUP_BY=""
+#!   FME_PROCESS_PRESERVE_GROUP_ATTR="No"
+#!   FME_SERVER_SERVICES=""
+#!   FMX_ATTRIBUTE_PROPOGATION_MODE="AUTO"
+#!   FMX_INSERT_MODE="Linked by Default"
+#!   HISTORY="27-Nov-2019,Mark&lt;space&gt;Ireland,Initial&lt;space&gt;Implementation"
+#!   ITERATION_COUNT_ATTR=""
+#!   LAST_SAVE_BUILD="FME(R) 2019.0.0.1 (20190415 - Build 19246 - WIN64)"
+#!   LAST_SAVE_DATE="2019-11-27T13:35:38"
+#!   MARKDOWN_DESCRIPTION="Causes Passthrough features to wait for a Controller feature, before they can pass. An optional condition can be set to cause the Passthrough features to be rejected.&#10;&#10;## Example&#10;&#10;A user wishes to have a set of features run SQL commands on a database, but must wait for a FeatureWriter transformer to create the database table first.&#10;&#10;The SQL features are connected to the SequenceController:Passthrough port and the FeatureWriter:Summary port is connected to the SequenceController:Controller port.&#10;&#10;The SQL features thus have to wait until the FeatureWriter is complete before they can continue.&#10;&#10;&#10;# Error Conditions&#10;&#10;An error condition can optionally be set up in the SequenceController to determine whether Passthrough features should be stopped from proceeding at all.&#10;&#10;## Example&#10;The same user wishes to ensure that the database table was properly created by the FeatureWriter, in order to prevent possible problems carrying out SQL commands. &#10;&#10;They create an attribute on the summary feature, to signify whether the table creation was correct (for example, if Features Written &gt; 0, then Success = True). In the SequenceController they set up the condition Success = False. &#10;&#10;If the condition is true (the table was created correctly) then the Passthrough features are allowed to continue. If the condition is false (the table was not created correctly) then the Passthrough features are stopped."
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOOP_ITERATIONS=""
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="2or3"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   TITLE="SequenceController"
+#!   USAGE=""
+#!   USE_MARKDOWN="YES"
+#!   VIEW_POSITION="-1343.76 500.005"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   XFORM_DEPRECATED="No"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_EDIT_OR_ATTR LHS FME_SUPPORTSNUMERIC%YES Condition Left Value:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_EDIT_OR_ATTR RHS FME_SUPPORTSNUMERIC%YES Condition Right Value:"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="25"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Check if any Controller feature contains a match for the Termination Condition (if any)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-997.34984068590654 -1056.8240157401572"
+#!   TOP_LEFT="-997.34984068590654 -1056.8240157401572"
+#!   BOTTOM_RIGHT="-481.71129180041783 -1286.8260157601574"
+#!   BOUNDING_RECT="-997.34984068590654 -1056.8240157401572 515.63854888548872 230.0020000200002"
+#!   ORDER="500000000000006"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="17"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="31"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Features for which the PassThrough features must wait&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-935.72018438934356 -28.063078130781207"
+#!   TOP_LEFT="-935.72018438934356 -28.063078130781207"
+#!   BOTTOM_RIGHT="-439.72018438934356 -29.063078130781207"
+#!   BOUNDING_RECT="-935.72018438934356 -28.063078130781207 496 1"
+#!   ORDER="500000000000010"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="33"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;These join keys set up the action of the FeatureJoiner and also control the termination condition handling&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="409.61953119531188 -135.31314063140641"
+#!   TOP_LEFT="409.61953119531188 -135.31314063140641"
+#!   BOTTOM_RIGHT="890.87434374343729 -409.06557815578162"
+#!   BOUNDING_RECT="409.61953119531188 -135.31314063140641 481.25481254812541 273.75243752437524"
+#!   ORDER="500000000000012"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.98039215686274506,0.80392156862745101,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="0"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="35"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Create Join to Reject&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="423.26712860878604 -478.06757817578159"
+#!   TOP_LEFT="423.26712860878604 -478.06757817578159"
+#!   BOTTOM_RIGHT="877.26712860878604 -479.06757817578159"
+#!   BOUNDING_RECT="423.26712860878604 -478.06757817578159 454 1"
+#!   ORDER="500000000000022"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.98039215686274506,0.80392156862745101,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="22"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="37"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;No Join to Passthrough&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="413.18401996519958 -809.32089070890697"
+#!   TOP_LEFT="413.18401996519958 -809.32089070890697"
+#!   BOTTOM_RIGHT="887.32092633426328 -951.82201572015708"
+#!   BOUNDING_RECT="413.18401996519958 -809.32089070890697 474.13690636906369 142.50112501125011"
+#!   ORDER="500000000000023"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,0.98039215686274506,0.80392156862745101,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="11"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="39"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;A vain attempt to remove incoming attributes from the Controller features. Alas, they still exist, even if they are set to missing.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1845.0055000550003 -434.31714067140649"
+#!   TOP_LEFT="1845.0055000550003 -434.31714067140649"
+#!   BOTTOM_RIGHT="2715.6521565215653 -620.56870318703159"
+#!   BOUNDING_RECT="1845.0055000550003 -434.31714067140649 870.64665646656499 186.25156251562515"
+#!   ORDER="500000000000024"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="1,1,0.95686274509803926,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="27"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="32"
+#!   NAME="Create Join Keys"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="354.24668746687462 131.93442184421838"
+#!   ORDER="500000000000011"
+#!   PALETTE_COLOR="Lemon Chiffon "
+#!   BOTTOM_RIGHT="946.24668746687462 -1097.8215157151571"
+#!   BOUNDING_RECT="354.24668746687462 131.93442184421838 592 1229.7559375593755"
+#!   STICKY="true"
+#!   COLOUR="1,0.98039215686274506,0.80392156862745101,1"
+#!   CONTENTS="14 11 22 33 37 35 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="11"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="442.24668746687462 -931.82151571515715"
+#!   BOUNDING_RECT="442.24668746687462 -931.82151571515715 454 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19246"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerAttr2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerLHS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerRHS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; SequenceControllerAttr2 SET_TO 2"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="14"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="423.24668746687462 21.934421844218377"
+#!   BOUNDING_RECT="423.24668746687462 21.934421844218377 454 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19246"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerAttr1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; SequenceControllerAttr1 SET_TO 1"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="17"
+#!   TYPE="Tester"
+#!   VERSION="2"
+#!   POSITION="-966.53501253762511 -809.32089070890697"
+#!   BOUNDING_RECT="-966.53501253762511 -809.32089070890697 454 71"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19246"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerLHS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerRHS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerLHS" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerRHS" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="COMPOSITE"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="1 AND 2 AND 3"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST $(LHS) = $(RHS)&#10;TEST SequenceControllerLHS ATTRIBUTE_HAS_A_VALUE &quot;&quot;&#10;TEST SequenceControllerRHS ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="22"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="423.24668746687462 -625.0052500525004"
+#!   BOUNDING_RECT="423.24668746687462 -625.0052500525004 454 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19246"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerAttr2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerLHS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerRHS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; SequenceControllerAttr2 SET_TO 1"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="23"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="1307.9997499974997 -699.82114071140904"
+#!   BOUNDING_RECT="1307.9997499974997 -699.82114071140904 454 71"
+#!   ORDER="500000000000008"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19246"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; fme_rejection_code SET_TO Termination&lt;space&gt;Condition&lt;space&gt;Triggered"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_4"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="36"
+#!   TYPE="FeatureJoiner"
+#!   VERSION="1000"
+#!   POSITION="1319.9997499974997 21.934421844218377"
+#!   BOUNDING_RECT="1319.9997499974997 21.934421844218377 430 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19246"
+#!   OUTPUT_FT_ORDER="UNJOINED_LEFT%UNJOINED_RIGHT%JOINED%&lt;REJECTED&gt;"
+#! >
+#!     <OUTPUT_FEAT NAME="UNJOINED_LEFT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerAttr1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNJOINED_RIGHT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerAttr2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerLHS" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerRHS" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="JOINED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerAttr1" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerAttr2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerLHS" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerRHS" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerAttr1" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerAttr2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerLHS" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerRHS" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Left"/>
+#!     <XFORM_PARM PARM_NAME="GEOMETRY_HANDLING" PARM_VALUE="Use Left"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="SequenceControllerAttr1 SequenceControllerAttr2 NUM"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_MODE" PARM_VALUE="Inner"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ON_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureJoiner_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="47"
+#!   TYPE="Sampler"
+#!   VERSION="4"
+#!   POSITION="-238.0718594685946 -699.82114071140904"
+#!   BOUNDING_RECT="-238.0718594685946 -699.82114071140904 454 71"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19246"
+#! >
+#!     <OUTPUT_FEAT NAME="SAMPLED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerLHS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerRHS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="NOT_SAMPLED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerLHS" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerRHS" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RATE" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="SAMPLE_MODE" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SAMPLE_TYPE_LONG" PARM_VALUE="First N Features"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Sampler_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="27"
+#!   TYPE="AttributeKeeper"
+#!   VERSION="3"
+#!   POSITION="1307.9997499974997 -478.06757817578159"
+#!   BOUNDING_RECT="1307.9997499974997 -478.06757817578159 454 71"
+#!   ORDER="500000000000021"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19246"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_PARM PARM_NAME="KEEP_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="KEEP_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeKeeper"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="40"
+#!   TYPE="ParameterFetcher"
+#!   VERSION="4"
+#!   POSITION="-935.72018438934356 -573.88133507921975"
+#!   BOUNDING_RECT="-935.72018438934356 -573.88133507921975 454 71"
+#!   ORDER="500000000000025"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="19246"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerLHS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SequenceControllerRHS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTR_LIST" PARM_VALUE="SequenceControllerLHS $(LHS) SequenceControllerRHS $(RHS)"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ParameterFetcher"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <SUBDOCUMENT_IOS>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="2"
+#!   NAME="PassThrough"
+#!   POSITION="-217.0718594685946 21.934421844216558"
+#!   BOUNDING_RECT="-217.0718594685946 21.934421844216558 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="3"
+#!   NAME="Output"
+#!   POSITION="2014.6260312603131 -162.50062500624995"
+#!   BOUNDING_RECT="2014.6260312603131 -162.50062500624995 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="1"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="4"
+#!   NAME="Controller"
+#!   POSITION="-935.72018438934356 -388.06607816078167"
+#!   BOUNDING_RECT="-935.72018438934356 -388.06607816078167 454 71"
+#!   COLLAPSED="true"
+#!   PUBLISHED="true"
+#!   IS_SOURCE="true"
+#!   ATTR_MODE="0"
+#! >
+#! </SUBDOCUMENT_IO>
+#! <SUBDOCUMENT_IO
+#!   IDENTIFIER="20"
+#!   NAME="&lt;Rejected&gt;"
+#!   POSITION="2014.6260312603131 -759.8211407114095"
+#!   BOUNDING_RECT="2014.6260312603131 -759.8211407114095 454 71"
+#!   COLLAPSED="true"
+#!   IS_SOURCE="false"
+#!   ATTR_MODE="1"
+#! >
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" />
+#! </SUBDOCUMENT_IO>
+#! </SUBDOCUMENT_IOS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="14"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="41"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="40"
+#!   SOURCE_PORT_DESC="0"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="13"
+#!   SOURCE_NODE="11"
+#!   TARGET_NODE="36"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 RIGHT"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="38"
+#!   SOURCE_NODE="14"
+#!   TARGET_NODE="36"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 LEFT"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="48"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="47"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="49"
+#!   SOURCE_NODE="22"
+#!   TARGET_NODE="36"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 RIGHT"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="23"
+#!   TARGET_NODE="20"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="27"
+#!   TARGET_NODE="23"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="36"
+#!   TARGET_NODE="27"
+#!   SOURCE_PORT_DESC="fo 2 JOINED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="42"
+#!   SOURCE_NODE="40"
+#!   TARGET_NODE="17"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="34"
+#!   SOURCE_NODE="47"
+#!   TARGET_NODE="22"
+#!   SOURCE_PORT_DESC="fo 0 SAMPLED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="17"
+#!   TARGET_NODE="11"
+#!   SOURCE_PORT_DESC="fo 1 FAILED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="36"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 UNJOINED_LEFT"
+#!   TARGET_PORT_DESC="0"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </TRANSFORMER>
+
+DEFAULT_MACRO $(SequenceController_WORKSPACE_NAME)_LHS 
+DEFAULT_MACRO $(SequenceController_WORKSPACE_NAME)_RHS 
+#! START_HEADER
+#! END_HEADER
+
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+DEFAULT_MACRO SequenceController_WORKSPACE_NAME ""
+INCLUDE [puts {MACRO WB_OLD_CONTEXT_$(SequenceController_WORKSPACE_NAME) $(WB_CURRENT_CONTEXT)};          puts {MACRO WB_CURRENT_CONTEXT $(SequenceController_WORKSPACE_NAME)}]
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SequenceController_WORKSPACE_NAME)_PassThrough1574883338 Input Splitter"   INPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_PassThrough"   OUTPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_PassThrough"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SequenceController_WORKSPACE_NAME)_Controller1574883338 Input Splitter"   INPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_Controller"   OUTPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_Controller"
+# -------------------------------------------------------------------------
+Tcl2 proc $(SequenceController_WORKSPACE_NAME)_ParameterFetcher_doFetch {} {    foreach {name val} {"SequenceControllerLHS {$($(SequenceController_WORKSPACE_NAME)_LHS)} SequenceControllerRHS {$($(SequenceController_WORKSPACE_NAME)_RHS)}"} {         if { [string match {*<at>*} $val] == 1 } {             set val [FME_Execute EvaluateExpression {STRING} $val {$(SequenceController_WORKSPACE_NAME)_ParameterFetcher}];         } elseif {[string match {*FME_CONDITIONAL*} $val] == 1} {             set val [FME_Execute EvaluateExpression {STRING} $val {$(SequenceController_WORKSPACE_NAME)_ParameterFetcher}];         } else {             set val [FME_DecodeTextOrAttr $val];         };       FME_SetAttribute [FME_DecodeText $name] $val    } }
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SequenceController_WORKSPACE_NAME)_ParameterFetcher    INPUT  FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_Controller"    OUTPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_ParameterFetcher_OUTPUT"         @Tcl2($(SequenceController_WORKSPACE_NAME)_ParameterFetcher_doFetch)
+# -------------------------------------------------------------------------
+FACTORY_DEF * TestFactory    FACTORY_NAME $(SequenceController_WORKSPACE_NAME)_Tester    INPUT  FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_ParameterFetcher_OUTPUT"    TEST @EvaluateExpression(FDIV,STRING_ENCODED,$($(SequenceController_WORKSPACE_NAME)_LHS),$(SequenceController_WORKSPACE_NAME)_Tester) = @EvaluateExpression(FDIV,STRING_ENCODED,$($(SequenceController_WORKSPACE_NAME)_RHS),$(SequenceController_WORKSPACE_NAME)_Tester) ENCODED TEST SequenceControllerLHS ATTRIBUTE_HAS_A_VALUE "" ENCODED TEST SequenceControllerRHS ATTRIBUTE_HAS_A_VALUE "" ENCODED    BOOLEAN_OPERATOR COMPOSITE    COMPOSITE_TEST_EXPR "1 AND 2 AND 3"    OUTPUT PASSED FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT FAILED FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_Tester_FAILED"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(SequenceController_WORKSPACE_NAME)_AttributeCreator    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_Tester_FAILED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "SequenceControllerAttr2" "SET_TO" "2" }    OUTPUT OUTPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_AttributeCreator_OUTPUT"
+# -------------------------------------------------------------------------
+# If we're doing LAST N features, then the multiplier comes in as 0.
+# If we're doing First N, multiplier is -1.
+# For RANDOM, we need to treat LAST N as if it was first N (i.e. have a -1)
+# That is what the ? : does in the rate multiplier.
+INCLUDE [ if { {-1} == {0} && {ORIGINAL} == {ORIGINAL} } {              puts "MACRO REAL_MODE LAST"; 	         puts "MACRO REAL_RATE 1"; 	      } else {              puts "MACRO REAL_MODE ORIGINAL";              puts "MACRO REAL_RATE [expr 1 * ( -1 ? -1 : -1 ) ]"; 	      } ]
+FACTORY_DEF {*} SamplingFactory    FACTORY_NAME $(SequenceController_WORKSPACE_NAME)_Sampler_2    COMMAND_PARM_EVALUATION SINGLE_PASS    SAMPLE_RATE $(REAL_RATE)    SAMPLE_ORDER $(REAL_MODE)    INPUT  FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_Tester_PASSED"    OUTPUT SAMPLED FEATURE_TYPE ___SAMPLED___
+# This TeeFactory is needed because Sampler will still output features if it has no OUTPUT clauses specified.
+# This way we behave nicely even if there are no output connections on the transformer. See PR#28886.
+FACTORY_DEF * TeeFactory    FACTORY_NAME $(SequenceController_WORKSPACE_NAME)_Sampler_2_Sampled    INPUT FEATURE_TYPE ___SAMPLED___    OUTPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_Sampler_2_SAMPLED"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(SequenceController_WORKSPACE_NAME)_AttributeCreator_3    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_Sampler_2_SAMPLED"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "SequenceControllerAttr2" "SET_TO" "1" }    OUTPUT OUTPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(SequenceController_WORKSPACE_NAME)_AttributeCreator_2    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_PassThrough"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "SequenceControllerAttr1" "SET_TO" "1" }    OUTPUT OUTPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} FeatureJoinerFactory    FACTORY_NAME $(SequenceController_WORKSPACE_NAME)_FeatureJoiner_2    INPUT LEFT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_AttributeCreator_2_OUTPUT"    INPUT RIGHT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_AttributeCreator_OUTPUT"    INPUT RIGHT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_AttributeCreator_3_OUTPUT"    JOIN_MODE Inner    JOIN_KEYS SequenceControllerAttr1 SequenceControllerAttr2 NUM    ATTR_CONFLICT_RES USE_LEFT    GEOMETRY_HANDLING USE_LEFT    OUTPUT JOINED FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_FeatureJoiner_2_JOINED"    OUTPUT UNJOINED_LEFT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_FeatureJoiner_2_UNJOINED_LEFT"
+# -------------------------------------------------------------------------
+INCLUDE [    set macroLine "MACRO $(SequenceController_WORKSPACE_NAME)_AttributeKeeper_c71640db_5595_4cfd_bf0f_8000a66bc6671_LIST_EXP ";    foreach attr [split ""] {       set attr [FME_DecodeText $attr];       set attr [regsub "{}$" $attr "{}.*"];       set attr [regsub -all "{}" $attr "\\{\[0-9\]+\\}"];       append macroLine ",^$attr$";    };    puts $macroLine; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME $(SequenceController_WORKSPACE_NAME)_AttributeKeeper    INPUT  FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_FeatureJoiner_2_JOINED"    OUTPUT { FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"        @KeepAttributes(fme_encoded,,fme_pcre_match,"^fme_$($(SequenceController_WORKSPACE_NAME)_AttributeKeeper_c71640db_5595_4cfd_bf0f_8000a66bc6671_LIST_EXP)")         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME $(SequenceController_WORKSPACE_NAME)_AttributeCreator_4    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_AttributeKeeper_OUTPUT"    MULTI_FEATURE_MODE NO    NULL_ATTR_MODE NO_OP     ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV     ATTR_ACTION { "" "fme_rejection_code" "SET_TO" "Termination<space>Condition<space>Triggered" }    OUTPUT OUTPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SequenceController_WORKSPACE_NAME)_Output1574883338 Output Collector"   INPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_FeatureJoiner_2_UNJOINED_LEFT"   OUTPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_Output" @RemoveAttributes(SequenceControllerAttr1)
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(SequenceController_WORKSPACE_NAME)_<Rejected>1574883338 Output Collector"   INPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_AttributeCreator_4_OUTPUT"   OUTPUT FEATURE_TYPE "$(SequenceController_WORKSPACE_NAME)_<Rejected>"
+INCLUDE [puts {MACRO WB_CURRENT_CONTEXT $(WB_OLD_CONTEXT_$(SequenceController_WORKSPACE_NAME))}]
