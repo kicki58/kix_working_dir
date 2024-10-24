@@ -1,0 +1,1286 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME2024_1_3\fme.exe" C:\Github\kix\divFME\gpkg_check_SRID\check_SRID.fmw
+#          --SourceDataset_SQLITE3 "C:\ny_slask\SAU_lev2\leverans_orginal_kopia\enb3032.gpkg"
+#          --gpkg_name "enb3032"
+#          --DestDataset_XLSXW "C:\ny_slask\SAU_lev2\SAU_srid_pa_orginal.xlsx"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="3352.31 1005.88"
+#!   DOC_TOP_LEFT="-134.813 -812.256"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="24627"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="6c84fe4b-96fa-42f2-b249-bce293d8fc8e"
+#!   FME_DOCUMENT_PRIORGUID="2c1473c4-b541-4ca2-9d01-d55b8bd2a3b4,88f87c62-62f9-4292-a98a-e8b22b393e87,f2f3f833-4509-41ff-8208-1d7960d6cd7d"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2024.1.3.0 (20240927 - Build 24627 - WIN64)"
+#!   LAST_SAVE_DATE="2024-10-24T12:49:10"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="1934.39 353.129"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="SQLITE3"
+#!   DATASET="$(SourceDataset_SQLITE3)"
+#!   KEYWORD="SQLITE3_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE="sqlite3_sql_statement &quot;&quot; sqlite3_where_clause &quot;&quot;"
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="db_type varchar(254) fme_basename varchar(50) fme_color varchar(50) fme_dataset varchar(50) fme_feature_type varchar(50) fme_fill_color varchar(50) fme_geometry varchar(50) fme_primary_axis double fme_rotation double fme_secondary_axis double fme_start_angle double fme_sweep_angle double fme_text_size double fme_text_string varchar(50) fme_type varchar(50) multi_reader_full_id integer multi_reader_id integer multi_reader_keyword varchar(50) multi_reader_type varchar(50)"
+#!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP sqlite3_reader_table_group sqlite3_where_clause Table&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT sqlite3_where_clause WHERE Clause&quot; &quot;&quot; "
+#!   ATTR_INDEX_TYPES="Indexed Unique"
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILE"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="22630"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ADVANCED_PARMS"
+#!   VALUE="SQLITE3_IN_BEGIN_SQL SQLITE3_IN_END_SQL SQLITE3_OUT_WRITER_MODE SQLITE3_OUT_TRANSACTION_INTERVAL SQLITE3_OUT_BEGIN_SQL{0} SQLITE3_OUT_END_SQL{0}"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ALLOW_DATASET_CONFLICT"
+#!   VALUE="YES"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING_HISTORIC"
+#!   VALUE="ALL"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Table1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Table"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the SQLite3 Database file(s)"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="SUPPORTS_SCHEMA_IN_FEATURE_TYPE_NAME"
+#!   VALUE="NO"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a name for the SQLite3 Database file"
+#! />
+#! </DATASET>
+#! <DATASET
+#!   IS_SOURCE="false"
+#!   ROLE="WRITER"
+#!   FORMAT="XLSXW"
+#!   DATASET="$(DestDataset_XLSXW)"
+#!   KEYWORD="XLSXW_1"
+#!   MULTI_GEOM_ALLOWED="true"
+#!   ATTR_MAX_LENGTH="255"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE="xlsx_drop_sheet No xlsx_trunc_sheet No xlsx_sheet_order &quot;&quot; xlsx_freeze_end_row &quot;&quot; xlsx_names_are_positions No xlsx_field_names_out Yes xlsx_field_names_formatting Yes xlsx_start_col &quot;&quot; xlsx_start_row &quot;&quot; xlsx_offset_col &quot;&quot; xlsx_offset_row &quot;&quot; xlsx_raster_type PNG xlsx_table_writer_mode Insert xlsx_row_id_column &quot;&quot; xlsx_protect_sheet &quot;NO&quot; xlsx_protect_sheet_level &quot;&lt;Unused&gt;&quot; xlsx_protect_sheet_password &quot;&lt;Unused&gt;&quot; xlsx_protect_sheet_permissions &quot;&lt;Unused&gt;&quot; xlsx_template_sheet &quot;&quot; xlsx_remove_unchanged_template_sheet &quot;No&quot;"
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_basename string(50,xlsx_col_props) fme_color string(50,xlsx_col_props) fme_dataset string(50,xlsx_col_props) fme_db_operation string(width,xlsx_col_props) fme_feature_type string(50,xlsx_col_props) fme_fill_color string(50,xlsx_col_props) fme_geometry string(50,xlsx_col_props) fme_primary_axis number(width,xlsx_col_props) fme_rotation number(width,xlsx_col_props) fme_secondary_axis number(width,xlsx_col_props) fme_start_angle number(width,xlsx_col_props) fme_sweep_angle number(width,xlsx_col_props) fme_text_size number(width,xlsx_col_props) fme_text_string string(50,xlsx_col_props) fme_type string(50,xlsx_col_props) xlsx_col_id number(width,xlsx_col_props) xlsx_raster_height number(width,xlsx_col_props) xlsx_raster_scale_factor number(width,xlsx_col_props) xlsx_raster_width number(width,xlsx_col_props) xlsx_row_formatting string(width,xlsx_col_props) xlsx_row_id number(width,xlsx_col_props) xlsx_type string(width,xlsx_col_props)"
+#!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP xlsx_layer_group xlsx_table_writer_mode%xlsx_field_names_out%xlsx_field_names_formatting%xlsx_names_are_positions%xlsx_row_id_column%xlsx_truncate_group%xlsx_table_group%xlsx_rowcolumn_group%xlsx_template_group%xlsx_protect_sheet%xlsx_advanced_group Sheet Settings&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_truncate_group xlsx_row_id%xlsx_drop_sheet%xlsx_trunc_sheet Drop/Truncate&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_rowcolumn_group xlsx_start_col%xlsx_start_row%xlsx_offset_col%xlsx_offset_row Start Position&quot; &quot;&quot; &quot;GUI ACTIVEDISCLOSUREGROUP xlsx_protect_sheet xlsx_protect_sheet_password%xlsx_protect_sheet_level%xlsx_protect_sheet_permissions Protect Sheet&quot; NO &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_template_group xlsx_template_sheet%xlsx_remove_unchanged_template_sheet Template Options&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_advanced_group xlsx_sheet_order%xlsx_freeze_end_row%xlsx_raster_type Advanced&quot; &quot;&quot; &quot;GUI CHOICE xlsx_drop_sheet Yes%No Drop Existing Sheet/Named Range:&quot; No &quot;GUI CHOICE xlsx_trunc_sheet Yes%No Truncate Existing Sheet/Named Range:&quot; No &quot;GUI OPTIONAL RANGE_SLIDER xlsx_sheet_order 1%MAX Sheet Order (1 - n):&quot; &quot;&quot; &quot;GUI OPTIONAL RANGE_SLIDER xlsx_freeze_end_row 1%MAX Freeze First Row(s) (1 - n):&quot; &quot;&quot; &quot;GUI ACTIVECHOICE xlsx_field_names_out Yes%No,xlsx_field_names_formatting,++xlsx_field_names_formatting+No Output Field Names:&quot; Yes &quot;GUI CHOICE xlsx_field_names_formatting Yes%No Format Field Names Row:&quot; Yes &quot;GUI CHOICE xlsx_names_are_positions Yes%No Use Attribute Names As Column Positions:&quot; No &quot;GUI OPTIONAL TEXT xlsx_start_col Named Range Start Column:&quot; &quot;&quot; &quot;GUI OPTIONAL INTEGER xlsx_start_row Named Range Start Row:&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT xlsx_offset_col Start Column:&quot; &quot;&quot; &quot;GUI OPTIONAL INTEGER xlsx_offset_row Start Row:&quot; &quot;&quot; &quot;GUI CHOICE xlsx_raster_type BMP%JPEG%PNG Raster Format:&quot; PNG &quot;GUI OPTIONAL PASSWORD_ENCODED xlsx_protect_sheet_password Password:&quot; &lt;Unused&gt; &quot;GUI ACTIVECHOICE_LOOKUP xlsx_protect_sheet_level Select&lt;space&gt;Only&lt;space&gt;Permissions,PROT_DEFAULT,xlsx_protect_sheet_permissions%View&lt;space&gt;Only&lt;space&gt;Permissions,PROT_ALL,xlsx_protect_sheet_permissions%Specific&lt;space&gt;Permissions Protection Level:&quot; &lt;Unused&gt; &quot;GUI OPTIONAL LOOKUP_LISTBOX xlsx_protect_sheet_permissions Select&lt;space&gt;locked&lt;space&gt;cells,PROT_SEL_LOCKED_CELLS%Select&lt;space&gt;unlocked&lt;space&gt;cells,PROT_SEL_UNLOCKED_CELLS%Format&lt;space&gt;cells,PROT_FORMAT_CELLS%Format&lt;space&gt;columns,PROT_FORMAT_COLUMNS%Format&lt;space&gt;rows,PROT_FORMAT_ROWS%Insert&lt;space&gt;columns,PROT_INSERT_COLUMNS%Insert&lt;space&gt;rows,PROT_INSERT_ROWS%Add&lt;space&gt;hyperlinks&lt;space&gt;to&lt;space&gt;unlocked&lt;space&gt;cells,PROT_INSERT_HYPERLINKS%Delete&lt;space&gt;unlocked&lt;space&gt;columns,PROT_DELETE_COLUMNS%Delete&lt;space&gt;unlocked&lt;space&gt;rows,PROT_DELETE_ROWS%Sort&lt;space&gt;unlocked&lt;space&gt;cells/rows/columns,PROT_SORT%Use&lt;space&gt;Autofilter&lt;space&gt;on&lt;space&gt;unlocked&lt;space&gt;cells,PROT_AUTOFILTER%Use&lt;space&gt;PivotTable&lt;space&gt;&amp;&lt;space&gt;PivotChart&lt;space&gt;on&lt;space&gt;unlocked&lt;space&gt;cells,PROT_PIVOTTABLES%Edit&lt;space&gt;unlocked&lt;space&gt;objects,PROT_OBJECTS%Edit&lt;space&gt;unprotected&lt;space&gt;scenarios,PROT_SCENARIOS Specific Permissions:&quot; &lt;Unused&gt; &quot;GUI ACTIVECHOICE xlsx_table_writer_mode Insert,+xlsx_row_id_column+%Update,+xlsx_row_id_column+xlsx_row_id%Delete,+xlsx_row_id_column+xlsx_row_id Writer Mode:&quot; Insert &quot;GUI OPTIONAL ATTR xlsx_row_id_column ALLOW_NEW Row Number Attribute:&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT_EDIT xlsx_template_sheet \&quot; \&quot; Template Sheet:&quot; &quot;&quot; &quot;GUI CHOICE xlsx_remove_unchanged_template_sheet Yes%No Remove Template Sheet if Unchanged:&quot; No "
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILE"
+#!   FTTR_TYPE=""
+#!   GENERATE_FME_BUILD_NUM="22630"
+#!   COORDSYS=""
+#!   FANOUT_EXPRESSION=""
+#!   FANOUT_GROUP="NO"
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ALLOW_DATASET_CONFLICT"
+#!   VALUE="YES"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DEFAULT_ATTR_TYPE"
+#!   VALUE="auto"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DEFAULT_READER"
+#!   VALUE="XLSXR"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Sheet1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Sheet"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="MIME_TYPE"
+#!   VALUE="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet ADD_DISPOSITION"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="USER_ATTRIBUTES_COLUMNS"
+#!   VALUE="Width,Cell Width%Precision,Formatting"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a name for the Microsoft Excel file"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="blob"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="blob"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="blob"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="double"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varchar(20)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="real(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="auto(width,xlsx_col_props)"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="datetime(width,xlsx_col_props)"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="time(width,xlsx_col_props)"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="date(width,xlsx_col_props)"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="boolean(width,xlsx_col_props)"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="XLSXW"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_point"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="XLSXW"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="gpkg_geometry_columns"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="3"
+#!   FEAT_GEOMTYPE="db_none"
+#!   POSITION="-134.81344325647945 -521.75143751437531"
+#!   BOUNDING_RECT="-134.81344325647945 -521.75143751437531 706.69416206366748 71"
+#!   ORDER="500000000000005"
+#!   COLLAPSED="true"
+#!   KEYWORD="SQLITE3_1"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   READ_SELECT_ATTRS="true"
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="table_name" ATTR_TYPE="text,Unique" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="column_name" ATTR_TYPE="text,Unique" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="geometry_type_name" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="srs_id" ATTR_TYPE="integer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="z" ATTR_TYPE="integer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="m" ATTR_TYPE="integer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="sqlite3_reader_table_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="sqlite3_where_clause" PARM_VALUE=""/>
+#! </FEATURE_TYPE>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="false"
+#!   NODE_NAME="SRID"
+#!   FEATURE_TYPE_NAME="@Value(srs_id)"
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="8"
+#!   FEAT_NAMEDGEOMTYPE=""
+#!   POSITION="2787.4968749687487 193.6234062340622"
+#!   BOUNDING_RECT="2787.4968749687487 193.6234062340622 430 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="false"
+#!   KEYWORD="XLSXW_1"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   SCHEMA_ATTRIBUTE_SOURCE="0"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="gpkg" ATTR_TYPE="string(200,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="srs_id" ATTR_TYPE="number(20,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="z" ATTR_TYPE="number(20,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="m" ATTR_TYPE="number(20,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_advanced_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_drop_sheet" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_formatting" PARM_VALUE="Yes"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_out" PARM_VALUE="Yes"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_freeze_end_row" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_layer_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_names_are_positions" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_offset_col" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_offset_row" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet_level" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet_password" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet_permissions" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_raster_type" PARM_VALUE="PNG"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_remove_unchanged_template_sheet" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_row_id_column" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_rowcolumn_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_sheet_order" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_start_col" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_start_row" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_table_writer_mode" PARM_VALUE="Insert"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_template_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_template_sheet" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_trunc_sheet" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_truncate_group" PARM_VALUE=""/>
+#! </FEATURE_TYPE>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="false"
+#!   NODE_NAME="alla"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="10"
+#!   FEAT_NAMEDGEOMTYPE=""
+#!   POSITION="2787.4968749687487 -323.62565625656271"
+#!   BOUNDING_RECT="2787.4968749687487 -323.62565625656271 -1 -1"
+#!   ORDER="500000000000009"
+#!   COLLAPSED="true"
+#!   KEYWORD="XLSXW_1"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   SCHEMA_ATTRIBUTE_SOURCE="0"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="gpkg" ATTR_TYPE="string(200,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="srs_id" ATTR_TYPE="number(20,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="z" ATTR_TYPE="number(20,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="m" ATTR_TYPE="number(20,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_advanced_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_drop_sheet" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_formatting" PARM_VALUE="Yes"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_out" PARM_VALUE="Yes"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_freeze_end_row" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_layer_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_names_are_positions" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_offset_col" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_offset_row" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet_level" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet_password" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet_permissions" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_raster_type" PARM_VALUE="PNG"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_remove_unchanged_template_sheet" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_row_id_column" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_rowcolumn_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_sheet_order" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_start_col" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_start_row" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_table_writer_mode" PARM_VALUE="Insert"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_template_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_template_sheet" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_trunc_sheet" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_truncate_group" PARM_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="SQLITE3_1"
+#!   OVERRIDE="-SQLITE3_1_DATASET"
+#!   DATASET="SQLITE3_1/enb3032.gpkg"
+#! />
+#! </READER_DATASETS>
+#! <WRITER_DATASETS>
+#! <DATASET
+#!   NAME="XLSXW_1"
+#!   OVERRIDE="-XLSXW_1_DATASET"
+#!   DATASET="XLSXW_1/SAU_srid_pa_orginal.xlsx"
+#! />
+#! </WRITER_DATASETS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_SQLITE3 INCLUDE_WEB_BROWSER%SQLite_Database_Files(*.sqlite;*.db;*.sl3;*.gpkg)|*.sqlite;*.db;*.sl3;*.gpkg|SQLite_Database_Files(*.sqlite)|*.sqlite|SQLite_Database_Files(*.db)|*.db|SQLite_Database_Files(*.sl3)|*.sl3|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|SQLite_Database_Files(*.gpkg)|*.gpkg|All_files(*)|* SQLite Database"
+#!   DEFAULT_VALUE="C:\ny_slask\SAU_lev2\leverans_orginal_kopia\enb3032.gpkg"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL TEXT_EDIT_OR_ATTR gpkg_name FME_SYNTAX%FME%FME_SUPPORTSNUMERIC%YES Geopackage name"
+#!   DEFAULT_VALUE="enb3032"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI FILENAME DestDataset_XLSXW Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Microsoft_Excel_2007+_Workbook(*.xlsx)|*.xlsx|Microsoft_Excel_2007+_Macro_Workbook(*.xlsm)|*.xlsm|Microsoft_Excel_Pre-2007_Workbook(*.xls)|*.xls|All_Files(*)|* Destination Microsoft Excel File:"
+#!   DEFAULT_VALUE="C:\ny_slask\SAU_lev2\SAU_srid_pa_orginal.xlsx"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiU291cmNlRGF0YXNldF9TUUxJVEUzIiwicHJvbXB0IjoiU1FMaXRlIERhdGFiYXNlIiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOnRydWUsImRlZmF1bHRWYWx1ZSI6IkM6XFxueV9zbGFza1xcU0FVX2xldjJcXGxldmVyYW5zX29yZ2luYWxfa29waWFcXGVuYjMwMzIuZ3BrZyIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJmaWxlIiwic2VsZWN0TXVsdGlwbGUiOnRydWUsIml0ZW1zVG9TZWxlY3QiOiJmaWxlcyIsImFjY2Vzc01vZGUiOiJyZWFkIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJpbmNsdWRlV2ViQnJvd3NlciI6dHJ1ZSwiZmlsdGVycyI6W3siZGVzY3JpcHRpb24iOiJTUUxpdGUgRGF0YWJhc2UgRmlsZXMiLCJmaWx0ZXIiOlsiKi5zcWxpdGUiLCIqLmRiIiwiKi5zbDMiLCIqLmdwa2ciXX0seyJkZXNjcmlwdGlvbiI6IlNRTGl0ZSBEYXRhYmFzZSBGaWxlcyIsImZpbHRlciI6WyIqLnNxbGl0ZSJdfSx7ImRlc2NyaXB0aW9uIjoiU1FMaXRlIERhdGFiYXNlIEZpbGVzIiwiZmlsdGVyIjpbIiouZGIiXX0seyJkZXNjcmlwdGlvbiI6IlNRTGl0ZSBEYXRhYmFzZSBGaWxlcyIsImZpbHRlciI6WyIqLnNsMyJdfSx7ImRlc2NyaXB0aW9uIjoiQXJjaGl2ZSBGaWxlcyIsImZpbHRlciI6WyIqLjd6IiwiKi43emlwIiwiKi5yYXIiLCIqLnJ2eiIsIioudGFyIiwiKi50YXIuYnoyIiwiKi50YXIuZ3oiLCIqLnRneiIsIiouemlwIiwiKi56aXB4Il19LHsiZGVzY3JpcHRpb24iOiJDb21wcmVzc2VkIEZpbGVzIiwiZmlsdGVyIjpbIiouYnoyIiwiKi5neiJdfSx7ImRlc2NyaXB0aW9uIjoiU1FMaXRlIERhdGFiYXNlIEZpbGVzIiwiZmlsdGVyIjpbIiouZ3BrZyJdfSx7ImRlc2NyaXB0aW9uIjoiQWxsIGZpbGVzIiwiZmlsdGVyIjpbIioiXX1dfSx7Im5hbWUiOiJncGtnX25hbWUiLCJwcm9tcHQiOiJHZW9wYWNrYWdlIG5hbWUiLCJ2YWx1ZVR5cGUiOiJzdHJpbmdFbmNvZGVkIiwicmVxdWlyZWQiOmZhbHNlLCJkZWZhdWx0VmFsdWUiOiJlbmIzMDMyIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0Iiwic2hvd0FyaXRobWV0aWNFZGl0b3IiOnRydWV9LHsibmFtZSI6IkRlc3REYXRhc2V0X1hMU1hXIiwicHJvbXB0IjoiRGVzdGluYXRpb24gTWljcm9zb2Z0IEV4Y2VsIEZpbGU6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOnRydWUsImRlZmF1bHRWYWx1ZSI6IkM6XFxueV9zbGFza1xcU0FVX2xldjJcXFNBVV9zcmlkX3BhX29yZ2luYWwueGxzeCIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJmaWxlIiwic2VsZWN0TXVsdGlwbGUiOmZhbHNlLCJpdGVtc1RvU2VsZWN0IjoiZmlsZXMiLCJhY2Nlc3NNb2RlIjoid3JpdGUiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2UsImZpbHRlcnMiOlt7ImRlc2NyaXB0aW9uIjoiRXhjZWwgRmlsZXMiLCJmaWx0ZXIiOlsiKi54bHN4IiwiKi54bHNtIiwiKi54bHMiXX0seyJkZXNjcmlwdGlvbiI6Ik1pY3Jvc29mdCBFeGNlbCAyMDA3KyBXb3JrYm9vayIsImZpbHRlciI6WyIqLnhsc3giXX0seyJkZXNjcmlwdGlvbiI6Ik1pY3Jvc29mdCBFeGNlbCAyMDA3KyBNYWNybyBXb3JrYm9vayIsImZpbHRlciI6WyIqLnhsc20iXX0seyJkZXNjcmlwdGlvbiI6Ik1pY3Jvc29mdCBFeGNlbCBQcmUtMjAwNyBXb3JrYm9vayIsImZpbHRlciI6WyIqLnhscyJdfSx7ImRlc2NyaXB0aW9uIjoiQWxsIEZpbGVzIiwiZmlsdGVyIjpbIioiXX1dfV19"
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="SourceDataset_SQLITE3" 
+#!   DEFAULT_VALUE="C:\ny_slask\SAU_lev2\leverans_orginal_kopia\enb3032.gpkg"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_SQLITE3 INCLUDE_WEB_BROWSER%SQLite_Database_Files(*.sqlite;*.db;*.sl3;*.gpkg)|*.sqlite;*.db;*.sl3;*.gpkg|SQLite_Database_Files(*.sqlite)|*.sqlite|SQLite_Database_Files(*.db)|*.db|SQLite_Database_Files(*.sl3)|*.sl3|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|SQLite_Database_Files(*.gpkg)|*.gpkg|All_files(*)|* SQLite Database"
+#! />
+#!     <INFO NAME="gpkg_name" 
+#!   DEFAULT_VALUE="enb3032"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI OPTIONAL TEXT_EDIT_OR_ATTR gpkg_name FME_SYNTAX%FME%FME_SUPPORTSNUMERIC%YES Geopackage name"
+#! />
+#!     <INFO NAME="DestDataset_XLSXW" 
+#!   DEFAULT_VALUE="C:\ny_slask\SAU_lev2\SAU_srid_pa_orginal.xlsx"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI FILENAME DestDataset_XLSXW Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Microsoft_Excel_2007+_Workbook(*.xlsx)|*.xlsx|Microsoft_Excel_2007+_Macro_Workbook(*.xlsm)|*.xlsm|Microsoft_Excel_Pre-2007_Workbook(*.xls)|*.xls|All_Files(*)|* Destination Microsoft Excel File:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="2"
+#!   TYPE="AttributeManager"
+#!   VERSION="4"
+#!   POSITION="1709.3920939209393 -323.62565625656271"
+#!   BOUNDING_RECT="1709.3920939209393 -323.62565625656271 454 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="gpkg" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="srs_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="z" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="m" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; gpkg $(gpkg_name) SET_TO srs_id srs_id  NO_OP z z  NO_OP m m  NO_OP table_name table_name  REMOVE column_name column_name  REMOVE geometry_type_name geometry_type_name  REMOVE _dirpath _dirpath  REMOVE _filename _filename  REMOVE _rootname _rootname  REMOVE _extension _extension  REMOVE _dirname _dirname  REMOVE"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="Tester"
+#!   VERSION="3"
+#!   POSITION="454.97312217019862 -741.2555625556256"
+#!   BOUNDING_RECT="454.97312217019862 -741.2555625556256 454 71"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#!   SHOW_BLANK_INPUT_FT="false"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="table_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="column_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="geometry_type_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="srs_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="z" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="m" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="table_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="column_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="geometry_type_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="srs_id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="z" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="m" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST &lt;at&gt;Value&lt;openparen&gt;table_name&lt;closeparen&gt; = project_information"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="12"
+#!   TYPE="FilenamePartExtractor"
+#!   VERSION="3"
+#!   POSITION="1084.3858438584382 -747.2555625556256"
+#!   BOUNDING_RECT="1084.3858438584382 -747.2555625556256 482.4375 65"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="table_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="column_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="geometry_type_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="srs_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="z" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="m" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_dirpath" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_rootname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_dirname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="DIRNAME_ATTR" PARM_VALUE="_dirname"/>
+#!     <XFORM_PARM PARM_NAME="DIRPATH_ATTR" PARM_VALUE="_dirpath"/>
+#!     <XFORM_PARM PARM_NAME="EXTENSION_ATTR" PARM_VALUE="_extension"/>
+#!     <XFORM_PARM PARM_NAME="FULLNAME_ATTR" PARM_VALUE="_filename"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ROOTNAME_ATTR" PARM_VALUE="_rootname"/>
+#!     <XFORM_PARM PARM_NAME="SRC_ATTR" PARM_VALUE="$(SourceDataset_SQLITE3)"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FilenamePartExtractor"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="8"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="-1"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="-1"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="12"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="12"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE SourceDataset_SQLITE3_1,SQLITE3_IN_FME_CONNECTION_GROUP_SQLITE3_1,SQLITE3_IN_FME_GROUP_NAMED1_SQLITE3_1,SQLITE3_IN_ADVANCED_SQLITE3_1,SQLITE3_IN_BEGIN_SQL_SQLITE3_1,SQLITE3_IN_END_SQL_SQLITE3_1,SQLITE3_IN_NETWORK_AUTHENTICATION_SQLITE3_1,DestDataset_XLSXW_1,XLSXW_OUT_FME_GROUP_NAMED1_XLSXW_1,XLSXW_OUT_OVERWRITE_FILE_XLSXW_1,XLSXW_OUT_TEMPLATEFILE_XLSXW_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_SQLITE3 C:\ny_slask\SAU_lev2\leverans_orginal_kopia\enb3032.gpkg
+
+DEFAULT_MACRO gpkg_name enb3032
+
+DEFAULT_MACRO DestDataset_XLSXW C:\ny_slask\SAU_lev2\SAU_srid_pa_orginal.xlsx
+
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_SQLITE3$encode)} == {}} { puts_real {Parameter 'SourceDataset_SQLITE3' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(DestDataset_XLSXW$encode)} == {}} { puts_real {Parameter 'DestDataset_XLSXW' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} SQLITE3
+MULTI_READER_KEYWORD{0} SQLITE3_1
+MULTI_READER_GEN_DIRECTIVES{0} _MERGE_SCHEMAS,YES,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,SUPPORT_INTERNATIONALIZATION,YES,CREATE_FEATURE_TABLES_FROM_DATA,No,TABLELIST,gpkg_contents<space>gpkg_geometry_columns,BEGIN_SQL,,END_SQL,,EXPOSE_ATTRS_GROUP,,SQLITE3_EXPOSE_FORMAT_ATTRS,,ADVANCED,
+WRITER_TYPE MULTI_WRITER
+WRITER_KEYWORD PRIMARY_DEST
+PRIMARY_DEST_DATASET_ORDER BY_ID
+PRIMARY_DEST_FIRST_WRITER_ID 0
+PRIMARY_DEST_TYPE{0} XLSXW
+PRIMARY_DEST_KEYWORD{0} XLSXW_1
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "SQLITE3_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER SQLITE3 SQLITE3_1
+# ============================================================================
+# First get the dataset for the database.
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_SQLITE3_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER SQLITE3 SQLITE3_1
+DEFAULT_MACRO SourceDataset_SQLITE3_1 $(SourceDataset_SQLITE3)
+GUI MULTIFILE SourceDataset_SQLITE3_1 SQLite_Database_Files(*.sqlite;*.db;*.sl3;*.gpkg)|*.sqlite;*.db;*.sl3;*.gpkg|SQLite_Database_Files(*.sqlite)|*.sqlite|SQLite_Database_Files(*.db)|*.db|SQLite_Database_Files(*.sl3)|*.sl3|SQLite_Database_Files(*.gpkg)|*.gpkg|All_files(*)|* SQLite Database
+DEFAULT_MACRO SQLITE3_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_SQLITE3_1 Yes
+SQLITE3_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(SQLITE3_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_SQLITE3_1)"
+DEFAULT_MACRO SQLITE3_IN_FME_CONNECTION_GROUP_SQLITE3_1 
+GUI OPTIONAL DISCLOSUREGROUP SQLITE3_IN_FME_CONNECTION_GROUP_SQLITE3_1 SQLITE3_IN_NAMED_CONNECTION Database Connection
+DEFAULT_MACRO SQLITE3_IN_FME_GROUP_NAMED1_SQLITE3_1 
+GUI OPTIONAL DISCLOSUREGROUP SQLITE3_IN_FME_GROUP_NAMED1_SQLITE3_1 SQLITE3_IN_TABLELIST%SQLITE3_IN_WHERE_CLAUSE Constraints
+DEFAULT_MACRO SQLITE3_IN_EXPOSE_ATTRS_GROUP_SQLITE3_1 
+SQLITE3_1_EXPOSE_ATTRS_GROUP "$(SQLITE3_IN_EXPOSE_ATTRS_GROUP_SQLITE3_1)"
+# Compatibility case to support reading old workspaces with raw byte if unicode
+DEFAULT_MACRO SQLITE3_IN_SUPPORT_INTERNATIONALIZATION_SQLITE3_1 YES
+SQLITE3_1_SUPPORT_INTERNATIONALIZATION "$(SQLITE3_IN_SUPPORT_INTERNATIONALIZATION_SQLITE3_1)"
+DEFAULT_MACRO SQLITE3_IN_ADVANCED_SQLITE3_1 
+GUI OPTIONAL DISCLOSUREGROUP SQLITE3_IN_ADVANCED_SQLITE3_1 SQLITE3_IN_BEGIN_SQL_SQLITE3_1%SQLITE3_IN_END_SQL_SQLITE3_1 Advanced
+DEFAULT_MACRO SQLITE3_IN_BEGIN_SQL_SQLITE3_1 
+SQLITE3_1_BEGIN_SQL "$(SQLITE3_IN_BEGIN_SQL_SQLITE3_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG SQLITE3_IN_BEGIN_SQL_SQLITE3_1 MODE,SQL;FORMAT,SQLITE3 SQL To Run Before Read
+DEFAULT_MACRO SQLITE3_IN_END_SQL_SQLITE3_1 
+SQLITE3_1_END_SQL "$(SQLITE3_IN_END_SQL_SQLITE3_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG SQLITE3_IN_END_SQL_SQLITE3_1 MODE,SQL;FORMAT,SQLITE3 SQL To Run After Read
+DEFAULT_MACRO SQLITE3_IN_CREATE_FEATURE_TABLES_FROM_DATA_SQLITE3_1 No
+SQLITE3_1_CREATE_FEATURE_TABLES_FROM_DATA "$(SQLITE3_IN_CREATE_FEATURE_TABLES_FROM_DATA_SQLITE3_1)"
+# ===========================================================================
+DEFAULT_MACRO SQLITE3_IN_NETWORK_AUTHENTICATION_SQLITE3_1 
+SQLITE3_1_NETWORK_AUTHENTICATION "$(SQLITE3_IN_NETWORK_AUTHENTICATION_SQLITE3_1)"
+GUI OPTIONAL AUTHENTICATOR SQLITE3_IN_NETWORK_AUTHENTICATION_SQLITE3_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO SQLITE3_IN_ATTRIBUTE_READING_SQLITE3_1 DEFLINE
+SQLITE3_1_ATTRIBUTE_READING "$(SQLITE3_IN_ATTRIBUTE_READING_SQLITE3_1)"
+# ============================================================================
+SQLITE3_1_GENERATE_FME_BUILD_NUM 22630
+SQLITE3_1_DATASET "$(SourceDataset_SQLITE3_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "XLSXW_1"
+#! END_WB_HEADER
+#! START_DEST_HEADER XLSXW XLSXW_1
+# ============================================================================
+# First get the dataset for the database. For Excel, it's the file name.
+# For now we'll use whatever they had when they generated this mapping file,
+# and not reprompt
+#! END_DEST_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO DestDataset
+INCLUDE [ if {"$(DestDataset)" != ""} {                          \
+ puts {DEFAULT_MACRO DestDataset_XLSXW_1 $(DestDataset)}         \
+ } ]
+#! END_WB_HEADER
+#! START_DEST_HEADER XLSXW XLSXW_1
+DEFAULT_MACRO DestDataset_XLSXW_1 $(DestDataset_XLSXW)
+GUI FILENAME DestDataset_XLSXW_1 Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Microsoft_Excel_2007+_Workbook(*.xlsx)|*.xlsx|Microsoft_Excel_2007+_Macro_Workbook(*.xlsm)|*.xlsm|Microsoft_Excel_Pre-2007_Workbook(*.xls)|*.xls|All_Files(*)|* Destination Microsoft Excel File:
+CHECK_RASTER_ATTRIBUTES YES
+# ============================================================================
+DEFAULT_MACRO XLSXW_OUT_FME_GROUP_NAMED1_XLSXW_1 
+GUI OPTIONAL DISCLOSUREGROUP XLSXW_OUT_FME_GROUP_NAMED1_XLSXW_1 XLSXW_OUT_OVERWRITE_FILE_XLSXW_1%XLSXW_OUT_TEMPLATEFILE_XLSXW_1%XLSXW_OUT_TEMPLATE_SHEET%XLSXW_OUT_REMOVE_UNCHANGED_TEMPLATE_SHEET Writer Parameters
+# Whether or not to overwrite the file
+DEFAULT_MACRO XLSXW_OUT_OVERWRITE_FILE_XLSXW_1 No
+XLSXW_1_OVERWRITE_FILE "$(XLSXW_OUT_OVERWRITE_FILE_XLSXW_1)"
+GUI ACTIVECHOICE XLSXW_OUT_OVERWRITE_FILE_XLSXW_1 Yes%No,XLSXW_OUT_TEMPLATEFILE_XLSXW_1,XLSXW_OUT_TEMPLATE_SHEET,XLSXW_OUT_REMOVE_UNCHANGED_TEMPLATE_SHEET Overwrite Existing File:
+# Template file option
+DEFAULT_MACRO XLSXW_OUT_TEMPLATEFILE_XLSXW_1 
+XLSXW_1_TEMPLATEFILE "$(XLSXW_OUT_TEMPLATEFILE_XLSXW_1)"
+GUI OPTIONAL FILENAME_MUSTEXIST XLSXW_OUT_TEMPLATEFILE_XLSXW_1 Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Microsoft_Excel_2007+_Workbook(*.xlsx)|*.xlsx|Microsoft_Excel_2007+_Macro_Workbook(*.xlsm)|*.xlsm|Microsoft_Excel_Pre-2007_Workbook(*.xls)|*.xls|All_Files(*)|* Template File:
+GUI LOOKUP XLSXW_OUT_TEMPLATEFILE_XLSXW_1 <Unused>, 
+DEFAULT_MACRO XLSXW_OUT_TEMPLATE_SHEET_XLSXW_1 
+XLSXW_1_TEMPLATE_SHEET "$(XLSXW_OUT_TEMPLATE_SHEET_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_REMOVE_UNCHANGED_TEMPLATE_SHEET_XLSXW_1 No
+XLSXW_1_REMOVE_UNCHANGED_TEMPLATE_SHEET "$(XLSXW_OUT_REMOVE_UNCHANGED_TEMPLATE_SHEET_XLSXW_1)"
+# Compatibility case to support reading old workspaces which have one template sheet per writer
+DEFAULT_MACRO XLSXW_OUT_MULTIPLE_TEMPLATE_SHEETS_XLSXW_1 Yes
+XLSXW_1_MULTIPLE_TEMPLATE_SHEETS "$(XLSXW_OUT_MULTIPLE_TEMPLATE_SHEETS_XLSXW_1)"
+# Compatibility case to support old case where insert would allow fme_db_operation
+DEFAULT_MACRO XLSXW_OUT_INSERT_IGNORE_DB_OP_XLSXW_1 Yes
+XLSXW_1_INSERT_IGNORE_DB_OP "$(XLSXW_OUT_INSERT_IGNORE_DB_OP_XLSXW_1)"
+# ============================================================================
+# Parameters whose values will be percolated to the feature types, but will not
+# remain as writer level settings
+# Default to not drop feature type first
+DEFAULT_MACRO XLSXW_OUT_DROP_TABLE_XLSXW_1 No
+XLSXW_1_DROP_TABLE "$(XLSXW_OUT_DROP_TABLE_XLSXW_1)"
+# Default to not truncate feature type first (removeallcelldata,retainformatting/headers,etc.)
+DEFAULT_MACRO XLSXW_OUT_TRUNCATE_TABLE_XLSXW_1 No
+XLSXW_1_TRUNCATE_TABLE "$(XLSXW_OUT_TRUNCATE_TABLE_XLSXW_1)"
+# Maintain compatibility with lenient attrName.* matching
+DEFAULT_MACRO XLSXW_OUT_STRICT_SCHEMA_ADDITIONAL_ATTRIBUTE_MATCHING_XLSXW_1 yes
+XLSXW_1_STRICT_SCHEMA_ADDITIONAL_ATTRIBUTE_MATCHING "$(XLSXW_OUT_STRICT_SCHEMA_ADDITIONAL_ATTRIBUTE_MATCHING_XLSXW_1)"
+# Default to write out the field names
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_OUT_XLSXW_1 Yes
+XLSXW_1_FIELD_NAMES_OUT "$(XLSXW_OUT_FIELD_NAMES_OUT_XLSXW_1)"
+# Allow header row to be unformatted
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_FORMATTING_XLSXW_1 Yes
+XLSXW_1_FIELD_NAMES_FORMATTING "$(XLSXW_OUT_FIELD_NAMES_FORMATTING_XLSXW_1)"
+# Default writer mode
+DEFAULT_MACRO XLSXW_OUT_WRITER_MODE_XLSXW_1 Insert
+XLSXW_1_WRITER_MODE "$(XLSXW_OUT_WRITER_MODE_XLSXW_1)"
+# Default raster writing type
+DEFAULT_MACRO XLSXW_OUT_RASTER_FORMAT_XLSXW_1 PNG
+XLSXW_1_RASTER_FORMAT "$(XLSXW_OUT_RASTER_FORMAT_XLSXW_1)"
+# ============================================================================
+# Choose excel file protection mode
+DEFAULT_MACRO XLSXW_OUT_PROTECT_SHEET_XLSXW_1 NO
+XLSXW_1_PROTECT_SHEET "$(XLSXW_OUT_PROTECT_SHEET_XLSXW_1)"
+# Whether or not to enable sheet password protection
+DEFAULT_MACRO XLSXW_OUT_PROTECT_SHEET_PASSWORD_XLSXW_1 <Unused>
+XLSXW_1_PROTECT_SHEET_PASSWORD "$(XLSXW_OUT_PROTECT_SHEET_PASSWORD_XLSXW_1)"
+# Which kind of protection level
+DEFAULT_MACRO XLSXW_OUT_PROTECT_SHEET_LEVEL_XLSXW_1 <Unused>
+XLSXW_1_PROTECT_SHEET_LEVEL "$(XLSXW_OUT_PROTECT_SHEET_LEVEL_XLSXW_1)"
+# Which kind of specific permissions will be enabled
+DEFAULT_MACRO XLSXW_OUT_PROTECT_SHEET_PERMISSIONS_XLSXW_1 <Unused>
+XLSXW_1_PROTECT_SHEET_PERMISSIONS "$(XLSXW_OUT_PROTECT_SHEET_PERMISSIONS_XLSXW_1)"
+# ============================================================================
+# Opt in for destination dataset type vs format type validation
+DEFAULT_MACRO XLSXW_OUT_DESTINATION_DATASETTYPE_VALIDATION_XLSXW_1 Yes
+XLSXW_1_DESTINATION_DATASETTYPE_VALIDATION "$(XLSXW_OUT_DESTINATION_DATASETTYPE_VALIDATION_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_COORDINATE_SYSTEM_GRANULARITY_XLSXW_1 FEATURE
+XLSXW_1_COORDINATE_SYSTEM_GRANULARITY "$(XLSXW_OUT_COORDINATE_SYSTEM_GRANULARITY_XLSXW_1)"
+# ============================================================================
+XLSXW_1_GENERATE_FME_BUILD_NUM 22630
+XLSXW_1_DATASET "$(DestDataset_XLSXW_1)"
+#! END_DEST_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)check_SRID.log"
+LOG_APPEND YES
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2024.1.3.0 (20240927 - Build 24627 - WIN64)"
+DEFAULT_MACRO DATASET_KEYWORD_SQLITE3_1 SQLITE3_1
+DEFAULT_MACRO DATASET_KEYWORD_XLSXW_1 XLSXW_1
+# -------------------------------------------------------------------------
+
+SQLITE3_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME check_SRID
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_SQLITE3_1)   INPUT FEATURE_TYPE *    ROUTE SQLITE3 SQLITE3_1::gpkg_geometry_columns multi_reader_keyword,$(DATASET_KEYWORD_SQLITE3_1) TO FME_GENERIC ::gpkg_geometry_columns ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+SQLITE3_1_MERGE_DEF SQLITE3_1::gpkg_geometry_columns EXACT gpkg_geometry_columns DEFLINE sqlite3_sql_statement,,sqlite3_where_clause,,fme_attribute_reading,defined,table_name,text<comma>Unique,column_name,text<comma>Unique,geometry_type_name,text,srs_id,integer,z,integer,m,integer
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "gpkg_geometry_columns_SQLITE3_1 Splitter"    INPUT FEATURE_TYPE gpkg_geometry_columns    OUTPUT FEATURE_TYPE gpkg_geometry_columns_SQLITE3_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { Tester }    INPUT  FEATURE_TYPE gpkg_geometry_columns_SQLITE3_1    TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>table_name<closeparen>,Tester)" = project_information ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    OUTPUT { PASSED FEATURE_TYPE Tester_PASSED         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { FilenamePartExtractor }    INPUT  FEATURE_TYPE Tester_PASSED    OUTPUT { FEATURE_TYPE FilenamePartExtractor_OUTPUT       "_dirpath" @Filenamepart(ENCODED,DIRNAME,"@EvaluateExpression(FDIV,STRING_ENCODED,$(SourceDataset_SQLITE3$encode),FilenamePartExtractor)")       "_filename" @Filenamepart(ENCODED,FILENAME,"@EvaluateExpression(FDIV,STRING_ENCODED,$(SourceDataset_SQLITE3$encode),FilenamePartExtractor)")       "_rootname" @Filenamepart(ENCODED,ROOTNAME,"@EvaluateExpression(FDIV,STRING_ENCODED,$(SourceDataset_SQLITE3$encode),FilenamePartExtractor)")       "_extension" @Filenamepart(ENCODED,EXTENSION,"@EvaluateExpression(FDIV,STRING_ENCODED,$(SourceDataset_SQLITE3$encode),FilenamePartExtractor)")       "_dirname" @Filenamepart(ENCODED,PARENT_DIRECTORY,"@EvaluateExpression(FDIV,STRING_ENCODED,$(SourceDataset_SQLITE3$encode),FilenamePartExtractor)")        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager }    INPUT  FEATURE_TYPE FilenamePartExtractor_OUTPUT    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 3    DEF_VAL_COLUMN 2    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "" "gpkg" "$(gpkg_name)" "SET_TO" }      ATTR_ACTION { "table_name" "table_name" "" "REMOVE" }      ATTR_ACTION { "column_name" "column_name" "" "REMOVE" }      ATTR_ACTION { "geometry_type_name" "geometry_type_name" "" "REMOVE" }      ATTR_ACTION { "_dirpath" "_dirpath" "" "REMOVE" }      ATTR_ACTION { "_filename" "_filename" "" "REMOVE" }      ATTR_ACTION { "_rootname" "_rootname" "" "REMOVE" }      ATTR_ACTION { "_extension" "_extension" "" "REMOVE" }      ATTR_ACTION { "_dirname" "_dirname" "" "REMOVE" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_OUTPUT        }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeManager OUTPUT Splitter"   INPUT FEATURE_TYPE AttributeManager_OUTPUT   OUTPUT FEATURE_TYPE AttributeManager_OUTPUT_0_llG+vd7T7nc=   OUTPUT FEATURE_TYPE AttributeManager_OUTPUT_1_PxJ3LejZikY=
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC AttributeManager_OUTPUT_0_llG+vd7T7nc= TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>fme_template_feature_type<comma>SRID<closeparen>,<at>EvaluateExpression<openparen>ATTR_CREATE_EXPR<comma>__wb_out_feat_type__<comma><lt>at<gt>Value<lt>openparen<gt>srs_id<lt>closeparen<gt><comma>SRID<closeparen> GEOMETRY    ROUTE FME_GENERIC AttributeManager_OUTPUT_1_PxJ3LejZikY= TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>alla<closeparen> GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
+# -------------------------------------------------------------------------
+XLSXW_1_DEF alla   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_field_names_formatting  Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   xlsx_template_sheet          ""   xlsx_remove_unchanged_template_sheet No   gpkg                         string(200,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   srs_id                       number(20,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   z                            number(20,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   m                            number(20,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)
+# -------------------------------------------------------------------------
+XLSXW_1_DEF SRID   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_field_names_formatting  Yes   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   xlsx_template_sheet          ""   xlsx_remove_unchanged_template_sheet No   gpkg                         string(200,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   srs_id                       number(20,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   z                            number(20,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   m                            number(20,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)
