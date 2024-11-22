@@ -11,7 +11,7 @@
       <filter>form</filter>
       <filter>anonymous</filter>
     </filters>
-    <filters name="webLogin" class="org.geoserver.security.ConstantFilterChain" path="/j_spring_security_check,/j_spring_security_check/" disabled="false" allowSessionCreation="true" ssl="false" matchHTTPMethod="false">
+    <filters name="webLogin" class="org.geoserver.security.ConstantFilterChain" path="/j_spring_security_check,/j_spring_security_check/" disabled="false" allowSessionCreation="true" ssl="true" matchHTTPMethod="false">
       <filter>form</filter>
     </filters>
     <filters name="webLogout" class="org.geoserver.security.LogoutFilterChain" path="/j_spring_security_logout,/j_spring_security_logout/" disabled="false" allowSessionCreation="false" ssl="false" matchHTTPMethod="false">
@@ -33,4 +33,13 @@
     <className>org.geoserver.security.rememberme.GeoServerTokenBasedRememberMeServices</className>
     <key>geoserver</key>
   </rememberMeService>
+  <bruteForcePrevention>
+    <enabled>true</enabled>
+    <minDelaySeconds>1</minDelaySeconds>
+    <maxDelaySeconds>5</maxDelaySeconds>
+    <maxBlockedThreads>100</maxBlockedThreads>
+    <whitelistedMasks>
+      <string>127.0.0.1</string>
+    </whitelistedMasks>
+  </bruteForcePrevention>
 </security>
