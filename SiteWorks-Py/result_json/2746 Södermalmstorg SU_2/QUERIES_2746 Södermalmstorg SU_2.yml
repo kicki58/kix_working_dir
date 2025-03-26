@@ -1,0 +1,28 @@
+- - Yngsta o äldsta datering i grupp
+  - "select objectno, min(tpq) as min_tpq, max(tpq) as max_tpq,\r\nmin(taq) as min_taq,\
+    \ max(taq) as max_taq \r\nfrom objects where construction=10015\r\nGroup by objectno;"
+- - Knappar i kontext
+  - "select o.objectno as kontextnr,\r\not.fullname as kontexttyp, o.class as typ,\
+    \ o.definition as spec,\r\no2.dating as knappdatering, o2.weight as vikt, o2.material,\r\
+    \no2.taq,o2.tpq \r\nfrom objects o, objects o1, objtyp ot, objects o2, objtyp\
+    \ ot2\r\nwhere ot.typenr=o.typeno\r\nand o1.belongstoid=o.objectid\r\nand o2.belongstoid=o1.objectid\r\
+    \nand ot2.typenr=o2.typeno\r\nand ot2.fullname='Knapp'\r\norder by objectno,subobject"
+- - Typer som skall aktiveras (alltså använda men inaktiva)
+  - "select fullname from objtyp where typenr in (\r\nselect typeno from objects where\
+    \ project='1070' and typeno not in (\r\nselect typenr from objtyp_proj where project='1070'\
+    \ and isactive='T'))"
+- - Dateringar av kx m nr...
+  - "select objectno, min(tpq) as min_tpq, max(tpq) as max_tpq,\r\nmin(taq) as min_taq,\
+    \ max(taq) as max_taq \r\nfrom objects \r\nwhere (objectno=937 or objectno=793\
+    \ or objectno=604 or objectno=517 or objectno=302 or objectno=269 or objectno=250\
+    \ or objectno=173 or objectno=148 or objectno=102 or objectno=89 or objectno=46\
+    \ or objectno=33)\r\nGroup by objectno;"
+- - 'Totalt antal fyndposter som inte är containers (idx>0):'
+  - "select count(*) from obj where project='1070'\r\nand category='artefakt' and\
+    \ idx<>0;"
+- - 'Antal fyndposter per "sakord" (typ i typredigeraren):'
+  - "select typename, count(*) from obj where project='1070'\r\nand category='artefakt'\
+    \ and idx<>0\r\ngroup by typename;\r\n"
+- - Dateringar i projektet
+  - "select tpq, taq\r\nfrom objects where\r\nproject = '1070'\r\norder by tpq, taq;\r\
+    \n"

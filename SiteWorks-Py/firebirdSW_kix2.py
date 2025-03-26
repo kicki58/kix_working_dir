@@ -269,7 +269,7 @@ def operation_getdb_projects(data_bases):
 
 def start():
     # Setup argument parser
-    parser = ArgumentParser(prog="firebirdSW", formatter_class=RawDescriptionHelpFormatter)
+    parser = ArgumentParser(prog="firebirdSW_kix2", formatter_class=RawDescriptionHelpFormatter)
     parser.add_argument("-v", "--verbose", action="count", default=1,
                         help="set verbosity level [default: %(default)s]")
     parser.add_argument("-c", "--configfile", default=argparse.SUPPRESS, help="Configuration file for the program")

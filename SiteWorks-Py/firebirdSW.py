@@ -107,14 +107,14 @@ def save_to_file(raw_data, file_name, fileformat = "yaml"):
 def save_to_json(raw_data, file_name):
     with open(file_name, 'w', encoding='utf8') as outfile:
         json.dump(raw_data, outfile, indent=2, cls=DecimalEncoder, ensure_ascii=False)
-        logging.info(f"Saving result as: {file_name}")
+        #logging.info(f"Saving result as: {file_name}")
 
 
 def save_to_yaml(raw_data, file_name):
     result = yaml.dump(raw_data, allow_unicode=True)
     with open(file_name, 'w') as outfile:
         outfile.write(str(result))
-        logging.info(f"Saving result as: {file_name}")
+       # logging.info(f"Saving result as: {file_name}")
 
 def parse_config_file(config_file):
     with open(config_file, 'r', encoding='utf8') as stream:
