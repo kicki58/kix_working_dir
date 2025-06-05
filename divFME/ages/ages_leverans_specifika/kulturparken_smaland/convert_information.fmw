@@ -1,0 +1,2275 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME2024_1_3\fme.exe" C:\Github\kix\divFME\kulturparken_smaland\convert_information.fmw
+#          --SourceDataset_XLSXR "C:\ny_slask\kulturparken_smaland\intrasis_projekt.xls"
+#          --SourceDataset_PATH "C:\ny_slask\kulturparken_smaland\1_intrasis_filer"
+#          --DestDataset_XLSXW "C:\ny_slask\kulturparken_smaland\konverteringsprotokoll_i2_i3.xlsx"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="4226.66 1106.26"
+#!   DOC_TOP_LEFT="-614.128 -1255.64"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="24627"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="266d3cd8-70a3-403d-973c-ee8750b0faf5"
+#!   FME_DOCUMENT_PRIORGUID="dec7257c-636d-45d2-bb3a-95a02b77eecc"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2024.1.3.0 (20240927 - Build 24627 - WIN64)"
+#!   LAST_SAVE_DATE="2025-06-04T09:25:30"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="NO"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="1490.64 240.627"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="XLSXR"
+#!   DATASET="$(SourceDataset_XLSXR)"
+#!   KEYWORD="XLSXR_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE="xlsx_start_row &quot;&quot; xlsx_end_row &quot;&quot; xlsx_apply_filters &quot;No&quot;"
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_basename char(50) fme_color char(50) fme_dataset char(50) fme_feature_type char(50) fme_fill_color char(50) fme_geometry char(50) fme_primary_axis number(31,15) fme_rotation number(31,15) fme_secondary_axis number(31,15) fme_start_angle number(31,15) fme_sweep_angle number(31,15) fme_text_size number(31,15) fme_text_string char(50) fme_type char(50) multi_reader_full_id number(11,0) multi_reader_id number(11,0) multi_reader_keyword char(50) multi_reader_type char(50) xlsx_col_id number(11,0) xlsx_raster_format char(20) xlsx_raster_height number(11,0) xlsx_raster_location char(256) xlsx_raster_width number(11,0) xlsx_row_id number(11,0) xlsx_type char(20)"
+#!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP xlsx_table_settings_group xlsx_start_row%xlsx_end_row%xlsx_apply_filters Table&quot; &quot;&quot; &quot;GUI FORCE_DEFS OPTIONAL INTEGER xlsx_start_row Start Row:&quot; &quot;&quot; &quot;GUI FORCE_DEFS OPTIONAL INTEGER xlsx_end_row End Row:&quot; &quot;&quot; &quot;GUI OPTIONAL CHECKBOX xlsx_apply_filters Yes%No Apply Filter(s):&quot; No "
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILE"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="24627"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ADVANCED_PARMS"
+#!   VALUE="XLSXR_IN_READ_BLANK_AS XLSXR_IN_APPLY_FILTERS XLSXR_IN_EXPAND_MERGED_CELLS XLSXR_IN_SCAN_SCHEMA_IF_DYNAMIC"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ALLOW_DATASET_CONFLICT"
+#!   VALUE="YES"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Sheet"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="MIME_TYPE"
+#!   VALUE="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet ADD_DISPOSITION"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the Excel file(s)"
+#! />
+#! </DATASET>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="PATH"
+#!   DATASET="$(SourceDataset_PATH)"
+#!   KEYWORD="PATH_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="false"
+#!   DEFLINE_TEMPLATE=""
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_basename char(50) fme_color char(50) fme_dataset char(50) fme_feature_type char(50) fme_fill_color char(50) fme_geometry char(50) fme_primary_axis number(31,15) fme_rotation number(31,15) fme_secondary_axis number(31,15) fme_start_angle number(31,15) fme_sweep_angle number(31,15) fme_text_size number(31,15) fme_text_string char(50) fme_type char(50) multi_reader_full_id number(11,0) multi_reader_id number(11,0) multi_reader_keyword char(50) multi_reader_type char(50) path_geom char(13)"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="DIRONLY"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="24627"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="PATH"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Specify the Folder or Files pathnames"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_FEATURE_TYPE_EDITING"
+#!   VALUE="NO"
+#! />
+#! </DATASET>
+#! <DATASET
+#!   IS_SOURCE="false"
+#!   ROLE="WRITER"
+#!   FORMAT="XLSXW"
+#!   DATASET="$(DestDataset_XLSXW)"
+#!   KEYWORD="XLSXW_1"
+#!   MULTI_GEOM_ALLOWED="true"
+#!   ATTR_MAX_LENGTH="255"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE="xlsx_drop_sheet No xlsx_trunc_sheet No xlsx_sheet_order &quot;&quot; xlsx_freeze_end_row &quot;&quot; xlsx_names_are_positions No xlsx_field_names_out Yes xlsx_field_names_formatting YES xlsx_field_names_row_height &quot;&quot; xlsx_field_names_font_name &quot;&quot; xlsx_field_names_font_color &quot;&quot; xlsx_field_names_background_color &quot;&quot; xlsx_field_names_pattern_color &quot;&quot; xlsx_field_names_pattern_style &quot;&quot; xlsx_field_names_cell_border_color &quot;&quot; xlsx_field_names_cell_border_style &quot;&quot; xlsx_field_names_horizontal_alignment &quot;&quot; xlsx_field_names_vertical_alignment &quot;&quot; xlsx_field_names_text_indent &quot;&quot; xlsx_field_names_text_orientation &quot;&quot; xlsx_field_names_text_control &quot;&quot; xlsx_start_col &quot;&quot; xlsx_start_row &quot;&quot; xlsx_offset_col &quot;&quot; xlsx_offset_row &quot;&quot; xlsx_raster_type PNG xlsx_table_writer_mode Insert xlsx_row_id_column &quot;&quot; xlsx_protect_sheet &quot;NO&quot; xlsx_protect_sheet_level &quot;&lt;Unused&gt;&quot; xlsx_protect_sheet_password &quot;&lt;Unused&gt;&quot; xlsx_protect_sheet_permissions &quot;&lt;Unused&gt;&quot; xlsx_template_sheet &quot;&quot; xlsx_remove_unchanged_template_sheet &quot;No&quot;"
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_basename string(50,xlsx_col_props) fme_color string(50,xlsx_col_props) fme_dataset string(50,xlsx_col_props) fme_db_operation string(width,xlsx_col_props) fme_feature_type string(50,xlsx_col_props) fme_fill_color string(50,xlsx_col_props) fme_geometry string(50,xlsx_col_props) fme_primary_axis number(width,xlsx_col_props) fme_rotation number(width,xlsx_col_props) fme_secondary_axis number(width,xlsx_col_props) fme_start_angle number(width,xlsx_col_props) fme_sweep_angle number(width,xlsx_col_props) fme_text_size number(width,xlsx_col_props) fme_text_string string(50,xlsx_col_props) fme_type string(50,xlsx_col_props) xlsx_col_id number(width,xlsx_col_props) xlsx_raster_height number(width,xlsx_col_props) xlsx_raster_scale_factor number(width,xlsx_col_props) xlsx_raster_width number(width,xlsx_col_props) xlsx_row_formatting string(width,xlsx_col_props) xlsx_row_id number(width,xlsx_col_props) xlsx_type string(width,xlsx_col_props)"
+#!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP xlsx_layer_group xlsx_table_writer_mode%xlsx_names_are_positions%xlsx_row_id_column%xlsx_freeze_end_row%xlsx_field_names_out%xlsx_field_names_formatting%xlsx_truncate_group%xlsx_rowcolumn_group%xlsx_template_group%xlsx_protect_sheet%xlsx_advanced_group Sheet Settings&quot; &quot;&quot; &quot;GUI ACTIVECHOICE xlsx_table_writer_mode Insert,+xlsx_row_id_column+%Update,+xlsx_row_id_column%Delete,+xlsx_row_id_column Writer Mode:&quot; Insert &quot;GUI CHOICE xlsx_names_are_positions Yes%No Use Attribute Names As Column Positions:&quot; No &quot;GUI OPTIONAL ATTR xlsx_row_id_column ALLOW_NEW Row Number Attribute:&quot; &quot;&quot; &quot;GUI OPTIONAL RANGE_SLIDER xlsx_freeze_end_row 1%MAX Freeze First Row(s):&quot; &quot;&quot; &quot;GUI ACTIVECHOICE xlsx_field_names_out Yes%No,xlsx_field_names_formatting,++xlsx_field_names_formatting+No Output Field Names:&quot; Yes &quot;GUI ACTIVEDISCLOSUREGROUP xlsx_field_names_formatting xlsx_field_names_row_height%xlsx_field_names_font%xlsx_field_names_fill%xlsx_field_names_cell%xlsx_field_names_alignment Field Names Row Formatting&quot; YES &quot;GUI OPTIONAL RANGE_SLIDER_OR_ATTR xlsx_field_names_row_height 0%409.5%2%OFF Row Height:&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_field_names_font xlsx_field_names_font_name%xlsx_field_names_font_color Font&quot; &quot;&quot; &quot;GUI OPTIONAL FONT_OR_ATTR_ENCODED xlsx_field_names_font_name Font:&quot; &quot;&quot; &quot;GUI OPTIONAL COLOR_OR_ATTR xlsx_field_names_font_color COLOR_SPEC%RGBF Font Color:&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_field_names_fill xlsx_field_names_background_color%xlsx_field_names_pattern_color%xlsx_field_names_pattern_style Fill&quot; &quot;&quot; &quot;GUI OPTIONAL COLOR_OR_ATTR xlsx_field_names_background_color COLOR_SPEC%RGBF Background Color:&quot; &quot;&quot; &quot;GUI OPTIONAL COLOR_OR_ATTR xlsx_field_names_pattern_color COLOR_SPEC%RGBF Pattern Color:&quot; &quot;&quot; &quot;GUI OPTIONAL LOOKUP_CHOICE xlsx_field_names_pattern_style None,FILLPATTERN_NONE%Solid,FILLPATTERN_SOLID%Half&lt;space&gt;Filled,FILLPATTERN_GRAY50%75&lt;space&gt;Percent&lt;space&gt;Filled,FILLPATTERN_GRAY75%25&lt;space&gt;Percent&lt;space&gt;Filled,FILLPATTERN_GRAY25%Horizontal&lt;space&gt;Stripe,FILLPATTERN_HORSTRIPE%Vertical&lt;space&gt;Stripe,FILLPATTERN_VERSTRIPE%Reversed&lt;space&gt;Diagonal&lt;space&gt;Stripe,FILLPATTERN_REVDIAGSTRIPE%Diagonal&lt;space&gt;Stripe,FILLPATTERN_DIAGSTRIPE%Diagonal&lt;space&gt;Cross-Hatch,FILLPATTERN_DIAGCROSSHATCH%Thick&lt;space&gt;Diagonal&lt;space&gt;Cross-Hatch,FILLPATTERN_THICKDIAGCROSSHATCH%Thin&lt;space&gt;Horizontal&lt;space&gt;Stripe,FILLPATTERN_THINHORSTRIPE%Thin&lt;space&gt;Vertical&lt;space&gt;Stripe,FILLPATTERN_THINVERSTRIPE%Thin&lt;space&gt;Reversed&lt;space&gt;Diagonal&lt;space&gt;Stripe,FILLPATTERN_THINREVDIAGSTRIPE%Thin&lt;space&gt;Diagonal&lt;space&gt;Stripe,FILLPATTERN_THINDIAGSTRIPE%Thin&lt;space&gt;Horizontal&lt;space&gt;Cross-Hatch,FILLPATTERN_THINHORCROSSHATCH%Thin&lt;space&gt;Diagonal&lt;space&gt;Cross-Hatch,FILLPATTERN_THINDIAGCROSSHATCH%12.5&lt;space&gt;Percent&lt;space&gt;Filled,FILLPATTERN_GRAY12P5%6.25&lt;space&gt;Percent&lt;space&gt;Filled,FILLPATTERN_GRAY6P25 Pattern Style:&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_field_names_cell xlsx_field_names_cell_border_color%xlsx_field_names_cell_border_style Cell Border&quot; &quot;&quot; &quot;GUI OPTIONAL COLOR_OR_ATTR xlsx_field_names_cell_border_color COLOR_SPEC%RGBF Border Color:&quot; &quot;&quot; &quot;GUI OPTIONAL LOOKUP_CHOICE xlsx_field_names_cell_border_style None,BORDERSTYLE_NONE%Thin,BORDERSTYLE_THIN%Medium,BORDERSTYLE_MEDIUM%Dashed,BORDERSTYLE_DASHED%Dotted,BORDERSTYLE_DOTTED%Thick,BORDERSTYLE_THICK%Double,BORDERSTYLE_DOUBLE%Hair,BORDERSTYLE_HAIR%Medium&lt;space&gt;Dashed,BORDERSTYLE_MEDIUMDASHED%Dash&lt;space&gt;Dot,BORDERSTYLE_DASHDOT%Medium&lt;space&gt;Dash&lt;space&gt;Dot,BORDERSTYLE_MEDIUMDASHDOT%Dash&lt;space&gt;Dot&lt;space&gt;Dot,BORDERSTYLE_DASHDOTDOT%Medium&lt;space&gt;Dash&lt;space&gt;Dot&lt;space&gt;Dot,BORDERSTYLE_MEDIUMDASHDOTDOT%Slant&lt;space&gt;Dash&lt;space&gt;Dot,BORDERSTYLE_SLANTDASHDOT Border Style:&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_field_names_alignment xlsx_field_names_horizontal_alignment%xlsx_field_names_vertical_alignment%xlsx_field_names_text_indent%xlsx_field_names_text_orientation%xlsx_field_names_text_control Text Alignment:&quot; &quot;&quot; &quot;GUI OPTIONAL LOOKUP_CHOICE xlsx_field_names_horizontal_alignment Left,left%Center,center%Right,right Horizontal Alignment:&quot; &quot;&quot; &quot;GUI OPTIONAL LOOKUP_CHOICE xlsx_field_names_vertical_alignment Top,top%Center,center%Bottom,bottom Vertical Alignment:&quot; &quot;&quot; &quot;GUI OPTIONAL RANGE_SLIDER_OR_ATTR xlsx_field_names_text_indent 0%15%1%OFF Text Indent:&quot; &quot;&quot; &quot;GUI OPTIONAL RANGE_SLIDER_OR_ATTR xlsx_field_names_text_orientation -90%90%0%ON%INCR,15 Text Orientation:&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_truncate_group xlsx_drop_sheet%xlsx_trunc_sheet Drop/Truncate&quot; &quot;&quot; &quot;GUI CHOICE xlsx_drop_sheet Yes%No Drop Existing Sheet/Named Range:&quot; No &quot;GUI CHOICE xlsx_trunc_sheet Yes%No Truncate Existing Sheet/Named Range:&quot; No &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_rowcolumn_group xlsx_start_col%xlsx_start_row%xlsx_offset_col%xlsx_offset_row Start Position&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT xlsx_start_col Named Range Start Column:&quot; &quot;&quot; &quot;GUI OPTIONAL INTEGER xlsx_start_row Named Range Start Row:&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT xlsx_offset_col Start Column:&quot; &quot;&quot; &quot;GUI OPTIONAL INTEGER xlsx_offset_row Start Row:&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_template_group xlsx_template_sheet%xlsx_remove_unchanged_template_sheet Template Options&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT_EDIT xlsx_template_sheet \&quot; \&quot; Template Sheet:&quot; &quot;&quot; &quot;GUI CHOICE xlsx_remove_unchanged_template_sheet Yes%No Remove Template Sheet if Unchanged:&quot; No &quot;GUI ACTIVEDISCLOSUREGROUP xlsx_protect_sheet xlsx_protect_sheet_password%xlsx_protect_sheet_level%xlsx_protect_sheet_permissions Protect Sheet&quot; NO &quot;GUI OPTIONAL PASSWORD_ENCODED xlsx_protect_sheet_password Password:&quot; &lt;Unused&gt; &quot;GUI ACTIVECHOICE_LOOKUP xlsx_protect_sheet_level Select&lt;space&gt;Only&lt;space&gt;Permissions,PROT_DEFAULT,xlsx_protect_sheet_permissions%View&lt;space&gt;Only&lt;space&gt;Permissions,PROT_ALL,xlsx_protect_sheet_permissions%Specific&lt;space&gt;Permissions Protection Level:&quot; &lt;Unused&gt; &quot;GUI OPTIONAL LOOKUP_LISTBOX xlsx_protect_sheet_permissions Select&lt;space&gt;locked&lt;space&gt;cells,PROT_SEL_LOCKED_CELLS%Select&lt;space&gt;unlocked&lt;space&gt;cells,PROT_SEL_UNLOCKED_CELLS%Format&lt;space&gt;cells,PROT_FORMAT_CELLS%Format&lt;space&gt;columns,PROT_FORMAT_COLUMNS%Format&lt;space&gt;rows,PROT_FORMAT_ROWS%Insert&lt;space&gt;columns,PROT_INSERT_COLUMNS%Insert&lt;space&gt;rows,PROT_INSERT_ROWS%Add&lt;space&gt;hyperlinks&lt;space&gt;to&lt;space&gt;unlocked&lt;space&gt;cells,PROT_INSERT_HYPERLINKS%Delete&lt;space&gt;unlocked&lt;space&gt;columns,PROT_DELETE_COLUMNS%Delete&lt;space&gt;unlocked&lt;space&gt;rows,PROT_DELETE_ROWS%Sort&lt;space&gt;unlocked&lt;space&gt;cells/rows/columns,PROT_SORT%Use&lt;space&gt;Autofilter&lt;space&gt;on&lt;space&gt;unlocked&lt;space&gt;cells,PROT_AUTOFILTER%Use&lt;space&gt;PivotTable&lt;space&gt;&amp;&lt;space&gt;PivotChart&lt;space&gt;on&lt;space&gt;unlocked&lt;space&gt;cells,PROT_PIVOTTABLES%Edit&lt;space&gt;unlocked&lt;space&gt;objects,PROT_OBJECTS%Edit&lt;space&gt;unprotected&lt;space&gt;scenarios,PROT_SCENARIOS Specific Permissions:&quot; &lt;Unused&gt; &quot;GUI OPTIONAL DISCLOSUREGROUP xlsx_advanced_group xlsx_sheet_order%xlsx_raster_type Advanced&quot; &quot;&quot; &quot;GUI OPTIONAL RANGE_SLIDER xlsx_sheet_order 1%MAX Sheet Order (1 - n):&quot; &quot;&quot; &quot;GUI CHOICE xlsx_raster_type BMP%JPEG%PNG Raster Format:&quot; PNG "
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILE"
+#!   FTTR_TYPE=""
+#!   GENERATE_FME_BUILD_NUM="24627"
+#!   COORDSYS=""
+#!   FANOUT_EXPRESSION=""
+#!   FANOUT_GROUP="NO"
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ALLOW_DATASET_CONFLICT"
+#!   VALUE="YES"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DEFAULT_ATTR_TYPE"
+#!   VALUE="auto"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DEFAULT_READER"
+#!   VALUE="XLSXR"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Sheet1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Sheet"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="MIME_TYPE"
+#!   VALUE="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet ADD_DISPOSITION"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="USER_ATTRIBUTES_COLUMNS"
+#!   VALUE="Width,Cell Width%Precision,Formatting"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a name for the Microsoft Excel file"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(20)"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(12)"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(31,15)"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(15,7)"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="logical"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="raster_blob"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="time"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(31,15)"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="x_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="y_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="z_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(15,7)"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="boolean"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="XLSXR"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string(width,xlsx_col_props)"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="auto(width,xlsx_col_props)"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="datetime(width,xlsx_col_props)"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="time(width,xlsx_col_props)"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="date(width,xlsx_col_props)"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,xlsx_col_props)"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="XLSXW"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="boolean(width,xlsx_col_props)"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="XLSXW"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_point"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="XLSXR"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_point"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="XLSXW"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xlsx_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="XLSXW"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="data"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="2"
+#!   FEAT_GEOMTYPE="xlsx_none xlsx_point"
+#!   POSITION="-614.1277812778128 -372.50412504125023"
+#!   BOUNDING_RECT="-614.1277812778128 -372.50412504125023 436 65"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="XLSXR_1"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   READ_SELECT_ATTRS="true"
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="intrasis_db_name" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="konverterat till i2" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="ant" ATTR_TYPE="char(11)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="number2substring" ATTR_TYPE="char(9)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="SM Intrasisprojekt" ATTR_TYPE="char(59)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Säkerhetskopierad 090605" ATTR_TYPE="char(16)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Återställd på public 090605" ATTR_TYPE="char(16)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Problem" ATTR_TYPE="char(47)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" ATTR_TYPE="char(46)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Data till Swedigarch" ATTR_TYPE="char(2)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="SM Rapport" ATTR_TYPE="char(36)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <NON_GUI_DEFLINE_PARM VALUE="xlsx_header_row,0;xlsx_schema_end_col,0;xlsx_schema_end_row,0;xlsx_schema_start_col,0;xlsx_schema_start_row,1"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_apply_filters" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_end_row" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_start_row" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_table_settings_group" PARM_VALUE=""/>
+#! </FEATURE_TYPE>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="PATH"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="3"
+#!   FEAT_GEOMTYPE="path_none"
+#!   POSITION="1248.3908439084391 -307.50412504125023"
+#!   BOUNDING_RECT="1248.3908439084391 -307.50412504125023 436 65"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="PATH_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_unix" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_windows" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_rootname" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_filename" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_extension" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_directory_unix" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_directory_windows" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_type" ATTR_TYPE="char(10)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="false"
+#!   NODE_NAME="protokoll"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="16"
+#!   FEAT_NAMEDGEOMTYPE=""
+#!   POSITION="3612.5371253712538 -700.00700007000034"
+#!   BOUNDING_RECT="3612.5371253712538 -700.00700007000034 -1 -1"
+#!   ORDER="500000000000013"
+#!   COLLAPSED="true"
+#!   KEYWORD="XLSXW_1"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   SCHEMA_ATTRIBUTE_SOURCE="0"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="intrasis_db_name" ATTR_TYPE="string(20,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="ant" ATTR_TYPE="string(21,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="konverterat till i2" ATTR_TYPE="string(20,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="SM Intrasisprojekt" ATTR_TYPE="string(59,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Säkerhetskopierad 090605" ATTR_TYPE="string(16,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Återställd på public 090605" ATTR_TYPE="string(16,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Problem" ATTR_TYPE="string(47,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" ATTR_TYPE="string(46,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Data till Swedigarch" ATTR_TYPE="string(2,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="SM Rapport" ATTR_TYPE="string(36,version;1;cell_border_formatting;NO;text_alignment;NO;cell_protection;NO)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_advanced_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_drop_sheet" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_alignment" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_background_color" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_cell" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_cell_border_color" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_cell_border_style" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_fill" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_font" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_font_color" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_font_name" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_formatting" PARM_VALUE="YES"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_horizontal_alignment" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_out" PARM_VALUE="Yes"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_pattern_color" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_pattern_style" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_row_height" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_text_indent" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_text_orientation" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_field_names_vertical_alignment" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_freeze_end_row" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_layer_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_names_are_positions" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_offset_col" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_offset_row" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet" PARM_VALUE="NO"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet_level" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet_password" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_protect_sheet_permissions" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_raster_type" PARM_VALUE="PNG"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_remove_unchanged_template_sheet" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_row_id_column" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_rowcolumn_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_sheet_order" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_start_col" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_start_row" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_table_writer_mode" PARM_VALUE="Insert"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_template_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_template_sheet" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_trunc_sheet" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="xlsx_truncate_group" PARM_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="PATH_1"
+#!   OVERRIDE="-PATH_1_DATASET"
+#!   DATASET="PATH_1/1_intrasis_filer"
+#! />
+#! <DATASET
+#!   NAME="XLSXR_1"
+#!   OVERRIDE="-XLSXR_1_DATASET"
+#!   DATASET="XLSXR_1/intrasis_projekt.xls"
+#! />
+#! </READER_DATASETS>
+#! <WRITER_DATASETS>
+#! <DATASET
+#!   NAME="XLSXW_1"
+#!   OVERRIDE="-XLSXW_1_DATASET"
+#!   DATASET="XLSXW_1/konverteringsprotokoll_i2_i3.xlsx"
+#! />
+#! </WRITER_DATASETS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_XLSXR INCLUDE_WEB_BROWSER%Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Excel_Workbook_2007(*.xlsx)|*.xlsx|Excel_Macro_Workbook(*.xlsm)|*.xlsm|Excel_Binary_Workbook_-_Windows_Only(*.xlsb)|*.xlsb|Excel_Workbook_Pre_2007(*.xls)|*.xls|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|All_files(*)|* Source Microsoft Excel File(s):"
+#!   DEFAULT_VALUE="C:\ny_slask\kulturparken_smaland\intrasis_projekt.xls"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIDIRECTORY SourceDataset_PATH INCLUDE_WEB_BROWSER Source Folder and File Pathnames Folder:"
+#!   DEFAULT_VALUE="C:\ny_slask\kulturparken_smaland\1_intrasis_filer"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI FILENAME DestDataset_XLSXW Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Microsoft_Excel_2007+_Workbook(*.xlsx)|*.xlsx|Microsoft_Excel_2007+_Macro_Workbook(*.xlsm)|*.xlsm|Microsoft_Excel_Pre-2007_Workbook(*.xls)|*.xls|All_Files(*)|* Destination Microsoft Excel File:"
+#!   DEFAULT_VALUE="C:\ny_slask\kulturparken_smaland\konverteringsprotokoll_i2_i3.xlsx"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiU291cmNlRGF0YXNldF9YTFNYUiIsInByb21wdCI6IlNvdXJjZSBNaWNyb3NvZnQgRXhjZWwgRmlsZShzKToiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6dHJ1ZSwiZGVmYXVsdFZhbHVlIjoiQzpcXG55X3NsYXNrXFxrdWx0dXJwYXJrZW5fc21hbGFuZFxcaW50cmFzaXNfcHJvamVrdC54bHMiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoiZmlsZSIsInNlbGVjdE11bHRpcGxlIjp0cnVlLCJpdGVtc1RvU2VsZWN0IjoiZmlsZXMiLCJhY2Nlc3NNb2RlIjoicmVhZCIsInZhbGlkYXRlRXhpc3RlbmNlIjpmYWxzZSwiaW5jbHVkZVdlYkJyb3dzZXIiOnRydWUsImZpbHRlcnMiOlt7ImRlc2NyaXB0aW9uIjoiRXhjZWwgRmlsZXMiLCJmaWx0ZXIiOlsiKi54bHN4IiwiKi54bHNtIiwiKi54bHMiXX0seyJkZXNjcmlwdGlvbiI6IkV4Y2VsIFdvcmtib29rIDIwMDciLCJmaWx0ZXIiOlsiKi54bHN4Il19LHsiZGVzY3JpcHRpb24iOiJFeGNlbCBNYWNybyBXb3JrYm9vayIsImZpbHRlciI6WyIqLnhsc20iXX0seyJkZXNjcmlwdGlvbiI6IkV4Y2VsIEJpbmFyeSBXb3JrYm9vayAtIFdpbmRvd3MgT25seSIsImZpbHRlciI6WyIqLnhsc2IiXX0seyJkZXNjcmlwdGlvbiI6IkV4Y2VsIFdvcmtib29rIFByZSAyMDA3IiwiZmlsdGVyIjpbIioueGxzIl19LHsiZGVzY3JpcHRpb24iOiJBcmNoaXZlIEZpbGVzIiwiZmlsdGVyIjpbIiouN3oiLCIqLjd6aXAiLCIqLnJhciIsIioucnZ6IiwiKi50YXIiLCIqLnRhci5iejIiLCIqLnRhci5neiIsIioudGd6IiwiKi56aXAiLCIqLnppcHgiXX0seyJkZXNjcmlwdGlvbiI6IkNvbXByZXNzZWQgRmlsZXMiLCJmaWx0ZXIiOlsiKi5iejIiLCIqLmd6Il19LHsiZGVzY3JpcHRpb24iOiJBbGwgZmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV19LHsibmFtZSI6IlNvdXJjZURhdGFzZXRfUEFUSCIsInByb21wdCI6IlNvdXJjZSBGb2xkZXIgYW5kIEZpbGUgUGF0aG5hbWVzIEZvbGRlcjoiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJyZXF1aXJlZCI6dHJ1ZSwiZGVmYXVsdFZhbHVlIjoiQzpcXG55X3NsYXNrXFxrdWx0dXJwYXJrZW5fc21hbGFuZFxcMV9pbnRyYXNpc19maWxlciIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJmaWxlIiwic2VsZWN0TXVsdGlwbGUiOnRydWUsIml0ZW1zVG9TZWxlY3QiOiJmb2xkZXJzIiwiYWNjZXNzTW9kZSI6InJlYWQiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2UsImluY2x1ZGVXZWJCcm93c2VyIjp0cnVlfSx7Im5hbWUiOiJEZXN0RGF0YXNldF9YTFNYVyIsInByb21wdCI6IkRlc3RpbmF0aW9uIE1pY3Jvc29mdCBFeGNlbCBGaWxlOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjp0cnVlLCJkZWZhdWx0VmFsdWUiOiJDOlxcbnlfc2xhc2tcXGt1bHR1cnBhcmtlbl9zbWFsYW5kXFxrb252ZXJ0ZXJpbmdzcHJvdG9rb2xsX2kyX2kzLnhsc3giLCJ0eXBlIjoiZmlsZSIsInNlbGVjdE11bHRpcGxlIjpmYWxzZSwiaXRlbXNUb1NlbGVjdCI6ImZpbGVzIiwiYWNjZXNzTW9kZSI6IndyaXRlIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJmaWx0ZXJzIjpbeyJkZXNjcmlwdGlvbiI6IkV4Y2VsIEZpbGVzIiwiZmlsdGVyIjpbIioueGxzeCIsIioueGxzbSIsIioueGxzIl19LHsiZGVzY3JpcHRpb24iOiJNaWNyb3NvZnQgRXhjZWwgMjAwNysgV29ya2Jvb2siLCJmaWx0ZXIiOlsiKi54bHN4Il19LHsiZGVzY3JpcHRpb24iOiJNaWNyb3NvZnQgRXhjZWwgMjAwNysgTWFjcm8gV29ya2Jvb2siLCJmaWx0ZXIiOlsiKi54bHNtIl19LHsiZGVzY3JpcHRpb24iOiJNaWNyb3NvZnQgRXhjZWwgUHJlLTIwMDcgV29ya2Jvb2siLCJmaWx0ZXIiOlsiKi54bHMiXX0seyJkZXNjcmlwdGlvbiI6IkFsbCBGaWxlcyIsImZpbHRlciI6WyIqIl19XX1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="SourceDataset_XLSXR" 
+#!   DEFAULT_VALUE="C:\ny_slask\kulturparken_smaland\intrasis_projekt.xls"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_XLSXR INCLUDE_WEB_BROWSER%Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Excel_Workbook_2007(*.xlsx)|*.xlsx|Excel_Macro_Workbook(*.xlsm)|*.xlsm|Excel_Binary_Workbook_-_Windows_Only(*.xlsb)|*.xlsb|Excel_Workbook_Pre_2007(*.xls)|*.xls|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|All_files(*)|* Source Microsoft Excel File(s):"
+#! />
+#!     <INFO NAME="SourceDataset_PATH" 
+#!   DEFAULT_VALUE="C:\ny_slask\kulturparken_smaland\1_intrasis_filer"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI MULTIDIRECTORY SourceDataset_PATH INCLUDE_WEB_BROWSER Source Folder and File Pathnames Folder:"
+#! />
+#!     <INFO NAME="DestDataset_XLSXW" 
+#!   DEFAULT_VALUE="C:\ny_slask\kulturparken_smaland\konverteringsprotokoll_i2_i3.xlsx"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI FILENAME DestDataset_XLSXW Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Microsoft_Excel_2007+_Workbook(*.xlsx)|*.xlsx|Microsoft_Excel_2007+_Macro_Workbook(*.xlsm)|*.xlsm|Microsoft_Excel_Pre-2007_Workbook(*.xls)|*.xls|All_Files(*)|* Destination Microsoft Excel File:"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="12"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;hr { height: 1px; border-width: 0; }&#10;li.unchecked::marker { content: &quot;\2610&quot;; }&#10;li.checked::marker { content: &quot;\2612&quot;; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Segoe UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;remove null&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="-78.560765607656066 -149.37659376593763"
+#!   TOP_LEFT="-78.560765607656066 -149.37659376593763"
+#!   BOTTOM_RIGHT="357.42942241922424 -150.37659376593763"
+#!   BOUNDING_RECT="-78.560765607656066 -149.37659376593763 435.99018802688028 1"
+#!   ORDER="500000000000006"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{e79e27c0-1e9d-4306-9888-ffe4c4f289ef}"
+#!   COLOUR="1,0.95686274509803926,0.80000000000000004,0.90196078431372551"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="9"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="AttributeManager"
+#!   VERSION="5"
+#!   POSITION="1273.3910939109394 -617.50387503875038"
+#!   BOUNDING_RECT="1273.3910939109394 -617.50387503875038 436 65"
+#!   ORDER="500000000000001"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="intrasis_db_name intrasis_db_name SM&lt;at&gt;ReplaceRegularExpression&lt;openparen&gt;&lt;at&gt;Left&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;SM&lt;space&gt;Intrasisprojekt&lt;closeparen&gt;&lt;comma&gt;&lt;at&gt;Value&lt;openparen&gt;number2substring&lt;closeparen&gt;&lt;closeparen&gt;&lt;comma&gt;&lt;quote&gt;:&lt;quote&gt;&lt;comma&gt;&lt;quote&gt;&lt;quote&gt;&lt;comma&gt;caseSensitive=TRUE&lt;closeparen&gt; buffer SET_TO konverterat&lt;space&gt;till&lt;space&gt;i2 konverterat&lt;space&gt;till&lt;space&gt;i2  buffer NO_OP ant ant  varchar&lt;openparen&gt;11&lt;closeparen&gt; NO_OP SM&lt;space&gt;Intrasisprojekt SM&lt;space&gt;Intrasisprojekt  varchar&lt;openparen&gt;59&lt;closeparen&gt; NO_OP S&lt;u00e4&gt;kerhetskopierad&lt;space&gt;090605 S&lt;u00e4&gt;kerhetskopierad&lt;space&gt;090605  varchar&lt;openparen&gt;16&lt;closeparen&gt; NO_OP &lt;u00c5&gt;terst&lt;u00e4&gt;lld&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;public&lt;space&gt;090605 &lt;u00c5&gt;terst&lt;u00e4&gt;lld&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;public&lt;space&gt;090605  varchar&lt;openparen&gt;16&lt;closeparen&gt; NO_OP Problem Problem  varchar&lt;openparen&gt;47&lt;closeparen&gt; NO_OP GIS-data&lt;space&gt;i&lt;space&gt;shaper&lt;space&gt;inlagda&lt;space&gt;i&lt;space&gt;Arkiv&lt;space&gt;Arkeologi GIS-data&lt;space&gt;i&lt;space&gt;shaper&lt;space&gt;inlagda&lt;space&gt;i&lt;space&gt;Arkiv&lt;space&gt;Arkeologi  varchar&lt;openparen&gt;46&lt;closeparen&gt; NO_OP Data&lt;space&gt;till&lt;space&gt;Swedigarch Data&lt;space&gt;till&lt;space&gt;Swedigarch  varchar&lt;openparen&gt;2&lt;closeparen&gt; NO_OP SM&lt;space&gt;Rapport SM&lt;space&gt;Rapport  varchar&lt;openparen&gt;36&lt;closeparen&gt; NO_OP number2substring number2substring  varchar&lt;openparen&gt;9&lt;closeparen&gt; NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="AttributeFilter"
+#!   VERSION="6"
+#!   POSITION="566.3823438234383 -372.50412504125023"
+#!   BOUNDING_RECT="566.3823438234383 -372.50412504125023 436 65"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;lt&gt;EMPTY&lt;gt&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;lt&gt;MISSING&lt;gt&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="&lt;lt&gt;NULL&lt;gt&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="&lt;lt&gt;UNFILTERED&lt;gt&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="BOL"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <OUTPUT_FEAT NAME="ej&lt;space&gt;anv&lt;u00e4&gt;nda"/>
+#!     <FEAT_COLLAPSED COLLAPSED="5"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="5" />
+#!     <OUTPUT_FEAT NAME="exkludera"/>
+#!     <FEAT_COLLAPSED COLLAPSED="6"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="6" />
+#!     <OUTPUT_FEAT NAME="FME_NULL_VALUE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="7"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="7" />
+#!     <OUTPUT_FEAT NAME="specialfall"/>
+#!     <FEAT_COLLAPSED COLLAPSED="8"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="8" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="8" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="8" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="8" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="8" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="8" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="8" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="8" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="8" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="8" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="8" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_NAME" PARM_VALUE="ant"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_VALUES" PARM_VALUE="&lt;lt&gt;Empty&lt;gt&gt;,&lt;lt&gt;Missing&lt;gt&gt;,&lt;lt&gt;Null&lt;gt&gt;,&lt;lt&gt;Unfiltered&lt;gt&gt;,BOL,ej&lt;space&gt;anv&lt;u00e4&gt;nda,exkludera,FME_NULL_VALUE,specialfall"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_VALUES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="-78.560765607656066 -284.3773437734377"
+#!   BOUNDING_RECT="-78.560765607656066 -284.3773437734377 436 65"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="TEST SM&lt;space&gt;Intrasisprojekt ATTRIBUTE_HAS_A_VALUE &quot;&quot;"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="13"
+#!   TYPE="FeatureMerger"
+#!   VERSION="21"
+#!   POSITION="2128.1462814628148 -418.75418754187513"
+#!   BOUNDING_RECT="2128.1462814628148 -418.75418754187513 460 65"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="REQUESTOR_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE_VAL" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;path_rootname&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;intrasis_db_name&lt;closeparen&gt; AUTO"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE_LU" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use Requestor"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="AttributeManager"
+#!   VERSION="5"
+#!   POSITION="1248.3908439084391 -903.75418754187513"
+#!   BOUNDING_RECT="1248.3908439084391 -903.75418754187513 436 65"
+#!   ORDER="500000000000008"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="intrasis_db_name intrasis_db_name &lt;at&gt;Value&lt;openparen&gt;ant&lt;closeparen&gt; buffer SET_TO konverterat&lt;space&gt;till&lt;space&gt;i2 konverterat&lt;space&gt;till&lt;space&gt;i2  buffer NO_OP ant ant  varchar&lt;openparen&gt;11&lt;closeparen&gt; NO_OP number2substring number2substring  varchar&lt;openparen&gt;9&lt;closeparen&gt; NO_OP SM&lt;space&gt;Intrasisprojekt SM&lt;space&gt;Intrasisprojekt  varchar&lt;openparen&gt;59&lt;closeparen&gt; NO_OP S&lt;u00e4&gt;kerhetskopierad&lt;space&gt;090605 S&lt;u00e4&gt;kerhetskopierad&lt;space&gt;090605  varchar&lt;openparen&gt;16&lt;closeparen&gt; NO_OP &lt;u00c5&gt;terst&lt;u00e4&gt;lld&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;public&lt;space&gt;090605 &lt;u00c5&gt;terst&lt;u00e4&gt;lld&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;public&lt;space&gt;090605  varchar&lt;openparen&gt;16&lt;closeparen&gt; NO_OP Problem Problem  varchar&lt;openparen&gt;47&lt;closeparen&gt; NO_OP GIS-data&lt;space&gt;i&lt;space&gt;shaper&lt;space&gt;inlagda&lt;space&gt;i&lt;space&gt;Arkiv&lt;space&gt;Arkeologi GIS-data&lt;space&gt;i&lt;space&gt;shaper&lt;space&gt;inlagda&lt;space&gt;i&lt;space&gt;Arkiv&lt;space&gt;Arkeologi  varchar&lt;openparen&gt;46&lt;closeparen&gt; NO_OP Data&lt;space&gt;till&lt;space&gt;Swedigarch Data&lt;space&gt;till&lt;space&gt;Swedigarch  varchar&lt;openparen&gt;2&lt;closeparen&gt; NO_OP SM&lt;space&gt;Rapport SM&lt;space&gt;Rapport  varchar&lt;openparen&gt;36&lt;closeparen&gt; NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_2"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="21"
+#!   TYPE="AttributeManager"
+#!   VERSION="5"
+#!   POSITION="1248.3908439084391 -1190.6369063690638"
+#!   BOUNDING_RECT="1248.3908439084391 -1190.6369063690638 436 65"
+#!   ORDER="500000000000009"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="number2substring" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="intrasis_db_name intrasis_db_name &lt;at&gt;Value&lt;openparen&gt;SM&lt;space&gt;Intrasisprojekt&lt;closeparen&gt; buffer SET_TO konverterat&lt;space&gt;till&lt;space&gt;i2 konverterat&lt;space&gt;till&lt;space&gt;i2  buffer NO_OP ant ant  varchar&lt;openparen&gt;11&lt;closeparen&gt; NO_OP number2substring number2substring  varchar&lt;openparen&gt;9&lt;closeparen&gt; NO_OP SM&lt;space&gt;Intrasisprojekt SM&lt;space&gt;Intrasisprojekt  varchar&lt;openparen&gt;59&lt;closeparen&gt; NO_OP S&lt;u00e4&gt;kerhetskopierad&lt;space&gt;090605 S&lt;u00e4&gt;kerhetskopierad&lt;space&gt;090605  varchar&lt;openparen&gt;16&lt;closeparen&gt; NO_OP &lt;u00c5&gt;terst&lt;u00e4&gt;lld&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;public&lt;space&gt;090605 &lt;u00c5&gt;terst&lt;u00e4&gt;lld&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;public&lt;space&gt;090605  varchar&lt;openparen&gt;16&lt;closeparen&gt; NO_OP Problem Problem  varchar&lt;openparen&gt;47&lt;closeparen&gt; NO_OP GIS-data&lt;space&gt;i&lt;space&gt;shaper&lt;space&gt;inlagda&lt;space&gt;i&lt;space&gt;Arkiv&lt;space&gt;Arkeologi GIS-data&lt;space&gt;i&lt;space&gt;shaper&lt;space&gt;inlagda&lt;space&gt;i&lt;space&gt;Arkiv&lt;space&gt;Arkeologi  varchar&lt;openparen&gt;46&lt;closeparen&gt; NO_OP Data&lt;space&gt;till&lt;space&gt;Swedigarch Data&lt;space&gt;till&lt;space&gt;Swedigarch  varchar&lt;openparen&gt;2&lt;closeparen&gt; NO_OP SM&lt;space&gt;Rapport SM&lt;space&gt;Rapport  varchar&lt;openparen&gt;36&lt;closeparen&gt; NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_3"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="24"
+#!   TYPE="AttributeManager"
+#!   VERSION="5"
+#!   POSITION="2862.5286252862525 -802.50387503875038"
+#!   BOUNDING_RECT="2862.5286252862525 -802.50387503875038 436 65"
+#!   ORDER="500000000000010"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="path_unix path_unix  buffer REMOVE path_windows path_windows  buffer REMOVE path_rootname intrasis_db_name  buffer RENAME_SET_VALUE path_filename path_filename  buffer REMOVE path_extension path_extension  buffer REMOVE path_directory_unix path_directory_unix  buffer REMOVE path_directory_windows path_directory_windows  buffer REMOVE path_type path_type  varchar&lt;openparen&gt;10&lt;closeparen&gt; REMOVE  ant saknas&lt;space&gt;i&lt;space&gt;excel&lt;space&gt;fr&lt;space&gt;kps varchar&lt;openparen&gt;21&lt;closeparen&gt; SET_TO"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_4"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="27"
+#!   TYPE="AttributeManager"
+#!   VERSION="5"
+#!   POSITION="2825.0287502875035 -450.00450004500016"
+#!   BOUNDING_RECT="2825.0287502875035 -450.00450004500016 436 65"
+#!   ORDER="500000000000011"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="intrasis_db_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="konverterat till i2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ant" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Intrasisprojekt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Säkerhetskopierad 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Återställd på public 090605" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Problem" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="GIS-data i shaper inlagda i Arkiv Arkeologi" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Data till Swedigarch" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="SM Rapport" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="path_unix path_unix  buffer REMOVE path_windows path_windows  buffer REMOVE path_rootname path_rootname  buffer REMOVE path_filename path_filename  buffer REMOVE path_extension path_extension  buffer REMOVE path_directory_unix path_directory_unix  buffer REMOVE path_directory_windows path_directory_windows  buffer REMOVE path_type path_type  varchar&lt;openparen&gt;10&lt;closeparen&gt; REMOVE intrasis_db_name intrasis_db_name  buffer NO_OP konverterat&lt;space&gt;till&lt;space&gt;i2 konverterat&lt;space&gt;till&lt;space&gt;i2  buffer NO_OP ant ant  varchar&lt;openparen&gt;11&lt;closeparen&gt; NO_OP SM&lt;space&gt;Intrasisprojekt SM&lt;space&gt;Intrasisprojekt  varchar&lt;openparen&gt;59&lt;closeparen&gt; NO_OP S&lt;u00e4&gt;kerhetskopierad&lt;space&gt;090605 S&lt;u00e4&gt;kerhetskopierad&lt;space&gt;090605  varchar&lt;openparen&gt;16&lt;closeparen&gt; NO_OP &lt;u00c5&gt;terst&lt;u00e4&gt;lld&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;public&lt;space&gt;090605 &lt;u00c5&gt;terst&lt;u00e4&gt;lld&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;public&lt;space&gt;090605  varchar&lt;openparen&gt;16&lt;closeparen&gt; NO_OP Problem Problem  varchar&lt;openparen&gt;47&lt;closeparen&gt; NO_OP GIS-data&lt;space&gt;i&lt;space&gt;shaper&lt;space&gt;inlagda&lt;space&gt;i&lt;space&gt;Arkiv&lt;space&gt;Arkeologi GIS-data&lt;space&gt;i&lt;space&gt;shaper&lt;space&gt;inlagda&lt;space&gt;i&lt;space&gt;Arkiv&lt;space&gt;Arkeologi  varchar&lt;openparen&gt;46&lt;closeparen&gt; NO_OP Data&lt;space&gt;till&lt;space&gt;Swedigarch Data&lt;space&gt;till&lt;space&gt;Swedigarch  varchar&lt;openparen&gt;2&lt;closeparen&gt; NO_OP SM&lt;space&gt;Rapport SM&lt;space&gt;Rapport  varchar&lt;openparen&gt;36&lt;closeparen&gt; NO_OP number2substring number2substring  varchar&lt;openparen&gt;9&lt;closeparen&gt; REMOVE"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_5"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="10"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="15"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="9"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="27"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="20"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="21"
+#!   TARGET_NODE="13"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="26"
+#!   SOURCE_NODE="24"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="-1"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="27"
+#!   TARGET_NODE="16"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="-1"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="13"
+#!   TARGET_NODE="24"
+#!   SOURCE_PORT_DESC="fo 1 UNMERGED_REQUESTOR"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 2 &lt;lt&gt;lt&lt;gt&gt;NULL&lt;lt&gt;gt&lt;gt&gt;"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 4 BOL"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 5 ej&lt;lt&gt;space&lt;gt&gt;anv&lt;lt&gt;u00e4&lt;gt&gt;nda"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="30"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="21"
+#!   SOURCE_PORT_DESC="fo 8 specialfall"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE SourceDataset_XLSXR_1,XLSXR_IN_ADVANCED_XLSXR_1,XLSXR_IN_SCAN_MAX_FEATURES_XLSXR_1,XLSXR_IN_READ_BLANK_AS_XLSXR_1,XLSXR_IN_EXPAND_MERGED_CELLS_XLSXR_1,XLSXR_IN_READ_RASTER_MODE_XLSXR_1,XLSXR_IN_ADDITIONAL_DATETIME_FORMATS_XLSXR_1,XLSXR_IN_READ_FORM_CONTROLS_XLSXR_1,XLSXR_IN_SCAN_FOR_GEOMETRIC_TYPES_XLSXR_1,XLSXR_IN_NETWORK_AUTHENTICATION_XLSXR_1,PATH_IN_FME_GROUP_NAMED1_PATH_1,PATH_IN_GLOB_PATTERN_PATH_1,PATH_IN_RECURSE_DIRECTORIES_PATH_1,PATH_IN_TYPE_PATH_1,PATH_IN_HIDDEN_FILES_PATH_1,SourceDataset_PATH_1,PATH_IN_NETWORK_AUTHENTICATION_PATH_1,DestDataset_XLSXW_1,XLSXW_OUT_FME_GROUP_NAMED1_XLSXW_1,XLSXW_OUT_OVERWRITE_FILE_XLSXW_1,XLSXW_OUT_TEMPLATEFILE_XLSXW_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_XLSXR C:\ny_slask\kulturparken_smaland\intrasis_projekt.xls
+
+DEFAULT_MACRO SourceDataset_PATH C:\ny_slask\kulturparken_smaland\1_intrasis_filer
+
+DEFAULT_MACRO DestDataset_XLSXW C:\ny_slask\kulturparken_smaland\konverteringsprotokoll_i2_i3.xlsx
+
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_XLSXR$encode)} == {}} { puts_real {Parameter 'SourceDataset_XLSXR' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(SourceDataset_PATH$encode)} == {}} { puts_real {Parameter 'SourceDataset_PATH' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(DestDataset_XLSXW$encode)} == {}} { puts_real {Parameter 'DestDataset_XLSXW' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} XLSXR
+MULTI_READER_KEYWORD{0} XLSXR_1
+MULTI_READER_GEN_DIRECTIVES{0} REPLACE_ONLY_NEWLINES_CARRIAGE_RETURNS,YES,EXPOSE_ATTRS_GROUP,,EXPAND_MERGED_CELLS,Yes,FORCE_DATETIME,NO,XLSXR_EXPOSE_FORMAT_ATTRS,,CREATE_FEATURE_TABLES_FROM_DATA,Yes,CONFIGURATION_DATASET,,SCAN_MAX_FEATURES,1000,EXPANDED_DATES_SCANNING,No,TABLELIST,,ALLOW_DOLLAR_SIGNS,YES,READ_FORM_CONTROLS,NONE,STRIP_SHEETNAME_SPACES,YES,SCAN_FOR_GEOMETRIC_TYPES,Yes,SCHEMA,,EXCEL_COL_NAMES,YES,SCHEMA_HANDLING_REVISION,2,APPLY_FILTERS,No,ADVANCED,,TRIM_ATTR_NAME_CHARACTERS,,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,CASE_SENSITIVE_FEATURE_TYPES,YES,TRIM_ATTR_NAME_WHITESPACE,Yes,ADDITIONAL_DATETIME_FORMATS,<lt>Unused<gt>,USE_CUSTOM_SCHEMA,NO,READ_RASTER_MODE,None,SKIP_EMPTY_ROWS,YES,_MERGE_SCHEMAS,YES,READ_BLANK_AS,Null
+MULTI_READER_TYPE{1} PATH
+MULTI_READER_KEYWORD{1} PATH_1
+MULTI_READER_GEN_DIRECTIVES{1} EXPOSE_ATTRS_GROUP,,USE_NON_STRING_ATTR,yes,NO_EMPTY_PROPERTIES,YES,PATH_EXPOSE_FORMAT_ATTRS,,OFFSET_DATETIME,yes,GLOB_PATTERN,*,HIDDEN_FILES,INCLUDE,RECURSE_DIRECTORIES,NO,_MERGE_SCHEMAS,YES,RETRIEVE_FILE_PROPERTIES,NO,TYPE,DIRECTORY
+WRITER_TYPE MULTI_WRITER
+WRITER_KEYWORD PRIMARY_DEST
+PRIMARY_DEST_DATASET_ORDER BY_ID
+PRIMARY_DEST_FIRST_WRITER_ID 0
+PRIMARY_DEST_TYPE{0} XLSXW
+PRIMARY_DEST_KEYWORD{0} XLSXW_1
+PRIMARY_DEST_GEN_DIRECTIVES{0} RASTER_FORMAT,PNG,FIELD_NAMES_FORMATTING,YES,FIELD_NAMES_CELL_BORDER,,FIELD_NAMES_HORIZONTAL_ALIGNMENT,,FIELD_NAMES_PATTERN_STYLE,,FIELD_NAMES_CELL_BORDER_COLOR,,ADD_WRITER_NEXT_ACTION,automatic,MULTIPLE_TEMPLATE_SHEETS,Yes,FIELD_NAMES_ROW_HEIGHT,,OVERWRITE_FILE,No,WRITER_MODE,Insert,PROTECT_SHEET_PERMISSIONS,<lt>Unused<gt>,FIELD_NAMES_PATTERN_COLOR,,COORDINATE_SYSTEM_GRANULARITY,FEATURE,PROTECT_SHEET_LEVEL,<lt>Unused<gt>,FIELD_NAMES_TEXT_ORIENTATION,,FIELD_NAMES_VERTICAL_ALIGNMENT,,FIELD_NAMES_CELL_BORDER_STYLE,,FIELD_NAMES_TEXT_INDENT,,TRUNCATE_TABLE,No,CUSTOM_NUMBER_FORMATTING,ENABLE_NATIVE,STRICT_SCHEMA_ADDITIONAL_ATTRIBUTE_MATCHING,yes,FIELD_NAMES_FONT_NAME,,PROTECT_SHEET_PASSWORD,<lt>Unused<gt>,INSERT_IGNORE_DB_OP,Yes,REMOVE_UNCHANGED_TEMPLATE_SHEET,No,FIELD_NAMES_BACKGROUND_COLOR,,FIELD_NAMES_FILL,,FIELD_NAMES_TEXT_CONTROL,,PROTECT_SHEET,NO,DESTINATION_DATASETTYPE_VALIDATION,Yes,TEMPLATE_SHEET,,FIELD_NAMES_OUT,Yes,FIELD_NAMES_TEXT_ALIGNMENT,,TEMPLATEFILE,,FIELD_NAMES_FONT_COLOR,,DROP_TABLE,No,FIELD_NAMES_FONT,
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "XLSXR_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER XLSXR XLSXR_1
+# ============================================================================
+# First get the dataset for the database. For Excel, it's the file name.
+# For now we'll use whatever they had when they generated this mapping file,
+# and not reprompt
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_XLSXR_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER XLSXR XLSXR_1
+DEFAULT_MACRO SourceDataset_XLSXR_1 $(SourceDataset_XLSXR)
+GUI MULTIFILE SourceDataset_XLSXR_1 Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Excel_Workbook_2007(*.xlsx)|*.xlsx|Excel_Macro_Workbook(*.xlsm)|*.xlsm|Excel_Binary_Workbook_-_Windows_Only(*.xlsb)|*.xlsb|Excel_Workbook_Pre_2007(*.xls)|*.xls|All_files(*)|* Source Microsoft Excel File(s):
+#GUI GROUP TABLELIST Constraints
+# TABLELIST is not shown in GUI, but is required for infrastructure
+# to not show the Table List popup
+DEFAULT_MACRO XLSXR_IN_CONFIGURATION_DATASET_XLSXR_1 
+XLSXR_1_CONFIGURATION_DATASET "$(XLSXR_IN_CONFIGURATION_DATASET_XLSXR_1)"
+# Flag to switch from old naming scheme of col_1, col_2 etc. to a, b, etc.
+# To better match up with Excel files
+DEFAULT_MACRO XLSXR_IN_EXCEL_COL_NAMES_XLSXR_1 YES
+XLSXR_1_EXCEL_COL_NAMES "$(XLSXR_IN_EXCEL_COL_NAMES_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_FORCE_DATETIME_XLSXR_1 NO
+XLSXR_1_FORCE_DATETIME "$(XLSXR_IN_FORCE_DATETIME_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_ADVANCED_XLSXR_1 
+GUI OPTIONAL DISCLOSUREGROUP XLSXR_IN_ADVANCED_XLSXR_1 XLSXR_IN_APPLY_FILTERS%XLSXR_IN_SCAN_MAX_FEATURES_XLSXR_1%XLSXR_IN_TRIM_ATTR_NAME_WHITESPACE%XLSXR_IN_TRIM_ATTR_NAME_CHARACTERS%XLSXR_IN_READ_BLANK_AS_XLSXR_1%XLSXR_IN_EXPAND_MERGED_CELLS_XLSXR_1%XLSXR_IN_READ_RASTER_MODE_XLSXR_1%XLSXR_IN_EXPANDED_DATES_SCANNING%XLSXR_IN_ADDITIONAL_DATETIME_FORMATS_XLSXR_1%XLSXR_IN_READ_FORM_CONTROLS_XLSXR_1%XLSXR_IN_SCAN_FOR_GEOMETRIC_TYPES_XLSXR_1 Advanced
+DEFAULT_MACRO XLSXR_IN_SCAN_MAX_FEATURES_XLSXR_1 1000
+XLSXR_1_SCAN_MAX_FEATURES "$(XLSXR_IN_SCAN_MAX_FEATURES_XLSXR_1)"
+GUI RANGE_SLIDER XLSXR_IN_SCAN_MAX_FEATURES_XLSXR_1 0%MAX%0 Maximum Rows to Scan:
+DEFAULT_MACRO XLSXR_IN_READ_BLANK_AS_XLSXR_1 Null
+XLSXR_1_READ_BLANK_AS "$(XLSXR_IN_READ_BLANK_AS_XLSXR_1)"
+GUI CHOICE XLSXR_IN_READ_BLANK_AS_XLSXR_1 Missing%Null Read Blank Cells As:
+DEFAULT_MACRO XLSXR_IN_TRIM_ATTR_NAME_WHITESPACE_XLSXR_1 Yes
+XLSXR_1_TRIM_ATTR_NAME_WHITESPACE "$(XLSXR_IN_TRIM_ATTR_NAME_WHITESPACE_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_EXPAND_MERGED_CELLS_XLSXR_1 Yes
+XLSXR_1_EXPAND_MERGED_CELLS "$(XLSXR_IN_EXPAND_MERGED_CELLS_XLSXR_1)"
+GUI OPTIONAL CHECKBOX XLSXR_IN_EXPAND_MERGED_CELLS_XLSXR_1 Yes%No Expand Merged Cells:
+DEFAULT_MACRO XLSXR_IN_READ_RASTER_MODE_XLSXR_1 None
+XLSXR_1_READ_RASTER_MODE "$(XLSXR_IN_READ_RASTER_MODE_XLSXR_1)"
+GUI LOOKUP_CHOICE XLSXR_IN_READ_RASTER_MODE_XLSXR_1 None%Attribute%Geometry Read Embedded Images As:
+DEFAULT_MACRO XLSXR_IN_EXPANDED_DATES_SCANNING_XLSXR_1 No
+XLSXR_1_EXPANDED_DATES_SCANNING "$(XLSXR_IN_EXPANDED_DATES_SCANNING_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_ADDITIONAL_DATETIME_FORMATS_XLSXR_1 <Unused>
+XLSXR_1_ADDITIONAL_DATETIME_FORMATS "$(XLSXR_IN_ADDITIONAL_DATETIME_FORMATS_XLSXR_1)"
+GUI OPTIONAL STRING_ENCODED XLSXR_IN_ADDITIONAL_DATETIME_FORMATS_XLSXR_1 Additional Date/Time Format:
+DEFAULT_MACRO XLSXR_IN_READ_FORM_CONTROLS_XLSXR_1 NONE
+XLSXR_1_READ_FORM_CONTROLS "$(XLSXR_IN_READ_FORM_CONTROLS_XLSXR_1)"
+GUI OPTIONAL CHECKBOX XLSXR_IN_READ_FORM_CONTROLS_XLSXR_1 CELL_VALUE%NONE Read Form Control as Cell Values:
+DEFAULT_MACRO XLSXR_IN_TRIM_ATTR_NAME_CHARACTERS_XLSXR_1 
+XLSXR_1_TRIM_ATTR_NAME_CHARACTERS "$(XLSXR_IN_TRIM_ATTR_NAME_CHARACTERS_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_SCAN_FOR_GEOMETRIC_TYPES_XLSXR_1 Yes
+XLSXR_1_SCAN_FOR_GEOMETRIC_TYPES "$(XLSXR_IN_SCAN_FOR_GEOMETRIC_TYPES_XLSXR_1)"
+GUI OPTIONAL CHECKBOX XLSXR_IN_SCAN_FOR_GEOMETRIC_TYPES_XLSXR_1 Yes%No Scan For Geometric Types:
+DEFAULT_MACRO XLSXR_IN_EXPOSE_ATTRS_GROUP_XLSXR_1 
+XLSXR_1_EXPOSE_ATTRS_GROUP "$(XLSXR_IN_EXPOSE_ATTRS_GROUP_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_APPLY_FILTERS_XLSXR_1 No
+XLSXR_1_APPLY_FILTERS "$(XLSXR_IN_APPLY_FILTERS_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_XLSXR_1 Yes
+XLSXR_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(XLSXR_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_CASE_SENSITIVE_FEATURE_TYPES_XLSXR_1 YES
+XLSXR_1_CASE_SENSITIVE_FEATURE_TYPES "$(XLSXR_IN_CASE_SENSITIVE_FEATURE_TYPES_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_ALLOW_DOLLAR_SIGNS_XLSXR_1 YES
+XLSXR_1_ALLOW_DOLLAR_SIGNS "$(XLSXR_IN_ALLOW_DOLLAR_SIGNS_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_CREATE_FEATURE_TABLES_FROM_DATA_XLSXR_1 Yes
+XLSXR_1_CREATE_FEATURE_TABLES_FROM_DATA "$(XLSXR_IN_CREATE_FEATURE_TABLES_FROM_DATA_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_STRIP_SHEETNAME_SPACES_XLSXR_1 YES
+XLSXR_1_STRIP_SHEETNAME_SPACES "$(XLSXR_IN_STRIP_SHEETNAME_SPACES_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_SCHEMA_HANDLING_REVISION_XLSXR_1 2
+XLSXR_1_SCHEMA_HANDLING_REVISION "$(XLSXR_IN_SCHEMA_HANDLING_REVISION_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_SKIP_EMPTY_ROWS_XLSXR_1 YES
+XLSXR_1_SKIP_EMPTY_ROWS "$(XLSXR_IN_SKIP_EMPTY_ROWS_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_REPLACE_ONLY_NEWLINES_CARRIAGE_RETURNS_XLSXR_1 YES
+XLSXR_1_REPLACE_ONLY_NEWLINES_CARRIAGE_RETURNS "$(XLSXR_IN_REPLACE_ONLY_NEWLINES_CARRIAGE_RETURNS_XLSXR_1)"
+# ===========================================================================
+DEFAULT_MACRO XLSXR_IN_NETWORK_AUTHENTICATION_XLSXR_1 
+XLSXR_1_NETWORK_AUTHENTICATION "$(XLSXR_IN_NETWORK_AUTHENTICATION_XLSXR_1)"
+GUI OPTIONAL AUTHENTICATOR XLSXR_IN_NETWORK_AUTHENTICATION_XLSXR_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO XLSXR_IN_ATTRIBUTE_READING_XLSXR_1 DEFLINE
+XLSXR_1_ATTRIBUTE_READING "$(XLSXR_IN_ATTRIBUTE_READING_XLSXR_1)"
+# ============================================================================
+XLSXR_1_GENERATE_FME_BUILD_NUM 24627
+XLSXR_1_DATASET "$(SourceDataset_XLSXR_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "PATH_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PATH PATH_1
+DEFAULT_MACRO PATH_IN_FME_GROUP_NAMED1_PATH_1 
+GUI OPTIONAL DISCLOSUREGROUP PATH_IN_FME_GROUP_NAMED1_PATH_1 PATH_IN_GLOB_PATTERN_PATH_1%PATH_IN_RECURSE_DIRECTORIES_PATH_1%PATH_IN_TYPE_PATH_1%PATH_IN_HIDDEN_FILES_PATH_1%PATH_IN_RETRIEVE_FILE_PROPERTIES Path Parameters
+# =============================================================================
+DEFAULT_MACRO PATH_IN_OFFSET_DATETIME_PATH_1 yes
+PATH_1_OFFSET_DATETIME "$(PATH_IN_OFFSET_DATETIME_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_USE_NON_STRING_ATTR_PATH_1 yes
+PATH_1_USE_NON_STRING_ATTR "$(PATH_IN_USE_NON_STRING_ATTR_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_GLOB_PATTERN_PATH_1 *
+PATH_1_GLOB_PATTERN "$(PATH_IN_GLOB_PATTERN_PATH_1)"
+GUI OPTIONAL TEXT_ENCODED PATH_IN_GLOB_PATTERN_PATH_1 Path Filter:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_RECURSE_DIRECTORIES_PATH_1 NO
+PATH_1_RECURSE_DIRECTORIES "$(PATH_IN_RECURSE_DIRECTORIES_PATH_1)"
+GUI CHOICE PATH_IN_RECURSE_DIRECTORIES_PATH_1 YES%NO Recurse Into Subfolders:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_TYPE_PATH_1 DIRECTORY
+PATH_1_TYPE "$(PATH_IN_TYPE_PATH_1)"
+GUI LOOKUP_CHOICE PATH_IN_TYPE_PATH_1 Any,ANY%Directory,DIRECTORY%File,FILE Allowed Path Type:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_HIDDEN_FILES_PATH_1 INCLUDE
+PATH_1_HIDDEN_FILES "$(PATH_IN_HIDDEN_FILES_PATH_1)"
+GUI LOOKUP_CHOICE PATH_IN_HIDDEN_FILES_PATH_1 Include,INCLUDE%Exclude,EXCLUDE Hidden Files and Folders:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_RETRIEVE_FILE_PROPERTIES_PATH_1 NO
+PATH_1_RETRIEVE_FILE_PROPERTIES "$(PATH_IN_RETRIEVE_FILE_PROPERTIES_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_NO_EMPTY_PROPERTIES_PATH_1 YES
+PATH_1_NO_EMPTY_PROPERTIES "$(PATH_IN_NO_EMPTY_PROPERTIES_PATH_1)"
+DEFAULT_MACRO PATH_IN_EXPOSE_ATTRS_GROUP_PATH_1 
+PATH_1_EXPOSE_ATTRS_GROUP "$(PATH_IN_EXPOSE_ATTRS_GROUP_PATH_1)"
+# =====================================================================
+# The following GUI line prompts for the folder from which to
+# read
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_PATH_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PATH PATH_1
+DEFAULT_MACRO SourceDataset_PATH_1 $(SourceDataset_PATH)
+GUI MULTIDIR SourceDataset_PATH_1 Source Folder and File Pathnames Folder:
+# ===========================================================================
+DEFAULT_MACRO PATH_IN_NETWORK_AUTHENTICATION_PATH_1 
+PATH_1_NETWORK_AUTHENTICATION "$(PATH_IN_NETWORK_AUTHENTICATION_PATH_1)"
+GUI OPTIONAL AUTHENTICATOR PATH_IN_NETWORK_AUTHENTICATION_PATH_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO PATH_IN_ATTRIBUTE_READING_PATH_1 ALL
+PATH_1_ATTRIBUTE_READING "$(PATH_IN_ATTRIBUTE_READING_PATH_1)"
+# ============================================================================
+PATH_1_GENERATE_FME_BUILD_NUM 24627
+PATH_1_DATASET "$(SourceDataset_PATH_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "XLSXW_1"
+#! END_WB_HEADER
+#! START_DEST_HEADER XLSXW XLSXW_1
+# ============================================================================
+# First get the dataset for the database. For Excel, it's the file name.
+# For now we'll use whatever they had when they generated this mapping file,
+# and not reprompt
+#! END_DEST_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO DestDataset
+INCLUDE [ if {"$(DestDataset)" != ""} {                          \
+ puts {DEFAULT_MACRO DestDataset_XLSXW_1 $(DestDataset)}         \
+ } ]
+#! END_WB_HEADER
+#! START_DEST_HEADER XLSXW XLSXW_1
+DEFAULT_MACRO DestDataset_XLSXW_1 $(DestDataset_XLSXW)
+GUI FILENAME DestDataset_XLSXW_1 Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Microsoft_Excel_2007+_Workbook(*.xlsx)|*.xlsx|Microsoft_Excel_2007+_Macro_Workbook(*.xlsm)|*.xlsm|Microsoft_Excel_Pre-2007_Workbook(*.xls)|*.xls|All_Files(*)|* Destination Microsoft Excel File:
+CHECK_RASTER_ATTRIBUTES YES
+# ============================================================================
+DEFAULT_MACRO XLSXW_OUT_FME_GROUP_NAMED1_XLSXW_1 
+GUI OPTIONAL DISCLOSUREGROUP XLSXW_OUT_FME_GROUP_NAMED1_XLSXW_1 XLSXW_OUT_OVERWRITE_FILE_XLSXW_1%XLSXW_OUT_TEMPLATEFILE_XLSXW_1%XLSXW_OUT_TEMPLATE_SHEET%XLSXW_OUT_REMOVE_UNCHANGED_TEMPLATE_SHEET Writer Parameters
+# Whether or not to overwrite the file
+DEFAULT_MACRO XLSXW_OUT_OVERWRITE_FILE_XLSXW_1 No
+XLSXW_1_OVERWRITE_FILE "$(XLSXW_OUT_OVERWRITE_FILE_XLSXW_1)"
+GUI ACTIVECHOICE XLSXW_OUT_OVERWRITE_FILE_XLSXW_1 Yes%No,XLSXW_OUT_TEMPLATEFILE_XLSXW_1,XLSXW_OUT_TEMPLATE_SHEET,XLSXW_OUT_REMOVE_UNCHANGED_TEMPLATE_SHEET Overwrite Existing File:
+# Template file option
+DEFAULT_MACRO XLSXW_OUT_TEMPLATEFILE_XLSXW_1 
+XLSXW_1_TEMPLATEFILE "$(XLSXW_OUT_TEMPLATEFILE_XLSXW_1)"
+GUI OPTIONAL FILENAME_MUSTEXIST XLSXW_OUT_TEMPLATEFILE_XLSXW_1 Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Microsoft_Excel_2007+_Workbook(*.xlsx)|*.xlsx|Microsoft_Excel_2007+_Macro_Workbook(*.xlsm)|*.xlsm|Microsoft_Excel_Pre-2007_Workbook(*.xls)|*.xls|All_Files(*)|* Template File:
+GUI LOOKUP XLSXW_OUT_TEMPLATEFILE_XLSXW_1 <Unused>, 
+DEFAULT_MACRO XLSXW_OUT_TEMPLATE_SHEET_XLSXW_1
+XLSXW_1_TEMPLATE_SHEET "$(XLSXW_OUT_TEMPLATE_SHEET_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_REMOVE_UNCHANGED_TEMPLATE_SHEET_XLSXW_1 No
+XLSXW_1_REMOVE_UNCHANGED_TEMPLATE_SHEET "$(XLSXW_OUT_REMOVE_UNCHANGED_TEMPLATE_SHEET_XLSXW_1)"
+# Compatibility case to support reading old workspaces which have one template sheet per writer
+DEFAULT_MACRO XLSXW_OUT_MULTIPLE_TEMPLATE_SHEETS_XLSXW_1 Yes
+XLSXW_1_MULTIPLE_TEMPLATE_SHEETS "$(XLSXW_OUT_MULTIPLE_TEMPLATE_SHEETS_XLSXW_1)"
+# Compatibility case to support old case where insert would allow fme_db_operation
+DEFAULT_MACRO XLSXW_OUT_INSERT_IGNORE_DB_OP_XLSXW_1 Yes
+XLSXW_1_INSERT_IGNORE_DB_OP "$(XLSXW_OUT_INSERT_IGNORE_DB_OP_XLSXW_1)"
+# ============================================================================
+# Parameters whose values will be percolated to the feature types, but will not
+# remain as writer level settings
+# Default to not drop feature type first
+DEFAULT_MACRO XLSXW_OUT_DROP_TABLE_XLSXW_1 No
+XLSXW_1_DROP_TABLE "$(XLSXW_OUT_DROP_TABLE_XLSXW_1)"
+# Default to not truncate feature type first (removeallcelldata,retainformatting/headers,etc.)
+DEFAULT_MACRO XLSXW_OUT_TRUNCATE_TABLE_XLSXW_1 No
+XLSXW_1_TRUNCATE_TABLE "$(XLSXW_OUT_TRUNCATE_TABLE_XLSXW_1)"
+# Maintain compatibility with lenient attrName.* matching
+DEFAULT_MACRO XLSXW_OUT_STRICT_SCHEMA_ADDITIONAL_ATTRIBUTE_MATCHING_XLSXW_1 yes
+XLSXW_1_STRICT_SCHEMA_ADDITIONAL_ATTRIBUTE_MATCHING "$(XLSXW_OUT_STRICT_SCHEMA_ADDITIONAL_ATTRIBUTE_MATCHING_XLSXW_1)"
+# Default to write out the field names
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_OUT_XLSXW_1 Yes
+XLSXW_1_FIELD_NAMES_OUT "$(XLSXW_OUT_FIELD_NAMES_OUT_XLSXW_1)"
+# Allow header row to be unformatted
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_FORMATTING_XLSXW_1 YES
+XLSXW_1_FIELD_NAMES_FORMATTING "$(XLSXW_OUT_FIELD_NAMES_FORMATTING_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_ROW_HEIGHT_XLSXW_1
+XLSXW_1_FIELD_NAMES_ROW_HEIGHT "$(XLSXW_OUT_FIELD_NAMES_ROW_HEIGHT_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_FONT_NAME_XLSXW_1
+XLSXW_1_FIELD_NAMES_FONT_NAME "$(XLSXW_OUT_FIELD_NAMES_FONT_NAME_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_FONT_COLOR_XLSXW_1
+XLSXW_1_FIELD_NAMES_FONT_COLOR "$(XLSXW_OUT_FIELD_NAMES_FONT_COLOR_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_BACKGROUND_COLOR_XLSXW_1
+XLSXW_1_FIELD_NAMES_BACKGROUND_COLOR "$(XLSXW_OUT_FIELD_NAMES_BACKGROUND_COLOR_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_PATTERN_COLOR_XLSXW_1
+XLSXW_1_FIELD_NAMES_PATTERN_COLOR "$(XLSXW_OUT_FIELD_NAMES_PATTERN_COLOR_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_PATTERN_STYLE_XLSXW_1
+XLSXW_1_FIELD_NAMES_PATTERN_STYLE "$(XLSXW_OUT_FIELD_NAMES_PATTERN_STYLE_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_CELL_BORDER_COLOR_XLSXW_1
+XLSXW_1_FIELD_NAMES_CELL_BORDER_COLOR "$(XLSXW_OUT_FIELD_NAMES_CELL_BORDER_COLOR_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_CELL_BORDER_STYLE_XLSXW_1
+XLSXW_1_FIELD_NAMES_CELL_BORDER_STYLE "$(XLSXW_OUT_FIELD_NAMES_CELL_BORDER_STYLE_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_HORIZONTAL_ALIGNMENT_XLSXW_1
+XLSXW_1_FIELD_NAMES_HORIZONTAL_ALIGNMENT "$(XLSXW_OUT_FIELD_NAMES_HORIZONTAL_ALIGNMENT_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_VERTICAL_ALIGNMENT_XLSXW_1
+XLSXW_1_FIELD_NAMES_VERTICAL_ALIGNMENT "$(XLSXW_OUT_FIELD_NAMES_VERTICAL_ALIGNMENT_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_TEXT_INDENT_XLSXW_1
+XLSXW_1_FIELD_NAMES_TEXT_INDENT "$(XLSXW_OUT_FIELD_NAMES_TEXT_INDENT_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_TEXT_ORIENTATION_XLSXW_1
+XLSXW_1_FIELD_NAMES_TEXT_ORIENTATION "$(XLSXW_OUT_FIELD_NAMES_TEXT_ORIENTATION_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_FIELD_NAMES_TEXT_CONTROL_XLSXW_1
+XLSXW_1_FIELD_NAMES_TEXT_CONTROL "$(XLSXW_OUT_FIELD_NAMES_TEXT_CONTROL_XLSXW_1)"
+# Default writer mode
+DEFAULT_MACRO XLSXW_OUT_WRITER_MODE_XLSXW_1 Insert
+XLSXW_1_WRITER_MODE "$(XLSXW_OUT_WRITER_MODE_XLSXW_1)"
+# Default raster writing type
+DEFAULT_MACRO XLSXW_OUT_RASTER_FORMAT_XLSXW_1 PNG
+XLSXW_1_RASTER_FORMAT "$(XLSXW_OUT_RASTER_FORMAT_XLSXW_1)"
+# ============================================================================
+# Choose excel file protection mode
+DEFAULT_MACRO XLSXW_OUT_PROTECT_SHEET_XLSXW_1 NO
+XLSXW_1_PROTECT_SHEET "$(XLSXW_OUT_PROTECT_SHEET_XLSXW_1)"
+# Whether or not to enable sheet password protection
+DEFAULT_MACRO XLSXW_OUT_PROTECT_SHEET_PASSWORD_XLSXW_1 <Unused>
+XLSXW_1_PROTECT_SHEET_PASSWORD "$(XLSXW_OUT_PROTECT_SHEET_PASSWORD_XLSXW_1)"
+# Which kind of protection level
+DEFAULT_MACRO XLSXW_OUT_PROTECT_SHEET_LEVEL_XLSXW_1 <Unused>
+XLSXW_1_PROTECT_SHEET_LEVEL "$(XLSXW_OUT_PROTECT_SHEET_LEVEL_XLSXW_1)"
+# Which kind of specific permissions will be enabled
+DEFAULT_MACRO XLSXW_OUT_PROTECT_SHEET_PERMISSIONS_XLSXW_1 <Unused>
+XLSXW_1_PROTECT_SHEET_PERMISSIONS "$(XLSXW_OUT_PROTECT_SHEET_PERMISSIONS_XLSXW_1)"
+# ============================================================================
+# Opt in for destination dataset type vs format type validation
+DEFAULT_MACRO XLSXW_OUT_DESTINATION_DATASETTYPE_VALIDATION_XLSXW_1 Yes
+XLSXW_1_DESTINATION_DATASETTYPE_VALIDATION "$(XLSXW_OUT_DESTINATION_DATASETTYPE_VALIDATION_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_COORDINATE_SYSTEM_GRANULARITY_XLSXW_1 FEATURE
+XLSXW_1_COORDINATE_SYSTEM_GRANULARITY "$(XLSXW_OUT_COORDINATE_SYSTEM_GRANULARITY_XLSXW_1)"
+DEFAULT_MACRO XLSXW_OUT_CUSTOM_NUMBER_FORMATTING_XLSXW_1 ENABLE_NATIVE
+XLSXW_1_CUSTOM_NUMBER_FORMATTING "$(XLSXW_OUT_CUSTOM_NUMBER_FORMATTING_XLSXW_1)"
+# ============================================================================
+XLSXW_1_GENERATE_FME_BUILD_NUM 24627
+XLSXW_1_DATASET "$(DestDataset_XLSXW_1)"
+#! END_DEST_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)convert_information.log"
+LOG_APPEND YES
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2024.1.3.0 (20240927 - Build 24627 - WIN64)"
+DEFAULT_MACRO DATASET_KEYWORD_XLSXR_1 XLSXR_1
+DEFAULT_MACRO DATASET_KEYWORD_PATH_1 PATH_1
+DEFAULT_MACRO DATASET_KEYWORD_XLSXW_1 XLSXW_1
+# -------------------------------------------------------------------------
+
+XLSXR_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+PATH_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME convert_information
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE XLSXR XLSXR_1::data multi_reader_keyword,$(DATASET_KEYWORD_XLSXR_1) TO FME_GENERIC ::data ALIAS_GEOMETRY    ROUTE PATH PATH_1::PATH multi_reader_keyword,$(DATASET_KEYWORD_PATH_1) TO FME_GENERIC ::PATH ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+XLSXR_1_MERGE_DEF XLSXR_1::data EXACT data DEFLINE xlsx_start_row,,xlsx_end_row,,xlsx_apply_filters,No,xlsx_header_row,0,xlsx_schema_start_row,1,xlsx_schema_end_row,0,xlsx_schema_end_col,0,xlsx_schema_start_col,0,fme_attribute_reading,defined,intrasis_db_name,string,konverterat<space>till<space>i2,string,ant,char<openparen>11<closeparen>,number2substring,char<openparen>9<closeparen>,SM<space>Intrasisprojekt,char<openparen>59<closeparen>,S<u00e4>kerhetskopierad<space>090605,char<openparen>16<closeparen>,<u00c5>terst<u00e4>lld<space>p<u00e5><space>public<space>090605,char<openparen>16<closeparen>,Problem,char<openparen>47<closeparen>,GIS-data<space>i<space>shaper<space>inlagda<space>i<space>Arkiv<space>Arkeologi,char<openparen>46<closeparen>,Data<space>till<space>Swedigarch,char<openparen>2<closeparen>,SM<space>Rapport,char<openparen>36<closeparen>
+PATH_1_MERGE_DEF PATH_1::PATH EXACT PATH
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "PATH_PATH_1 Splitter"    INPUT FEATURE_TYPE PATH    OUTPUT FEATURE_TYPE PATH_PATH_1
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "data_XLSXR_1 Splitter"    INPUT FEATURE_TYPE data    OUTPUT FEATURE_TYPE data_XLSXR_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { Tester }    INPUT  FEATURE_TYPE data_XLSXR_1    TEST { SM<space>Intrasisprojekt ATTRIBUTE_HAS_A_VALUE "" ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    OUTPUT { PASSED FEATURE_TYPE Tester_PASSED         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { AttributeFilter }    INPUT  FEATURE_TYPE Tester_PASSED    OUTPUT { FEATURE_TYPE AttributeFilter_FILTER }
+FACTORY_DEF {*} AttributeFilterFactory FACTORY_NAME AttributeFilter_Filter COMMAND_PARM_EVALUATION SINGLE_PASS INPUT FEATURE_TYPE AttributeFilter_FILTER FILTER_ATTRIBUTE { ant } FILTER_VALUES { <lt>EMPTY<gt> <lt>MISSING<gt> <lt>NULL<gt> <lt>UNFILTERED<gt> BOL ej<space>anv<u00e4>nda exkludera FME_NULL_VALUE specialfall } PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT <lt>EMPTY<gt> FEATURE_TYPE AttributeFilter_<lt>EMPTY<gt> OUTPUT <lt>MISSING<gt> FEATURE_TYPE AttributeFilter_<lt>MISSING<gt> OUTPUT <lt>NULL<gt> FEATURE_TYPE AttributeFilter_<lt>NULL<gt> OUTPUT <lt>UNFILTERED<gt> FEATURE_TYPE AttributeFilter_<lt>UNFILTERED<gt> OUTPUT BOL FEATURE_TYPE AttributeFilter_BOL OUTPUT ej<space>anv<u00e4>nda FEATURE_TYPE AttributeFilter_ej<space>anv<u00e4>nda OUTPUT exkludera FEATURE_TYPE AttributeFilter_exkludera OUTPUT FME_NULL_VALUE FEATURE_TYPE AttributeFilter_FME_NULL_VALUE OUTPUT specialfall FEATURE_TYPE AttributeFilter_specialfall
+FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter <lt>EMPTY<gt> Transformer Output Nuker"   INPUT FEATURE_TYPE AttributeFilter_<lt>EMPTY<gt>
+FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter <lt>MISSING<gt> Transformer Output Nuker"   INPUT FEATURE_TYPE AttributeFilter_<lt>MISSING<gt>
+FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter <lt>UNFILTERED<gt> Transformer Output Nuker"   INPUT FEATURE_TYPE AttributeFilter_<lt>UNFILTERED<gt>
+FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter exkludera Transformer Output Nuker"   INPUT FEATURE_TYPE AttributeFilter_exkludera
+FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeFilter FME_NULL_VALUE Transformer Output Nuker"   INPUT FEATURE_TYPE AttributeFilter_FME_NULL_VALUE
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager }    INPUT  FEATURE_TYPE AttributeFilter_ej<space>anv<u00e4>nda    INPUT  FEATURE_TYPE AttributeFilter_<lt>NULL<gt>    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 4    DEF_VAL_COLUMN 2    NUM_OF_COLUMNS 5    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "intrasis_db_name" "intrasis_db_name" "SM<at>ReplaceRegularExpression<openparen><at>Left<openparen><at>Value<openparen>SM<space>Intrasisprojekt<closeparen><comma><at>Value<openparen>number2substring<closeparen><closeparen><comma><quote>:<quote><comma><quote><quote><comma>caseSensitive=TRUE<closeparen>" "buffer" "SET_TO" }      ATTR_ACTION { "konverterat<space>till<space>i2" "konverterat<space>till<space>i2" "" "buffer" "NO_OP" }      ATTR_ACTION { "ant" "ant" "" "varchar<openparen>11<closeparen>" "NO_OP" }      ATTR_ACTION { "SM<space>Intrasisprojekt" "SM<space>Intrasisprojekt" "" "varchar<openparen>59<closeparen>" "NO_OP" }      ATTR_ACTION { "S<u00e4>kerhetskopierad<space>090605" "S<u00e4>kerhetskopierad<space>090605" "" "varchar<openparen>16<closeparen>" "NO_OP" }      ATTR_ACTION { "<u00c5>terst<u00e4>lld<space>p<u00e5><space>public<space>090605" "<u00c5>terst<u00e4>lld<space>p<u00e5><space>public<space>090605" "" "varchar<openparen>16<closeparen>" "NO_OP" }      ATTR_ACTION { "Problem" "Problem" "" "varchar<openparen>47<closeparen>" "NO_OP" }      ATTR_ACTION { "GIS-data<space>i<space>shaper<space>inlagda<space>i<space>Arkiv<space>Arkeologi" "GIS-data<space>i<space>shaper<space>inlagda<space>i<space>Arkiv<space>Arkeologi" "" "varchar<openparen>46<closeparen>" "NO_OP" }      ATTR_ACTION { "Data<space>till<space>Swedigarch" "Data<space>till<space>Swedigarch" "" "varchar<openparen>2<closeparen>" "NO_OP" }      ATTR_ACTION { "SM<space>Rapport" "SM<space>Rapport" "" "varchar<openparen>36<closeparen>" "NO_OP" }      ATTR_ACTION { "number2substring" "number2substring" "" "varchar<openparen>9<closeparen>" "NO_OP" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_OUTPUT        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager_2 }    INPUT  FEATURE_TYPE AttributeFilter_BOL    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 4    DEF_VAL_COLUMN 2    NUM_OF_COLUMNS 5    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "intrasis_db_name" "intrasis_db_name" "<at>Value<openparen>ant<closeparen>" "buffer" "SET_TO" }      ATTR_ACTION { "konverterat<space>till<space>i2" "konverterat<space>till<space>i2" "" "buffer" "NO_OP" }      ATTR_ACTION { "ant" "ant" "" "varchar<openparen>11<closeparen>" "NO_OP" }      ATTR_ACTION { "number2substring" "number2substring" "" "varchar<openparen>9<closeparen>" "NO_OP" }      ATTR_ACTION { "SM<space>Intrasisprojekt" "SM<space>Intrasisprojekt" "" "varchar<openparen>59<closeparen>" "NO_OP" }      ATTR_ACTION { "S<u00e4>kerhetskopierad<space>090605" "S<u00e4>kerhetskopierad<space>090605" "" "varchar<openparen>16<closeparen>" "NO_OP" }      ATTR_ACTION { "<u00c5>terst<u00e4>lld<space>p<u00e5><space>public<space>090605" "<u00c5>terst<u00e4>lld<space>p<u00e5><space>public<space>090605" "" "varchar<openparen>16<closeparen>" "NO_OP" }      ATTR_ACTION { "Problem" "Problem" "" "varchar<openparen>47<closeparen>" "NO_OP" }      ATTR_ACTION { "GIS-data<space>i<space>shaper<space>inlagda<space>i<space>Arkiv<space>Arkeologi" "GIS-data<space>i<space>shaper<space>inlagda<space>i<space>Arkiv<space>Arkeologi" "" "varchar<openparen>46<closeparen>" "NO_OP" }      ATTR_ACTION { "Data<space>till<space>Swedigarch" "Data<space>till<space>Swedigarch" "" "varchar<openparen>2<closeparen>" "NO_OP" }      ATTR_ACTION { "SM<space>Rapport" "SM<space>Rapport" "" "varchar<openparen>36<closeparen>" "NO_OP" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_2_OUTPUT        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager_3 }    INPUT  FEATURE_TYPE AttributeFilter_specialfall    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 4    DEF_VAL_COLUMN 2    NUM_OF_COLUMNS 5    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "intrasis_db_name" "intrasis_db_name" "<at>Value<openparen>SM<space>Intrasisprojekt<closeparen>" "buffer" "SET_TO" }      ATTR_ACTION { "konverterat<space>till<space>i2" "konverterat<space>till<space>i2" "" "buffer" "NO_OP" }      ATTR_ACTION { "ant" "ant" "" "varchar<openparen>11<closeparen>" "NO_OP" }      ATTR_ACTION { "number2substring" "number2substring" "" "varchar<openparen>9<closeparen>" "NO_OP" }      ATTR_ACTION { "SM<space>Intrasisprojekt" "SM<space>Intrasisprojekt" "" "varchar<openparen>59<closeparen>" "NO_OP" }      ATTR_ACTION { "S<u00e4>kerhetskopierad<space>090605" "S<u00e4>kerhetskopierad<space>090605" "" "varchar<openparen>16<closeparen>" "NO_OP" }      ATTR_ACTION { "<u00c5>terst<u00e4>lld<space>p<u00e5><space>public<space>090605" "<u00c5>terst<u00e4>lld<space>p<u00e5><space>public<space>090605" "" "varchar<openparen>16<closeparen>" "NO_OP" }      ATTR_ACTION { "Problem" "Problem" "" "varchar<openparen>47<closeparen>" "NO_OP" }      ATTR_ACTION { "GIS-data<space>i<space>shaper<space>inlagda<space>i<space>Arkiv<space>Arkeologi" "GIS-data<space>i<space>shaper<space>inlagda<space>i<space>Arkiv<space>Arkeologi" "" "varchar<openparen>46<closeparen>" "NO_OP" }      ATTR_ACTION { "Data<space>till<space>Swedigarch" "Data<space>till<space>Swedigarch" "" "varchar<openparen>2<closeparen>" "NO_OP" }      ATTR_ACTION { "SM<space>Rapport" "SM<space>Rapport" "" "varchar<openparen>36<closeparen>" "NO_OP" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_3_OUTPUT        }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { FeatureMerger }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE PATH_PATH_1    INPUT REFERENCEE FEATURE_TYPE AttributeManager_OUTPUT    INPUT REFERENCEE FEATURE_TYPE AttributeManager_2_OUTPUT    INPUT REFERENCEE FEATURE_TYPE AttributeManager_3_OUTPUT    REFERENCE_INFO { $(FeatureMerger_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>path_rootname<closeparen>,FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>intrasis_db_name<closeparen>,FeatureMerger) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE FeatureMerger_MERGED         }    OUTPUT { INCOMPLETE FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager_5 }    INPUT  FEATURE_TYPE FeatureMerger_MERGED    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 4    DEF_VAL_COLUMN 2    NUM_OF_COLUMNS 5    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "path_unix" "path_unix" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_windows" "path_windows" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_rootname" "path_rootname" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_filename" "path_filename" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_extension" "path_extension" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_directory_unix" "path_directory_unix" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_directory_windows" "path_directory_windows" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_type" "path_type" "" "varchar<openparen>10<closeparen>" "REMOVE" }      ATTR_ACTION { "intrasis_db_name" "intrasis_db_name" "" "buffer" "NO_OP" }      ATTR_ACTION { "konverterat<space>till<space>i2" "konverterat<space>till<space>i2" "" "buffer" "NO_OP" }      ATTR_ACTION { "ant" "ant" "" "varchar<openparen>11<closeparen>" "NO_OP" }      ATTR_ACTION { "SM<space>Intrasisprojekt" "SM<space>Intrasisprojekt" "" "varchar<openparen>59<closeparen>" "NO_OP" }      ATTR_ACTION { "S<u00e4>kerhetskopierad<space>090605" "S<u00e4>kerhetskopierad<space>090605" "" "varchar<openparen>16<closeparen>" "NO_OP" }      ATTR_ACTION { "<u00c5>terst<u00e4>lld<space>p<u00e5><space>public<space>090605" "<u00c5>terst<u00e4>lld<space>p<u00e5><space>public<space>090605" "" "varchar<openparen>16<closeparen>" "NO_OP" }      ATTR_ACTION { "Problem" "Problem" "" "varchar<openparen>47<closeparen>" "NO_OP" }      ATTR_ACTION { "GIS-data<space>i<space>shaper<space>inlagda<space>i<space>Arkiv<space>Arkeologi" "GIS-data<space>i<space>shaper<space>inlagda<space>i<space>Arkiv<space>Arkeologi" "" "varchar<openparen>46<closeparen>" "NO_OP" }      ATTR_ACTION { "Data<space>till<space>Swedigarch" "Data<space>till<space>Swedigarch" "" "varchar<openparen>2<closeparen>" "NO_OP" }      ATTR_ACTION { "SM<space>Rapport" "SM<space>Rapport" "" "varchar<openparen>36<closeparen>" "NO_OP" }      ATTR_ACTION { "number2substring" "number2substring" "" "varchar<openparen>9<closeparen>" "REMOVE" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_5_OUTPUT        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager_4 }    INPUT  FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 4    DEF_VAL_COLUMN 2    NUM_OF_COLUMNS 5    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "path_unix" "path_unix" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_windows" "path_windows" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_rootname" "intrasis_db_name" "" "buffer" "RENAME_SET_VALUE" }      ATTR_ACTION { "path_filename" "path_filename" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_extension" "path_extension" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_directory_unix" "path_directory_unix" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_directory_windows" "path_directory_windows" "" "buffer" "REMOVE" }      ATTR_ACTION { "path_type" "path_type" "" "varchar<openparen>10<closeparen>" "REMOVE" }      ATTR_ACTION { "" "ant" "saknas<space>i<space>excel<space>fr<space>kps" "varchar<openparen>21<closeparen>" "SET_TO" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_4_OUTPUT        }
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC AttributeManager_4_OUTPUT TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>protokoll<closeparen> GEOMETRY    ROUTE FME_GENERIC AttributeManager_5_OUTPUT TO XLSXW __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>protokoll<closeparen> GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
+# -------------------------------------------------------------------------
+XLSXW_1_DEF protokoll   xlsx_drop_sheet              No   xlsx_trunc_sheet             No   xlsx_sheet_order             ""   xlsx_freeze_end_row          ""   xlsx_names_are_positions     No   xlsx_field_names_out         Yes   xlsx_field_names_formatting  YES   xlsx_field_names_row_height  ""   xlsx_field_names_font_name   ""   xlsx_field_names_font_color  ""   xlsx_field_names_background_color ""   xlsx_field_names_pattern_color ""   xlsx_field_names_pattern_style ""   xlsx_field_names_cell_border_color ""   xlsx_field_names_cell_border_style ""   xlsx_field_names_horizontal_alignment ""   xlsx_field_names_vertical_alignment ""   xlsx_field_names_text_indent ""   xlsx_field_names_text_orientation ""   xlsx_field_names_text_control ""   xlsx_start_col               ""   xlsx_start_row               ""   xlsx_offset_col              ""   xlsx_offset_row              ""   xlsx_raster_type             PNG   xlsx_table_writer_mode       Insert   xlsx_row_id_column           ""   xlsx_protect_sheet           NO   xlsx_protect_sheet_level     <Unused>   xlsx_protect_sheet_password  <Unused>   xlsx_protect_sheet_permissions <Unused>   xlsx_template_sheet          ""   xlsx_remove_unchanged_template_sheet No   intrasis_db_name             string(20,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   ant                          string(21,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   "konverterat till i2"        string(20,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   "SM Intrasisprojekt"         string(59,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   "Säkerhetskopierad 090605"   string(16,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   "Återställd på public 090605" string(16,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   Problem                      string(47,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   "GIS-data i shaper inlagda i Arkiv Arkeologi" string(46,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   "Data till Swedigarch"       string(2,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)   "SM Rapport"                 string(36,version<semicolon>1<semicolon>cell_border_formatting<semicolon>NO<semicolon>text_alignment<semicolon>NO<semicolon>cell_protection<semicolon>NO)

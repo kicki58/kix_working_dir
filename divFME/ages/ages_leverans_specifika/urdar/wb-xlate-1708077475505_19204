@@ -1,0 +1,470 @@
+#! encoding="UTF-8"
+#    Command line to run this workspace:
+#        "C:\Program Files\FME2022_1_3\fme.exe" "C:/Users/krima354/Work Folders/Documents/GitHub/kix_working_dir/divFME/urdar\wb-xlate-1708077475505_19204"
+#          --SourceDataset_OGCGEOPACKAGE_5 "C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\intrasis_archive_UUID_master.gpkg"
+#          --SourceDataset_XLSXR "C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\urdar_arbetsfiler\create_siteinfo\test2raä.xlsx"
+#          --SourceDataset_CSV2 "C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\yunyun_georef.csv"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+
+MACRO FME_MF_NAME sista_kollen.fmw
+MACRO FME_MF_NAME_MASTER sista_kollen.fmw
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE SourceDataset_OGCGEOPACKAGE_2,OGCGEOPACKAGE_IN_FME_CONNECTION_GROUP_OGCGEOPACKAGE_2,OGCGEOPACKAGE_IN_ADVANCED_GROUP_OGCGEOPACKAGE_2,OGCGEOPACKAGE_IN_ENFORCE_FOREIGN_KEY_INTEGRITY_OGCGEOPACKAGE_2,OGCGEOPACKAGE_IN_USE_SEARCH_ENVELOPE_OGCGEOPACKAGE_2,OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_2,OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_2,OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_2,OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_2,OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_2,OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_2,OGCGEOPACKAGE_IN_NETWORK_AUTHENTICATION_OGCGEOPACKAGE_2,SourceDataset_XLSXR_1,XLSXR_IN_ADVANCED_XLSXR_1,XLSXR_IN_SCAN_MAX_FEATURES_XLSXR_1,XLSXR_IN_READ_BLANK_AS_XLSXR_1,XLSXR_IN_EXPAND_MERGED_CELLS_XLSXR_1,XLSXR_IN_READ_RASTER_MODE_XLSXR_1,XLSXR_IN_READ_FORM_CONTROLS_XLSXR_1,XLSXR_IN_NETWORK_AUTHENTICATION_XLSXR_1,SourceDataset_CSV2_1,CSV2_IN_FIELDS_GROUP_CSV2_1,CSV2_IN_DELIMITER_CSV2_1,CSV2_IN_FIELD_NAMES_LINE_CSV2_1,CSV2_IN_DATA_START_LINE_CSV2_1,CSV2_IN_ADVANCED_GROUP_CSV2_1,CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1,CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1,CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1,CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1,CSV2_IN_FIELD_NAMES_GROUP_CSV2_1,CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1,CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1,CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1,CSV2_IN_FIELD_VALUES_GROUP_CSV2_1,CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1,CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1,CSV2_IN_ENCODING_GROUP_CSV2_1,CSV2_IN_ENCODING_CSV2_1,CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1,CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1,CSV2_IN_READ_SKIPPED_LINES_CSV2_1,CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_OGCGEOPACKAGE_5 C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\intrasis_archive_UUID_master.gpkg
+
+DEFAULT_MACRO SourceDataset_XLSXR C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\urdar_arbetsfiler\create_siteinfo\test2raä.xlsx
+
+DEFAULT_MACRO SourceDataset_CSV2 C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\slask\yunyun_georef.csv
+
+DEFAULT_MACRO FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO FME_ENGINE 
+
+DEFAULT_MACRO FME_JOB_ID 
+
+DEFAULT_MACRO FME_SECURITY_ROLES 
+
+DEFAULT_MACRO FME_SECURITY_USER 
+
+DEFAULT_MACRO FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO FME_SERVER_HOST 
+
+DEFAULT_MACRO FME_SERVER_PORT 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO FME_TOPIC 
+
+DEFAULT_MACRO FME_TOPIC_MESSAGE 
+
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_OGCGEOPACKAGE_5$encode)} == {}} { puts_real {Parameter 'SourceDataset_OGCGEOPACKAGE_5' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(SourceDataset_XLSXR$encode)} == {}} { puts_real {Parameter 'SourceDataset_XLSXR' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(SourceDataset_CSV2$encode)} == {}} { puts_real {Parameter 'SourceDataset_CSV2' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} NULL
+MULTI_READER_FORMAT{0} OGCGEOPACKAGE
+MULTI_READER_KEYWORD{0} OGCGEOPACKAGE_2
+MULTI_READER_GEN_DIRECTIVES{0} READ_BOOLEANS_AS_YES_NO,YES,SEARCH_ENVELOPE_COORDINATE_SYSTEM,,ENCODE_FEATURE_TYPE_AND_ATTR_NAMES,YES,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,EXPOSE_ATTRS_GROUP,,SEARCH_ENVELOPE_MINY,0,ENFORCE_FOREIGN_KEY_INTEGRITY,YES,SEARCH_ENVELOPE_MINX,0,EXPOSE_PRIMARY_KEY_ATTRIBUTE,YES,CLIP_TO_ENVELOPE,NO,OGCGEOPACKAGE_EXPOSE_FORMAT_ATTRS,,ADVANCED_GROUP,,SEARCH_ENVELOPE_MAXY,0,_MERGE_SCHEMAS,YES,TABLELIST,UUID_master_final_20240202,USE_SEARCH_ENVELOPE,NO,READER_REPLACE_INVALID_CHARS,NO,SEARCH_ENVELOPE_MAXX,0,OPEN_SINGLE_RASTER_AS_SUBDATASET,YES,READ_NULLS,YES
+MULTI_READER_TYPE{1} NULL
+MULTI_READER_FORMAT{1} XLSXR
+MULTI_READER_KEYWORD{1} XLSXR_1
+MULTI_READER_GEN_DIRECTIVES{1} SKIP_EMPTY_ROWS,YES,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,EXPAND_MERGED_CELLS,Yes,USE_CUSTOM_SCHEMA,NO,SCHEMA,OBStest<comma>0<lt>comma<gt>master_site_archive<lt>comma<gt>char<lt>comma<gt>11<lt>comma<gt><lt>comma<gt><lt>comma<gt>1<lt>comma<gt>master_site_name<lt>comma<gt>char<lt>comma<gt>52<lt>comma<gt><lt>comma<gt><lt>comma<gt>2<lt>comma<gt>UUID_final<lt>comma<gt>char<lt>comma<gt>37<lt>comma<gt><lt>comma<gt><lt>comma<gt>3<lt>comma<gt>UUID_final_finns<lt>comma<gt>char<lt>comma<gt>4<lt>comma<gt><lt>comma<gt><lt>comma<gt>4<lt>comma<gt>UUID_final_link<lt>comma<gt>char<lt>comma<gt>77<lt>comma<gt><lt>comma<gt><lt>comma<gt>5<lt>comma<gt>master_UUID<lt>comma<gt>char<lt>comma<gt>37<lt>comma<gt><lt>comma<gt><lt>comma<gt>6<lt>comma<gt>master_UUID_finns<lt>comma<gt>char<lt>comma<gt>4<lt>comma<gt><lt>comma<gt><lt>comma<gt>7<lt>comma<gt>link_master_uuid<lt>comma<gt>char<lt>comma<gt>77<lt>comma<gt><lt>comma<gt><lt>comma<gt>8<lt>comma<gt><lt>quote<gt>master_Uppdaterat<lt>space<gt>UUID<lt>quote<gt><lt>comma<gt>string<lt>comma<gt><lt>comma<gt><lt>comma<gt><lt>comma<gt>9<lt>comma<gt><lt>quote<gt>master_Uppdaterat<lt>space<gt>UUID_finns<lt>quote<gt><lt>comma<gt>string<lt>comma<gt><lt>comma<gt><lt>comma<gt><lt>comma<gt>10<lt>comma<gt>master_link_Uppdaterat_uuid<lt>comma<gt>string<lt>comma<gt><lt>comma<gt><lt>comma<gt><lt>comma<gt>11<lt>comma<gt>UUID_typ<lt>comma<gt>char<lt>comma<gt>18<lt>comma<gt><lt>comma<gt><lt>comma<gt>12<lt>comma<gt>proj_info_Beskrivning<lt>comma<gt>char<lt>comma<gt>11557<lt>comma<gt><lt>comma<gt><lt>comma<gt>13<lt>comma<gt>proj_info_Identifierare<lt>comma<gt>char<lt>comma<gt>11<lt>comma<gt><lt>comma<gt><lt>comma<gt>14<lt>comma<gt><lt>quote<gt>proj_info_Relaterade<lt>space<gt>URI:er<lt>quote<gt><lt>comma<gt>char<lt>comma<gt>1<lt>comma<gt><lt>comma<gt><lt>comma<gt>15<lt>comma<gt>proj_info_Uppdragsnummer<lt>comma<gt>char<lt>comma<gt>1<lt>comma<gt><lt>comma<gt><lt>comma<gt>16<lt>comma<gt>proj_info_Uppdragstyp<lt>comma<gt>char<lt>comma<gt>50<lt>comma<gt><lt>comma<gt><lt>comma<gt>17<lt>comma<gt><lt>quote<gt>proj_info_Beslutande<lt>space<gt>myndighet<lt>quote<gt><lt>comma<gt>char<lt>comma<gt>1<lt>comma<gt><lt>comma<gt><lt>comma<gt>18<lt>comma<gt><lt>quote<gt>proj_info_L<lt>u00e4<gt>nsstyrelsens<lt>space<gt>diarienummer<lt>quote<gt><lt>comma<gt>char<lt>comma<gt>36<lt>comma<gt><lt>comma<gt><lt>comma<gt>19<lt>comma<gt>proj_info_L<lt>u00e4<gt>mningsnummer<lt>comma<gt>char<lt>comma<gt>1<lt>comma<gt><lt>comma<gt><lt>comma<gt>20<lt>comma<gt>proj_info_L<lt>u00e4<gt>mningstyp<lt>comma<gt>char<lt>comma<gt>1<lt>comma<gt><lt>comma<gt><lt>comma<gt>21<lt>comma<gt>proj_info_Land<lt>comma<gt>char<lt>comma<gt>1<lt>comma<gt><lt>comma<gt><lt>comma<gt>22<lt>comma<gt>proj_info_Landskap<lt>comma<gt>char<lt>comma<gt>1<lt>comma<gt><lt>comma<gt><lt>comma<gt>23<lt>comma<gt>proj_info_L<lt>u00e4<gt>n<lt>comma<gt>char<lt>comma<gt>1<lt>comma<gt><lt>comma<gt><lt>comma<gt>24<lt>comma<gt>proj_info_Kommun<lt>comma<gt>char<lt>comma<gt>1<lt>comma<gt><lt>comma<gt><lt>comma<gt>25<lt>comma<gt>proj_info_Socken<lt>comma<gt>char<lt>comma<gt>1<lt>comma<gt><lt>comma<gt><lt>comma<gt>26<lt>comma<gt>proj_info_Platsnamn<lt>comma<gt>char<lt>comma<gt>52<lt>comma<gt><lt>comma<gt><lt>comma<gt>27<lt>comma<gt><lt>quote<gt>proj_info_Diarienummer<lt>space<gt>RA<lt>u00c4<gt><lt>quote<gt><lt>comma<gt>char<lt>comma<gt>42<lt>comma<gt><lt>comma<gt><lt>comma<gt>28<lt>comma<gt>proj_info_Arkivarienotering<lt>comma<gt>char<lt>comma<gt>1<lt>comma<gt><lt>comma<gt><lt>comma<gt>29<lt>comma<gt>_socken_concatenated<lt>comma<gt>char<lt>comma<gt>991<lt>comma<gt><lt>comma<gt><lt>comma<gt>30<lt>comma<gt>_socken_antal<lt>comma<gt>number<lt>comma<gt>4<lt>comma<gt>0<lt>comma<gt><lt>comma<gt>31<lt>comma<gt>_kommun_concatenated<lt>comma<gt>char<lt>comma<gt>286<lt>comma<gt><lt>comma<gt><lt>comma<gt>32<lt>comma<gt>_kommun_antal<lt>comma<gt>number<lt>comma<gt>3<lt>comma<gt>0<lt>comma<gt><lt>comma<gt>33<lt>comma<gt>_landskap_concatanted<lt>comma<gt>char<lt>comma<gt>79<lt>comma<gt><lt>comma<gt><lt>comma<gt>34<lt>comma<gt>_landskap_antal<lt>comma<gt>number<lt>comma<gt>2<lt>comma<gt>0<lt>comma<gt><lt>comma<gt>35<lt>comma<gt>_lan_concatenated<lt>comma<gt>char<lt>comma<gt>74<lt>comma<gt><lt>comma<gt><lt>comma<gt>36<lt>comma<gt>_lan_antal<lt>comma<gt>number<lt>comma<gt>2<lt>comma<gt>0<lt>comma<gt><lt>comma<gt>37<lt>comma<gt>E<lt>comma<gt>number<lt>comma<gt>17<lt>comma<gt>9<lt>comma<gt><lt>comma<gt>38<lt>comma<gt>N<lt>comma<gt>number<lt>comma<gt>16<lt>comma<gt>8<lt>comma<gt><lt>comma<gt>39<lt>comma<gt>uo_id<lt>comma<gt>char<lt>comma<gt>37<lt>comma<gt><lt>comma<gt><lt>comma<gt>40<lt>comma<gt>uo_uppdragsnummer<lt>comma<gt>number<lt>comma<gt>10<lt>comma<gt>0<lt>comma<gt><lt>comma<gt>41<lt>comma<gt>uo_beslutande_myndighet<lt>comma<gt>char<lt>comma<gt>41<lt>comma<gt><lt>comma<gt><lt>comma<gt>42<lt>comma<gt>uo_beslutsdatum<lt>comma<gt>date<lt>comma<gt><lt>comma<gt><lt>comma<gt><lt>comma<gt>43<lt>comma<gt>uo_diarienummer<lt>comma<gt>char<lt>comma<gt>17<lt>comma<gt><lt>comma<gt><lt>comma<gt>44<lt>comma<gt>uo_uppdragstyp<lt>comma<gt>char<lt>comma<gt>30<lt>comma<gt><lt>comma<gt><lt>comma<gt>45<lt>comma<gt>uo_utforande_organisation<lt>comma<gt>char<lt>comma<gt>56<lt>comma<gt><lt>comma<gt><lt>comma<gt>46<lt>comma<gt>uo_nollresultat<lt>comma<gt>char<lt>comma<gt>4<lt>comma<gt><lt>comma<gt><lt>comma<gt>47<lt>comma<gt>uo_url<lt>comma<gt>char<lt>comma<gt>91<lt>comma<gt><lt>comma<gt><lt>comma<gt>48<lt>comma<gt>uo_status<lt>comma<gt>char<lt>comma<gt>11<lt>comma<gt><lt>comma<gt><lt>comma<gt>49<lt>comma<gt>uo_lan<lt>comma<gt>char<lt>comma<gt>56<lt>comma<gt><lt>comma<gt><lt>comma<gt>50<lt>comma<gt>uo_kommun<lt>comma<gt>char<lt>comma<gt>134<lt>comma<gt><lt>comma<gt><lt>comma<gt>51<lt>comma<gt>uo_socken<lt>comma<gt>char<lt>comma<gt>334<lt>comma<gt><lt>comma<gt><comma>1<lt>comma<gt><lt>comma<gt><lt>comma<gt><comma>NO<lt>comma<gt>NO<lt>comma<gt>1<lt>comma<gt>C:<lt>lt<gt>backslash<lt>gt<gt>Users<lt>lt<gt>backslash<lt>gt<gt>krima354<lt>lt<gt>backslash<lt>gt<gt>Work<lt>lt<gt>space<lt>gt<gt>Folders<lt>lt<gt>backslash<lt>gt<gt>Documents<lt>lt<gt>backslash<lt>gt<gt>kicki_arbetsfiler<lt>lt<gt>backslash<lt>gt<gt>urdar_arbetsfiler<lt>lt<gt>backslash<lt>gt<gt>create_siteinfo<lt>lt<gt>backslash<lt>gt<gt>test2ra<lt>lt<gt>u00e4<lt>gt<gt>.xlsx<lt>comma<gt><lt>quote<gt>0<lt>comma<gt>0<lt>comma<gt>51<lt>comma<gt>7416<lt>quote<gt><lt>comma<gt>Beskrivning<lt>comma<gt>NO<lt>comma<gt>NO,EXPOSE_ATTRS_GROUP,,READ_BLANK_AS,Missing,SCAN_MAX_FEATURES,1000,SCHEMA_HANDLING_REVISION,2,XLSXR_EXPOSE_FORMAT_ATTRS,,STRIP_SHEETNAME_SPACES,YES,CREATE_FEATURE_TABLES_FROM_DATA,Yes,CASE_SENSITIVE_FEATURE_TYPES,YES,EXCEL_COL_NAMES,YES,APPLY_FILTERS,No,TRIM_ATTR_NAME_WHITESPACE,Yes,READ_RASTER_MODE,None,CONFIGURATION_DATASET,C:<backslash>Users<backslash>krima354<backslash>Work<space>Folders<backslash>Documents<backslash>kicki_arbetsfiler<backslash>urdar_arbetsfiler<backslash>create_siteinfo<backslash>test2ra<u00e4>.xlsx,_MERGE_SCHEMAS,YES,TABLELIST,OBStest,REPLACE_ONLY_NEWLINES_CARRIAGE_RETURNS,YES,FORCE_DATETIME,NO,READ_FORM_CONTROLS,NONE,ADVANCED,,TRIM_ATTR_NAME_CHARACTERS,,ALLOW_DOLLAR_SIGNS,YES
+MULTI_READER_TYPE{2} CSV2
+MULTI_READER_KEYWORD{2} CSV2_1
+MULTI_READER_GEN_DIRECTIVES{2} ENFORCE_STRICT_SCHEMA,No,PREVIEW_PLACEHOLDER,,DATASET_GROUP,,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,USE_CUSTOM_SCHEMA,NO,EXPOSE_ATTRS_GROUP,,SCHEMA_GENERATION_GROUP,,SCAN_MAX_ROWS,10000,SKIP_DUPLICATE_DELIMITERS,No,FIELD_SEPARATION_GROUP,,TRIM_FIELD_NAME_QUALIFIERS,Yes,TRIM_FIELD_NAME_WHITESPACE,Yes,_MERGE_SCHEMAS,YES,READ_EMPTY_VALUES_AS,Null,SCAN_ADDITIONAL_FIELDS,No,CASE_SENSITIVE_FIELD_NAMES,Yes,SKIPPED_LINES_GROUP,,FEATURE_TYPE_NAME,FORMAT_NAME,TYPE_ATTRIBUTE_HANDLING,STANDARD_TYPES,FIELD_QUALIFIER_CHARACTER,<lt>quote<gt>,TRIM_FEATURE_TYPE_NAME,Yes,FIELD_QUALIFIER_ESCAPE_CHARACTER,<lt>quote<gt>,CHUNK_SIZE,100000,SCHEMA,,ENCODING,windows-1252,FIELD_VALUES_GROUP,,DELIMITER,auto,PRESERVE_SOURCE_ENCODING,No,READ_SKIPPED_LINES,No,CSV2_EXPOSE_FORMAT_ATTRS,,FIELD_NAMES_GROUP,,ADVANCED_GROUP,,SCAN_TYPES,Yes,REPLACE_ATTR_NAME_INVALID_CHARS,No,TRIM_FIELD_VALUE_QUALIFIERS,Yes,FIELDS_GROUP,,FIELD_NAMES_LINE,1,SUPPORTED_READER_ARCHIVE_EXTENSIONS,csv.gz<comma>txt.gz,DATE_INPUT_FORMAT,ISO,DATA_START_LINE,2,ENCODING_GROUP,,STRING_TYPE_ATTRIBUTE_HANDLING,EXPLICIT_WIDTH
+WRITER_TYPE NULL
+WRITER_KEYWORD NULL_DEST
+NULL_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "OGCGEOPACKAGE_2"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER OGCGEOPACKAGE OGCGEOPACKAGE_2
+# ============================================================================
+# The following GUI line prompts for a folder to be used as the
+# source of the GEOPACKAGE Files.
+# The user input is stored in a macro, which is then used to define
+# the dataset to be read.
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_OGCGEOPACKAGE_2 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER OGCGEOPACKAGE OGCGEOPACKAGE_2
+DEFAULT_MACRO SourceDataset_OGCGEOPACKAGE_2 $(SourceDataset_OGCGEOPACKAGE_5)
+GUI MULTIFILE SourceDataset_OGCGEOPACKAGE_2 GeoPackage_Files(*.gpkg)|*.gpkg|All_files(*)|* GeoPackage File:
+DEFAULT_MACRO OGCGEOPACKAGE_IN_FME_CONNECTION_GROUP_OGCGEOPACKAGE_2 
+GUI OPTIONAL DISCLOSUREGROUP OGCGEOPACKAGE_IN_FME_CONNECTION_GROUP_OGCGEOPACKAGE_2 OGCGEOPACKAGE_IN_NAMED_CONNECTION Database Connection
+DEFAULT_MACRO OGCGEOPACKAGE_IN_TABLELIST_OGCGEOPACKAGE_2
+OGCGEOPACKAGE_2_TABLELIST "$(OGCGEOPACKAGE_IN_TABLELIST_OGCGEOPACKAGE_2)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_ADVANCED_GROUP_OGCGEOPACKAGE_2 
+GUI OPTIONAL DISCLOSUREGROUP OGCGEOPACKAGE_IN_ADVANCED_GROUP_OGCGEOPACKAGE_2 FME_DISCLOSURE_CLOSED%OGCGEOPACKAGE_IN_ENFORCE_FOREIGN_KEY_INTEGRITY_OGCGEOPACKAGE_2 Advanced
+DEFAULT_MACRO OGCGEOPACKAGE_IN_ENFORCE_FOREIGN_KEY_INTEGRITY_OGCGEOPACKAGE_2 YES
+OGCGEOPACKAGE_2_ENFORCE_FOREIGN_KEY_INTEGRITY "$(OGCGEOPACKAGE_IN_ENFORCE_FOREIGN_KEY_INTEGRITY_OGCGEOPACKAGE_2)"
+GUI LOOKUP_CHOICE OGCGEOPACKAGE_IN_ENFORCE_FOREIGN_KEY_INTEGRITY_OGCGEOPACKAGE_2 Yes,YES%No,NO Enforce Foreign Key Integrity:
+DEFAULT_MACRO OGCGEOPACKAGE_IN_EXPOSE_ATTRS_GROUP_OGCGEOPACKAGE_2
+OGCGEOPACKAGE_2_EXPOSE_ATTRS_GROUP "$(OGCGEOPACKAGE_IN_EXPOSE_ATTRS_GROUP_OGCGEOPACKAGE_2)"
+# Include this file in source setting section to add external search envelope processing
+# Zero as a default means we don't do any search -- this makes workbench happier
+DEFAULT_MACRO OGCGEOPACKAGE_IN_USE_SEARCH_ENVELOPE_OGCGEOPACKAGE_2 NO
+OGCGEOPACKAGE_2_USE_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_USE_SEARCH_ENVELOPE_OGCGEOPACKAGE_2)"
+GUI ACTIVEDISCLOSUREGROUP OGCGEOPACKAGE_IN_USE_SEARCH_ENVELOPE_OGCGEOPACKAGE_2 OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_2%OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_2%OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_2%OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_2%OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_2%OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_2%OGCGEOPACKAGE_IN_SEARCH_METHOD%OGCGEOPACKAGE_IN_SEARCH_METHOD_FILTER%OGCGEOPACKAGE_IN_SEARCH_ORDER%OGCGEOPACKAGE_IN_SEARCH_FEATURE%OGCGEOPACKAGE_IN_DUMMY_SEARCH_ENVELOPE_PARAMETER Use Search Envelope
+# ===========================================================================
+GUI LOOKUP OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_2 <Unused>,0 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_2 0
+OGCGEOPACKAGE_2_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_2)"
+GUI OPTIONAL FLOAT OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINX_OGCGEOPACKAGE_2 Minimum X:
+# ===========================================================================
+GUI LOOKUP OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_2 <Unused>,0 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_2 0
+OGCGEOPACKAGE_2_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_2)"
+GUI OPTIONAL FLOAT OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MINY_OGCGEOPACKAGE_2 Minimum Y:
+# ===========================================================================
+GUI LOOKUP OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_2 <Unused>,0 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_2 0
+OGCGEOPACKAGE_2_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_2)"
+GUI OPTIONAL FLOAT OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXX_OGCGEOPACKAGE_2 Maximum X:
+# ===========================================================================
+GUI LOOKUP OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_2 <Unused>,0 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_2 0
+OGCGEOPACKAGE_2_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_2)"
+GUI OPTIONAL FLOAT OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_MAXY_OGCGEOPACKAGE_2 Maximum Y:
+# ===========================================================================
+GUI LOOKUP OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_2 <Unused>, 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_2 
+OGCGEOPACKAGE_2_SEARCH_ENVELOPE "$(OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_2)"
+GUI OPTIONAL COORDSYS OGCGEOPACKAGE_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_OGCGEOPACKAGE_2 Search Envelope Coordinate System:
+# ===========================================================================
+# BUG18999: We now have a soft clip to fall back on like native spatial index
+# thus we are reintroducing the clip to envelop as an option for users.
+# Defualt to soft clip as per the existing database readers we are emulating
+GUI LOOKUP OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_2 <Unused>,NO 
+DEFAULT_MACRO OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_2 NO
+OGCGEOPACKAGE_2_CLIP_TO_ENVELOPE "$(OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_2)"
+GUI OPTIONAL CHECKBOX OGCGEOPACKAGE_IN_CLIP_TO_ENVELOPE_OGCGEOPACKAGE_2 YES%NO Clip to Search Envelope
+DEFAULT_MACRO OGCGEOPACKAGE_IN_READ_BOOLEANS_AS_YES_NO_OGCGEOPACKAGE_2 YES
+OGCGEOPACKAGE_2_READ_BOOLEANS_AS_YES_NO "$(OGCGEOPACKAGE_IN_READ_BOOLEANS_AS_YES_NO_OGCGEOPACKAGE_2)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_READ_NULLS_OGCGEOPACKAGE_2 YES
+OGCGEOPACKAGE_2_READ_NULLS "$(OGCGEOPACKAGE_IN_READ_NULLS_OGCGEOPACKAGE_2)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_OGCGEOPACKAGE_2 Yes
+OGCGEOPACKAGE_2_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(OGCGEOPACKAGE_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_OGCGEOPACKAGE_2)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_ENCODE_FEATURE_TYPE_AND_ATTR_NAMES_OGCGEOPACKAGE_2 YES
+OGCGEOPACKAGE_2_ENCODE_FEATURE_TYPE_AND_ATTR_NAMES "$(OGCGEOPACKAGE_IN_ENCODE_FEATURE_TYPE_AND_ATTR_NAMES_OGCGEOPACKAGE_2)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_OPEN_SINGLE_RASTER_AS_SUBDATASET_OGCGEOPACKAGE_2 YES
+OGCGEOPACKAGE_2_OPEN_SINGLE_RASTER_AS_SUBDATASET "$(OGCGEOPACKAGE_IN_OPEN_SINGLE_RASTER_AS_SUBDATASET_OGCGEOPACKAGE_2)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_READER_REPLACE_INVALID_CHARS_OGCGEOPACKAGE_2 NO
+OGCGEOPACKAGE_2_READER_REPLACE_INVALID_CHARS "$(OGCGEOPACKAGE_IN_READER_REPLACE_INVALID_CHARS_OGCGEOPACKAGE_2)"
+DEFAULT_MACRO OGCGEOPACKAGE_IN_EXPOSE_PRIMARY_KEY_ATTRIBUTE_OGCGEOPACKAGE_2 YES
+OGCGEOPACKAGE_2_EXPOSE_PRIMARY_KEY_ATTRIBUTE "$(OGCGEOPACKAGE_IN_EXPOSE_PRIMARY_KEY_ATTRIBUTE_OGCGEOPACKAGE_2)"
+# ===========================================================================
+DEFAULT_MACRO OGCGEOPACKAGE_IN_NETWORK_AUTHENTICATION_OGCGEOPACKAGE_2 
+OGCGEOPACKAGE_2_NETWORK_AUTHENTICATION "$(OGCGEOPACKAGE_IN_NETWORK_AUTHENTICATION_OGCGEOPACKAGE_2)"
+GUI OPTIONAL AUTHENTICATOR OGCGEOPACKAGE_IN_NETWORK_AUTHENTICATION_OGCGEOPACKAGE_2 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO OGCGEOPACKAGE_IN_ATTRIBUTE_READING_OGCGEOPACKAGE_2 DEFLINE
+OGCGEOPACKAGE_2_ATTRIBUTE_READING "$(OGCGEOPACKAGE_IN_ATTRIBUTE_READING_OGCGEOPACKAGE_2)"
+# ============================================================================
+OGCGEOPACKAGE_2_GENERATE_FME_BUILD_NUM 22630
+OGCGEOPACKAGE_2_DATASET "$(SourceDataset_OGCGEOPACKAGE_2)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "XLSXR_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER XLSXR XLSXR_1
+# ============================================================================
+# First get the dataset for the database. For Excel, it's the file name.
+# For now we'll use whatever they had when they generated this mapping file,
+# and not reprompt
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_XLSXR_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER XLSXR XLSXR_1
+DEFAULT_MACRO SourceDataset_XLSXR_1 $(SourceDataset_XLSXR)
+GUI MULTIFILE SourceDataset_XLSXR_1 Excel_Files(*.xlsx;*.xlsm;*.xls)|*.xlsx;*.xlsm;*.xls|Excel_Workbook_2007(*.xlsx)|*.xlsx|Excel_Macro_Workbook(*.xlsm)|*.xlsm|Excel_Binary_Workbook_-_Windows_Only(*.xlsb)|*.xlsb|Excel_Workbook_Pre_2007(*.xls)|*.xls|All_files(*)|* Source Microsoft Excel File(s):
+#GUI GROUP TABLELIST Constraints
+# TABLELIST is not shown in GUI, but is required for infrastructure
+# to not show the Table List popup
+DEFAULT_MACRO XLSXR_IN_CONFIGURATION_DATASET_XLSXR_1 C:\Users\krima354\Work Folders\Documents\kicki_arbetsfiler\urdar_arbetsfiler\create_siteinfo\test2raä.xlsx
+XLSXR_1_CONFIGURATION_DATASET "$(XLSXR_IN_CONFIGURATION_DATASET_XLSXR_1)"
+# Flag to switch from old naming scheme of col_1, col_2 etc. to a, b, etc.
+# To better match up with Excel files
+DEFAULT_MACRO XLSXR_IN_EXCEL_COL_NAMES_XLSXR_1 YES
+XLSXR_1_EXCEL_COL_NAMES "$(XLSXR_IN_EXCEL_COL_NAMES_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_FORCE_DATETIME_XLSXR_1 NO
+XLSXR_1_FORCE_DATETIME "$(XLSXR_IN_FORCE_DATETIME_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_ADVANCED_XLSXR_1 
+GUI OPTIONAL DISCLOSUREGROUP XLSXR_IN_ADVANCED_XLSXR_1 XLSXR_IN_APPLY_FILTERS%XLSXR_IN_SCAN_MAX_FEATURES_XLSXR_1%XLSXR_IN_TRIM_ATTR_NAME_WHITESPACE%XLSXR_IN_TRIM_ATTR_NAME_CHARACTERS%XLSXR_IN_READ_BLANK_AS_XLSXR_1%XLSXR_IN_EXPAND_MERGED_CELLS_XLSXR_1%XLSXR_IN_READ_RASTER_MODE_XLSXR_1%XLSXR_IN_READ_FORM_CONTROLS_XLSXR_1 Advanced
+DEFAULT_MACRO XLSXR_IN_SCAN_MAX_FEATURES_XLSXR_1 1000
+XLSXR_1_SCAN_MAX_FEATURES "$(XLSXR_IN_SCAN_MAX_FEATURES_XLSXR_1)"
+GUI RANGE_SLIDER XLSXR_IN_SCAN_MAX_FEATURES_XLSXR_1 0%MAX%0 Maximum Rows to Scan:
+DEFAULT_MACRO XLSXR_IN_READ_BLANK_AS_XLSXR_1 Missing
+XLSXR_1_READ_BLANK_AS "$(XLSXR_IN_READ_BLANK_AS_XLSXR_1)"
+GUI CHOICE XLSXR_IN_READ_BLANK_AS_XLSXR_1 Missing%Null Read Blank Cells As:
+DEFAULT_MACRO XLSXR_IN_TRIM_ATTR_NAME_WHITESPACE_XLSXR_1 Yes
+XLSXR_1_TRIM_ATTR_NAME_WHITESPACE "$(XLSXR_IN_TRIM_ATTR_NAME_WHITESPACE_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_EXPAND_MERGED_CELLS_XLSXR_1 Yes
+XLSXR_1_EXPAND_MERGED_CELLS "$(XLSXR_IN_EXPAND_MERGED_CELLS_XLSXR_1)"
+GUI OPTIONAL CHECKBOX XLSXR_IN_EXPAND_MERGED_CELLS_XLSXR_1 Yes%No Expand Merged Cells:
+DEFAULT_MACRO XLSXR_IN_READ_RASTER_MODE_XLSXR_1 None
+XLSXR_1_READ_RASTER_MODE "$(XLSXR_IN_READ_RASTER_MODE_XLSXR_1)"
+GUI LOOKUP_CHOICE XLSXR_IN_READ_RASTER_MODE_XLSXR_1 None%Attribute%Geometry Read Embedded Images As:
+DEFAULT_MACRO XLSXR_IN_READ_FORM_CONTROLS_XLSXR_1 NONE
+XLSXR_1_READ_FORM_CONTROLS "$(XLSXR_IN_READ_FORM_CONTROLS_XLSXR_1)"
+GUI OPTIONAL CHECKBOX XLSXR_IN_READ_FORM_CONTROLS_XLSXR_1 CELL_VALUE%NONE Read Form Control as Cell Values:
+DEFAULT_MACRO XLSXR_IN_TRIM_ATTR_NAME_CHARACTERS_XLSXR_1
+XLSXR_1_TRIM_ATTR_NAME_CHARACTERS "$(XLSXR_IN_TRIM_ATTR_NAME_CHARACTERS_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_EXPOSE_ATTRS_GROUP_XLSXR_1
+XLSXR_1_EXPOSE_ATTRS_GROUP "$(XLSXR_IN_EXPOSE_ATTRS_GROUP_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_APPLY_FILTERS_XLSXR_1 No
+XLSXR_1_APPLY_FILTERS "$(XLSXR_IN_APPLY_FILTERS_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_XLSXR_1 Yes
+XLSXR_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(XLSXR_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_CASE_SENSITIVE_FEATURE_TYPES_XLSXR_1 YES
+XLSXR_1_CASE_SENSITIVE_FEATURE_TYPES "$(XLSXR_IN_CASE_SENSITIVE_FEATURE_TYPES_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_ALLOW_DOLLAR_SIGNS_XLSXR_1 YES
+XLSXR_1_ALLOW_DOLLAR_SIGNS "$(XLSXR_IN_ALLOW_DOLLAR_SIGNS_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_CREATE_FEATURE_TABLES_FROM_DATA_XLSXR_1 Yes
+XLSXR_1_CREATE_FEATURE_TABLES_FROM_DATA "$(XLSXR_IN_CREATE_FEATURE_TABLES_FROM_DATA_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_STRIP_SHEETNAME_SPACES_XLSXR_1 YES
+XLSXR_1_STRIP_SHEETNAME_SPACES "$(XLSXR_IN_STRIP_SHEETNAME_SPACES_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_SCHEMA_HANDLING_REVISION_XLSXR_1 2
+XLSXR_1_SCHEMA_HANDLING_REVISION "$(XLSXR_IN_SCHEMA_HANDLING_REVISION_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_SKIP_EMPTY_ROWS_XLSXR_1 YES
+XLSXR_1_SKIP_EMPTY_ROWS "$(XLSXR_IN_SKIP_EMPTY_ROWS_XLSXR_1)"
+DEFAULT_MACRO XLSXR_IN_REPLACE_ONLY_NEWLINES_CARRIAGE_RETURNS_XLSXR_1 YES
+XLSXR_1_REPLACE_ONLY_NEWLINES_CARRIAGE_RETURNS "$(XLSXR_IN_REPLACE_ONLY_NEWLINES_CARRIAGE_RETURNS_XLSXR_1)"
+# ===========================================================================
+DEFAULT_MACRO XLSXR_IN_NETWORK_AUTHENTICATION_XLSXR_1 
+XLSXR_1_NETWORK_AUTHENTICATION "$(XLSXR_IN_NETWORK_AUTHENTICATION_XLSXR_1)"
+GUI OPTIONAL AUTHENTICATOR XLSXR_IN_NETWORK_AUTHENTICATION_XLSXR_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO XLSXR_IN_ATTRIBUTE_READING_XLSXR_1 DEFLINE
+XLSXR_1_ATTRIBUTE_READING "$(XLSXR_IN_ATTRIBUTE_READING_XLSXR_1)"
+# ============================================================================
+XLSXR_1_GENERATE_FME_BUILD_NUM 22630
+XLSXR_1_DATASET "$(SourceDataset_XLSXR_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "CSV2_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER CSV2 CSV2_1
+# =====================================================================
+# The following GUI line prompts for a file to be used as the source CSV file.
+# The user input is stored in a macro, which is then used to define
+# the dataset to be read.
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_CSV2_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER CSV2 CSV2_1
+DEFAULT_MACRO SourceDataset_CSV2_1 $(SourceDataset_CSV2)
+GUI MULTIFILE SourceDataset_CSV2_1 CSV/Compressed_CSV/TEXT_Files(*.csv;*.gz;*.txt)|*.csv;*.gz;*.txt|CSV_Files(*.csv)|*.csv|Compressed_CSV_Files(*.gz)|*.gz|Text_Files(*.txt)|*.txt|All_Files|* Source CSV (Comma Separated Value) File(s):
+DEFAULT_MACRO CSV2_IN_TRIM_FEATURE_TYPE_NAME_CSV2_1 Yes
+CSV2_1_TRIM_FEATURE_TYPE_NAME "$(CSV2_IN_TRIM_FEATURE_TYPE_NAME_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_REPLACE_ATTR_NAME_INVALID_CHARS_CSV2_1 No
+CSV2_1_REPLACE_ATTR_NAME_INVALID_CHARS "$(CSV2_IN_REPLACE_ATTR_NAME_INVALID_CHARS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_SUPPORTED_READER_ARCHIVE_EXTENSIONS_CSV2_1 csv.gz,txt.gz
+CSV2_1_SUPPORTED_READER_ARCHIVE_EXTENSIONS "$(CSV2_IN_SUPPORTED_READER_ARCHIVE_EXTENSIONS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_FEATURE_TYPE_NAME_CSV2_1 FORMAT_NAME
+CSV2_1_FEATURE_TYPE_NAME "$(CSV2_IN_FEATURE_TYPE_NAME_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_FIELDS_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELDS_GROUP_CSV2_1 CSV2_IN_DELIMITER_CSV2_1%CSV2_IN_FIELD_NAMES_LINE_CSV2_1%CSV2_IN_DATA_START_LINE_CSV2_1 Fields
+DEFAULT_MACRO CSV2_IN_DELIMITER_CSV2_1 auto
+CSV2_1_DELIMITER "$(CSV2_IN_DELIMITER_CSV2_1)"
+GUI STRING_OR_CHOICE_ENCODED CSV2_IN_DELIMITER_CSV2_1 auto%,%;%|%space%tab Delimiter Character:
+DEFAULT_MACRO CSV2_IN_FIELD_NAMES_LINE_CSV2_1 1
+CSV2_1_FIELD_NAMES_LINE "$(CSV2_IN_FIELD_NAMES_LINE_CSV2_1)"
+GUI OPTIONAL INT_OR_CHOICE CSV2_IN_FIELD_NAMES_LINE_CSV2_1 None%1%2%3%4%5 Field Names Line:
+GUI LOOKUP CSV2_IN_FIELD_NAMES_LINE_CSV2_1 None, 
+DEFAULT_MACRO CSV2_IN_DATA_START_LINE_CSV2_1 2
+CSV2_1_DATA_START_LINE "$(CSV2_IN_DATA_START_LINE_CSV2_1)"
+GUI RANGE_SLIDER CSV2_IN_DATA_START_LINE_CSV2_1 1%MAX%0 Data Start Line:
+DEFAULT_MACRO CSV2_IN_ADVANCED_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_ADVANCED_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1%CSV2_IN_FIELD_NAMES_GROUP_CSV2_1%CSV2_IN_FIELD_VALUES_GROUP_CSV2_1%CSV2_IN_ENCODING_GROUP_CSV2_1%CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1%CSV2_IN_SCHEMA_GENERATION_GROUP Advanced
+DEFAULT_MACRO CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1%CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1%CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 Field Separation
+DEFAULT_MACRO CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1 No
+CSV2_1_SKIP_DUPLICATE_DELIMITERS "$(CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1)"
+GUI CHOICE CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1 Yes%No Skip Duplicate Delimiters:
+DEFAULT_MACRO CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1 <quote>
+CSV2_1_FIELD_QUALIFIER_CHARACTER "$(CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1)"
+GUI OPTIONAL STRING_ENCODED CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1 Field Qualifier Character:
+DEFAULT_MACRO CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 <quote>
+CSV2_1_FIELD_QUALIFIER_ESCAPE_CHARACTER "$(CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1)"
+GUI OPTIONAL STRING_ENCODED CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 Field Qualifier Escape Character:
+DEFAULT_MACRO CSV2_IN_FIELD_NAMES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_NAMES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1%CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1%CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1 Field Names
+DEFAULT_MACRO CSV2_IN_TRIM_FIELD_NAME_QUALIFIERS_CSV2_1 Yes
+CSV2_1_TRIM_FIELD_NAME_QUALIFIERS "$(CSV2_IN_TRIM_FIELD_NAME_QUALIFIERS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1 Yes
+CSV2_1_CASE_SENSITIVE_FIELD_NAMES "$(CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1)"
+GUI CHOICE CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1 Yes%No Case Sensitive Field Names:
+DEFAULT_MACRO CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1 No
+CSV2_1_ENFORCE_STRICT_SCHEMA "$(CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1)"
+GUI CHOICE CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1 Yes%No Enforce Strict Schema:
+DEFAULT_MACRO CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1 Yes
+CSV2_1_TRIM_FIELD_NAME_WHITESPACE "$(CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1)"
+GUI CHOICE CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1 Yes%No Trim Whitespaces From Field Names:
+DEFAULT_MACRO CSV2_IN_FIELD_VALUES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_VALUES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1%CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1 Field Values
+DEFAULT_MACRO CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1 Null
+CSV2_1_READ_EMPTY_VALUES_AS "$(CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1)"
+GUI CHOICE CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1 Missing%Null Read Empty Values As:
+DEFAULT_MACRO CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1 Yes
+CSV2_1_TRIM_FIELD_VALUE_QUALIFIERS "$(CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1)"
+GUI CHOICE CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1 Yes%No Trim Field Qualifier Characters:
+DEFAULT_MACRO CSV2_IN_ENCODING_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_ENCODING_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_ENCODING_CSV2_1%CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1 Encoding
+DEFAULT_MACRO CSV2_IN_ENCODING_CSV2_1 windows-1252
+CSV2_1_ENCODING "$(CSV2_IN_ENCODING_CSV2_1)"
+GUI STRING_OR_ENCODING CSV2_IN_ENCODING_CSV2_1 fme-system%* Character Encoding:
+DEFAULT_MACRO CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1 No
+CSV2_1_PRESERVE_SOURCE_ENCODING "$(CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1)"
+GUI CHOICE CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1 Yes%No Preserve Source Encoding:
+DEFAULT_MACRO CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_READ_SKIPPED_LINES_CSV2_1 Skipped Lines
+DEFAULT_MACRO CSV2_IN_READ_SKIPPED_LINES_CSV2_1 No
+CSV2_1_READ_SKIPPED_LINES "$(CSV2_IN_READ_SKIPPED_LINES_CSV2_1)"
+GUI CHOICE CSV2_IN_READ_SKIPPED_LINES_CSV2_1 Yes%No Read Skipped Lines:
+DEFAULT_MACRO CSV2_IN_SCAN_MAX_ROWS_CSV2_1 10000
+CSV2_1_SCAN_MAX_ROWS "$(CSV2_IN_SCAN_MAX_ROWS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_SCAN_TYPES_CSV2_1 Yes
+CSV2_1_SCAN_TYPES "$(CSV2_IN_SCAN_TYPES_CSV2_1)"
+# ============================================================================
+# Determines whether numeric attributes should be interpreted as bounded or unbounded
+DEFAULT_MACRO CSV2_IN_TYPE_ATTRIBUTE_HANDLING_CSV2_1 STANDARD_TYPES
+CSV2_1_TYPE_ATTRIBUTE_HANDLING "$(CSV2_IN_TYPE_ATTRIBUTE_HANDLING_CSV2_1)"
+# ============================================================================
+# Determines whether string attributes should be interpreted as bounded or unbounded
+DEFAULT_MACRO CSV2_IN_STRING_TYPE_ATTRIBUTE_HANDLING_CSV2_1 EXPLICIT_WIDTH
+CSV2_1_STRING_TYPE_ATTRIBUTE_HANDLING "$(CSV2_IN_STRING_TYPE_ATTRIBUTE_HANDLING_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_DATE_INPUT_FORMAT_CSV2_1 ISO
+CSV2_1_DATE_INPUT_FORMAT "$(CSV2_IN_DATE_INPUT_FORMAT_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_SCAN_ADDITIONAL_FIELDS_CSV2_1 No
+CSV2_1_SCAN_ADDITIONAL_FIELDS "$(CSV2_IN_SCAN_ADDITIONAL_FIELDS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_EXPOSE_ATTRS_GROUP_CSV2_1
+CSV2_1_EXPOSE_ATTRS_GROUP "$(CSV2_IN_EXPOSE_ATTRS_GROUP_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_CSV2_1 Yes
+CSV2_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(CSV2_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_CHUNK_SIZE_CSV2_1 100000
+CSV2_1_CHUNK_SIZE "$(CSV2_IN_CHUNK_SIZE_CSV2_1)"
+# ===========================================================================
+DEFAULT_MACRO CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1 
+CSV2_1_NETWORK_AUTHENTICATION "$(CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1)"
+GUI OPTIONAL AUTHENTICATOR CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO CSV2_IN_ATTRIBUTE_READING_CSV2_1 DEFLINE
+CSV2_1_ATTRIBUTE_READING "$(CSV2_IN_ATTRIBUTE_READING_CSV2_1)"
+# ============================================================================
+CSV2_1_GENERATE_FME_BUILD_NUM 22630
+CSV2_1_DATASET "$(SourceDataset_CSV2_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_END_BANNER 
+LOG_END_BANNER Feature caches have been recorded at every stage of the translation.
+LOG_END_BANNER To inspect the recorded features,
+LOG_END_BANNER click the feature cache icons next to the ports.
+LOG_END_BANNER 
+LOG_FILENAME "$(FME_MF_DIR)sista_kollen.log"
+LOG_APPEND YES
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+DEFAULT_MACRO DATASET_KEYWORD_OGCGEOPACKAGE_2 OGCGEOPACKAGE_2
+DEFAULT_MACRO DATASET_KEYWORD_XLSXR_1 XLSXR_1
+DEFAULT_MACRO DATASET_KEYWORD_CSV2_1 CSV2_1
+# -------------------------------------------------------------------------
+
+OGCGEOPACKAGE_2_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+XLSXR_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+CSV2_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME sista_kollen
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE XLSXR XLSXR_1::OBStest multi_reader_keyword,$(DATASET_KEYWORD_XLSXR_1) TO FME_GENERIC ::__TO_REMOVE__ ALIAS_GEOMETRY    ROUTE CSV2 CSV2_1::CSV multi_reader_keyword,$(DATASET_KEYWORD_CSV2_1) TO FME_GENERIC ::CSV ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *   OUTPUT NOT_ROUTED FEATURE_TYPE *     @LogCount("UnexpectedInput @FeatureType()")     @FeatureType(__TO_REMOVE__)
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Unwanted Router Input Nuker"   INPUT FEATURE_TYPE __TO_REMOVE__
+XLSXR_1_MERGE_DEF XLSXR_1::OBStest EXACT OBStest DEFLINE xlsx_start_row,,xlsx_end_row,,xlsx_apply_filters,No,xlsx_schema_start_row,1,xlsx_schema_end_col,0,xlsx_schema_start_col,0,xlsx_schema_end_row,0,xlsx_header_row,0,fme_attribute_reading,defined,master_site_archive,char<openparen>11<closeparen>,master_site_name,char<openparen>52<closeparen>,UUID_final,char<openparen>37<closeparen>,UUID_final_finns,char<openparen>4<closeparen>,UUID_final_link,char<openparen>77<closeparen>,master_UUID,char<openparen>37<closeparen>,master_UUID_finns,char<openparen>4<closeparen>,link_master_uuid,char<openparen>77<closeparen>,master_Uppdaterat<space>UUID,string,master_Uppdaterat<space>UUID_finns,string,master_link_Uppdaterat_uuid,string,UUID_typ,char<openparen>18<closeparen>,proj_info_Beskrivning,char<openparen>11557<closeparen>,proj_info_Identifierare,char<openparen>11<closeparen>,proj_info_Relaterade<space>URI:er,char<openparen>1<closeparen>,proj_info_Uppdragsnummer,char<openparen>1<closeparen>,proj_info_Uppdragstyp,char<openparen>50<closeparen>,proj_info_Beslutande<space>myndighet,char<openparen>1<closeparen>,proj_info_L<u00e4>nsstyrelsens<space>diarienummer,char<openparen>36<closeparen>,proj_info_L<u00e4>mningsnummer,char<openparen>1<closeparen>,proj_info_L<u00e4>mningstyp,char<openparen>1<closeparen>,proj_info_Land,char<openparen>1<closeparen>,proj_info_Landskap,char<openparen>1<closeparen>,proj_info_L<u00e4>n,char<openparen>1<closeparen>,proj_info_Kommun,char<openparen>1<closeparen>,proj_info_Socken,char<openparen>1<closeparen>,proj_info_Platsnamn,char<openparen>52<closeparen>,proj_info_Diarienummer<space>RA<u00c4>,char<openparen>42<closeparen>,proj_info_Arkivarienotering,char<openparen>1<closeparen>,_socken_concatenated,char<openparen>991<closeparen>,_socken_antal,number<openparen>4<comma>0<closeparen>,_kommun_concatenated,char<openparen>286<closeparen>,_kommun_antal,number<openparen>3<comma>0<closeparen>,_landskap_concatanted,char<openparen>79<closeparen>,_landskap_antal,number<openparen>2<comma>0<closeparen>,_lan_concatenated,char<openparen>74<closeparen>,_lan_antal,number<openparen>2<comma>0<closeparen>,E,number<openparen>17<comma>9<closeparen>,N,number<openparen>16<comma>8<closeparen>,uo_id,char<openparen>37<closeparen>,uo_uppdragsnummer,number<openparen>10<comma>0<closeparen>,uo_beslutande_myndighet,char<openparen>41<closeparen>,uo_beslutsdatum,date,uo_diarienummer,char<openparen>17<closeparen>,uo_uppdragstyp,char<openparen>30<closeparen>,uo_utforande_organisation,char<openparen>56<closeparen>,uo_nollresultat,char<openparen>4<closeparen>,uo_url,char<openparen>91<closeparen>,uo_status,char<openparen>11<closeparen>,uo_lan,char<openparen>56<closeparen>,uo_kommun,char<openparen>134<closeparen>,uo_socken,char<openparen>334<closeparen>
+CSV2_1_MERGE_DEF CSV2_1::CSV EXACT CSV DEFLINE fme_attribute_reading,defined,databas,varchar<openparen>10<closeparen>
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "OBStest_XLSXR_1 Splitter"    INPUT FEATURE_TYPE OBStest     @LogCount("PORT -1 2147549202")
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "CSV Feature Recorder -1 2147549210" INPUT FEATURE_TYPE CSV FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-sista_kollen-CeIVRP/Main_CSV -1 26 -1  0  f236eca4236163b872aa8524f6e7913223e2499a.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { databas,varchar<openparen>10<closeparen> }  FEAT_TYPE_DISPLAY_NAME { CSV } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "CSV_CSV2_1 Splitter"    INPUT FEATURE_TYPE CSV    OUTPUT FEATURE_TYPE CSV_CSV2_1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "CSV_CSV2_1 Feature Counter -1 27"   INPUT FEATURE_TYPE CSV_CSV2_1   NO_LOGGING    OUTPUT FEATURE_TYPE *     @LogCount("LINK -1 27")
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+.metadata XFORMER_BEGIN FeatureMerger;23:Main
+FACTORY_DEF * RecorderFactory FACTORY_NAME AttributeFilter_ej<space>lyckats<space>georeferera_-1_28_Player FEATURE_FILE "C:/Users/krima354/AppData/Local/Temp/wb-cache-sista_kollen-CeIVRP/Main_AttributeFilter -1 19 fo 4 ej_lt_space_gt_lyckats_lt_space_gt_georeferera  0  fcbfb7ad132fe01b4efbeee9a5e95814ded7a309.ffs" MODE PLAYBACK NO_LOGGING OUTPUT RECORDED FEATURE_TYPE * @LogCount("LINK -1 28") @FeatureType(ENCODED, AttributeFilter_ej<lt>space<gt>lyckats<lt>space<gt>georeferera)
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { FeatureMerger }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE CSV_CSV2_1    INPUT REFERENCEE FEATURE_TYPE AttributeFilter_ej<space>lyckats<space>georeferera    REFERENCE_INFO { $(FeatureMerger_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>databas<closeparen>,FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>master_site_archive<closeparen>,FeatureMerger) AUTO }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "REQUESTOR_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE FeatureMerger_MERGED         }    OUTPUT { INCOMPLETE FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR         }    OUTPUT { REFERENCED FEATURE_TYPE FeatureMerger_USED_SUPPLIER         }    OUTPUT { UNREFERENCED FEATURE_TYPE FeatureMerger_UNUSED_SUPPLIER         }    OUTPUT { REJECTED FEATURE_TYPE FeatureMerger_<REJECTED>         }
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "FeatureMerger_MERGED Feature Recorder -1 2147614743" INPUT FEATURE_TYPE FeatureMerger_MERGED FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-sista_kollen-CeIVRP/Main_FeatureMerger -1 23 fo 0 MERGED  0  eb9d2a03042435aaaa7dd829f7162bba3c6ceefb.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { databas,varchar<openparen>10<closeparen>,master_site_archive,varchar<openparen>11<closeparen>,UUID_final,varchar<openparen>37<closeparen>,UUID_final_finns,varchar<openparen>4<closeparen>,UUID_final_link,varchar<openparen>77<closeparen>,master_Uppdaterat<space>UUID,buffer,UUID_typ,varchar<openparen>18<closeparen>,proj_info_Kommun,varchar<openparen>1<closeparen>,_kommun_concatenated,varchar<openparen>286<closeparen>,uo_kommun,varchar<openparen>134<closeparen> }  FEAT_TYPE_DISPLAY_NAME { FeatureMerger_Merged } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "FeatureMerger_UNMERGED_REQUESTOR Feature Recorder -1 2147680279" INPUT FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-sista_kollen-CeIVRP/Main_FeatureMerger -1 23 fo 1 UNMERGED_REQUESTOR  0  1183aaa82dd66b9b82214bf09df78b32b075ba73.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { databas,varchar<openparen>10<closeparen> }  FEAT_TYPE_DISPLAY_NAME { FeatureMerger_UnmergedRequestor } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "FeatureMerger_USED_SUPPLIER Feature Recorder -1 2147745815" INPUT FEATURE_TYPE FeatureMerger_USED_SUPPLIER FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-sista_kollen-CeIVRP/Main_FeatureMerger -1 23 fo 2 USED_SUPPLIER  0  7811577afec92dcdf24694031ea8e50116e6157e.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { master_site_archive,varchar<openparen>11<closeparen>,UUID_final,varchar<openparen>37<closeparen>,UUID_final_finns,varchar<openparen>4<closeparen>,UUID_final_link,varchar<openparen>77<closeparen>,master_Uppdaterat<space>UUID,buffer,UUID_typ,varchar<openparen>18<closeparen>,proj_info_Kommun,varchar<openparen>1<closeparen>,_kommun_concatenated,varchar<openparen>286<closeparen>,uo_kommun,varchar<openparen>134<closeparen>,numReferences,uint32 }  FEAT_TYPE_DISPLAY_NAME { FeatureMerger_UsedSupplier } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "FeatureMerger_UNUSED_SUPPLIER Feature Recorder -1 2147811351" INPUT FEATURE_TYPE FeatureMerger_UNUSED_SUPPLIER FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-sista_kollen-CeIVRP/Main_FeatureMerger -1 23 fo 3 UNUSED_SUPPLIER  0  cf98a58319ad3e58ac70c1584dcd6078f2432378.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { master_site_archive,varchar<openparen>11<closeparen>,UUID_final,varchar<openparen>37<closeparen>,UUID_final_finns,varchar<openparen>4<closeparen>,UUID_final_link,varchar<openparen>77<closeparen>,master_Uppdaterat<space>UUID,buffer,UUID_typ,varchar<openparen>18<closeparen>,proj_info_Kommun,varchar<openparen>1<closeparen>,_kommun_concatenated,varchar<openparen>286<closeparen>,uo_kommun,varchar<openparen>134<closeparen> }  FEAT_TYPE_DISPLAY_NAME { FeatureMerger_UnusedSupplier } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "FeatureMerger_<REJECTED> Feature Recorder -1 2147876887" INPUT FEATURE_TYPE FeatureMerger_<REJECTED> FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-sista_kollen-CeIVRP/Main_FeatureMerger -1 23 fo 4 _lt_REJECTED_gt_  0  dbf0943feb6cf6b4334596dbd3e09b134ac5f639.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { databas,varchar<openparen>10<closeparen>,master_site_archive,varchar<openparen>11<closeparen>,UUID_final,varchar<openparen>37<closeparen>,UUID_final_finns,varchar<openparen>4<closeparen>,UUID_final_link,varchar<openparen>77<closeparen>,master_Uppdaterat<space>UUID,buffer,UUID_typ,varchar<openparen>18<closeparen>,proj_info_Kommun,varchar<openparen>1<closeparen>,_kommun_concatenated,varchar<openparen>286<closeparen>,uo_kommun,varchar<openparen>134<closeparen>,fme_rejection_code,buffer }  FEAT_TYPE_DISPLAY_NAME { FeatureMerger_<lt>Rejected<gt> } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+.metadata XFORMER_END FeatureMerger;23:Main
+FACTORY_DEF * TeeFactory   FACTORY_NAME "FeatureMerger_MERGED Feature Counter -1 2147614743"   INPUT FEATURE_TYPE FeatureMerger_MERGED     @LogCount("PORT -1 2147614743")   NO_LOGGING 
+FACTORY_DEF * TeeFactory   FACTORY_NAME "FeatureMerger_UNMERGED_REQUESTOR Feature Counter -1 2147680279"   INPUT FEATURE_TYPE FeatureMerger_UNMERGED_REQUESTOR     @LogCount("PORT -1 2147680279")   NO_LOGGING 
+FACTORY_DEF * TeeFactory   FACTORY_NAME "FeatureMerger_USED_SUPPLIER Feature Counter -1 2147745815"   INPUT FEATURE_TYPE FeatureMerger_USED_SUPPLIER     @LogCount("PORT -1 2147745815")   NO_LOGGING 
+FACTORY_DEF * TeeFactory   FACTORY_NAME "FeatureMerger_UNUSED_SUPPLIER Feature Counter -1 2147811351"   INPUT FEATURE_TYPE FeatureMerger_UNUSED_SUPPLIER     @LogCount("PORT -1 2147811351")   NO_LOGGING 
+FACTORY_DEF * TeeFactory   FACTORY_NAME "FeatureMerger_<REJECTED> Feature Counter -1 2147876887"   INPUT FEATURE_TYPE FeatureMerger_<REJECTED>     @LogCount("PORT -1 2147876887")   NO_LOGGING    OUTPUT FEATURE_TYPE *
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME FeatureMerger_<Rejected> INPUT FEATURE_TYPE FeatureMerger_<REJECTED>  NO_LOGGING   OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, FeatureMerger<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+

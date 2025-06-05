@@ -1,0 +1,758 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME2022_1_3\fme.exe" C:\Github\kix\divFME\reproject_gpkg\1_fix_view_mm.fmw
+#          --kopia_in "C:\ny_slask\test_reproject_gpkg\palraa220_copy.gpkg"
+#          --ReprojectSourceDataset_SQLITE3 "C:\ny_slask\test_reproject_gpkg\palraa220_copy_reproject.gpkg"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="2849.65 191"
+#!   DOC_TOP_LEFT="-970.133 -540.69"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="22630"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="ffa556c3-4495-4fc5-a309-2cac5d8509de"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+#!   LAST_SAVE_DATE="2024-10-02T12:53:36"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="215.627 168.752"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="SQLITE3"
+#!   DATASET="$(kopia_in)"
+#!   KEYWORD="SQLITE3_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE="sqlite3_sql_statement &quot;&quot; sqlite3_where_clause &quot;&quot;"
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="db_type varchar(254) fme_basename varchar(50) fme_color varchar(50) fme_dataset varchar(50) fme_feature_type varchar(50) fme_fill_color varchar(50) fme_geometry varchar(50) fme_primary_axis double fme_rotation double fme_secondary_axis double fme_start_angle double fme_sweep_angle double fme_text_size double fme_text_string varchar(50) fme_type varchar(50) multi_reader_full_id integer multi_reader_id integer multi_reader_keyword varchar(50) multi_reader_type varchar(50)"
+#!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP sqlite3_reader_table_group sqlite3_where_clause Table&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT sqlite3_where_clause WHERE Clause&quot; &quot;&quot; "
+#!   ATTR_INDEX_TYPES="Indexed Unique"
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILE"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="22630"
+#!   NAME="org_gpkg[SQLITE3]"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ADVANCED_PARMS"
+#!   VALUE="SQLITE3_IN_BEGIN_SQL SQLITE3_IN_END_SQL SQLITE3_OUT_WRITER_MODE SQLITE3_OUT_TRANSACTION_INTERVAL SQLITE3_OUT_BEGIN_SQL{0} SQLITE3_OUT_END_SQL{0}"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ALLOW_DATASET_CONFLICT"
+#!   VALUE="YES"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING_HISTORIC"
+#!   VALUE="ALL"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Table1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Table"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the SQLite3 Database file(s)"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="SUPPORTS_SCHEMA_IN_FEATURE_TYPE_NAME"
+#!   VALUE="NO"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a name for the SQLite3 Database file"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="blob"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="blob"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="blob"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="double"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="varchar(20)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="SQLITE3"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="real(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="SQLITE3"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="SQLITE3"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="SQLITE3"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="gpkg_contents"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="2"
+#!   FEAT_GEOMTYPE="db_none"
+#!   POSITION="-970.13345958681452 -469.69000665767999"
+#!   BOUNDING_RECT="-970.13345958681452 -469.69000665767999 711.50237502375057 71"
+#!   ORDER="500000000000046"
+#!   COLLAPSED="true"
+#!   KEYWORD="SQLITE3_1"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   READ_SELECT_ATTRS="true"
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="table_name" ATTR_TYPE="text,Unique" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="data_type" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="identifier" ATTR_TYPE="text,Unique" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="description" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="last_change" ATTR_TYPE="text" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="min_x" ATTR_TYPE="double" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="min_y" ATTR_TYPE="double" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="max_x" ATTR_TYPE="double" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="max_y" ATTR_TYPE="double" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="srs_id" ATTR_TYPE="integer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="sqlite3_reader_table_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="sqlite3_where_clause" PARM_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="SQLITE3_1"
+#!   OVERRIDE="-SQLITE3_1_DATASET"
+#!   DATASET="SQLITE3_1/palraa220_copy.gpkg"
+#! />
+#! </READER_DATASETS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI FILENAME kopia_in INCLUDE_WEB_BROWSER%Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|GeoPackage_Files(*.gpkg)|*.gpkg|All_files(*)|* Kopierad GeoPackage File indata"
+#!   DEFAULT_VALUE="C:\ny_slask\test_reproject_gpkg\palraa220_copy.gpkg"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI FILENAME_OR_ATTR ReprojectSourceDataset_SQLITE3 INCLUDE_WEB_BROWSER%SQLite_Database_Files(*.sqlite;*.db;*.sl3;*.gpkg)|*.sqlite;*.db;*.sl3;*.gpkg|SQLite_Database_Files(*.sqlite)|*.sqlite|SQLite_Database_Files(*.db)|*.db|SQLite_Database_Files(*.sl3)|*.sl3|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|SQLite_Database_Files(*.gpkg)|*.gpkg|All_files(*)|* reprojectSQLite Database"
+#!   DEFAULT_VALUE="C:\ny_slask\test_reproject_gpkg\palraa220_copy_reproject.gpkg"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJhY2Nlc3NNb2RlIjoid3JpdGUiLCJhbGxvd1VSTCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IkM6XFxueV9zbGFza1xcdGVzdF9yZXByb2plY3RfZ3BrZ1xccGFscmFhMjIwX2NvcHkuZ3BrZyIsImZpbHRlcnMiOlt7ImRlc2NyaXB0aW9uIjoiQXJjaGl2ZSBGaWxlcyIsImZpbHRlciI6WyIqLjd6IiwiKi43emlwIiwiKi5yYXIiLCIqLnJ2eiIsIioudGFyIiwiKi50YXIuYnoyIiwiKi50YXIuZ3oiLCIqLnRneiIsIiouemlwIiwiKi56aXB4Il19LHsiZGVzY3JpcHRpb24iOiJDb21wcmVzc2VkIEZpbGVzIiwiZmlsdGVyIjpbIiouYnoyIiwiKi5neiJdfSx7ImRlc2NyaXB0aW9uIjoiR2VvUGFja2FnZSBGaWxlcyIsImZpbHRlciI6WyIqLmdwa2ciXX0seyJkZXNjcmlwdGlvbiI6IkFsbCBmaWxlcyIsImZpbHRlciI6WyIqIl19XSwiaGlkZGVuIjpmYWxzZSwiaW5jbHVkZVdlYkJyb3dzZXIiOnRydWUsIml0ZW1zVG9TZWxlY3QiOiJmaWxlcyIsIm5hbWUiOiJrb3BpYV9pbiIsInByb21wdCI6IktvcGllcmFkIEdlb1BhY2thZ2UgRmlsZSBpbmRhdGEiLCJyZXF1aXJlZCI6dHJ1ZSwic2VsZWN0TXVsdGlwbGUiOmZhbHNlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoiZmlsZSIsInZhbGlkYXRlRXhpc3RlbmNlIjpmYWxzZSwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJhY2Nlc3NNb2RlIjoid3JpdGUiLCJhbGxvd1VSTCI6ZmFsc2UsImRlZmF1bHRWYWx1ZSI6IkM6XFxueV9zbGFza1xcdGVzdF9yZXByb2plY3RfZ3BrZ1xccGFscmFhMjIwX2NvcHlfcmVwcm9qZWN0Lmdwa2ciLCJmaWx0ZXJzIjpbeyJkZXNjcmlwdGlvbiI6IlNRTGl0ZSBEYXRhYmFzZSBGaWxlcyIsImZpbHRlciI6WyIqLnNxbGl0ZSIsIiouZGIiLCIqLnNsMyIsIiouZ3BrZyJdfSx7ImRlc2NyaXB0aW9uIjoiU1FMaXRlIERhdGFiYXNlIEZpbGVzIiwiZmlsdGVyIjpbIiouc3FsaXRlIl19LHsiZGVzY3JpcHRpb24iOiJTUUxpdGUgRGF0YWJhc2UgRmlsZXMiLCJmaWx0ZXIiOlsiKi5kYiJdfSx7ImRlc2NyaXB0aW9uIjoiU1FMaXRlIERhdGFiYXNlIEZpbGVzIiwiZmlsdGVyIjpbIiouc2wzIl19LHsiZGVzY3JpcHRpb24iOiJBcmNoaXZlIEZpbGVzIiwiZmlsdGVyIjpbIiouN3oiLCIqLjd6aXAiLCIqLnJhciIsIioucnZ6IiwiKi50YXIiLCIqLnRhci5iejIiLCIqLnRhci5neiIsIioudGd6IiwiKi56aXAiLCIqLnppcHgiXX0seyJkZXNjcmlwdGlvbiI6IkNvbXByZXNzZWQgRmlsZXMiLCJmaWx0ZXIiOlsiKi5iejIiLCIqLmd6Il19LHsiZGVzY3JpcHRpb24iOiJTUUxpdGUgRGF0YWJhc2UgRmlsZXMiLCJmaWx0ZXIiOlsiKi5ncGtnIl19LHsiZGVzY3JpcHRpb24iOiJBbGwgZmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV0sImhpZGRlbiI6ZmFsc2UsImluY2x1ZGVXZWJCcm93c2VyIjp0cnVlLCJpdGVtc1RvU2VsZWN0IjoiZmlsZXMiLCJuYW1lIjoiUmVwcm9qZWN0U291cmNlRGF0YXNldF9TUUxJVEUzIiwicHJvbXB0IjoicmVwcm9qZWN0U1FMaXRlIERhdGFiYXNlIiwicmVxdWlyZWQiOnRydWUsInNlbGVjdE11bHRpcGxlIjpmYWxzZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJmaWxlIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifV19"
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="kopia_in" 
+#!   DEFAULT_VALUE="C:\ny_slask\test_reproject_gpkg\palraa220_copy.gpkg"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI FILENAME kopia_in INCLUDE_WEB_BROWSER%Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|GeoPackage_Files(*.gpkg)|*.gpkg|All_files(*)|* Kopierad GeoPackage File indata"
+#! />
+#!     <INFO NAME="ReprojectSourceDataset_SQLITE3" 
+#!   DEFAULT_VALUE="C:\ny_slask\test_reproject_gpkg\palraa220_copy_reproject.gpkg"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI FILENAME_OR_ATTR ReprojectSourceDataset_SQLITE3 INCLUDE_WEB_BROWSER%SQLite_Database_Files(*.sqlite;*.db;*.sl3;*.gpkg)|*.sqlite;*.db;*.sl3;*.gpkg|SQLite_Database_Files(*.sqlite)|*.sqlite|SQLite_Database_Files(*.db)|*.db|SQLite_Database_Files(*.sl3)|*.sl3|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|SQLite_Database_Files(*.gpkg)|*.gpkg|All_files(*)|* reprojectSQLite Database"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="TestFilter"
+#!   VERSION="2"
+#!   POSITION="337.02462437632175 -469.69000665767999"
+#!   BOUNDING_RECT="337.02462437632175 -469.69000665767999 706.30843762983091 71"
+#!   ORDER="500000000000023"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;at&gt;Value&lt;openparen&gt;table_name&lt;closeparen&gt;&lt;space&gt;=&lt;space&gt;features"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="table_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="identifier" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="description" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="last_change" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="min_x" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="min_y" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="max_x" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="max_y" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="srs_id" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;at&gt;Value&lt;openparen&gt;table_name&lt;closeparen&gt;&lt;space&gt;=&lt;space&gt;project_information"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="table_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="data_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="identifier" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="description" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="last_change" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="min_x" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="min_y" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="max_x" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="max_y" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="srs_id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="vyer"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="table_name" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="data_type" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="identifier" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="description" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="last_change" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="min_x" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="min_y" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="max_x" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="max_y" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="srs_id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="vyer"/>
+#!     <XFORM_PARM PARM_NAME="PASSED_TEST_GROUP_OUTPUT" PARM_VALUE="FIRST"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;table_name&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;features&quot;,&lt;at&gt;Value&lt;openparen&gt;table_name&lt;closeparen&gt;&lt;space&gt;=&lt;space&gt;features,&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;table_name&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;project_information&quot;,&lt;at&gt;Value&lt;openparen&gt;table_name&lt;closeparen&gt;&lt;space&gt;=&lt;space&gt;project_information"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="SQLExecutor"
+#!   VERSION="9"
+#!   POSITION="1449.5141913699172 -349.69000665767999"
+#!   BOUNDING_RECT="1449.5141913699172 -349.69000665767999 430 71"
+#!   ORDER="500000000000024"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22630"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;SCHEMA&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.fme_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.native_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="RESULT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="table_name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="data_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="identifier" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="description" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="last_change" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="min_x" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="min_y" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="max_x" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="max_y" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="srs_id" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="INITIATOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="table_name" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="data_type" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="identifier" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="description" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="last_change" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="min_x" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="min_y" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="max_x" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="max_y" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="srs_id" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_matched_records" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="table_name" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="data_type" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="identifier" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="description" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="last_change" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="min_x" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="min_y" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="max_x" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="max_y" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="srs_id" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_reader_error" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="COMBINE_ATTRS" PARM_VALUE="Keep Initiator Attributes if Conflict"/>
+#!     <XFORM_PARM PARM_NAME="COMBINE_GEOM" PARM_VALUE="Initiator Geometry Only"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DATASET" PARM_VALUE="$(ReprojectSourceDataset_SQLITE3)"/>
+#!     <XFORM_PARM PARM_NAME="DB_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DYNGROUP_0" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPOSED_ATTRIBUTE_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FEATURETYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT" PARM_VALUE="SQLITE3"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="SQLITE3_CREATE_FEATURE_TABLES_FROM_DATA,&quot;IGNORE TEXT&quot;,SQLITE3&lt;space&gt;,SQLITE3_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,&quot;IGNORE TEXT&quot;,SQLITE3&lt;space&gt;,SQLITE3_SUPPORT_INTERNATIONALIZATION,&quot;IGNORE TEXT&quot;,SQLITE3&lt;space&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_DISPLAY" PARM_VALUE="Schema and Data Features"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SQLITE3_CREATE_FEATURE_TABLES_FROM_DATA" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SQLITE3_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="SQLITE3_SUPPORT_INTERNATIONALIZATION" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="SQL_STATEMENT" PARM_VALUE="FME_SQL_DELIMITER&lt;space&gt;&lt;semicolon&gt;&lt;lf&gt;CREATE&lt;space&gt;VIEW&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;table_name&lt;closeparen&gt;&lt;space&gt;AS&lt;space&gt;SELECT&lt;space&gt;f.fid&lt;comma&gt;&lt;space&gt;o.IntrasisId&lt;comma&gt;&lt;space&gt;f.object_id&lt;comma&gt;&lt;space&gt;o.Name&lt;comma&gt;&lt;space&gt;o.Class&lt;comma&gt;&lt;space&gt;o.SubClass&lt;comma&gt;&lt;space&gt;f.SymbolId&lt;comma&gt;&lt;space&gt;f.GeoObjectId&lt;comma&gt;&lt;space&gt;f.spatial_type&lt;comma&gt;&lt;space&gt;f.geom&lt;space&gt;FROM&lt;space&gt;features&lt;space&gt;f&lt;space&gt;JOIN&lt;space&gt;objects&lt;space&gt;o&lt;space&gt;ON&lt;space&gt;f.object_id&lt;space&gt;=&lt;space&gt;o.Object_id&lt;space&gt;AND&lt;space&gt;spatial_type&lt;space&gt;=&lt;space&gt;&lt;apos&gt;&lt;at&gt;Value&lt;openparen&gt;table_name&lt;closeparen&gt;&lt;apos&gt;&lt;semicolon&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SQLExecutor"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="5"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 2 vyer"
+#!   TARGET_PORT_DESC="fi 0 INITIATOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE SourceDataset_SQLITE3_1,SQLITE3_IN_FME_CONNECTION_GROUP_SQLITE3_1,SQLITE3_IN_FME_GROUP_NAMED1_SQLITE3_1,SQLITE3_IN_ADVANCED_SQLITE3_1,SQLITE3_IN_BEGIN_SQL_SQLITE3_1,SQLITE3_IN_END_SQL_SQLITE3_1,SQLITE3_IN_NETWORK_AUTHENTICATION_SQLITE3_1
+# ============================================================================
+DEFAULT_MACRO kopia_in C:\ny_slask\test_reproject_gpkg\palraa220_copy.gpkg
+
+DEFAULT_MACRO ReprojectSourceDataset_SQLITE3 C:\ny_slask\test_reproject_gpkg\palraa220_copy_reproject.gpkg
+
+# ============================================================================
+INCLUDE [ if {{$(kopia_in$encode)} == {}} { puts_real {Parameter 'kopia_in' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(ReprojectSourceDataset_SQLITE3$encode)} == {}} { puts_real {Parameter 'ReprojectSourceDataset_SQLITE3' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} SQLITE3
+MULTI_READER_KEYWORD{0} SQLITE3_1
+MULTI_READER_GEN_DIRECTIVES{0} QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,CREATE_FEATURE_TABLES_FROM_DATA,No,SUPPORT_INTERNATIONALIZATION,YES,ADVANCED,,BEGIN_SQL,,END_SQL,,EXPOSE_ATTRS_GROUP,,TABLELIST,,SQLITE3_EXPOSE_FORMAT_ATTRS,,_MERGE_SCHEMAS,YES
+WRITER_TYPE NULL
+WRITER_KEYWORD NULL_DEST
+NULL_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "SQLITE3_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER SQLITE3 SQLITE3_1
+# ============================================================================
+# First get the dataset for the database.
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_SQLITE3_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER SQLITE3 SQLITE3_1
+DEFAULT_MACRO SourceDataset_SQLITE3_1 $(kopia_in)
+GUI MULTIFILE SourceDataset_SQLITE3_1 SQLite_Database_Files(*.sqlite;*.db;*.sl3;*.gpkg)|*.sqlite;*.db;*.sl3;*.gpkg|SQLite_Database_Files(*.sqlite)|*.sqlite|SQLite_Database_Files(*.db)|*.db|SQLite_Database_Files(*.sl3)|*.sl3|SQLite_Database_Files(*.gpkg)|*.gpkg|All_files(*)|* SQLite Database
+DEFAULT_MACRO SQLITE3_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_SQLITE3_1 Yes
+SQLITE3_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(SQLITE3_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_SQLITE3_1)"
+DEFAULT_MACRO SQLITE3_IN_FME_CONNECTION_GROUP_SQLITE3_1 
+GUI OPTIONAL DISCLOSUREGROUP SQLITE3_IN_FME_CONNECTION_GROUP_SQLITE3_1 SQLITE3_IN_NAMED_CONNECTION Database Connection
+DEFAULT_MACRO SQLITE3_IN_FME_GROUP_NAMED1_SQLITE3_1 
+GUI OPTIONAL DISCLOSUREGROUP SQLITE3_IN_FME_GROUP_NAMED1_SQLITE3_1 SQLITE3_IN_TABLELIST%SQLITE3_IN_WHERE_CLAUSE Constraints
+DEFAULT_MACRO SQLITE3_IN_EXPOSE_ATTRS_GROUP_SQLITE3_1 
+SQLITE3_1_EXPOSE_ATTRS_GROUP "$(SQLITE3_IN_EXPOSE_ATTRS_GROUP_SQLITE3_1)"
+# Compatibility case to support reading old workspaces with raw byte if unicode
+DEFAULT_MACRO SQLITE3_IN_SUPPORT_INTERNATIONALIZATION_SQLITE3_1 YES
+SQLITE3_1_SUPPORT_INTERNATIONALIZATION "$(SQLITE3_IN_SUPPORT_INTERNATIONALIZATION_SQLITE3_1)"
+DEFAULT_MACRO SQLITE3_IN_ADVANCED_SQLITE3_1 
+GUI OPTIONAL DISCLOSUREGROUP SQLITE3_IN_ADVANCED_SQLITE3_1 SQLITE3_IN_BEGIN_SQL_SQLITE3_1%SQLITE3_IN_END_SQL_SQLITE3_1 Advanced
+DEFAULT_MACRO SQLITE3_IN_BEGIN_SQL_SQLITE3_1 
+SQLITE3_1_BEGIN_SQL "$(SQLITE3_IN_BEGIN_SQL_SQLITE3_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG SQLITE3_IN_BEGIN_SQL_SQLITE3_1 MODE,SQL;FORMAT,SQLITE3 SQL To Run Before Read
+DEFAULT_MACRO SQLITE3_IN_END_SQL_SQLITE3_1 
+SQLITE3_1_END_SQL "$(SQLITE3_IN_END_SQL_SQLITE3_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG SQLITE3_IN_END_SQL_SQLITE3_1 MODE,SQL;FORMAT,SQLITE3 SQL To Run After Read
+DEFAULT_MACRO SQLITE3_IN_CREATE_FEATURE_TABLES_FROM_DATA_SQLITE3_1 No
+SQLITE3_1_CREATE_FEATURE_TABLES_FROM_DATA "$(SQLITE3_IN_CREATE_FEATURE_TABLES_FROM_DATA_SQLITE3_1)"
+# ===========================================================================
+DEFAULT_MACRO SQLITE3_IN_NETWORK_AUTHENTICATION_SQLITE3_1 
+SQLITE3_1_NETWORK_AUTHENTICATION "$(SQLITE3_IN_NETWORK_AUTHENTICATION_SQLITE3_1)"
+GUI OPTIONAL AUTHENTICATOR SQLITE3_IN_NETWORK_AUTHENTICATION_SQLITE3_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO SQLITE3_IN_ATTRIBUTE_READING_SQLITE3_1 DEFLINE
+SQLITE3_1_ATTRIBUTE_READING "$(SQLITE3_IN_ATTRIBUTE_READING_SQLITE3_1)"
+# ============================================================================
+SQLITE3_1_GENERATE_FME_BUILD_NUM 22630
+SQLITE3_1_DATASET "$(SourceDataset_SQLITE3_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)1_fix_view_mm.log"
+LOG_APPEND YES
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2022.1.3.0 (20220928 - Build 22630 - WIN64)"
+DEFAULT_MACRO DATASET_KEYWORD_SQLITE3_1 SQLITE3_1
+# -------------------------------------------------------------------------
+
+SQLITE3_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME 1_fix_view_mm
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_SQLITE3_1)   INPUT FEATURE_TYPE *    ROUTE SQLITE3 SQLITE3_1::gpkg_contents multi_reader_keyword,$(DATASET_KEYWORD_SQLITE3_1) TO FME_GENERIC ::gpkg_contents ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+SQLITE3_1_MERGE_DEF SQLITE3_1::gpkg_contents EXACT gpkg_contents DEFLINE sqlite3_sql_statement,,sqlite3_where_clause,,fme_attribute_reading,defined,table_name,text<comma>Unique,data_type,text,identifier,text<comma>Unique,description,text,last_change,text,min_x,double,min_y,double,max_x,double,max_y,double,srs_id,integer
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "gpkg_contents_SQLITE3_1 Splitter"    INPUT FEATURE_TYPE gpkg_contents    OUTPUT FEATURE_TYPE gpkg_contents_SQLITE3_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { TestFilter_INPUT }    INPUT  FEATURE_TYPE gpkg_contents_SQLITE3_1    OUTPUT FEATURE_TYPE TestFilter_INPUTLINE
+FACTORY_DEF {*} TestFactory FACTORY_NAME TestFilter INPUT FEATURE_TYPE TestFilter_INPUTLINE FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT PASSED_TEST_GROUP_OUTPUT FIRST TEST_GROUP TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>table_name<closeparen>,TestFilter) = features ENCODED } BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" OUTPUT PASSED_0 FEATURE_TYPE TestFilter_<at>Value<openparen>table_name<closeparen><space>=<space>features TEST_GROUP TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>table_name<closeparen>,TestFilter) = project_information ENCODED } BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1" OUTPUT PASSED_1 FEATURE_TYPE TestFilter_<at>Value<openparen>table_name<closeparen><space>=<space>project_information OUTPUT FAILED FEATURE_TYPE TestFilter_vyer
+FACTORY_DEF * TeeFactory   FACTORY_NAME "TestFilter <at>Value<openparen>table_name<closeparen><space>=<space>features Transformer Output Nuker"   INPUT FEATURE_TYPE TestFilter_<at>Value<openparen>table_name<closeparen><space>=<space>features
+FACTORY_DEF * TeeFactory   FACTORY_NAME "TestFilter <at>Value<openparen>table_name<closeparen><space>=<space>project_information Transformer Output Nuker"   INPUT FEATURE_TYPE TestFilter_<at>Value<openparen>table_name<closeparen><space>=<space>project_information
+# -------------------------------------------------------------------------
+MACRO SQLExecutor_DIRECTIVES CREATE_FEATURE_TABLES_FROM_DATA No QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS Yes SUPPORT_INTERNATIONALIZATION YES
+FACTORY_DEF {*} QueryFactory    FACTORY_NAME { SQLExecutor }    INPUT  FEATURE_TYPE TestFilter_vyer    QUERY_SQL            { "@EvaluateExpression(FDIV,STRING_ENCODED,FME_SQL_DELIMITER<space><semicolon><lf>CREATE<space>VIEW<space><at>Value<openparen>table_name<closeparen><space>AS<space>SELECT<space>f.fid<comma><space>o.IntrasisId<comma><space>f.object_id<comma><space>o.Name<comma><space>o.Class<comma><space>o.SubClass<comma><space>f.SymbolId<comma><space>f.GeoObjectId<comma><space>f.spatial_type<comma><space>f.geom<space>FROM<space>features<space>f<space>JOIN<space>objects<space>o<space>ON<space>f.object_id<space>=<space>o.Object_id<space>AND<space>spatial_type<space>=<space><apos><at>Value<openparen>table_name<closeparen><apos><semicolon>,SQLExecutor)" }    READER_TYPE          { SQLITE3 }    READER_DATASET       { "@EvaluateExpression(FDIV,STRING_ENCODED,$(ReprojectSourceDataset_SQLITE3$encode),SQLExecutor)" }    COMBINE_ATTRIBUTES   { PREFER_QUERY }    IGNORE_NULLS         { No }    COMBINE_GEOMETRY     { QUERY_ONLY }    QUERYFCT_OUTPUT      { "BASED_ON_CONNECTIONS" }    CONTINUE_ON_READER_ERROR YES    QUERYFCT_PROPAGATE_IDS_ON_SQL_EXECUTE YES    READER_PARAMS        { $(SQLExecutor_DIRECTIVES) }    OUTPUT { READER_ERROR FEATURE_TYPE SQLExecutor_<REJECTED>         }
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME SQLExecutor_<Rejected> INPUT FEATURE_TYPE SQLExecutor_<REJECTED>  NO_LOGGING   OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, SQLExecutor<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
