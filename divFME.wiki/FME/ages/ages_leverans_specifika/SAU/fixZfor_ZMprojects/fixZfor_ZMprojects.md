@@ -1,0 +1,53 @@
+﻿## [ages/ages_leverans_specifika/SAU/fixZfor_ZMprojects.fmw](https://github.com/kicki58/kix_working_dir/blob/master/ages/ages_leverans_specifika/SAU/fixZfor_ZMprojects.fmw)
+
+### Statistics:
+File size: 116
+
+Created: 2024-03-28
+
+Last edited: 2024-03-28
+
+
+### Workspace properties:
+Build number    - 22630
+
+### Published parameters:
+*  SourceDataset_POSTGIS_3    -   uv2010257
+
+### Readers:
+*  POSTGIS
+    * enabled    -  Yes
+    * source_dataset    -   uv2010257
+*  POSTGIS
+    * enabled    -  No
+    * source_dataset    -   uv2010257
+
+### Reader feature types:
+*  GeoObject
+    * enable - Yes
+    * geometries - postgis_none postgis_point postgis_multipoint postgis_linestring postgis_multilinestring postgis_circularstring postgis_compoundcurve postgis_multicurve postgis_polygon postgis_multipolygon postgis_curvepolygon postgis_multisurface postgis_triangle postgis_polyhedralsurface postgis_tin postgis_geometrycollection
+    * dataset - uv2010257
+*  GeoObject
+    * enable - No
+    * geometries - postgis_none postgis_point postgis_multipoint postgis_linestring postgis_multilinestring postgis_circularstring postgis_compoundcurve postgis_multicurve postgis_polygon postgis_multipolygon postgis_curvepolygon postgis_multisurface postgis_triangle postgis_polyhedralsurface postgis_tin postgis_geometrycollection
+    * dataset - uv2010257
+
+
+### Writers:
+*  uv2010257 [POSTGIS]    -   uv2010257
+
+### Writer feature types:
+*  GeoObject
+    * enable - Yes
+    * geometries - All
+    * schema - public
+    * dataset - uv2010257
+
+### Transformer histogram:
+*  FeatureMerger    -   1
+*  GtransReprojector    -   1
+*  FMEFunctionCaller    -   1
+*  GeometryExtractor    -   2
+*  2DForcer    -   1
+*  MeasureRemover    -   4
+

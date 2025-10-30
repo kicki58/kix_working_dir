@@ -1,0 +1,10 @@
+﻿*  [BackupIntrasisDB](/FME/postgis/postgis_restore_drop_backup_idb/BackupIntrasisDB/BackupIntrasisDB)
+*  [createBatForDropAllDB](/FME/postgis/postgis_restore_drop_backup_idb/createBatForDropAllDB/createBatForDropAllDB)
+*  [getGeodataFromDbViaPath](/FME/postgis/postgis_restore_drop_backup_idb/getGeodataFromDbViaPath/getGeodataFromDbViaPath)
+*  [removeDBfromServer](/FME/postgis/postgis_restore_drop_backup_idb/removeDBfromServer/removeDBfromServer)
+*  [removeDBfromServerFrSQL](/FME/postgis/postgis_restore_drop_backup_idb/removeDBfromServerFrSQL/removeDBfromServerFrSQL)
+*  [removeOneDBfromServer](/FME/postgis/postgis_restore_drop_backup_idb/removeOneDBfromServer/removeOneDBfromServer)
+*  [restor1db_plain_text_backup](/FME/postgis/postgis_restore_drop_backup_idb/restor1db_plain_text_backup/restor1db_plain_text_backup)
+*  [restore1DBfromBackup](/FME/postgis/postgis_restore_drop_backup_idb/restore1DBfromBackup/restore1DBfromBackup)
+*  [restoreDBfromBackupFileAll](/FME/postgis/postgis_restore_drop_backup_idb/restoreDBfromBackupFileAll/restoreDBfromBackupFileAll)
+
