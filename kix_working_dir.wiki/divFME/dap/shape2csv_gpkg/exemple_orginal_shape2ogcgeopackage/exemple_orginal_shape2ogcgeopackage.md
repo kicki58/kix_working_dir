@@ -1,0 +1,21 @@
+﻿## [dap/shape2csv_gpkg/exemple_orginal_shape2ogcgeopackage.fmw](https://github.com/kicki58/kix_working_dir/blob/master/dap/shape2csv_gpkg/exemple_orginal_shape2ogcgeopackage.fmw)
+
+### Statistics:
+File size: 182
+
+Created: 2024-03-20
+
+Last edited: 2024-03-20
+
+
+
+### Published parameters:
+*  SourceDataset_GENERIC    -   ""C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\A1.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\A1_2.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\A2.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Höjder.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Höjder_2.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Schakt F.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Schakt.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Schakt_N.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Sten_ytaB.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Sten_ytaB_2.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Sten_ytaB_3.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Sten_ytaBD.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Sten_ytaBD_2.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Sten_ytaC.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Sten_ytaC2.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Sten_ytaD.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Sten_ytaD_2.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Sten_ytaE.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\Totalkvarts.shp" "C:\Users\krima354\Box\SweDigArch M3\Indata\DAP\Sakarias Arbetsmaterial\Omprojicerad och bearbetad data\Gävleborg 2\Länsmuseet Gävleborg_2004_01 Måndagsbäcken\totalkvartsit.shp""
+*  DestDataset_OGCGEOPACKAGE    -   C:\Github\kix\dap\shape2csv_gpkg\mandagsbacken_kopia_av_shape.gpkg
+
+
+
+
+
+
+

@@ -1,0 +1,114 @@
+﻿## [divFME/ages/ages_leverans_specifika/AK/fixCoordsys_try3.fmw](https://github.com/kicki58/kix_working_dir/blob/master/divFME/ages/ages_leverans_specifika/AK/fixCoordsys_try3.fmw)
+
+### Statistics:
+File size: 499
+
+Created: 2025-09-10
+
+Last edited: 2025-09-11
+
+
+### Workspace properties:
+Build number    - 25615
+
+### Published parameters:
+*  SourceDataset_CSV2_43    -   $(project_folder)\$(db_name)\csv\OBJDATA.csv
+*  SourceDataset_CSV2_59    -   $(project_folder)\$(db_name)\csv\OBJ.csv
+*  SourceDataset_XLSXR    -   C:\Github\kix\divFME\ages\ages_leverans_specifika\AK\wsr\metadatamallen_sw.xlsx
+*  SourceDataset_OGCGEOPACKAGE    -   C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\2361_Ängsliljan_SU.gpkg
+*  SourceDataset_OGCGEOPACKAGE_2    -   C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\2361_Ängsliljan_SU.gpkg
+*  DestDataset_XLSXW_5    -   C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\olika_mang_features_2361_Ängsliljan_SU.xlsx
+*  DestDataset_XLSXW_4    -   C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\rejected_2361_Ängsliljan_SU.xlsx
+*  DestDataset_XLSXW    -   C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\2361_Ängsliljan_SU_has_xyz_in_obj.xlsx
+
+### Readers:
+*  CSV2
+    * enabled    -  Yes
+    * source_dataset    -   $(project_folder)\$(db_name)\csv\OBJ.csv
+*  CSV2
+    * enabled    -  Yes
+    * source_dataset    -   $(project_folder)\$(db_name)\csv\OBJDATA.csv
+*  XLSXR
+    * enabled    -  Yes
+    * source_dataset    -   C:\Github\kix\divFME\ages\ages_leverans_specifika\AK\wsr\metadatamallen_sw.xlsx
+*  OGCGEOPACKAGE
+    * enabled    -  Yes
+    * source_dataset    -   C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\2361_Ängsliljan_SU.gpkg
+
+### Reader feature types:
+*  CSV
+    * enable - Yes
+    * geometries - csv_none csv_point
+    * dataset - $(project_folder)\$(db_name)\csv\OBJ.csv
+*  CSV
+    * enable - Yes
+    * geometries - csv_none csv_point
+    * dataset - $(project_folder)\$(db_name)\csv\OBJDATA.csv
+*  hela metadatamallen export
+    * enable - Yes
+    * geometries - xlsx_none xlsx_point
+    * dataset - C:\Github\kix\divFME\ages\ages_leverans_specifika\AK\wsr\metadatamallen_sw.xlsx
+*  features
+    * enable - Yes
+    * geometries - geopackage_circularstring geopackage_compoundcurve geopackage_curvepolygon geopackage_geometry geopackage_geometrycollection geopackage_linestring geopackage_multipoint geopackage_point geopackage_polygon geopackage_surface
+    * dataset - C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\2361_Ängsliljan_SU.gpkg
+
+
+### Writers:
+*  2361_Ängsliljan_SU [OGCGEOPACKAGE]    -   C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\2361_Ängsliljan_SU.gpkg
+*  2361_Ängsliljan_SU_has_xyz_in_obj [XLSXW]    -   C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\2361_Ängsliljan_SU_has_xyz_in_obj.xlsx
+*  olika_mang_features_2361_Ängsliljan_SU [XLSXW]    -   C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\olika_mang_features_2361_Ängsliljan_SU.xlsx
+*  rejected_2361_Ängsliljan_SU [XLSXW]    -   C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\rejected_2361_Ängsliljan_SU.xlsx
+
+### Writer feature types:
+*  features
+    * enable - Yes
+    * geometries - geopackage_geometry
+    * schema - 
+    * dataset - C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\2361_Ängsliljan_SU.gpkg
+*  Sheet1
+    * enable - Yes
+    * geometries - 
+    * schema - 
+    * dataset - C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\2361_Ängsliljan_SU_has_xyz_in_obj.xlsx
+*  Sheet1
+    * enable - Yes
+    * geometries - 
+    * schema - 
+    * dataset - C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\olika_mang_features_2361_Ängsliljan_SU.xlsx
+*  Sheet1
+    * enable - Yes
+    * geometries - 
+    * schema - 
+    * dataset - C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\rejected_2361_Ängsliljan_SU.xlsx
+*  databaser
+    * enable - Yes
+    * geometries - 
+    * schema - 
+    * dataset - C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\2361_Ängsliljan_SU_has_xyz_in_obj.xlsx
+*  databaser
+    * enable - Yes
+    * geometries - 
+    * schema - 
+    * dataset - C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\rejected_2361_Ängsliljan_SU.xlsx
+*  databaser
+    * enable - Yes
+    * geometries - 
+    * schema - 
+    * dataset - C:\ny_slask\AK-data\3 - Klar (1)_orörda\3 - Klar\olika_mang_features_2361_Ängsliljan_SU.xlsx
+
+### Transformer histogram:
+*  FMEFunctionCaller    -   1
+*  LineBuilder    -   1
+*  LineCloser    -   1
+*  Tester    -   3
+*  TestFilter    -   2
+*  AttributeManager    -   13
+*  FeatureMerger    -   3
+*  AttributeKeeper    -   2
+*  CoordinateExtractor    -   1
+*  AttributeFilter    -   1
+*  VertexCreator    -   1
+*  Aggregator    -   3
+*  Sorter    -   1
+
