@@ -1,8 +1,0 @@
-﻿*  [restoreDBfromBackupFileAll_with_Excel](/divFME/divFME/postgis/postgis_restore_drop_backup_idb/slask/restoreDBfromBackupFileAll_with_Excel/restoreDBfromBackupFileAll_with_Excel)
-*  [restoreDBfromBackupFileFromCSV](/divFME/divFME/postgis/postgis_restore_drop_backup_idb/slask/restoreDBfromBackupFileFromCSV/restoreDBfromBackupFileFromCSV)
-*  [restoreDBfromBackupFileFromCSV_coordfix](/divFME/divFME/postgis/postgis_restore_drop_backup_idb/slask/restoreDBfromBackupFileFromCSV_coordfix/restoreDBfromBackupFileFromCSV_coordfix)
-*  [restoreDBfromBackupFileFromCSV_urdar](/divFME/divFME/postgis/postgis_restore_drop_backup_idb/slask/restoreDBfromBackupFileFromCSV_urdar/restoreDBfromBackupFileFromCSV_urdar)
-*  [restoreDBfromBackupFileFromPathLocation](/divFME/divFME/postgis/postgis_restore_drop_backup_idb/slask/restoreDBfromBackupFileFromPathLocation/restoreDBfromBackupFileFromPathLocation)
-*  [restoreDBfromBackupFileFromPathLocation2](/divFME/divFME/postgis/postgis_restore_drop_backup_idb/slask/restoreDBfromBackupFileFromPathLocation2/restoreDBfromBackupFileFromPathLocation2)
-*  [restoreDBfromBackupPath](/divFME/divFME/postgis/postgis_restore_drop_backup_idb/slask/restoreDBfromBackupPath/restoreDBfromBackupPath)
-

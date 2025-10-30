@@ -1,4 +1,0 @@
-﻿*  [plocka_ut_Geom_to_fix_on_urdar](/divFME/divFME/postgis/postgis_uppdatera_geometrier/plocka_ut_Geom_to_fix_on_urdar/plocka_ut_Geom_to_fix_on_urdar)
-*  [plocka_ut_Geom_to_fix_on_urdar_runner](/divFME/divFME/postgis/postgis_uppdatera_geometrier/plocka_ut_Geom_to_fix_on_urdar_runner/plocka_ut_Geom_to_fix_on_urdar_runner)
-*  [remove_costraint](/divFME/divFME/postgis/postgis_uppdatera_geometrier/remove_costraint/remove_costraint)
-
