@@ -1,0 +1,259 @@
+#! encoding="UTF-8"
+MACRO FME_MF_NAME dxf2gpkg_runner.fmw
+
+MACRO FME_MF_NAME_MASTER dxf2gpkg_runner.fmw
+
+MACRO FME_MF_DIR C:/Github/kix/divFME/malmo/
+
+MACRO FME_MF_DIR_ENCODED C:<solidus>Github<solidus>kix<solidus>divFME<solidus>malmo<solidus>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE PATH_IN_FME_GROUP_NAMED1_PATH_1,PATH_IN_GLOB_PATTERN_PATH_1,PATH_IN_RECURSE_DIRECTORIES_PATH_1,PATH_IN_TYPE_PATH_1,PATH_IN_HIDDEN_FILES_PATH_1,SourceDataset_PATH_1,PATH_IN_NETWORK_AUTHENTICATION_PATH_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_PATH C:\ny_slask\mm_aldre_filer\wetransfer_overforing-mm_1_2025-11-20_1159\geodata\Inmätningsfiler Öresundsförbindelsen_MM
+
+DEFAULT_MACRO MAX_FEATURES 
+
+DEFAULT_MACRO FME_DATA_REPOSITORY 
+
+DEFAULT_MACRO FME_ENGINE 
+
+DEFAULT_MACRO FME_JOB_ID 
+
+DEFAULT_MACRO FME_SECURITY_ROLES 
+
+DEFAULT_MACRO FME_SECURITY_USER 
+
+DEFAULT_MACRO FME_SERVER_DEST_DIR 
+
+DEFAULT_MACRO FME_SERVER_HOST 
+
+DEFAULT_MACRO FME_SERVER_PORT 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_HEADERS 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_METHOD 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_PARAMETERS 
+
+DEFAULT_MACRO FME_SERVER_REQUEST_URI 
+
+DEFAULT_MACRO FME_SERVER_RUNTIME_USER 
+
+DEFAULT_MACRO FME_SERVER_RUNTIME_USER_ID 
+
+DEFAULT_MACRO FME_SERVER_WEB_URL 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_BACKUP 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_DASHBOARD 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_DATA 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_ENGINE 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_LOG 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_SYSTEM 
+
+DEFAULT_MACRO FME_SHAREDRESOURCE_TEMP 
+
+DEFAULT_MACRO FME_TOPIC 
+
+DEFAULT_MACRO FME_TOPIC_MESSAGE 
+
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_PATH$encode)} == {}} { puts_real {Parameter 'SourceDataset_PATH' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} PATH
+MULTI_READER_KEYWORD{0} PATH_1
+MULTI_READER_GEN_DIRECTIVES{0} GLOB_PATTERN,*.dxf,USE_NON_STRING_ATTR,yes,_MERGE_SCHEMAS,YES,OFFSET_DATETIME,yes,HIDDEN_FILES,INCLUDE,RECURSE_DIRECTORIES,YES,EXPOSE_ATTRS_GROUP,,RETRIEVE_FILE_PROPERTIES,NO,TYPE,ANY,PATH_EXPOSE_FORMAT_ATTRS,,NO_EMPTY_PROPERTIES,YES
+WRITER_TYPE MULTI_WRITER
+WRITER_KEYWORD MULTI_DEST
+MULTI_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "PATH_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PATH PATH_1
+DEFAULT_MACRO PATH_IN_FME_GROUP_NAMED1_PATH_1 
+GUI OPTIONAL DISCLOSUREGROUP PATH_IN_FME_GROUP_NAMED1_PATH_1 PATH_IN_GLOB_PATTERN_PATH_1%PATH_IN_RECURSE_DIRECTORIES_PATH_1%PATH_IN_TYPE_PATH_1%PATH_IN_HIDDEN_FILES_PATH_1%PATH_IN_RETRIEVE_FILE_PROPERTIES Path Parameters
+# =============================================================================
+DEFAULT_MACRO PATH_IN_OFFSET_DATETIME_PATH_1 yes
+PATH_1_OFFSET_DATETIME "$(PATH_IN_OFFSET_DATETIME_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_USE_NON_STRING_ATTR_PATH_1 yes
+PATH_1_USE_NON_STRING_ATTR "$(PATH_IN_USE_NON_STRING_ATTR_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_GLOB_PATTERN_PATH_1 *.dxf
+PATH_1_GLOB_PATTERN "$(PATH_IN_GLOB_PATTERN_PATH_1)"
+GUI OPTIONAL TEXT_ENCODED PATH_IN_GLOB_PATTERN_PATH_1 Path Filter:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_RECURSE_DIRECTORIES_PATH_1 YES
+PATH_1_RECURSE_DIRECTORIES "$(PATH_IN_RECURSE_DIRECTORIES_PATH_1)"
+GUI CHOICE PATH_IN_RECURSE_DIRECTORIES_PATH_1 YES%NO Recurse Into Subfolders:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_TYPE_PATH_1 ANY
+PATH_1_TYPE "$(PATH_IN_TYPE_PATH_1)"
+GUI LOOKUP_CHOICE PATH_IN_TYPE_PATH_1 Any,ANY%Directory,DIRECTORY%File,FILE Allowed Path Type:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_HIDDEN_FILES_PATH_1 INCLUDE
+PATH_1_HIDDEN_FILES "$(PATH_IN_HIDDEN_FILES_PATH_1)"
+GUI LOOKUP_CHOICE PATH_IN_HIDDEN_FILES_PATH_1 Include,INCLUDE%Exclude,EXCLUDE Hidden Files and Folders:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_RETRIEVE_FILE_PROPERTIES_PATH_1 NO
+PATH_1_RETRIEVE_FILE_PROPERTIES "$(PATH_IN_RETRIEVE_FILE_PROPERTIES_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_NO_EMPTY_PROPERTIES_PATH_1 YES
+PATH_1_NO_EMPTY_PROPERTIES "$(PATH_IN_NO_EMPTY_PROPERTIES_PATH_1)"
+DEFAULT_MACRO PATH_IN_EXPOSE_ATTRS_GROUP_PATH_1 
+PATH_1_EXPOSE_ATTRS_GROUP "$(PATH_IN_EXPOSE_ATTRS_GROUP_PATH_1)"
+# =====================================================================
+# The following GUI line prompts for the folder from which to
+# read
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_PATH_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PATH PATH_1
+DEFAULT_MACRO SourceDataset_PATH_1 $(SourceDataset_PATH)
+GUI MULTIDIR SourceDataset_PATH_1 Source Folder and File Pathnames Folder:
+# ===========================================================================
+DEFAULT_MACRO PATH_IN_NETWORK_AUTHENTICATION_PATH_1 
+PATH_1_NETWORK_AUTHENTICATION "$(PATH_IN_NETWORK_AUTHENTICATION_PATH_1)"
+GUI OPTIONAL AUTHENTICATOR PATH_IN_NETWORK_AUTHENTICATION_PATH_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO PATH_IN_ATTRIBUTE_READING_PATH_1 ALL
+PATH_1_ATTRIBUTE_READING "$(PATH_IN_ATTRIBUTE_READING_PATH_1)"
+# ============================================================================
+PATH_1_GENERATE_FME_BUILD_NUM 25615
+PATH_1_DATASET "$(SourceDataset_PATH_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_END_BANNER 
+LOG_END_BANNER Data caches have been recorded at every stage of the translation.
+LOG_END_BANNER To inspect the recorded features,
+LOG_END_BANNER click the data cache icons next to the ports.
+LOG_END_BANNER 
+LOG_FILENAME "$(FME_MF_DIR)$(WORKSPACE_NAME).log"
+LOG_APPEND YES
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+DEFAULT_MACRO DATASET_KEYWORD_PATH_1 PATH_1
+# -------------------------------------------------------------------------
+
+PATH_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+PATH_1_MAX_FEATURES $(MAX_FEATURES)
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_PATH_1)   INPUT FEATURE_TYPE *    ROUTE PATH PATH_1::PATH multi_reader_keyword,$(DATASET_KEYWORD_PATH_1) TO FME_GENERIC ::PATH ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *   OUTPUT NOT_ROUTED FEATURE_TYPE *     @LogCount("UnexpectedInput @FeatureType()")     @FeatureType(__TO_REMOVE__)
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Unwanted Router Input Nuker"   INPUT FEATURE_TYPE __TO_REMOVE__
+PATH_1_MERGE_DEF PATH_1::PATH EXACT PATH
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "PATH Feature Recorder -1 2147549187" INPUT FEATURE_TYPE PATH FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-dxf2gpkg_runner-JuAADl/Main_PATH -1 3 -1  0  5375577f4c0a95e0dcbba21c180b211c7b5be851.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { path_unix,buffer,path_windows,buffer,path_rootname,buffer,path_filename,buffer,path_extension,buffer,path_directory_unix,buffer,path_directory_windows,buffer,path_type,varchar<openparen>10<closeparen> }  FEAT_TYPE_DISPLAY_NAME { PATH } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE LARGE_GEOMETRY_DATA_STORAGE REFERENCE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "PATH_PATH_1 Splitter"    INPUT FEATURE_TYPE PATH    OUTPUT FEATURE_TYPE PATH_PATH_1
+FACTORY_DEF * TeeFactory   FACTORY_NAME "PATH_PATH_1 Feature Counter -1 7"   INPUT FEATURE_TYPE PATH_PATH_1   NO_LOGGING    OUTPUT FEATURE_TYPE *     @LogCount("LINK -1 7")
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+.metadata XFORMER_BEGIN AttributeManager;6:Main
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager }    INPUT  FEATURE_TYPE PATH_PATH_1    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 4    DEF_VAL_COLUMN 2    NUM_OF_COLUMNS 5    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "path_unix" "path_unix" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_windows" "dxf_fil" "" "buffer" "RENAME_SET_VALUE" }      ATTR_ACTION { "path_rootname" "path_rootname" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_filename" "path_filename" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_extension" "path_extension" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_directory_unix" "path_directory_unix" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_directory_windows" "path_directory_windows" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_type" "path_type" "" "varchar<openparen>10<closeparen>" "NO_OP" }      ATTR_ACTION { "" "gpkg" "<at>Value<openparen>path_directory_windows<closeparen>dxf_data.gpkg" "varchar<openparen>200<closeparen>" "SET_TO" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_OUTPUT        }
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "AttributeManager_OUTPUT Feature Recorder -1 2147614726" INPUT FEATURE_TYPE AttributeManager_OUTPUT FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-dxf2gpkg_runner-JuAADl/Main_AttributeManager -1 6 fo 0 OUTPUT  0  eeae892fdf89e44362565d6ed911741c7a82eecc.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { path_unix,buffer,dxf_fil,buffer,path_rootname,buffer,path_filename,buffer,path_extension,buffer,path_directory_unix,buffer,path_directory_windows,buffer,path_type,varchar<openparen>10<closeparen>,gpkg,varchar<openparen>200<closeparen> }  FEAT_TYPE_DISPLAY_NAME { AttributeManager:<space>Output } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE LARGE_GEOMETRY_DATA_STORAGE REFERENCE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+.metadata XFORMER_END AttributeManager;6:Main
+FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeManager_OUTPUT Feature Counter -1 8"   INPUT FEATURE_TYPE AttributeManager_OUTPUT   NO_LOGGING    OUTPUT FEATURE_TYPE *     @LogCount("LINK -1 8")
+# -------------------------------------------------------------------------
+.metadata XFORMER_BEGIN WorkspaceRunner;4:Main
+# Create a FME_UUID_SAFE from the FME_UUID so we can use it for Tcl identifiers (FMEDESKTOP-11308)
+INCLUDE [ FME_CleanseFMEUUID {WorkspaceRunner_98d219cf_2dca_423a_9670_9078c2bf56b10} ]
+# ------------------------------------------------------------------------------
+# Determine the "NULL" device so we can ensure we don't get stray output
+# messing up our stdout if we are running workspaces in the background
+# See http://wiki.tcl.tk/1649 for a description of the tcl_platform
+# variable, the "platform" part seems to have valid values windows, unix, and
+# macintosh (the latter of which is actually pre-OS X)
+# PR#83334 - On Windows when we are creating child process asynchronously
+# (BLOCKING == NO), we use FME's @System() call (FME_Execute System) ensuring
+# that the child process doesn't inherit handles from parent process. This allows
+# parent process to close feature caches and not depend on spawned processes.
+Tcl2 if { $tcl_platform(platform) == {windows} } {         set ::null_device {NUL:};         set ::__WR_ENV_HELPER__ {};         set ::__platform__ {windows};      } else {         set ::null_device {/dev/null};         set ::__WR_ENV_HELPER__ {/usr/bin/env FME_SUBPROCESS_RUN_DETACHED=1};         set ::__platform__ {unix};      };
+# ------------------------------------------------------------------------------
+# Quote parameter strings for inclusion in command file using raw strings, with
+# a tag computed to be unique within source string ${_uniq_=_sourceString_=_uniq_}
+# [FMEENGINE-62584]
+Tcl2 proc quotifyForParameterFileV3a { sourceString } {   if {[string length $sourceString] == 0} {      return {\"\"};   };   if {[regexp {[^a-zA-Z0-9_]} $sourceString]} {     set uniq {};     while {[string first [format \"=%s\}\" $uniq] $sourceString] >= 0} {       if {[catch {incr uniq}]} { set uniq 0 };     };     return [format \"$\{%s=%s=%s\}\" $uniq $sourceString $uniq];   } else {     return $sourceString;   }; };
+# ------------------------------------------------------------------------------
+# Main runner procedure, takes in a parameter list as string which is delimited
+# by \x07 (BELL) character and the workspace to run. <parmListString> consists of
+# parameter name and value pairs. Value part is always wwjd encoded whether it is
+# literal value or resolved expression value resulting from @EvaluateExpression().
+# Each value part had to be wwjd encoded because mapping file parsing was mangling
+# the values by removing double quotes and spaces when passed in to this Tcl routine.
+Tcl2 proc $(FME_UUID_SAFE)_runner { parmListString workspaceFile } {    if {[string match "*.fme" $workspaceFile]} {       FME_LogMessage fme_warn 933458 WorkspaceRunner;    };    global $(FME_UUID_SAFE)_commands;    global $(FME_UUID_SAFE)_batch_count;    incr $(FME_UUID_SAFE)_batch_count 0;    if { [info exists $(FME_UUID_SAFE)_commands] == 0 } {       set $(FME_UUID_SAFE)_commands {};    };    set workspaceFileUnix [regsub -all {\\} [FME_DecodeText $workspaceFile] {/}];    set comment    {        Build up the command line in a list, which we'll write it out to a        parameter file.    };    set commandArguments {};    set commandArgumentsToLog {};    set workspaceToRun [quotifyForParameterFileV3a $workspaceFileUnix];    lappend commandArguments $workspaceToRun;    lappend commandArgumentsToLog $workspaceToRun;    set parameterList [split $parmListString \x07];    package require json;    package require base64;    set pwdParms {};    foreach {parmDef} [dict get [::json::json2dict [::base64::decode {eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiU291cmNlRGF0YXNldF9BQ0FEIiwicHJvbXB0IjoiU291cmNlIEF1dG9kZXNrIEF1dG9DQUQgRFdHL0RYRiBGaWxlKHMpOiIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6IlxcXFxhcmdvcy5zdG9yYWdlLnV1LnNlXFxNeUZvbGRlciRcXGtyaW1hMzU0XFxraWNraV9hcmJldHNmaWxlclxcbW1fYWxkcmVfZmlsZXJcXHdldHJhbnNmZXJfb3ZlcmZvcmluZy1tbV8xXzIwMjUtMTEtMjBfMTE1OVxcSW5tw6R0bmluZ3NmaWxlciDDlnJlc3VuZHNmw7ZyYmluZGVsc2VuX01NXFxWw6RzdGVyZ8OlcmQgMThCX01ITSA5MTUwXFxkeGZcXElDOTgwNTIzLkRYRiIsInR5cGUiOiJmaWxlIiwic2VsZWN0TXVsdGlwbGUiOnRydWUsIml0ZW1zVG9TZWxlY3QiOiJmaWxlcyIsImFjY2Vzc01vZGUiOiJyZWFkIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJpbmNsdWRlV2ViQnJvd3NlciI6dHJ1ZSwiZmlsdGVycyI6W3siZGVzY3JpcHRpb24iOiJEV0cgRmlsZXMvRFhGIEZpbGVzIiwiZmlsdGVyIjpbIiouZHdnIiwiKi5keGYiXX0seyJkZXNjcmlwdGlvbiI6IkRXRyBGaWxlcyIsImZpbHRlciI6WyIqLmR3ZyJdfSx7ImRlc2NyaXB0aW9uIjoiRFhGIEZpbGVzIiwiZmlsdGVyIjpbIiouZHhmIl19LHsiZGVzY3JpcHRpb24iOiJBcmNoaXZlIEZpbGVzIiwiZmlsdGVyIjpbIiouN3oiLCIqLjd6aXAiLCIqLnJhciIsIioucnZ6IiwiKi50YXIiLCIqLnRhci5iejIiLCIqLnRhci5neiIsIioudGd6IiwiKi56aXAiLCIqLnppcHgiXX0seyJkZXNjcmlwdGlvbiI6IkNvbXByZXNzZWQgRmlsZXMiLCJmaWx0ZXIiOlsiKi5iejIiLCIqLmd6Il19LHsiZGVzY3JpcHRpb24iOiJBbGwgRmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV19LHsibmFtZSI6IkRlc3REYXRhc2V0X09HQ0dFT1BBQ0tBR0UiLCJwcm9tcHQiOiJHZW9QYWNrYWdlIEZpbGU6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwiZGVmYXVsdFZhbHVlIjoieHh4Mi5ncGtnIiwidHlwZSI6ImZpbGUiLCJzZWxlY3RNdWx0aXBsZSI6ZmFsc2UsIml0ZW1zVG9TZWxlY3QiOiJmaWxlcyIsImFjY2Vzc01vZGUiOiJ3cml0ZSIsInZhbGlkYXRlRXhpc3RlbmNlIjpmYWxzZSwiZmlsdGVycyI6W3siZGVzY3JpcHRpb24iOiJHZW9QYWNrYWdlIEZpbGVzIiwiZmlsdGVyIjpbIiouZ3BrZyJdfSx7ImRlc2NyaXB0aW9uIjoiQWxsIGZpbGVzIiwiZmlsdGVyIjpbIioiXX1dfV19}]] {parameters}] {       if {{password} == [dict get $parmDef type]} {          lappend pwdParms [dict get $parmDef name];       };    };    foreach {parmName parmValue} $parameterList {      set parmValue [quotifyForParameterFileV3a [FME_DecodeText $parmValue]];      lappend commandArguments --$parmName;      lappend commandArgumentsToLog --$parmName;      lappend commandArguments $parmValue;      if { $parmName in $pwdParms } {           lappend commandArgumentsToLog {*********};      } else {           lappend commandArgumentsToLog $parmValue;      };    };    lappend commandArguments {--FME_LAUNCH_VIEWER_APP};    lappend commandArguments {YES};    if {{HONOR} == {WORKSPACE_TIMESTAMP}} {       lappend commandArguments LOG_FILENAME {\"$\"\"(FME_MF_DIR)$\"\"(WORKSPACE_NAME)$\"\"(FME_RUN_TIMESTAMP).log\"};    } elseif {{HONOR} == {WORKSPACE}} {       lappend commandArguments LOG_FILENAME {\"$\"\"(FME_MF_DIR)$\"\"(WORKSPACE_NAME).log\"};    };    lappend $(FME_UUID_SAFE)_commands [join $commandArguments " "];    incr $(FME_UUID_SAFE)_batch_count;    if { {Yes} == {No} && {<Unused>} > 1  && $$(FME_UUID_SAFE)_batch_count <= {<Unused>} } {       FME_LogMessage fme_inform 933450 WorkspaceRunner $commandArgumentsToLog;    } else {       FME_LogMessage fme_inform 933451 WorkspaceRunner $commandArgumentsToLog;    };    if { {Yes} != {No} || $$(FME_UUID_SAFE)_batch_count == {<Unused>} } {       set $(FME_UUID_SAFE)_batch_count 0;       set commandFile [$(FME_UUID_SAFE)_writeCommandFile $$(FME_UUID_SAFE)_commands];       if { $commandFile == {} } {          return FAILURE;       };       set $(FME_UUID_SAFE)_commands {};       set fmeAbsPath {$(FME_HOME_UNIX)/fme};       if { {Yes} == {No} && $::__platform__ == {windows} }       {          set comment          {             Only on Windows in non-blocking mode we have to make sure that paths             are always quoted because we use non-Tcl method to run the final command          };          set commandFile \\"$commandFile\\";          set fmeAbsPath \\"$fmeAbsPath\\";       };       lappend cmdArgs {*}$::__WR_ENV_HELPER__ $fmeAbsPath COMMAND_FILE $commandFile;    } else {       return SUCCESS;    };    return [$(FME_UUID_SAFE)_runCommand $cmdArgs $workspaceFileUnix]; }
+# ------------------------------------------------------------------------------
+# When batching commands, any overflow commands will be run at the end. Say you
+# batch by 2 and there are 5 incoming features. Then we will have 2 batches with
+# 2 commands each and 1 overflow batch with 1 command
+Tcl2 proc $(FME_UUID_SAFE)_flushNeeded { } {    global $(FME_UUID_SAFE)_commands;    if { [info exists $(FME_UUID_SAFE)_commands] == 1 && [llength $$(FME_UUID_SAFE)_commands] > 0 } {       return YES;    } else {       return NO;    }; }
+Tcl2 proc $(FME_UUID_SAFE)_flushPending { } {    global $(FME_UUID_SAFE)_commands;    if { [info exists $(FME_UUID_SAFE)_commands] == 1 && [llength $$(FME_UUID_SAFE)_commands] > 0 } {       set workspaceToRun [lindex $$(FME_UUID_SAFE)_commands 0];       set commandFile [$(FME_UUID_SAFE)_writeCommandFile $$(FME_UUID_SAFE)_commands];       if { $commandFile == {} } {          return FAILURE;       };       set $(FME_UUID_SAFE)_commands {};       set fmeAbsPath {$(FME_HOME_UNIX)/fme};       if { {Yes} == {No} && $::__platform__ == {windows} }       {          set comment          {             Only on Windows in non-blocking mode we have to make sure that paths             are always quoted because we use non-Tcl method to run the final command          };          set commandFile \\"$commandFile\\";          set fmeAbsPath \\"$fmeAbsPath\\";       };       lappend commandArguments {*}$::__WR_ENV_HELPER__ $fmeAbsPath COMMAND_FILE $commandFile;       return [$(FME_UUID_SAFE)_runCommand $commandArguments $workspaceToRun];    };    return SUCCESS; }
+# ------------------------------------------------------------------------------
+# Build and run the command
+Tcl2 proc $(FME_UUID_SAFE)_runCommand {commandArguments workspaceFileUnix} {    if { {Yes} == {No} && $::__platform__ != {windows} } {       lappend commandArguments \">$::null_device\";       lappend commandArguments \"<$::null_device\";    };    set comment    {       Add an argument of "2>@1" to combine standard error with standard output when:        1. Not blocking on UNIX. (All output will be sent to the NULL device)        2. Blocking and not propagating standard error    };    if { ( {Yes} == {No} && $::__platform__ != {windows} ) ||         ( {Yes} != {No} && {COMBINE} == {COMBINE} ) } {       lappend commandArguments {2>@1};    };    if { {Yes} == {No} } {        lappend commandArguments {&};    };    if { {Yes} == {No} } {       after 1000;       while { [FME_CanSpawnFme <Unused>] == {0} } {             after 2000;       };    };    if { Yes == {No} && {<Unused>} > 1 } {       FME_LogMessage fme_inform 933452 WorkspaceRunner $commandArguments;    } else {       FME_LogMessage fme_inform 933453 WorkspaceRunner $commandArguments;    };    if { $::__platform__ == {windows} && {Yes} == {No} } {       set comment       {          Only on Windows in non-blocking mode we convert Tcl list to string joined          by space (affectively flattening the list). Prior to this we have already          ensured that in this mode paths are always quoted.       };       set commandArguments [join $commandArguments " "];       set catchResult [catch {FME_Execute System RETURN_PID_IF_ASYNC $commandArguments} msg];    } else {       set comment       {          When in blocking mode, the STDERR_HANDLING parameter might direct the          subworkspace's standard error to be propagated to the caller, in which          case we need to tell exec to ignore it.       };       set stderrHandling {};       if { {Yes} != {No} && {COMBINE} == {PROPAGATE} } {          set stderrHandling -ignorestderr;       };       set catchResult [catch {eval [concat exec $stderrHandling $commandArguments]} msg];    };    if { $catchResult } {       set msg [regsub {\015*\012child[^\012]*$} $msg {}];       FME_LogMessage fme_warn 933454 WorkspaceRunner $workspaceFileUnix "\n\n$msg\n";       FME_SetAttribute _failure_message $msg;       return FAILURE;    } else {       global $(FME_UUID_SAFE)_process_count;       incr $(FME_UUID_SAFE)_process_count;       if { {Yes} == {No} } {           FME_LogMessage fme_inform 933455 WorkspaceRunner $workspaceFileUnix;           global $(FME_UUID_SAFE)_all_processes;           lappend $(FME_UUID_SAFE)_all_processes $msg;       } else {           FME_LogMessage fme_inform 933456 WorkspaceRunner $workspaceFileUnix;       };       return SUCCESS;    }; }
+# ------------------------------------------------------------------------------
+# Create and write commands to command file
+Tcl2 proc $(FME_UUID_SAFE)_writeCommandFile { commands } {    set commandFile [FME_TempFilename wsr_cm_];    if { [catch { set cmdFileId [open $commandFile "w"] } msg ] } {       FME_LogMessage fme_warn 933457 WorkspaceRunner $commandFile "\n\n$msg\n";       FME_SetAttribute _failure_message $msg;       return {};    };    fconfigure $cmdFileId -encoding utf-8;    puts $cmdFileId {#! encoding=\"utf-8\"};    puts $cmdFileId DELETE_FILE_AFTER_LOAD;    foreach {command} $commands {       puts $cmdFileId $command;    };    close $cmdFileId;    return $commandFile; }
+# ------------------------------------------------------------------------------
+# Use \x07 (BELL) character as the delimiter when writing WORKSPACE_PARAMETERS
+# to mapping file
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { WorkspaceRunner_ExecutorAndRouter }    INPUT  FEATURE_TYPE AttributeManager_OUTPUT    TEST @Tcl2("$(FME_UUID_SAFE)_runner {SourceDataset_ACAD@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>dxf_fil<closeparen>,WorkspaceRunner)DestDataset_OGCGEOPACKAGE@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>gpkg<closeparen>,WorkspaceRunner)} {@EvaluateExpression(FDIV,STRING_ENCODED,$(FME_MF_DIR_ENCODED)dxf2gpkg.fmw,WorkspaceRunner)}") == SUCCESS    OUTPUT { PASSED FEATURE_TYPE WorkspaceRunner_SUCCEEDED         }    OUTPUT { FAILED FEATURE_TYPE WorkspaceRunner_FAILED         }
+Tcl2 proc $(FME_UUID_SAFE)_summarizer { } {     global $(FME_UUID_SAFE)_process_count;     set comment { incr 0 creates the variable if it wasn't present };     incr $(FME_UUID_SAFE)_process_count 0;     FME_SetAttribute _proc_count [set $(FME_UUID_SAFE)_process_count];     global $(FME_UUID_SAFE)_all_processes;     if {[info exists $(FME_UUID_SAFE)_all_processes]} {         set index 0;         foreach pid [set $(FME_UUID_SAFE)_all_processes] {             FME_SetAttribute \"_processes{$index}\" $pid;             incr index;         }     } }
+# ------------------------------------------------------------------------------
+# Clean up the last batch, if anything was pending.
+FACTORY_DEF {*} CreationFactory    FACTORY_NAME { WorkspaceRunner_CleanerUpperOfBatchesInitiator }    CREATE_AT_END yes    OUTPUT { FEATURE_TYPE WorkspaceRunner___cleanup___ }
+# ------------------------------------------------------------------------------
+# We only want to actually trigger the flush if there was something to run
+# Otherwise we send out spurious extra features at the end of a run that are completely unnecessary
+# As it stands, we are set up here to send out one "dud" completely empty feature that will
+# go out FAILURE if there was a problem. It will have no attributes. Only sent out if there was something
+# left to process and the run did not succeed.
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { WorkspaceRunner_CleanerUpperOfBatchesDoWeNeedToDoIt }    INPUT { FEATURE_TYPE WorkspaceRunner___cleanup___ }    TEST { @Tcl2($(FME_UUID_SAFE)_flushNeeded) == YES }    OUTPUT { PASSED FEATURE_TYPE WorkspaceRunner___cleanup___ }
+# Note that we don't output anything if we succeed -- we only catch and output the failure
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { WorkspaceRunner_CleanerUpperOfBatchesRunner }    INPUT { FEATURE_TYPE WorkspaceRunner___cleanup___ }    TEST { @Tcl2($(FME_UUID_SAFE)_flushPending) == SUCCESS }    OUTPUT { FAILED FEATURE_TYPE WorkspaceRunner_FAILED         }
+FACTORY_DEF {*} CreationFactory    FACTORY_NAME { WorkspaceRunner_SummaryMaker }    CREATE_AT_END yes    OUTPUT { FEATURE_TYPE WorkspaceRunner_SUMMARY        @Tcl2($(FME_UUID_SAFE)_summarizer)         }
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "WorkspaceRunner_SUCCEEDED Feature Recorder -1 2147614724" INPUT FEATURE_TYPE WorkspaceRunner_SUCCEEDED FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-dxf2gpkg_runner-JuAADl/Main_WorkspaceRunner -1 4 fo 0 SUCCEEDED  0  2ca668146a698361b4e84bc4cb22dc3443ddc927.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { path_unix,buffer,dxf_fil,buffer,path_rootname,buffer,path_filename,buffer,path_extension,buffer,path_directory_unix,buffer,path_directory_windows,buffer,path_type,varchar<openparen>10<closeparen>,gpkg,varchar<openparen>200<closeparen> }  FEAT_TYPE_DISPLAY_NAME { WorkspaceRunner:<space>Succeeded } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE LARGE_GEOMETRY_DATA_STORAGE REFERENCE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "WorkspaceRunner_FAILED Feature Recorder -1 2147680260" INPUT FEATURE_TYPE WorkspaceRunner_FAILED FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-dxf2gpkg_runner-JuAADl/Main_WorkspaceRunner -1 4 fo 1 FAILED  0  8713d5f6beac53f3ddd77fb0e7b5ab34a5082423.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { path_unix,buffer,dxf_fil,buffer,path_rootname,buffer,path_filename,buffer,path_extension,buffer,path_directory_unix,buffer,path_directory_windows,buffer,path_type,varchar<openparen>10<closeparen>,gpkg,varchar<openparen>200<closeparen>,_failure_message,buffer }  FEAT_TYPE_DISPLAY_NAME { WorkspaceRunner:<space>Failed } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE LARGE_GEOMETRY_DATA_STORAGE REFERENCE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+FACTORY_DEF {*} RecorderFactory FACTORY_NAME "WorkspaceRunner_SUMMARY Feature Recorder -1 2147745796" INPUT FEATURE_TYPE WorkspaceRunner_SUMMARY FEATURE_FILE  { "C:/Users/krima354/AppData/Local/Temp/wb-cache-dxf2gpkg_runner-JuAADl/Main_WorkspaceRunner -1 4 fo 2 SUMMARY  0  07b7a337809b704c0653fe8a4dd17b1a966c13fd.ffsupdating" } MODE RECORD_PASS_THROUGH STORE_SCANNED_SCHEMA YES NORMALIZE_LIST_ATTRIBUTES_ON_SCHEMA YES CREATE_SPATIAL_INDEX YES INSPECTOR YES RECORD_DIRECTLY_TO_DISK YES FSC_SCHEMA { _proc_count,uint32,_processes<opencurly><closecurly>,buffer }  FEAT_TYPE_DISPLAY_NAME { WorkspaceRunner:<space>Summary } STORE_SCANNED_METADATA PASS_THROUGH_FME_TYPE LARGE_GEOMETRY_DATA_STORAGE REFERENCE NO_LOGGING OUTPUT RECORDED FEATURE_TYPE *
+.metadata XFORMER_END WorkspaceRunner;4:Main
+FACTORY_DEF * TeeFactory   FACTORY_NAME "WorkspaceRunner_SUCCEEDED Feature Counter -1 2147614724"   INPUT FEATURE_TYPE WorkspaceRunner_SUCCEEDED     @LogCount("PORT -1 2147614724")   NO_LOGGING 
+FACTORY_DEF * TeeFactory   FACTORY_NAME "WorkspaceRunner_FAILED Feature Counter -1 2147680260"   INPUT FEATURE_TYPE WorkspaceRunner_FAILED     @LogCount("PORT -1 2147680260")   NO_LOGGING 
+FACTORY_DEF * TeeFactory   FACTORY_NAME "WorkspaceRunner_SUMMARY Feature Counter -1 2147745796"   INPUT FEATURE_TYPE WorkspaceRunner_SUMMARY     @LogCount("PORT -1 2147745796")   NO_LOGGING 
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
