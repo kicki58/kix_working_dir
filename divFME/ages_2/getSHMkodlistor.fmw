@@ -1,0 +1,1559 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME\fme.exe" C:\Github\kix\divFME\ages_2\getSHMkodlistor.fmw
+#          --TARGET_URL "https:<solidus><solidus>samlingar.shm.se<solidus>term<solidus>af2c98be-ba92-4bbe-bf51-bcb11f655108"
+#          --parent_URL_2 "https:<solidus><solidus>samlingar.shm.se<solidus>term<solidus>_toppterm_arkeologisk_kontext"
+#          --DestDataset_CSV2 "$(FME_MF_DIR)kodlistor"
+#          --ftp_feature_type_name_exp "arkeologisk_kontext"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_PYTHON_DATA_CACHING="No"
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="5127.6 2163.14"
+#!   DOC_TOP_LEFT="-725.007 -1471.26"
+#!   ENABLE_DATA_CACHING="Yes"
+#!   ENABLE_FEATURE_COUNTING="Yes"
+#!   ENABLE_PERFORMANCE_PROFILING="No"
+#!   END_PYTHON=""
+#!   END_PYTHON_DATA_CACHING="No"
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="25615"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="83f821da-0f8b-41e6-a269-158c67c96404"
+#!   FME_DOCUMENT_PRIORGUID="065a3318-2d38-4baf-a8d4-8e9c1d194a43,d336d83b-86d7-4837-b6ca-95be4cfd0a31,efbfc7d0-1c11-44a3-aa50-77e871432dac,1c12079f-2dc8-4fc5-a347-a64d65bd0ae2"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2025.1.1.0 (20250730 - Build 25615 - WIN64)"
+#!   LAST_SAVE_DATE="2025-12-18T09:18:09"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PROMPT_FOR_PARAMS="Yes"
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   STOP_AT_BREAKPOINTS="No"
+#!   TERMINATE_REJECTED="NO"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="725.007 1046.89"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="false"
+#!   ROLE="WRITER"
+#!   FORMAT="CSV2"
+#!   DATASET="$(DestDataset_CSV2)"
+#!   KEYWORD="CSV2_1"
+#!   MULTI_GEOM_ALLOWED="true"
+#!   ATTR_MAX_LENGTH="255"
+#!   ATTR_CASE="ANY"
+#!   FEATURE_TYPE_CASE="ANY"
+#!   FEATURE_TYPE_LENGTH="0"
+#!   FEATURE_TYPE_INVALID_CHARS="&quot;:?*&lt;&gt;|"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE="csv_existing_file_handling Yes csv_write_field_names firstrow csv_date_output_format ISO"
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="csv_type string fme_basename varchar(50) fme_color varchar(50) fme_dataset varchar(50) fme_feature_type varchar(50) fme_fill_color varchar(50) fme_geometry varchar(50) fme_primary_axis string fme_rotation string fme_secondary_axis string fme_start_angle string fme_sweep_angle string fme_text_size string fme_text_string varchar(50) fme_type varchar(50)"
+#!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP csv_dataset_group csv_existing_file_handling Dataset&quot; &quot;&quot; &quot;GUI CHOICE csv_existing_file_handling Yes%No Overwrite Existing File&quot; Yes &quot;GUI OPTIONAL NAMEDGROUP csv_fields_group csv_write_field_names Fields&quot; &quot;&quot; &quot;GUI LOOKUP_CHOICE csv_write_field_names If&lt;space&gt;Writing&lt;space&gt;First&lt;space&gt;Row,firstrow%Yes,yes%No,no Write Field Names Row&quot; firstrow &quot;GUI OPTIONAL NAMEDGROUP csv_types_group csv_date_output_format Types&quot; &quot;&quot; &quot;GUI STRING_OR_LOOKUP_CHOICE_ENCODED csv_date_output_format FME&lt;space&gt;&lt;openparen&gt;auto&lt;space&gt;format&lt;closeparen&gt;,FME%ISO&lt;space&gt;&lt;openparen&gt;auto&lt;space&gt;format&lt;closeparen&gt;,ISO%\&quot;%Y%m%d&lt;space&gt;&lt;openparen&gt;FME&lt;space&gt;date&lt;closeparen&gt;,%Y%m%d\&quot;%\&quot;%H%M%S&lt;space&gt;&lt;openparen&gt;FME&lt;space&gt;time&lt;closeparen&gt;,%H%M%S\&quot;%\&quot;%H%M%S%z&lt;space&gt;&lt;openparen&gt;FME&lt;space&gt;time&lt;space&gt;with&lt;space&gt;offset&lt;closeparen&gt;,%H%M%S%z\&quot;%\&quot;%Y%m%d%H%M%S&lt;space&gt;&lt;openparen&gt;FME&lt;space&gt;datetime&lt;closeparen&gt;,%Y%m%d%H%M%S\&quot;%\&quot;%Y%m%d%H%M%S%z&lt;space&gt;&lt;openparen&gt;FME&lt;space&gt;datetime&lt;space&gt;with&lt;space&gt;offset&lt;closeparen&gt;,%Y%m%d%H%M%S%z\&quot;%\&quot;%Y-%m-%d&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;date&lt;closeparen&gt;,%Y-%m-%d\&quot;%\&quot;%H:%M:%S&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;time&lt;closeparen&gt;,%H:%M:%S\&quot;%\&quot;%H:%M:%S%Ez&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;time&lt;space&gt;with&lt;space&gt;offset&lt;closeparen&gt;,%H:%M:%S%Ez\&quot;%\&quot;%Y-%m-%dT%H:%M:%S&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;datetime&lt;closeparen&gt;,%Y-%m-%dT%H:%M:%S\&quot;%\&quot;%Y-%m-%dT%H:%M:%S%Ez&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;datetime&lt;space&gt;with&lt;space&gt;offset&lt;closeparen&gt;,%Y-%m-%dT%H:%M:%S%Ez\&quot;%\&quot;%Y-W%W-%u&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;week&lt;closeparen&gt;,%Y-W%W-%u\&quot;%\&quot;%Y-%j&lt;space&gt;&lt;openparen&gt;ISO&lt;space&gt;ordinal&lt;space&gt;date&lt;closeparen&gt;,%Y-%j\&quot;%\&quot;%Y:%m:%d&lt;space&gt;%H:%M:%S&lt;space&gt;&lt;openparen&gt;Exif&lt;space&gt;datetime&lt;closeparen&gt;,%Y:%m:%d%H:%M:%S\&quot;%\&quot;%d/%m/%Y\&quot;%\&quot;%d.%m.%Y\&quot;%\&quot;%B&lt;space&gt;%e&lt;comma&gt;&lt;space&gt;%Y\&quot;%\&quot;%b-%e-%Y\&quot;%\&quot;%I:%M:%S%p\&quot;%\&quot;%s&lt;space&gt;&lt;openparen&gt;Epoch&lt;space&gt;Time&lt;closeparen&gt;,%s\&quot;%\&quot;%Es&lt;space&gt;&lt;openparen&gt;Unzoned&lt;space&gt;Epoch&lt;space&gt;Time&lt;closeparen&gt;,%Es\&quot; Date Output Format&quot; ISO "
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILEDIR"
+#!   FTTR_TYPE=""
+#!   GENERATE_FME_BUILD_NUM="25615"
+#!   COORDSYS=""
+#!   FANOUT_EXPRESSION=""
+#!   FANOUT_GROUP="NO"
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ADVANCED_PARMS"
+#!   VALUE="CSV2_OUT_QUALIFY_FIELD_NAMES CSV2_OUT_QUALIFY_FIELD_VALUES CSV2_OUT_FIELD_QUALIFIER_CHARACTER CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER CSV2_OUT_ROW_TERMINATION CSV2_OUT_WRITE_SCHEMA_FILE CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DEFAULT_ATTR_TYPE"
+#!   VALUE="string"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="File1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="CSV File"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the CSV file(s)"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a folder for the CSV file"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="time"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="real64"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="x_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="y_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="z_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="real32"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int64"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int32"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int16"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="int8"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="uint64"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="uint32"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="uint16"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="uint8"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="boolean"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="number(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="CSV2"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_point"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="CSV2"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="false"
+#!   NODE_NAME="tider"
+#!   FEATURE_TYPE_NAME="$(ftp_feature_type_name_exp)"
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="35"
+#!   POSITION="3607.9057190571875 464.99974999749998"
+#!   BOUNDING_RECT="3607.9057190571875 464.99974999749998 794.6875 65"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="false"
+#!   KEYWORD="CSV2_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   FEAT_GEOMTYPE=""
+#!   SCHEMA_ATTRIBUTE_SOURCE="0"
+#! >
+#!     <FEAT_GEOMETRY NAME="" TYPE="" SPATIAL_TYPE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="title" ATTR_TYPE="varchar(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="desc" ATTR_TYPE="varchar(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="uri" ATTR_TYPE="varchar(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="parent_uri" ATTR_TYPE="varchar(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="foredragen_term" ATTR_TYPE="varchar(200)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="csv_dataset_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="csv_date_output_format" PARM_VALUE="ISO"/>
+#!     <DEFLINE_PARM PARM_NAME="csv_existing_file_handling" PARM_VALUE="No"/>
+#!     <DEFLINE_PARM PARM_NAME="csv_fields_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="csv_types_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="csv_write_field_names" PARM_VALUE="firstrow"/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <WRITER_DATASETS>
+#! <DATASET
+#!   NAME="CSV2_1"
+#!   OVERRIDE="-CSV2_1_DATASET"
+#!   DATASET="CSV2_1/kodlistor"
+#! />
+#! </WRITER_DATASETS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI URL_ENCODED TARGET_URL https%http Request URL"
+#!   DEFAULT_VALUE="https:&lt;solidus&gt;&lt;solidus&gt;samlingar.shm.se&lt;solidus&gt;term&lt;solidus&gt;af2c98be-ba92-4bbe-bf51-bcb11f655108"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI URL_OR_ATTR_ENCODED parent_URL_2 https%http parent URL"
+#!   DEFAULT_VALUE="https:&lt;solidus&gt;&lt;solidus&gt;samlingar.shm.se&lt;solidus&gt;term&lt;solidus&gt;_toppterm_arkeologisk_kontext"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI DIRNAME DestDataset_CSV2 Destination CSV (Comma Separated Value) Folder"
+#!   DEFAULT_VALUE="$(FME_MF_DIR)kodlistor"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING_OR_ATTR ftp_feature_type_name_exp topp term"
+#!   DEFAULT_VALUE="arkeologisk_kontext"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiVEFSR0VUX1VSTCIsInByb21wdCI6IlJlcXVlc3QgVVJMIiwidmFsdWVUeXBlIjoic3RyaW5nRW5jb2RlZCIsImRlZmF1bHRWYWx1ZSI6Imh0dHBzOjxzb2xpZHVzPjxzb2xpZHVzPnNhbWxpbmdhci5zaG0uc2U8c29saWR1cz50ZXJtPHNvbGlkdXM+YWYyYzk4YmUtYmE5Mi00YmJlLWJmNTEtYmNiMTFmNjU1MTA4IiwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJ1cmwiLCJ0cmltV2hpdGVzcGFjZSI6dHJ1ZSwic2hvd0VkaXRCdXR0b24iOmZhbHNlLCJ1cmxTZXR0aW5ncyI6eyJ2YWxpZFNjaGVtZXMiOlsiaHR0cHMiLCJodHRwIl19fSx7Im5hbWUiOiJwYXJlbnRfVVJMXzIiLCJwcm9tcHQiOiJwYXJlbnQgVVJMIiwidmFsdWVUeXBlIjoic3RyaW5nRW5jb2RlZCIsImRlZmF1bHRWYWx1ZSI6Imh0dHBzOjxzb2xpZHVzPjxzb2xpZHVzPnNhbWxpbmdhci5zaG0uc2U8c29saWR1cz50ZXJtPHNvbGlkdXM+X3RvcHB0ZXJtX2Fya2VvbG9naXNrX2tvbnRleHQiLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImV4cHJlc3Npb24iLCJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6InRleHQiLCJlZGl0b3IiOiJ1cmwiLCJ0cmltV2hpdGVzcGFjZSI6dHJ1ZSwic2hvd0VkaXRCdXR0b24iOmZhbHNlLCJ1cmxTZXR0aW5ncyI6eyJ2YWxpZFNjaGVtZXMiOlsiaHR0cHMiLCJodHRwIl19fSx7Im5hbWUiOiJEZXN0RGF0YXNldF9DU1YyIiwicHJvbXB0IjoiRGVzdGluYXRpb24gQ1NWIChDb21tYSBTZXBhcmF0ZWQgVmFsdWUpIEZvbGRlciIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6IiQoRk1FX01GX0RJUilrb2RsaXN0b3IiLCJ0eXBlIjoiZmlsZSIsInNlbGVjdE11bHRpcGxlIjpmYWxzZSwiaXRlbXNUb1NlbGVjdCI6ImZvbGRlcnMiLCJhY2Nlc3NNb2RlIjoid3JpdGUiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2V9LHsibmFtZSI6ImZ0cF9mZWF0dXJlX3R5cGVfbmFtZV9leHAiLCJwcm9tcHQiOiJ0b3BwIHRlcm0iLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJkZWZhdWx0VmFsdWUiOiJhcmtlb2xvZ2lza19rb250ZXh0Iiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0Iiwic2hvd0VkaXRCdXR0b24iOmZhbHNlfV19"
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="TARGET_URL" 
+#!   DEFAULT_VALUE="https:&lt;solidus&gt;&lt;solidus&gt;samlingar.shm.se&lt;solidus&gt;term&lt;solidus&gt;af2c98be-ba92-4bbe-bf51-bcb11f655108"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI URL_ENCODED TARGET_URL https%http Request URL"
+#! />
+#!     <INFO NAME="parent_URL_2" 
+#!   DEFAULT_VALUE="https:&lt;solidus&gt;&lt;solidus&gt;samlingar.shm.se&lt;solidus&gt;term&lt;solidus&gt;_toppterm_arkeologisk_kontext"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI URL_OR_ATTR_ENCODED parent_URL_2 https%http parent URL"
+#! />
+#!     <INFO NAME="DestDataset_CSV2" 
+#!   DEFAULT_VALUE="$(FME_MF_DIR)kodlistor"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI DIRNAME DestDataset_CSV2 Destination CSV (Comma Separated Value) Folder"
+#! />
+#!     <INFO NAME="ftp_feature_type_name_exp" 
+#!   DEFAULT_VALUE="arkeologisk_kontext"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING_OR_ATTR ftp_feature_type_name_exp topp term"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="2"
+#!   TYPE="HTTPCaller"
+#!   VERSION="7"
+#!   POSITION="248.49812498124979 210.62290622906232"
+#!   BOUNDING_RECT="248.49812498124979 210.62290622906232 436 65"
+#!   ORDER="500000000000001"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="Output"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_error" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADDITIONAL_PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ADDITIONAL_URL_PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ADVANCED_REQUEST_PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="AUTH_METHOD_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_NAMED_CONNECTION" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_PASSWORD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_USERNAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_FILE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_FROM_OS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_PASSWORD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_PRIVATE_KEY_FILE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIENT_CERTIFICATE_TYPE" PARM_VALUE="NONE"/>
+#!     <XFORM_PARM PARM_NAME="CONCURRENCY_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="CONNECTION_TIMEOUT_LENGTH" PARM_VALUE="60"/>
+#!     <XFORM_PARM PARM_NAME="CONTENT_TYPE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CUSTOM_HEADERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ERROR_ATTR" PARM_VALUE="_error"/>
+#!     <XFORM_PARM PARM_NAME="FILE_PATH_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FILE_PATH_ATTR2" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FILE_TYPE_LOOKUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FOLLOW_REDIRECTS" PARM_VALUE="FOLLOW_WITH_GET"/>
+#!     <XFORM_PARM PARM_NAME="HTTPURL_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="HTTP_AUTH_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="HTTP_METHOD" PARM_VALUE="GET"/>
+#!     <XFORM_PARM PARM_NAME="HTTP_RESPONSE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="LOOP_MESSAGE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MAX_HTTP_VERSION" PARM_VALUE="HTTP_2"/>
+#!     <XFORM_PARM PARM_NAME="MAX_TRANSFERS_IN_PROGRESS" PARM_VALUE="25"/>
+#!     <XFORM_PARM PARM_NAME="MINIMUM_ENCRYPTION_LEVEL" PARM_VALUE="OS_DEFAULT"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPARTS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_CONTENT_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_RESPONSE_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="MULTIPART_RESPONSE_HEADER_LIST_ATTR" PARM_VALUE="_multipart_headers"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_DIRNAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FILENAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_INTERVAL_IN_SECONDS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_MAX_REQUESTS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RATE_LIMIT_REQUEST_TIMING" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REDIRECT_AUTH" PARM_VALUE="ORIGINAL_DOMAIN_ONLY"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_ATTRS_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_ATTR_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_DIR_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_FILE_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_HEADER_LIST_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESPONSE_TYPE" PARM_VALUE="Attribute"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_FAILED_TRANSFERS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_INITIAL_BACKOFF" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="RETRY_MAX_RETRIES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SPLIT_MULTIPART_DOWNLOADS" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="STATUS_CODE_ATTR" PARM_VALUE="_http_status_code"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_ATTR" PARM_VALUE="_response_body"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_ATTR_ENCODING" PARM_VALUE="fme-system"/>
+#!     <XFORM_PARM PARM_NAME="TARGET_URL" PARM_VALUE="$(TARGET_URL)"/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_ATTRIBUTE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_PARAMETERS_FOR_RESPONSE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_RESPONSE_PREVIEW" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_RESPONSE_STATUS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_DIALOG_USER_PARAMETER" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TLS_CLIENT_CERTIFICATE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TLS_PARAMETERS" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFER_TIMEOUT_LENGTH" PARM_VALUE="90"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_BODY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_FILE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="USE_COOKIES" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="VERIFY_SSL_CERTIFICATES" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="HTTPCaller"/>
+#!     <XFORM_PARM PARM_NAME="AUTH_METHOD" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="FILE_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="UPLOAD_CONTENT_TYPE" PARM_IS_LOOKUP="true" PARM_VALUE="&lt;Unused&gt;"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="Creator"
+#!   VERSION="7"
+#!   POSITION="-725.00725007250071 159.37659376593768"
+#!   BOUNDING_RECT="-725.00725007250071 159.37659376593768 436 65"
+#!   ORDER="500000000000002"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="CREATED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATEND" PARM_VALUE="no"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CRE_ATTR" PARM_VALUE="_creation_instance"/>
+#!     <XFORM_PARM PARM_NAME="GEOJSON" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOM" PARM_VALUE="&lt;lt&gt;?xml&lt;space&gt;version=&lt;quote&gt;1.0&lt;quote&gt;&lt;space&gt;encoding=&lt;quote&gt;US_ASCII&lt;quote&gt;&lt;space&gt;standalone=&lt;quote&gt;no&lt;quote&gt;&lt;space&gt;?&lt;gt&gt;&lt;lt&gt;geometry&lt;space&gt;dimension=&lt;quote&gt;2&lt;quote&gt;&lt;gt&gt;&lt;lt&gt;null&lt;solidus&gt;&lt;gt&gt;&lt;lt&gt;&lt;solidus&gt;geometry&lt;gt&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOMTYPE" PARM_VALUE="Geometry Object"/>
+#!     <XFORM_PARM PARM_NAME="NUM" PARM_VALUE="1"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Creator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeManager"
+#!   VERSION="5"
+#!   POSITION="1367.2583125831254 -1406.2640626406262"
+#!   BOUNDING_RECT="1367.2583125831254 -1406.2640626406262 436 65"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="true"
+#!   ENABLED="false"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="test" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="_creation_instance _creation_instance  uint64 NO_OP _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.name _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.name  buffer NO_OP _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.value _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.value  buffer NO_OP _response_body _response_body  buffer NO_OP _http_status_code _http_status_code  buffer NO_OP  test &lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;th&lt;gt&gt;Sn&lt;u00e4&gt;vare&lt;space&gt;term&lt;lt&gt;&lt;solidus&gt;th&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;td&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;ul&lt;space&gt;class=&lt;quote&gt;object-list&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;li&lt;space&gt;class=&lt;quote&gt;&lt;quote&gt;&lt;gt&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;inline-field-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;samlingar.shm.se&lt;solidus&gt;term&lt;solidus&gt;EB1A81B9-7F99-4C5D-BE8F-A892A0C12559&lt;quote&gt;&lt;space&gt;&lt;gt&gt;Yngre&lt;space&gt;brons&lt;u00e5&gt;lder&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;lt&gt;&lt;solidus&gt;li&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;li&lt;space&gt;class=&lt;quote&gt;&lt;quote&gt;&lt;gt&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;inline-field-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;samlingar.shm.se&lt;solidus&gt;term&lt;solidus&gt;F4BBA626-27F5-4FDB-BD64-2CE6D7246B5E&lt;quote&gt;&lt;space&gt;&lt;gt&gt;&lt;u00c4&gt;ldre&lt;space&gt;brons&lt;u00e5&gt;lder&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;lt&gt;&lt;solidus&gt;li&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;ul&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;td&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;tr&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;tr&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;th&lt;gt&gt;Period&lt;lt&gt;&lt;solidus&gt;th&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;td&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;1700&lt;space&gt;f.Kr.&lt;space&gt;&lt;u2013&gt;&lt;space&gt;500&lt;space&gt;f.Kr.&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;td&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;tr&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;tr&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;th&lt;gt&gt;Externa&lt;space&gt;k&lt;u00e4&gt;llor&lt;lt&gt;&lt;solidus&gt;th&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;td&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;ul&lt;space&gt;class=&lt;quote&gt;object-list&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;li&lt;space&gt;class=&lt;quote&gt;&lt;quote&gt;&lt;gt&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;inline-field-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;http:&lt;solidus&gt;&lt;solidus&gt;www.wikidata.org&lt;solidus&gt;entity&lt;solidus&gt;Q2394404&lt;quote&gt;&lt;space&gt;&lt;space&gt;target=&lt;quote&gt;_blank&lt;quote&gt;&lt;space&gt;&lt;gt&gt;Brons&lt;u00e5&gt;lder&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;WIKIDATA&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lt&gt;&lt;solidus&gt;li&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;li&lt;space&gt;class=&lt;quote&gt;&lt;quote&gt;&lt;gt&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;inline-field-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;http:&lt;solidus&gt;&lt;solidus&gt;n2t.net&lt;solidus&gt;ark:&lt;solidus&gt;99152&lt;solidus&gt;p0vn2frt3sg&lt;quote&gt;&lt;space&gt;&lt;space&gt;target=&lt;quote&gt;_blank&lt;quote&gt;&lt;space&gt;&lt;gt&gt;Brons&lt;u00e5&gt;lder&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;PeriodO&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lt&gt;&lt;solidus&gt;li&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;ul&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;td&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;tr&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;tr&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;th&lt;gt&gt;Relaterade&lt;space&gt;f&lt;u00f6&gt;rem&lt;u00e5&gt;l&lt;lt&gt;&lt;solidus&gt;th&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;td&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;inline-field-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;samlingar.shm.se&lt;solidus&gt;sok?type=object&lt;amp&gt;amp&lt;semicolon&gt;references=A31C409D-B0AD-4A2A-AE7B-A2E8060AB9C0&lt;quote&gt;&lt;space&gt;&lt;space&gt;target=&lt;quote&gt;_blank&lt;quote&gt;&lt;space&gt;&lt;gt&gt;Visa&lt;space&gt;51492&lt;space&gt;relaterade&lt;space&gt;f&lt;u00f6&gt;rem&lt;u00e5&gt;l&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;td&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;tr&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;tr&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;th&lt;gt&gt;URI&lt;lt&gt;&lt;solidus&gt;th&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;td&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;https:&lt;solidus&gt;&lt;solidus&gt;samlingar.shm.se&lt;solidus&gt;term&lt;solidus&gt;A31C409D-B0AD-4A2A-AE7B-A2E8060AB9C0&lt;lf&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;copy-to-clipboard&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;copy-to-clipboard__content&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;id=&lt;quote&gt;ctc_694001f2d25e3_toast&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;class=&lt;quote&gt;copy-to-clipboard__content__toast&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;role=&lt;quote&gt;status&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;aria-live=&lt;quote&gt;polite&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;span&lt;space&gt;class=&lt;quote&gt;copy-to-clipboard__content__toast-text&lt;quote&gt;&lt;gt&gt;URI&lt;space&gt;har&lt;space&gt;kopierats&lt;lt&gt;&lt;solidus&gt;span&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;button&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;type=&lt;quote&gt;button&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;class=&lt;quote&gt;btn&lt;space&gt;copy-to-clipboard__content__button&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;data-copy-to-clipboard-button&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;data-copy-value=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;samlingar.shm.se&lt;solidus&gt;term&lt;solidus&gt;A31C409D-B0AD-4A2A-AE7B-A2E8060AB9C0&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;aria-controls=&lt;quote&gt;ctc_694001f2d25e3_toast&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;aria-label=&lt;quote&gt;Kopiera&lt;space&gt;URI&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;span&lt;space&gt;class=&lt;quote&gt;icon-wrap&lt;quote&gt;&lt;space&gt;aria-hidden=&lt;quote&gt;true&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;svg&lt;space&gt;class=&lt;quote&gt;icon&lt;space&gt;icon--link&lt;quote&gt;&lt;space&gt;xmlns=&lt;quote&gt;http:&lt;solidus&gt;&lt;solidus&gt;www.w3.org&lt;solidus&gt;2000&lt;solidus&gt;svg&lt;quote&gt;&lt;space&gt;viewBox=&lt;quote&gt;0&lt;space&gt;0&lt;space&gt;16&lt;space&gt;16&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;path&lt;space&gt;d=&lt;quote&gt;M6.66526&lt;space&gt;11.7004L5.48525&lt;space&gt;12.8471C5.17584&lt;space&gt;13.1565&lt;space&gt;4.75617&lt;space&gt;13.3303&lt;space&gt;4.31859&lt;space&gt;13.3303C3.881&lt;space&gt;13.3303&lt;space&gt;3.46134&lt;space&gt;13.1565&lt;space&gt;3.15192&lt;space&gt;12.8471C2.8425&lt;space&gt;12.5376&lt;space&gt;2.66867&lt;space&gt;12.118&lt;space&gt;2.66867&lt;space&gt;11.6804C2.66867&lt;space&gt;11.2428&lt;space&gt;2.8425&lt;space&gt;10.8231&lt;space&gt;3.15192&lt;space&gt;10.5137L6.17859&lt;space&gt;7.48039C6.47566&lt;space&gt;7.18235&lt;space&gt;6.87594&lt;space&gt;7.00991&lt;space&gt;7.2966&lt;space&gt;6.99874C7.71726&lt;space&gt;6.98757&lt;space&gt;8.12612&lt;space&gt;7.13853&lt;space&gt;8.43859&lt;space&gt;7.42039L8.51859&lt;space&gt;7.48705C8.64501&lt;space&gt;7.61082&lt;space&gt;8.81542&lt;space&gt;7.6793&lt;space&gt;8.99233&lt;space&gt;7.67743C9.16924&lt;space&gt;7.67555&lt;space&gt;9.33815&lt;space&gt;7.60347&lt;space&gt;9.46192&lt;space&gt;7.47705C9.58569&lt;space&gt;7.35064&lt;space&gt;9.65417&lt;space&gt;7.18023&lt;space&gt;9.65229&lt;space&gt;7.00332C9.65042&lt;space&gt;6.82641&lt;space&gt;9.57834&lt;space&gt;6.65749&lt;space&gt;9.45192&lt;space&gt;6.53372C9.4143&lt;space&gt;6.48507&lt;space&gt;9.37425&lt;space&gt;6.43835&lt;space&gt;9.33192&lt;space&gt;6.39372C8.76282&lt;space&gt;5.8986&lt;space&gt;8.02681&lt;space&gt;5.63829&lt;space&gt;7.27297&lt;space&gt;5.66552C6.51912&lt;space&gt;5.69275&lt;space&gt;5.80381&lt;space&gt;6.00549&lt;space&gt;5.27192&lt;space&gt;6.54039L2.20526&lt;space&gt;9.57372C1.68416&lt;space&gt;10.1409&lt;space&gt;1.40234&lt;space&gt;10.8875&lt;space&gt;1.41864&lt;space&gt;11.6576C1.43494&lt;space&gt;12.4276&lt;space&gt;1.74811&lt;space&gt;13.1616&lt;space&gt;2.29274&lt;space&gt;13.7062C2.83738&lt;space&gt;14.2509&lt;space&gt;3.57136&lt;space&gt;14.564&lt;space&gt;4.34142&lt;space&gt;14.5803C5.11148&lt;space&gt;14.5966&lt;space&gt;5.85806&lt;space&gt;14.3148&lt;space&gt;6.42526&lt;space&gt;13.7937L7.57859&lt;space&gt;12.6671C7.69247&lt;space&gt;12.5428&lt;space&gt;7.75507&lt;space&gt;12.3801&lt;space&gt;7.75379&lt;space&gt;12.2115C7.75252&lt;space&gt;12.043&lt;space&gt;7.68747&lt;space&gt;11.8812&lt;space&gt;7.57173&lt;space&gt;11.7587C7.45599&lt;space&gt;11.6362&lt;space&gt;7.29815&lt;space&gt;11.5621&lt;space&gt;7.12997&lt;space&gt;11.5513C6.96179&lt;space&gt;11.5405&lt;space&gt;6.79574&lt;space&gt;11.5937&lt;space&gt;6.66526&lt;space&gt;11.7004V11.7004ZM13.7919&lt;space&gt;2.20706C13.2311&lt;space&gt;1.64973&lt;space&gt;12.4726&lt;space&gt;1.33691&lt;space&gt;11.6819&lt;space&gt;1.33691C10.8913&lt;space&gt;1.33691&lt;space&gt;10.1327&lt;space&gt;1.64973&lt;space&gt;9.57192&lt;space&gt;2.20706L8.41859&lt;space&gt;3.33372C8.30471&lt;space&gt;3.45796&lt;space&gt;8.24211&lt;space&gt;3.62071&lt;space&gt;8.24338&lt;space&gt;3.78923C8.24466&lt;space&gt;3.95776&lt;space&gt;8.30971&lt;space&gt;4.11955&lt;space&gt;8.42545&lt;space&gt;4.24205C8.54119&lt;space&gt;4.36455&lt;space&gt;8.69903&lt;space&gt;4.43866&lt;space&gt;8.86721&lt;space&gt;4.44949C9.03539&lt;space&gt;4.46031&lt;space&gt;9.20143&lt;space&gt;4.40704&lt;space&gt;9.33192&lt;space&gt;4.30039L10.4853&lt;space&gt;3.15372C10.7947&lt;space&gt;2.8443&lt;space&gt;11.2143&lt;space&gt;2.67047&lt;space&gt;11.6519&lt;space&gt;2.67047C12.0895&lt;space&gt;2.67047&lt;space&gt;12.5092&lt;space&gt;2.8443&lt;space&gt;12.8186&lt;space&gt;3.15372C13.128&lt;space&gt;3.46314&lt;space&gt;13.3018&lt;space&gt;3.8828&lt;space&gt;13.3018&lt;space&gt;4.32039C13.3018&lt;space&gt;4.75797&lt;space&gt;13.128&lt;space&gt;5.17764&lt;space&gt;12.8186&lt;space&gt;5.48705L9.79192&lt;space&gt;8.52039C9.49485&lt;space&gt;8.81843&lt;space&gt;9.09457&lt;space&gt;8.99087&lt;space&gt;8.67391&lt;space&gt;9.00204C8.25325&lt;space&gt;9.01321&lt;space&gt;7.84439&lt;space&gt;8.86224&lt;space&gt;7.53192&lt;space&gt;8.58039L7.45192&lt;space&gt;8.51372C7.3255&lt;space&gt;8.38995&lt;space&gt;7.15509&lt;space&gt;8.32148&lt;space&gt;6.97818&lt;space&gt;8.32335C6.80128&lt;space&gt;8.32523&lt;space&gt;6.63236&lt;space&gt;8.3973&lt;space&gt;6.50859&lt;space&gt;8.52372C6.38482&lt;space&gt;8.65014&lt;space&gt;6.31634&lt;space&gt;8.82055&lt;space&gt;6.31822&lt;space&gt;8.99746C6.32009&lt;space&gt;9.17437&lt;space&gt;6.39217&lt;space&gt;9.34329&lt;space&gt;6.51859&lt;space&gt;9.46705C6.56701&lt;space&gt;9.51658&lt;space&gt;6.61821&lt;space&gt;9.56332&lt;space&gt;6.67192&lt;space&gt;9.60705C7.24171&lt;space&gt;10.1007&lt;space&gt;7.97741&lt;space&gt;10.36&lt;space&gt;8.73079&lt;space&gt;10.3328C9.48417&lt;space&gt;10.3056&lt;space&gt;10.1992&lt;space&gt;9.99385&lt;space&gt;10.7319&lt;space&gt;9.46039L13.7653&lt;space&gt;6.42706C14.3261&lt;space&gt;5.86977&lt;space&gt;14.6438&lt;space&gt;5.11321&lt;space&gt;14.6488&lt;space&gt;4.32255C14.6537&lt;space&gt;3.5319&lt;space&gt;14.3457&lt;space&gt;2.77138&lt;space&gt;13.7919&lt;space&gt;2.20706V2.20706Z&lt;quote&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;svg&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;svg&lt;space&gt;class=&lt;quote&gt;icon&lt;space&gt;icon--check&lt;quote&gt;&lt;space&gt;viewBox=&lt;quote&gt;0&lt;space&gt;0&lt;space&gt;16&lt;space&gt;16&lt;quote&gt;&lt;space&gt;xmlns=&lt;quote&gt;http:&lt;solidus&gt;&lt;solidus&gt;www.w3.org&lt;solidus&gt;2000&lt;solidus&gt;svg&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;path&lt;space&gt;d=&lt;quote&gt;M12.4749&lt;space&gt;4.80657C12.413&lt;space&gt;4.74409&lt;space&gt;12.3392&lt;space&gt;4.69449&lt;space&gt;12.258&lt;space&gt;4.66065C12.1767&lt;space&gt;4.6268&lt;space&gt;12.0896&lt;space&gt;4.60938&lt;space&gt;12.0016&lt;space&gt;4.60938C11.9136&lt;space&gt;4.60938&lt;space&gt;11.8264&lt;space&gt;4.6268&lt;space&gt;11.7452&lt;space&gt;4.66065C11.664&lt;space&gt;4.69449&lt;space&gt;11.5902&lt;space&gt;4.74409&lt;space&gt;11.5283&lt;space&gt;4.80657L6.56159&lt;space&gt;9.77991L4.47493&lt;space&gt;7.68657C4.41058&lt;space&gt;7.62441&lt;space&gt;4.33462&lt;space&gt;7.57554&lt;space&gt;4.25138&lt;space&gt;7.54274C4.16815&lt;space&gt;7.50993&lt;space&gt;4.07926&lt;space&gt;7.49385&lt;space&gt;3.98981&lt;space&gt;7.49539C3.90036&lt;space&gt;7.49694&lt;space&gt;3.81208&lt;space&gt;7.51609&lt;space&gt;3.73003&lt;space&gt;7.55176C3.64798&lt;space&gt;7.58742&lt;space&gt;3.57375&lt;space&gt;7.63889&lt;space&gt;3.51159&lt;space&gt;7.70324C3.44944&lt;space&gt;7.76759&lt;space&gt;3.40056&lt;space&gt;7.84355&lt;space&gt;3.36776&lt;space&gt;7.92679C3.33495&lt;space&gt;8.01002&lt;space&gt;3.31887&lt;space&gt;8.09891&lt;space&gt;3.32041&lt;space&gt;8.18836C3.32196&lt;space&gt;8.27781&lt;space&gt;3.34111&lt;space&gt;8.36609&lt;space&gt;3.37678&lt;space&gt;8.44814C3.41244&lt;space&gt;8.53019&lt;space&gt;3.46391&lt;space&gt;8.60441&lt;space&gt;3.52826&lt;space&gt;8.66657L6.08826&lt;space&gt;11.2266C6.15024&lt;space&gt;11.2891&lt;space&gt;6.22397&lt;space&gt;11.3387&lt;space&gt;6.30521&lt;space&gt;11.3725C6.38645&lt;space&gt;11.4063&lt;space&gt;6.47359&lt;space&gt;11.4238&lt;space&gt;6.56159&lt;space&gt;11.4238C6.6496&lt;space&gt;11.4238&lt;space&gt;6.73674&lt;space&gt;11.4063&lt;space&gt;6.81798&lt;space&gt;11.3725C6.89922&lt;space&gt;11.3387&lt;space&gt;6.97295&lt;space&gt;11.2891&lt;space&gt;7.03493&lt;space&gt;11.2266L12.4749&lt;space&gt;5.78657C12.5426&lt;space&gt;5.72415&lt;space&gt;12.5966&lt;space&gt;5.64838&lt;space&gt;12.6335&lt;space&gt;5.56404C12.6705&lt;space&gt;5.47971&lt;space&gt;12.6895&lt;space&gt;5.38864&lt;space&gt;12.6895&lt;space&gt;5.29657C12.6895&lt;space&gt;5.20451&lt;space&gt;12.6705&lt;space&gt;5.11344&lt;space&gt;12.6335&lt;space&gt;5.0291C12.5966&lt;space&gt;4.94477&lt;space&gt;12.5426&lt;space&gt;4.869&lt;space&gt;12.4749&lt;space&gt;4.80657V4.80657Z&lt;quote&gt;&lt;space&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;svg&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;span&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;Kopiera&lt;space&gt;URI&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;button&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;td&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;tr&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;tr&lt;space&gt;class=&lt;quote&gt;license-information-field&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;td&lt;space&gt;colspan=&lt;quote&gt;2&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;license-information-field__content&lt;space&gt;license-information-field__content--single-column&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;svg&lt;space&gt;class=&lt;quote&gt;license-information-field__icon&lt;quote&gt;&lt;space&gt;xmlns=&lt;quote&gt;http:&lt;solidus&gt;&lt;solidus&gt;www.w3.org&lt;solidus&gt;2000&lt;solidus&gt;svg&lt;quote&gt;&lt;space&gt;width=&lt;quote&gt;25&lt;quote&gt;&lt;space&gt;viewBox=&lt;quote&gt;0&lt;space&gt;0&lt;space&gt;25&lt;space&gt;25&lt;quote&gt;&lt;space&gt;fill=&lt;quote&gt;none&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;path&lt;space&gt;d=&lt;quote&gt;M12.5008&lt;space&gt;5.30176C8.37383&lt;space&gt;5.30176&lt;space&gt;7.33594&lt;space&gt;9.1959&lt;space&gt;7.33594&lt;space&gt;12.4971C7.33594&lt;space&gt;15.7986&lt;space&gt;8.37344&lt;space&gt;19.6924&lt;space&gt;12.5008&lt;space&gt;19.6924C16.6273&lt;space&gt;19.6924&lt;space&gt;17.6652&lt;space&gt;15.7986&lt;space&gt;17.6652&lt;space&gt;12.4971C17.6652&lt;space&gt;9.1959&lt;space&gt;16.6273&lt;space&gt;5.30176&lt;space&gt;12.5008&lt;space&gt;5.30176ZM12.5008&lt;space&gt;8.01504C12.6684&lt;space&gt;8.01504&lt;space&gt;12.8211&lt;space&gt;8.04082&lt;space&gt;12.9648&lt;space&gt;8.07637C13.2621&lt;space&gt;8.33262&lt;space&gt;13.4074&lt;space&gt;8.68613&lt;space&gt;13.1223&lt;space&gt;9.1791L10.3738&lt;space&gt;14.2299C10.2895&lt;space&gt;13.5908&lt;space&gt;10.2773&lt;space&gt;12.9643&lt;space&gt;10.2773&lt;space&gt;12.4967C10.2773&lt;space&gt;11.0428&lt;space&gt;10.3781&lt;space&gt;8.01504&lt;space&gt;12.5008&lt;space&gt;8.01504ZM14.5578&lt;space&gt;10.3436C14.7035&lt;space&gt;11.1186&lt;space&gt;14.7242&lt;space&gt;11.9279&lt;space&gt;14.7242&lt;space&gt;12.4971C14.7242&lt;space&gt;13.9514&lt;space&gt;14.6234&lt;space&gt;16.9795&lt;space&gt;12.5016&lt;space&gt;16.9795C12.3344&lt;space&gt;16.9795&lt;space&gt;12.1805&lt;space&gt;16.9619&lt;space&gt;12.0375&lt;space&gt;16.9264C12.0102&lt;space&gt;16.9182&lt;space&gt;11.9852&lt;space&gt;16.9096&lt;space&gt;11.9586&lt;space&gt;16.9002C11.9148&lt;space&gt;16.8877&lt;space&gt;11.8687&lt;space&gt;16.8736&lt;space&gt;11.8273&lt;space&gt;16.8572C11.3547&lt;space&gt;16.6561&lt;space&gt;11.057&lt;space&gt;16.2924&lt;space&gt;11.4859&lt;space&gt;15.649L14.5578&lt;space&gt;10.3436Z&lt;quote&gt;&lt;space&gt;fill=&lt;quote&gt;#606060&lt;quote&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;path&lt;space&gt;d=&lt;quote&gt;M12.4738&lt;space&gt;0C9.00625&lt;space&gt;0&lt;space&gt;6.08359&lt;space&gt;1.20703&lt;space&gt;3.70273&lt;space&gt;3.63281C2.49688&lt;space&gt;4.83867&lt;space&gt;1.57656&lt;space&gt;6.21367&lt;space&gt;0.936328&lt;space&gt;7.74688C0.311328&lt;space&gt;9.26523&lt;space&gt;0&lt;space&gt;10.848&lt;space&gt;0&lt;space&gt;12.5C0&lt;space&gt;14.1672&lt;space&gt;0.311328&lt;space&gt;15.75&lt;space&gt;0.936328&lt;space&gt;17.2531C1.56133&lt;space&gt;18.757&lt;space&gt;2.46797&lt;space&gt;20.1094&lt;space&gt;3.65859&lt;space&gt;21.3141C4.86367&lt;space&gt;22.5051&lt;space&gt;6.2168&lt;space&gt;23.423&lt;space&gt;7.72031&lt;space&gt;24.0629C9.23828&lt;space&gt;24.6887&lt;space&gt;10.8215&lt;space&gt;24.9996&lt;space&gt;12.4738&lt;space&gt;24.9996C14.1258&lt;space&gt;24.9996&lt;space&gt;15.7316&lt;space&gt;24.677&lt;space&gt;17.2797&lt;space&gt;24.0367C18.8273&lt;space&gt;23.3965&lt;space&gt;20.2078&lt;space&gt;22.4766&lt;space&gt;21.4285&lt;space&gt;21.2707C22.6047&lt;space&gt;20.125&lt;space&gt;23.4945&lt;space&gt;18.8109&lt;space&gt;24.0895&lt;space&gt;17.323C24.6992&lt;space&gt;15.8203&lt;space&gt;25&lt;space&gt;14.2121&lt;space&gt;25&lt;space&gt;12.5C25&lt;space&gt;10.8035&lt;space&gt;24.6992&lt;space&gt;9.19766&lt;space&gt;24.0898&lt;space&gt;7.69414C23.4797&lt;space&gt;6.17656&lt;space&gt;22.5867&lt;space&gt;4.83477&lt;space&gt;21.4113&lt;space&gt;3.65898C18.9551&lt;space&gt;1.21836&lt;space&gt;15.9707&lt;space&gt;0&lt;space&gt;12.4738&lt;space&gt;0ZM12.5262&lt;space&gt;2.24961C15.3535&lt;space&gt;2.24961&lt;space&gt;17.7652&lt;space&gt;3.25195&lt;space&gt;19.7738&lt;space&gt;5.26094C20.7414&lt;space&gt;6.22852&lt;space&gt;21.4828&lt;space&gt;7.33516&lt;space&gt;21.9887&lt;space&gt;8.56992C22.4949&lt;space&gt;9.80508&lt;space&gt;22.75&lt;space&gt;11.116&lt;space&gt;22.75&lt;space&gt;12.5C22.75&lt;space&gt;15.3727&lt;space&gt;21.7672&lt;space&gt;17.7555&lt;space&gt;19.818&lt;space&gt;19.6602C18.8055&lt;space&gt;20.643&lt;space&gt;17.6687&lt;space&gt;21.3973&lt;space&gt;16.4039&lt;space&gt;21.9184C15.1539&lt;space&gt;22.4395&lt;space&gt;13.8656&lt;space&gt;22.6973&lt;space&gt;12.5262&lt;space&gt;22.6973C11.1715&lt;space&gt;22.6973&lt;space&gt;9.87461&lt;space&gt;22.4422&lt;space&gt;8.63984&lt;space&gt;21.9363C7.4043&lt;space&gt;21.4152&lt;space&gt;6.2957&lt;space&gt;20.6715&lt;space&gt;5.31328&lt;space&gt;19.7035C4.33086&lt;space&gt;18.7215&lt;space&gt;3.57305&lt;space&gt;17.6125&lt;space&gt;3.0375&lt;space&gt;16.377C2.5168&lt;space&gt;15.1273&lt;space&gt;2.24961&lt;space&gt;13.8387&lt;space&gt;2.24961&lt;space&gt;12.4992C2.24961&lt;space&gt;11.1449&lt;space&gt;2.5168&lt;space&gt;9.84805&lt;space&gt;3.0375&lt;space&gt;8.61289C3.57305&lt;space&gt;7.36289&lt;space&gt;4.33125&lt;space&gt;6.24023&lt;space&gt;5.31328&lt;space&gt;5.24258C7.2625&lt;space&gt;3.24922&lt;space&gt;9.66875&lt;space&gt;2.24961&lt;space&gt;12.5262&lt;space&gt;2.24961Z&lt;quote&gt;&lt;space&gt;fill=&lt;quote&gt;#606060&lt;quote&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;svg&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;p&lt;space&gt;class=&lt;quote&gt;license-information-field__text&lt;quote&gt;&lt;gt&gt;All&lt;space&gt;textinformation&lt;space&gt;&lt;openparen&gt;metadata&lt;closeparen&gt;&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;denna&lt;space&gt;sida&lt;space&gt;&lt;u00e4&gt;r&lt;space&gt;fri&lt;space&gt;att&lt;space&gt;anv&lt;u00e4&gt;nda&lt;space&gt;enligt&lt;space&gt;licensen&lt;space&gt;CC0.&lt;lt&gt;br&lt;gt&gt;&lt;lt&gt;a&lt;space&gt;href=&lt;quote&gt;&lt;solidus&gt;licensinformation&lt;quote&gt;&lt;gt&gt;Mer&lt;space&gt;information&lt;space&gt;om&lt;space&gt;licenser&lt;space&gt;hos&lt;space&gt;Statens&lt;space&gt;historiska&lt;space&gt;museer.&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lt&gt;&lt;solidus&gt;p&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;td&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;tr&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;table&lt;gt&gt;&lt;lf&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;split-layout__mobile-only&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;article&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;main&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;footer&lt;space&gt;class=&lt;quote&gt;footer&lt;space&gt;footer--alternative&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;footer__inner-wrapper&lt;quote&gt;&lt;space&gt;data-nosnippet&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;logo-container&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;span&lt;space&gt;class=&lt;quote&gt;logo-container__heading&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;img&lt;space&gt;class=&lt;quote&gt;logo-container__heading__icon&lt;quote&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;src=&lt;quote&gt;&lt;solidus&gt;logos&lt;solidus&gt;logo-shm-large.svg&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;alt=&lt;quote&gt;Statens&lt;space&gt;historiska&lt;space&gt;museer&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;span&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;logo-container__wrapper&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;arkeologerna.com&lt;solidus&gt;&lt;quote&gt;&lt;space&gt;aria-label=&lt;quote&gt;Till&lt;space&gt;Arkeologerna&lt;quote&gt;&lt;space&gt;target=&lt;quote&gt;_blank&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;img&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link__icon&lt;space&gt;logo-container__logo-link__icon--arkeologerna&lt;quote&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;src=&lt;quote&gt;&lt;solidus&gt;logos&lt;solidus&gt;ws-arkeologerna.svg&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;alt=&lt;quote&gt;Arkeologerna&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;ekonomiskamuseet.se&lt;quote&gt;&lt;space&gt;aria-label=&lt;quote&gt;Till&lt;space&gt;Ekonomiska&lt;space&gt;museet&lt;quote&gt;&lt;space&gt;target=&lt;quote&gt;_blank&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;img&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link__icon&lt;space&gt;logo-container__logo-link__icon--ekonomiska&lt;quote&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;src=&lt;quote&gt;&lt;solidus&gt;logos&lt;solidus&gt;ws-ekonomiska.svg&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;alt=&lt;quote&gt;Ekonomiska&lt;space&gt;museet&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;hallwylskamuseet.se&lt;solidus&gt;sv&lt;quote&gt;&lt;space&gt;aria-label=&lt;quote&gt;Till&lt;space&gt;Hallwylska&lt;space&gt;museet&lt;quote&gt;&lt;space&gt;target=&lt;quote&gt;_blank&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;img&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link__icon&lt;space&gt;logo-container__logo-link__icon--hallwylska&lt;quote&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;src=&lt;quote&gt;&lt;solidus&gt;logos&lt;solidus&gt;ws-hallwylska.svg&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;alt=&lt;quote&gt;Hallwylska&lt;space&gt;museet&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;historiska.se&lt;solidus&gt;&lt;quote&gt;&lt;space&gt;aria-label=&lt;quote&gt;Till&lt;space&gt;Historiska&lt;space&gt;museet&lt;quote&gt;&lt;space&gt;target=&lt;quote&gt;_blank&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;img&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link__icon&lt;space&gt;logo-container__logo-link__icon--historiska&lt;quote&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;src=&lt;quote&gt;&lt;solidus&gt;logos&lt;solidus&gt;ws-historiska.svg&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;alt=&lt;quote&gt;Historiska&lt;space&gt;museet&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;livrustkammaren.se&lt;solidus&gt;sv&lt;quote&gt;&lt;space&gt;aria-label=&lt;quote&gt;Till&lt;space&gt;Livrustkammaren&lt;quote&gt;&lt;space&gt;target=&lt;quote&gt;_blank&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;img&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link__icon&lt;space&gt;logo-container__logo-link__icon--livrustkammaren&lt;quote&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;src=&lt;quote&gt;&lt;solidus&gt;logos&lt;solidus&gt;ws-livrustkammaren.svg&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;alt=&lt;quote&gt;Livrustkammaren&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;skoklostersslott.se&lt;solidus&gt;sv&lt;quote&gt;&lt;space&gt;aria-label=&lt;quote&gt;Till&lt;space&gt;Skoklosters&lt;space&gt;slott&lt;quote&gt;&lt;space&gt;target=&lt;quote&gt;_blank&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;img&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link__icon&lt;space&gt;logo-container__logo-link__icon--skoklosters&lt;quote&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;src=&lt;quote&gt;&lt;solidus&gt;logos&lt;solidus&gt;ws-skoklosters.svg&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;alt=&lt;quote&gt;&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;tumbabruksmuseum.se&lt;solidus&gt;&lt;quote&gt;&lt;space&gt;aria-label=&lt;quote&gt;Till&lt;space&gt;Tumba&lt;space&gt;bruksmuseum&lt;quote&gt;&lt;space&gt;target=&lt;quote&gt;_blank&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;img&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link__icon&lt;space&gt;logo-container__logo-link__icon--tumba&lt;quote&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;src=&lt;quote&gt;&lt;solidus&gt;logos&lt;solidus&gt;ws-tumba.svg&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;alt=&lt;quote&gt;Skoklosters&lt;space&gt;slott&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;museumforintelsen.se&lt;solidus&gt;&lt;quote&gt;&lt;space&gt;aria-label=&lt;quote&gt;Till&lt;space&gt;Sveriges&lt;space&gt;Museum&lt;space&gt;om&lt;space&gt;f&lt;u00f6&gt;rintelsen&lt;quote&gt;&lt;space&gt;target=&lt;quote&gt;_blank&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;img&lt;space&gt;class=&lt;quote&gt;logo-container__logo-link__icon&lt;space&gt;logo-container__logo-link__icon--forintelsen&lt;quote&gt;&lt;space&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;src=&lt;quote&gt;&lt;solidus&gt;logos&lt;solidus&gt;ws-smf.svg&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;alt=&lt;quote&gt;Sveriges&lt;space&gt;Museum&lt;space&gt;om&lt;space&gt;f&lt;u00f6&gt;rintelsen&lt;quote&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;solidus&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;h2&lt;space&gt;class=&lt;quote&gt;h3&lt;quote&gt;&lt;gt&gt;Om&lt;space&gt;v&lt;u00e5&gt;ra&lt;space&gt;samlingar&lt;lt&gt;&lt;solidus&gt;h2&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;p&lt;space&gt;class=&lt;quote&gt;footer__text&lt;quote&gt;&lt;gt&gt;Statens&lt;space&gt;historiska&lt;space&gt;museer&lt;space&gt;&lt;openparen&gt;SHM&lt;closeparen&gt;&lt;space&gt;har&lt;space&gt;till&lt;space&gt;uppgift&lt;space&gt;att&lt;space&gt;fr&lt;u00e4&gt;mja&lt;space&gt;kunskapen&lt;space&gt;om&lt;space&gt;och&lt;space&gt;intresset&lt;space&gt;f&lt;u00f6&gt;r&lt;space&gt;Sveriges&lt;space&gt;historia&lt;space&gt;och&lt;space&gt;att&lt;space&gt;bevara&lt;space&gt;och&lt;space&gt;utveckla&lt;space&gt;det&lt;space&gt;kulturarv&lt;space&gt;som&lt;space&gt;myndigheten&lt;space&gt;f&lt;u00f6&gt;rvaltar.&lt;space&gt;V&lt;u00e5&gt;r&lt;space&gt;verksamhet&lt;space&gt;ska&lt;space&gt;vara&lt;space&gt;en&lt;space&gt;angel&lt;u00e4&gt;genhet&lt;space&gt;f&lt;u00f6&gt;r&lt;space&gt;alla&lt;space&gt;m&lt;u00e4&gt;nniskor&lt;space&gt;i&lt;space&gt;samh&lt;u00e4&gt;llet.&lt;space&gt;H&lt;u00e4&gt;r&lt;space&gt;f&lt;u00e5&gt;r&lt;space&gt;du&lt;space&gt;tillg&lt;u00e5&gt;ng&lt;space&gt;till&lt;space&gt;de&lt;space&gt;samlingar&lt;space&gt;vi&lt;space&gt;f&lt;u00f6&gt;rvaltar&lt;space&gt;genom&lt;space&gt;att&lt;space&gt;s&lt;u00f6&gt;ka&lt;space&gt;i&lt;space&gt;v&lt;u00e5&gt;r&lt;space&gt;databas&lt;space&gt;p&lt;u00e5&gt;&lt;space&gt;n&lt;u00e4&gt;tet.&lt;lt&gt;&lt;solidus&gt;p&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;footer__links&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;href=&lt;quote&gt;&lt;solidus&gt;om-kakor&lt;quote&gt;&lt;gt&gt;Om&lt;space&gt;kakor&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;button&lt;space&gt;class=&lt;quote&gt;btn&lt;space&gt;btn--link&lt;quote&gt;&lt;space&gt;data-cookiebot-trigger&lt;space&gt;aria-haspopup=&lt;quote&gt;dialog&lt;quote&gt;&lt;gt&gt;Hantera&lt;space&gt;kakor&lt;lt&gt;&lt;solidus&gt;button&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;href=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;shm.se&lt;solidus&gt;kontakt&lt;solidus&gt;behandling-av-personuppgifter&lt;solidus&gt;&lt;quote&gt;&lt;gt&gt;Om&lt;space&gt;behandling&lt;space&gt;av&lt;space&gt;personuppgifter&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;href=&lt;quote&gt;&lt;solidus&gt;release-notes&lt;quote&gt;&lt;gt&gt;Release&lt;space&gt;notes&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;p&lt;space&gt;class=&lt;quote&gt;footer__support&lt;quote&gt;&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;span&lt;space&gt;class=&lt;quote&gt;footer__support__text&lt;quote&gt;&lt;gt&gt;Teknisk&lt;space&gt;support:&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;span&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;a&lt;space&gt;class=&lt;quote&gt;footer__support__link&lt;quote&gt;&lt;space&gt;href=&lt;quote&gt;mailto:&lt;space&gt;digitalcollections&lt;at&gt;shm.se&lt;quote&gt;&lt;gt&gt;digitalcollections&lt;at&gt;shm.se&lt;lt&gt;&lt;solidus&gt;a&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;p&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;lt&gt;&lt;solidus&gt;footer&lt;gt&gt;&lt;lf&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;div&lt;space&gt;class=&lt;quote&gt;type-theme&lt;space&gt;type-theme--term&lt;quote&gt;&lt;space&gt;aria-hidden=&lt;quote&gt;true&lt;quote&gt;&lt;gt&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;div&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;script&lt;space&gt;src=&lt;quote&gt;https:&lt;solidus&gt;&lt;solidus&gt;samlingar.shm.se&lt;solidus&gt;assets&lt;solidus&gt;main-49c1dfcd5301bab1e956.js&lt;quote&gt;&lt;gt&gt;&lt;lt&gt;&lt;solidus&gt;script&lt;gt&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;lt&gt;&lt;solidus&gt;body&lt;gt&gt;&lt;lf&gt;&lt;lt&gt;&lt;solidus&gt;html&lt;gt&gt; buffer SET_TO"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="9"
+#!   TYPE="HTMLExtractor"
+#!   VERSION="2"
+#!   POSITION="2178.2610626106257 -1406.2640626406262"
+#!   BOUNDING_RECT="2178.2610626106257 -1406.2640626406262 436 65"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="false"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="Results"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="test" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="link{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="test" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="link{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RESULT_SETTINGS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEARCH_SETTINGS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SOUP_SOURCE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="HTMLExtractor_2"/>
+#!     <XFORM_PARM PARM_NAME="_FME_USE_PARSER" PARM_VALUE="html.parser"/>
+#!     <XFORM_PARM PARM_NAME="_FME_VERIFY_HTTPS" PARM_VALUE="yes"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_html_field" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;test&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_html_file" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_html_specification" PARM_VALUE="Content"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_result_type_name" PARM_VALUE="LIST_ATTR"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_search_table" PARM_VALUE="link &lt;openbracket&gt;class=&lt;quote&gt;inline-field-link&lt;quote&gt;&lt;closebracket&gt; href"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeManager"
+#!   VERSION="5"
+#!   POSITION="1525.1305313053122 506.87821878218784"
+#!   BOUNDING_RECT="1525.1305313053122 506.87821878218784 436 65"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="over" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="snavare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="overgripande" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="desc" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="foredragen_term" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="_creation_instance _creation_instance  uint64 NO_OP _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.name _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.name  buffer NO_OP _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.value _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.value  buffer NO_OP _response_body _response_body  buffer NO_OP _http_status_code _http_status_code  buffer NO_OP  over &lt;at&gt;FindString&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;_response_body&lt;closeparen&gt;&lt;comma&gt;&lt;lt&gt;th&lt;gt&gt;Sn&lt;u00e4&gt;vare&lt;space&gt;term&lt;lt&gt;&lt;solidus&gt;th&lt;gt&gt;&lt;comma&gt;0&lt;comma&gt;caseSensitive=TRUE&lt;closeparen&gt; varchar&lt;openparen&gt;200&lt;closeparen&gt; SET_TO  snavare &lt;at&gt;Substring&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;_response_body&lt;closeparen&gt;&lt;comma&gt;&lt;space&gt;&lt;at&gt;FindString&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;_response_body&lt;closeparen&gt;&lt;comma&gt;&lt;lt&gt;th&lt;gt&gt;Sn&lt;u00e4&gt;vare&lt;space&gt;term&lt;lt&gt;&lt;solidus&gt;th&lt;gt&gt;&lt;comma&gt;0&lt;comma&gt;caseSensitive=TRUE&lt;closeparen&gt;&lt;closeparen&gt; varchar&lt;openparen&gt;200&lt;closeparen&gt; SET_TO  overgripande &lt;at&gt;Substring&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;_response_body&lt;closeparen&gt;&lt;comma&gt;0&lt;comma&gt;&lt;space&gt;&lt;at&gt;FindString&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;_response_body&lt;closeparen&gt;&lt;comma&gt;&lt;lt&gt;th&lt;gt&gt;Sn&lt;u00e4&gt;vare&lt;space&gt;term&lt;lt&gt;&lt;solidus&gt;th&lt;gt&gt;&lt;comma&gt;0&lt;comma&gt;caseSensitive=TRUE&lt;closeparen&gt;&lt;closeparen&gt;&lt;lf&gt; varchar&lt;openparen&gt;200&lt;closeparen&gt; SET_TO uri uri  varchar&lt;openparen&gt;200&lt;closeparen&gt; NO_OP title title  varchar&lt;openparen&gt;200&lt;closeparen&gt; NO_OP desc desc  varchar&lt;openparen&gt;200&lt;closeparen&gt; NO_OP  foredragen_term &quot;FME_CONDITIONAL:DEFAULT_VALUE&apos;NEJ&apos;BOOL_OP;OR;COMPOSITE_TEST;1;TEST &lt;at&gt;FindString&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;_response_body&lt;closeparen&gt;&lt;comma&gt;F&lt;u00f6&gt;redragen&lt;space&gt;term&lt;comma&gt;0&lt;comma&gt;caseSensitive=TRUE&lt;closeparen&gt; &gt; 0&apos;JA&apos;FME_NUM_CONDITIONS2___&quot; varchar&lt;openparen&gt;200&lt;closeparen&gt; SET_TO"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_2"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="HTMLExtractor"
+#!   VERSION="2"
+#!   POSITION="1934.3943439434406 -83.12828128281285"
+#!   BOUNDING_RECT="1934.3943439434406 -83.12828128281285 436 65"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="Results"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="over" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="snavare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="overgripande" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="desc" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="foredragen_term" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="desc{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="links{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="over" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="snavare" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="overgripande" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="desc" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="foredragen_term" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="uri{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="desc{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="links{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="RESULT_SETTINGS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEARCH_SETTINGS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SOUP_SOURCE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="HTMLExtractor_3"/>
+#!     <XFORM_PARM PARM_NAME="_FME_USE_PARSER" PARM_VALUE="html.parser"/>
+#!     <XFORM_PARM PARM_NAME="_FME_VERIFY_HTTPS" PARM_VALUE="yes"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_html_field" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;snavare&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_html_file" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_html_specification" PARM_VALUE="Content"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_result_type_name" PARM_VALUE="LIST_ATTR"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_search_table" PARM_VALUE="uri &lt;openbracket&gt;property=&lt;quote&gt;og:url&lt;quote&gt;&lt;closebracket&gt; content desc &lt;openbracket&gt;property=&lt;quote&gt;og:description&lt;quote&gt;&lt;closebracket&gt; content links &lt;openbracket&gt;class=&lt;quote&gt;inline-field-link&lt;quote&gt;&lt;closebracket&gt; href"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="ListExploder"
+#!   VERSION="6"
+#!   POSITION="1878.1437814378146 -542.50787507875089"
+#!   BOUNDING_RECT="1878.1437814378146 -542.50787507875089 436 65"
+#!   ORDER="500000000000008"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="ELEMENTS"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="over" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="snavare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="overgripande" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="desc" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="foredragen_term" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="desc{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="links" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="over" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="snavare" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="overgripande" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="desc" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="foredragen_term" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="uri{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="desc{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="links" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE_LOOKUP" PARM_VALUE="HANDLE_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES_LOOKUP" PARM_VALUE="INCOMING_IF_CONFLICT"/>
+#!     <XFORM_PARM PARM_NAME="INCOMING_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="INDEX_ATTR" PARM_VALUE="_element_index"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTR" PARM_VALUE="links{}"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="ListExploder"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_IS_LOOKUP="true" PARM_VALUE="Merge List Attributes"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_IS_LOOKUP="true" PARM_VALUE="Use List Attribute Values"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="20"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="2478.1497814978143 -542.50787507875089"
+#!   BOUNDING_RECT="2478.1497814978143 -542.50787507875089 436 65"
+#!   ORDER="500000000000009"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="over" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="snavare" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="overgripande" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="desc" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="foredragen_term" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="desc{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="links" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="over" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="snavare" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="overgripande" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="desc" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="foredragen_term" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="uri{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="desc{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="links" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="OR"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="CASE_INSENSITIVE_TEST &lt;at&gt;Value&lt;openparen&gt;links&lt;closeparen&gt; BEGINS_WITH https:&lt;solidus&gt;&lt;solidus&gt;samlingar.shm.se&lt;solidus&gt;term"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="CASE_INSENSITIVE_TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="22"
+#!   TYPE="HTMLExtractor"
+#!   VERSION="2"
+#!   POSITION="848.50412504125075 448.12871395437594"
+#!   BOUNDING_RECT="848.50412504125075 448.12871395437594 436 65"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="Results"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="desc" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_multipart_headers{}.value" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_response_body" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_http_status_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="desc" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="RESULT_SETTINGS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SEARCH_SETTINGS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SOUP_SOURCE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="HTMLExtractor"/>
+#!     <XFORM_PARM PARM_NAME="_FME_USE_PARSER" PARM_VALUE="html.parser"/>
+#!     <XFORM_PARM PARM_NAME="_FME_VERIFY_HTTPS" PARM_VALUE="yes"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_html_field" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;_response_body&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_html_file" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_html_specification" PARM_VALUE="Content"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_result_type_name" PARM_VALUE="FIRST_MATCH"/>
+#!     <XFORM_PARM PARM_NAME="___fme_htmlex_search_table" PARM_VALUE="uri &lt;openbracket&gt;property=&lt;quote&gt;og:url&lt;quote&gt;&lt;closebracket&gt; content title &lt;openbracket&gt;property=&lt;quote&gt;og:title&lt;quote&gt;&lt;closebracket&gt; content desc &lt;openbracket&gt;property=&lt;quote&gt;og:description&lt;quote&gt;&lt;closebracket&gt; content"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="27"
+#!   TYPE="AttributeManager"
+#!   VERSION="5"
+#!   POSITION="3026.6499064990635 -542.50787507875089"
+#!   BOUNDING_RECT="3026.6499064990635 -542.50787507875089 436 65"
+#!   ORDER="500000000000010"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="parent_uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="desc{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="foredragen_term" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="uri parent_uri  varchar&lt;openparen&gt;200&lt;closeparen&gt; RENAME_SET_VALUE links uri  varchar&lt;openparen&gt;200&lt;closeparen&gt; RENAME_SET_VALUE _element_index _element_index  uint32 NO_OP _creation_instance _creation_instance  uint64 REMOVE _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.name _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.name  buffer REMOVE _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.value _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.value  buffer REMOVE _response_body _response_body  buffer REMOVE _http_status_code _http_status_code  buffer REMOVE over over  varchar&lt;openparen&gt;200&lt;closeparen&gt; REMOVE snavare snavare  varchar&lt;openparen&gt;200&lt;closeparen&gt; REMOVE overgripande overgripande  varchar&lt;openparen&gt;200&lt;closeparen&gt; REMOVE uri&lt;opencurly&gt;&lt;closecurly&gt; uri&lt;opencurly&gt;&lt;closecurly&gt;  varchar&lt;openparen&gt;200&lt;closeparen&gt; NO_OP desc&lt;opencurly&gt;&lt;closecurly&gt; desc&lt;opencurly&gt;&lt;closecurly&gt;  varchar&lt;openparen&gt;200&lt;closeparen&gt; NO_OP desc desc  varchar&lt;openparen&gt;200&lt;closeparen&gt; REMOVE"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_3"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="32"
+#!   TYPE="AttributeManager"
+#!   VERSION="5"
+#!   POSITION="2590.6499064990635 691.87821878218779"
+#!   BOUNDING_RECT="2590.6499064990635 691.87821878218779 436 65"
+#!   ORDER="500000000000011"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="desc" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="parent_uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="foredragen_term" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="title title  varchar&lt;openparen&gt;200&lt;closeparen&gt; NO_OP desc desc  varchar&lt;openparen&gt;200&lt;closeparen&gt; NO_OP uri uri  varchar&lt;openparen&gt;200&lt;closeparen&gt; NO_OP  parent_uri $(parent_URL_2) varchar&lt;openparen&gt;200&lt;closeparen&gt; SET_TO _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.name _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.name  buffer REMOVE _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.value _multipart_headers&lt;opencurly&gt;&lt;closecurly&gt;.value  buffer REMOVE _response_body _response_body  buffer REMOVE _http_status_code _http_status_code  buffer REMOVE over over  varchar&lt;openparen&gt;200&lt;closeparen&gt; REMOVE snavare snavare  varchar&lt;openparen&gt;200&lt;closeparen&gt; REMOVE overgripande overgripande  varchar&lt;openparen&gt;200&lt;closeparen&gt; REMOVE _creation_instance _creation_instance  uint64 REMOVE"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE="parent_uri"/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager_4"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="29"
+#!   TYPE="WorkspaceRunner"
+#!   VERSION="5"
+#!   POSITION="3735.829406575313 -542.50787507875089"
+#!   BOUNDING_RECT="3735.829406575313 -542.50787507875089 489.328125 65"
+#!   ORDER="500000000000012"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="SUCCEEDED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="parent_uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="uri{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="desc{}" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="foredragen_term" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="parent_uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="uri" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_element_index" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="uri{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="desc{}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="title" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="foredragen_term" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_failure_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="SUMMARY"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="_proc_count" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_processes{}" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BLOCKING" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="LAST_KNOWN_PARAM_DEFS" PARM_VALUE="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiVEFSR0VUX1VSTCIsInByb21wdCI6IlJlcXVlc3QgVVJMIiwidmFsdWVUeXBlIjoic3RyaW5nRW5jb2RlZCIsImRlZmF1bHRWYWx1ZSI6Imh0dHBzOjxzb2xpZHVzPjxzb2xpZHVzPnNhbWxpbmdhci5zaG0uc2U8c29saWR1cz50ZXJtPHNvbGlkdXM+N2Q4MjU4MTYtNzU4OS00NmQzLWFhMzUtOGNhMTA4OTk2ZWZhIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoidXJsIiwidHJpbVdoaXRlc3BhY2UiOnRydWUsInNob3dFZGl0QnV0dG9uIjpmYWxzZSwidXJsU2V0dGluZ3MiOnsidmFsaWRTY2hlbWVzIjpbImh0dHBzIiwiaHR0cCJdfX0seyJuYW1lIjoicGFyZW50X1VSTF8yIiwicHJvbXB0IjoicGFyZW50IFVSTCIsInZhbHVlVHlwZSI6InN0cmluZ0VuY29kZWQiLCJkZWZhdWx0VmFsdWUiOiJodHRwczo8c29saWR1cz48c29saWR1cz5zYW1saW5nYXIuc2htLnNlPHNvbGlkdXM+dGVybTxzb2xpZHVzPiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InVybCIsInRyaW1XaGl0ZXNwYWNlIjp0cnVlLCJzaG93RWRpdEJ1dHRvbiI6ZmFsc2UsInVybFNldHRpbmdzIjp7InZhbGlkU2NoZW1lcyI6WyJodHRwcyIsImh0dHAiXX19LHsibmFtZSI6IkRlc3REYXRhc2V0X0NTVjIiLCJwcm9tcHQiOiJEZXN0aW5hdGlvbiBDU1YgKENvbW1hIFNlcGFyYXRlZCBWYWx1ZSkgRm9sZGVyIiwidmFsdWVUeXBlIjoic3RyaW5nIiwiZGVmYXVsdFZhbHVlIjoiJChGTUVfTUZfRElSKWtvZGxpc3RvciIsInR5cGUiOiJmaWxlIiwic2VsZWN0TXVsdGlwbGUiOmZhbHNlLCJpdGVtc1RvU2VsZWN0IjoiZm9sZGVycyIsImFjY2Vzc01vZGUiOiJ3cml0ZSIsInZhbGlkYXRlRXhpc3RlbmNlIjpmYWxzZX0seyJuYW1lIjoiZnRwX2ZlYXR1cmVfdHlwZV9uYW1lX2V4cCIsInByb21wdCI6InRvcHAgdGVybSIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6Im1hdGVyaWFsIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0Iiwic2hvd0VkaXRCdXR0b24iOmZhbHNlfV19"/>
+#!     <XFORM_PARM PARM_NAME="MAX_PROC" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MAX_TO_BATCH" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OVERWRITE_LOG_FILE" PARM_VALUE="HONOR"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="STDERR_HANDLING" PARM_VALUE="COMBINE"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="WORKSPACE_FILE" PARM_VALUE="$(FME_MF_DIR_ENCODED)getSHMkodlistor.fmw"/>
+#!     <XFORM_PARM PARM_NAME="WORKSPACE_PARAMETERS" PARM_VALUE="TARGET_URL,&lt;at&gt;Value&lt;openparen&gt;uri&lt;closeparen&gt;,parent_URL_2,&lt;at&gt;Value&lt;openparen&gt;parent_uri&lt;closeparen&gt;,DestDataset_CSV2,$(FME_MF_DIR_USERTYPED)kodlistor,ftp_feature_type_name_exp,$(ftp_feature_type_name_exp)"/>
+#!     <XFORM_PARM PARM_NAME="WS_PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="WorkspaceRunner"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="4"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="fo 0 CREATED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="14"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="22"
+#!   SOURCE_PORT_DESC="fo 0 Output"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="9"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="false"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="33"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="32"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="1"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="15"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 0 Results"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="21"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="20"
+#!   SOURCE_PORT_DESC="fo 0 ELEMENTS"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="20"
+#!   TARGET_NODE="27"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="24"
+#!   SOURCE_NODE="22"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 Results"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="31"
+#!   SOURCE_NODE="27"
+#!   TARGET_NODE="29"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="36"
+#!   SOURCE_NODE="32"
+#!   TARGET_NODE="35"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="-1"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE DestDataset_CSV2_1,CSV2_OUT_DATASET_GROUP_CSV2_1,CSV2_OUT_EXTENSION_CSV2_1,CSV2_OUT_FIELDS_GROUP_CSV2_1,CSV2_OUT_DELIMITER_CSV2_1,CSV2_OUT_ENCODING_GROUP_CSV2_1,CSV2_OUT_ENCODING_CSV2_1,CSV2_OUT_WRITE_BOM_FOR_UNICODE_CSV2_1,CSV2_OUT_ADVANCED_GROUP_CSV2_1,CSV2_OUT_QUALIFY_FIELD_NAMES_CSV2_1,CSV2_OUT_QUALIFY_FIELD_VALUES_CSV2_1,CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1,CSV2_OUT_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE_CSV2_1,CSV2_OUT_FIELD_QUALIFIER_CHARACTER_CSV2_1,CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1,CSV2_OUT_ROW_TERMINATION_CSV2_1,CSV2_OUT_WRITE_SCHEMA_FILE_CSV2_1,CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING_CSV2_1
+# ============================================================================
+DEFAULT_MACRO TARGET_URL https:<solidus><solidus>samlingar.shm.se<solidus>term<solidus>af2c98be-ba92-4bbe-bf51-bcb11f655108
+
+DEFAULT_MACRO parent_URL_2 https:<solidus><solidus>samlingar.shm.se<solidus>term<solidus>_toppterm_arkeologisk_kontext
+
+DEFAULT_MACRO DestDataset_CSV2 $(FME_MF_DIR)kodlistor
+
+DEFAULT_MACRO ftp_feature_type_name_exp arkeologisk_kontext
+
+# ============================================================================
+INCLUDE [ if {{$(TARGET_URL$encode)} == {}} { puts_real {Parameter 'TARGET_URL' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(parent_URL_2$encode)} == {}} { puts_real {Parameter 'parent_URL_2' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(DestDataset_CSV2$encode)} == {}} { puts_real {Parameter 'DestDataset_CSV2' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(ftp_feature_type_name_exp$encode)} == {}} { puts_real {Parameter 'ftp_feature_type_name_exp' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+WRITER_TYPE MULTI_WRITER
+WRITER_KEYWORD PRIMARY_DEST
+PRIMARY_DEST_DATASET_ORDER BY_ID
+PRIMARY_DEST_FIRST_WRITER_ID 0
+PRIMARY_DEST_TYPE{0} CSV2
+PRIMARY_DEST_KEYWORD{0} CSV2_1
+PRIMARY_DEST_GEN_DIRECTIVES{0} ENCODING_GROUP,,EXTENSION,csv,WRITE_SCHEMA_FILE,NO,EXISTING_SCHEMA_FILE_HANDLING,<lt>Unused<gt>,DATASET_GROUP,,ADVANCED_GROUP,,COORDINATE_SYSTEM_GRANULARITY,FEATURE_TYPE,WRITE_BOM_FOR_UNICODE,Yes,UNQUALIFIED_FIELD_VALUE_HANDLING,<lt>Unused<gt>,QUALIFY_FIELD_NAMES,if_needed,QUALIFY_FIELD_VALUES,if_needed,FIELD_QUALIFIER_CHARACTER,<lt>quote<gt>,WRITE_FIELD_NAMES,firstrow,ENCODING,UTF-8,ROW_TERMINATION,System,FIELDS_GROUP,,DELIMITER,<lt>comma<gt>,ADD_WRITER_NEXT_ACTION,automatic,FIELD_QUALIFIER_ESCAPE_CHARACTER,<lt>quote<gt>,EXISTING_FILE_HANDLING,Yes,TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE,Yes
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "CSV2_1"
+#! END_WB_HEADER
+#! START_DEST_HEADER CSV2 CSV2_1
+# =====================================================================
+# The following GUI line prompts for a folder where the
+# CSV files will be stored
+#! END_DEST_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO DestDataset
+INCLUDE [ if {"$(DestDataset)" != ""} {                          \
+ puts {DEFAULT_MACRO DestDataset_CSV2_1 $(DestDataset)}         \
+ } ]
+#! END_WB_HEADER
+#! START_DEST_HEADER CSV2 CSV2_1
+DEFAULT_MACRO DestDataset_CSV2_1 $(DestDataset_CSV2)
+GUI DIRNAME DestDataset_CSV2_1 Destination CSV (Comma Separated Value) Folder:
+DEFAULT_MACRO CSV2_OUT_DATASET_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_OUT_DATASET_GROUP_CSV2_1 CSV2_OUT_EXTENSION_CSV2_1%CSV2_OUT_EXISTING_FILE_HANDLING Dataset
+DEFAULT_MACRO CSV2_OUT_EXTENSION_CSV2_1 csv
+CSV2_1_EXTENSION "$(CSV2_OUT_EXTENSION_CSV2_1)"
+GUI OPTIONAL TEXT CSV2_OUT_EXTENSION_CSV2_1 Extension:
+DEFAULT_MACRO CSV2_OUT_EXISTING_FILE_HANDLING_CSV2_1 Yes
+CSV2_1_EXISTING_FILE_HANDLING "$(CSV2_OUT_EXISTING_FILE_HANDLING_CSV2_1)"
+DEFAULT_MACRO CSV2_OUT_FIELDS_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_OUT_FIELDS_GROUP_CSV2_1 CSV2_OUT_DELIMITER_CSV2_1%CSV2_OUT_WRITE_FIELD_NAMES Fields
+DEFAULT_MACRO CSV2_OUT_DELIMITER_CSV2_1 <comma>
+CSV2_1_DELIMITER "$(CSV2_OUT_DELIMITER_CSV2_1)"
+GUI STRING_OR_CHOICE_ENCODED CSV2_OUT_DELIMITER_CSV2_1 ,%;%|%space%tab Delimiter Character:
+DEFAULT_MACRO CSV2_OUT_WRITE_FIELD_NAMES_CSV2_1 firstrow
+CSV2_1_WRITE_FIELD_NAMES "$(CSV2_OUT_WRITE_FIELD_NAMES_CSV2_1)"
+DEFAULT_MACRO CSV2_OUT_ENCODING_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_OUT_ENCODING_GROUP_CSV2_1 CSV2_OUT_ENCODING_CSV2_1%CSV2_OUT_WRITE_BOM_FOR_UNICODE_CSV2_1 Encoding
+DEFAULT_MACRO CSV2_OUT_ENCODING_CSV2_1 UTF-8
+CSV2_1_ENCODING "$(CSV2_OUT_ENCODING_CSV2_1)"
+GUI STRING_OR_ENCODING CSV2_OUT_ENCODING_CSV2_1 fme-system%* Character Encoding:
+DEFAULT_MACRO CSV2_OUT_WRITE_BOM_FOR_UNICODE_CSV2_1 Yes
+CSV2_1_WRITE_BOM_FOR_UNICODE "$(CSV2_OUT_WRITE_BOM_FOR_UNICODE_CSV2_1)"
+GUI CHOICE CSV2_OUT_WRITE_BOM_FOR_UNICODE_CSV2_1 Yes%No Write Byte Order Mark for Unicode:
+DEFAULT_MACRO CSV2_OUT_ADVANCED_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_OUT_ADVANCED_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_OUT_QUALIFY_FIELD_NAMES_CSV2_1%CSV2_OUT_QUALIFY_FIELD_VALUES_CSV2_1%CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1%CSV2_OUT_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE_CSV2_1%CSV2_OUT_FIELD_QUALIFIER_CHARACTER_CSV2_1%CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1%CSV2_OUT_ROW_TERMINATION_CSV2_1%CSV2_OUT_WRITE_SCHEMA_FILE_CSV2_1 Advanced
+DEFAULT_MACRO CSV2_OUT_QUALIFY_FIELD_NAMES_CSV2_1 if_needed
+CSV2_1_QUALIFY_FIELD_NAMES "$(CSV2_OUT_QUALIFY_FIELD_NAMES_CSV2_1)"
+GUI LOOKUP_CHOICE CSV2_OUT_QUALIFY_FIELD_NAMES_CSV2_1 Yes,yes%No,no%If<space>Needed,if_needed Qualify Field Names:
+DEFAULT_MACRO CSV2_OUT_QUALIFY_FIELD_VALUES_CSV2_1 if_needed
+CSV2_1_QUALIFY_FIELD_VALUES "$(CSV2_OUT_QUALIFY_FIELD_VALUES_CSV2_1)"
+GUI ACTIVECHOICE_LOOKUP CSV2_OUT_QUALIFY_FIELD_VALUES_CSV2_1 Yes,yes,CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1%No,no%If<space>Needed,if_needed,CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1 Qualify Field Values:
+DEFAULT_MACRO CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1 <Unused>
+CSV2_1_UNQUALIFIED_FIELD_VALUE_HANDLING "$(CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1)"
+GUI LOOKUP_CHOICE CSV2_OUT_UNQUALIFIED_FIELD_VALUE_HANDLING_CSV2_1 Remove<space>Unsafe<space>Characters,remove_unsafe%Preserve<space>Unsafe<space>Characters,preserve_unsafe Unqualified Field Value Handling:
+DEFAULT_MACRO CSV2_OUT_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE_CSV2_1 Yes
+CSV2_1_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE "$(CSV2_OUT_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE_CSV2_1)"
+GUI CHOICE CSV2_OUT_TREAT_EMBEDDED_FIELD_QUALIFIERS_AS_UNSAFE_CSV2_1 Yes%No Treat Embedded Field Qualifiers As Unsafe:
+DEFAULT_MACRO CSV2_OUT_FIELD_QUALIFIER_CHARACTER_CSV2_1 <quote>
+CSV2_1_FIELD_QUALIFIER_CHARACTER "$(CSV2_OUT_FIELD_QUALIFIER_CHARACTER_CSV2_1)"
+GUI STRING_ENCODED CSV2_OUT_FIELD_QUALIFIER_CHARACTER_CSV2_1 Field Qualifier Character:
+DEFAULT_MACRO CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 <quote>
+CSV2_1_FIELD_QUALIFIER_ESCAPE_CHARACTER "$(CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1)"
+GUI STRING_ENCODED CSV2_OUT_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 Field Qualifier Escape Character:
+DEFAULT_MACRO CSV2_OUT_ROW_TERMINATION_CSV2_1 System
+CSV2_1_ROW_TERMINATION "$(CSV2_OUT_ROW_TERMINATION_CSV2_1)"
+GUI CHOICE CSV2_OUT_ROW_TERMINATION_CSV2_1 System%Windows%Unix%Macintosh Row Termination:
+DEFAULT_MACRO CSV2_OUT_WRITE_SCHEMA_FILE_CSV2_1 NO
+CSV2_1_WRITE_SCHEMA_FILE "$(CSV2_OUT_WRITE_SCHEMA_FILE_CSV2_1)"
+GUI ACTIVEDISCLOSUREGROUP CSV2_OUT_WRITE_SCHEMA_FILE_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING_CSV2_1 Write Schema Configuration File
+DEFAULT_MACRO CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING_CSV2_1 <Unused>
+CSV2_1_EXISTING_SCHEMA_FILE_HANDLING "$(CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING_CSV2_1)"
+GUI CHOICE CSV2_OUT_EXISTING_SCHEMA_FILE_HANDLING_CSV2_1 Overwrite%Prepend Existing Schema File Handling:
+DEFAULT_MACRO CSV2_OUT_COORDINATE_SYSTEM_GRANULARITY_CSV2_1 FEATURE_TYPE
+CSV2_1_COORDINATE_SYSTEM_GRANULARITY "$(CSV2_OUT_COORDINATE_SYSTEM_GRANULARITY_CSV2_1)"
+# ============================================================================
+CSV2_1_GENERATE_FME_BUILD_NUM 25615
+CSV2_1_DATASET "$(DestDataset_CSV2_1)"
+#! END_DEST_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)$(WORKSPACE_NAME).log"
+LOG_APPEND YES
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2025.1.1.0 (20250730 - Build 25615 - WIN64)"
+DEFAULT_MACRO DATASET_KEYWORD_CSV2_1 CSV2_1
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO FME_VIEWER_APP fmedatainspector
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+Tcl2 proc Creator_CoordSysRemover {} {   global FME_CoordSys;   set FME_CoordSys {}; }
+MACRO Creator_XML     NOT_ACTIVATED
+MACRO Creator_GEOJSON NOT_ACTIVATED
+INCLUDE [ if { {Geometry Object} == {Geometry Object} } {            puts {MACRO Creator_XML *} } ]
+INCLUDE [ if { {Geometry Object} == {GeoJSON} } {            puts {MACRO Creator_GEOJSON *} } ]
+FACTORY_DEF {$(Creator_XML)} CreationFactory    FACTORY_NAME { Creator_XML_Creator }    CREATE_AT_END { no }    OUTPUT { FEATURE_TYPE _____CREATED______        @Geometry(FROM_ENCODED_STRING,<lt>?xml<space>version=<quote>1.0<quote><space>encoding=<quote>US_ASCII<quote><space>standalone=<quote>no<quote><space>?<gt><lt>geometry<space>dimension=<quote>2<quote><gt><lt>null<solidus><gt><lt><solidus>geometry<gt>) }
+FACTORY_DEF {$(Creator_GEOJSON)} CreationFactory    FACTORY_NAME { Creator_GEOJSON_Creator }    CREATE_AT_END { no }    OUTPUT { FEATURE_TYPE _____CREATED______ 	   @SupplyAttributes(ENCODED,__GeoJSONCreatorTemp__,<Unused>)        @JSONGeometry(FROM_ATTRIBUTE,GEOJSON,__GeoJSONCreatorTemp__, PREFER_ERROR_OVER_REJECTION) 	   @RemoveAttributes(__GeoJSONCreatorTemp__) }
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { Creator_Cloner }    INPUT FEATURE_TYPE _____CREATED______        @Tcl2(Creator_CoordSysRemover)        @CoordSys()    NUMBER_OF_COPIES { 1 }    COPY_NUMBER_ATTRIBUTE { "_creation_instance" }    OUTPUT { FEATURE_TYPE Creator_CREATED        fme_feature_type Creator         }
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "Creator_CREATED Brancher -1 4"   INPUT FEATURE_TYPE Creator_CREATED   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+# Combine the two "file path attribute" parameters into one value.
+DEFAULT_MACRO HTTPCaller_FILE_PATH_ATTR
+INCLUDE [ 	if { {<Unused>} == {<Unused>} } { 		puts {MACRO HTTPCaller_FILE_PATH_ATTR "<Unused>"}; 	} else { 		puts {MACRO HTTPCaller_FILE_PATH_ATTR "<Unused>"}; 	} ]
+FACTORY_DEF {*} HTTPFactory    FACTORY_NAME { HTTPCaller }       INPUT  FEATURE_TYPE Creator_CREATED    TARGET_URL { "@EvaluateExpression(FDIV,STRING_ENCODED,$(TARGET_URL),HTTPCaller)" }    HTTP_METHOD { GET }    SAVE_FILE { NO }    OUTPUT_FILENAME { "<Unused>" }    OUTPUT_DIRECTORY { "<Unused>" }    FILE_EXTENSION { "<Unused>" }    TARGET_ATTR { "_response_body" }    FILE_PATH_ATTR { $(HTTPCaller_FILE_PATH_ATTR) }    UPLOAD_FILE { "<Unused>" }    UPLOAD_BODY { "<Unused>" }    UPLOAD_TYPE { <Unused> }    UPLOAD_CONTENT_TYPE { "<Unused>" }    COMBINED_MULTIPART_TABLE {  }    MULTIPART_CONTENT_TYPE { <Unused> }    REQUEST_HEADER_TABLE {  }    ADDITIONAL_URL_PARAMETERS {  }    AUTH_USERNAME { "<Unused>" }    AUTH_PASSWORD { "<Unused>" }    AUTH_METHOD { "<Unused>" }    TARGET_ATTRIBUTE_ENCODING { fme-system }    RESPONSE_HEADER_LIST_ATTR { "" }    STATUS_CODE_ATTR { "_http_status_code" }    ERROR_ATTR { "_error" }    CONNECTION_TIMEOUT_LENGTH { 60 }    TRANSFER_TIMEOUT_LENGTH { 90 }    FOLLOW_REDIRECTS { FOLLOW_WITH_GET }    REDIRECT_AUTH { ORIGINAL_DOMAIN_ONLY }    VERIFY_SSL_CERTIFICATES { Yes }    NAMED_CONNECTION { "<Unused>" }    USE_COOKIES { No }    MAX_TRANSFERS_IN_PROGRESS { 25 }    MAX_HTTP_VERSION { HTTP_2 }    RATE_LIMIT_MAX_REQUESTS { <Unused> }    RATE_LIMIT_INTERVAL_IN_SECONDS { <Unused> }    RATE_LIMIT_REQUEST_TIMING { <Unused> }    RETRY_FAILED_TRANSFERS { <Unused> }    RETRY_MAX_RETRIES { <Unused> }    RETRY_INITIAL_BACKOFF { <Unused> }    SPLIT_MULTIPART_RESPONSE { YES }    MULTIPART_RESPONSE_HEADER_LIST_ATTR { "_multipart_headers" }    MINIMUM_ENCRYPTION_LEVEL { "OS_DEFAULT" }    CLIENT_CERTIFICATE_TYPE { "NONE" }    CLIENT_CERTIFICATE_FROM_OS { "<Unused>" }    CLIENT_CERTIFICATE_FILE { "<Unused>" }    CLIENT_CERTIFICATE_PRIVATE_KEY_FILE { "<Unused>" }    CLIENT_CERTIFICATE_PASSWORD { "<Unused>" }    OUTPUT { OUTPUT FEATURE_TYPE HTTPCaller_Output          }    OUTPUT { REJECTED FEATURE_TYPE HTTPCaller_<REJECTED>          }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "HTTPCaller Output Splitter"   INPUT FEATURE_TYPE HTTPCaller_Output   OUTPUT FEATURE_TYPE HTTPCaller_Output_0_Rzrw0x5xRVA=   OUTPUT FEATURE_TYPE HTTPCaller_Output_1_fg0ZE4XyOoA=
+FACTORY_DEF * TeeFactory   FACTORY_NAME "HTTPCaller <REJECTED> Transformer Output Nuker"   INPUT FEATURE_TYPE HTTPCaller_<REJECTED>
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeManager (Disabled) Nuker"   INPUT FEATURE_TYPE HTTPCaller_Output_0_Rzrw0x5xRVA=
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { HTMLExtractor_CATCHER }    INPUT  FEATURE_TYPE HTTPCaller_Output_1_fg0ZE4XyOoA=    OUTPUT { FEATURE_TYPE HTMLExtractor_READY       ___fme_htmlex_xformer_name "HTMLExtractor"           ___fme_htmlex_html_specification Content     ___fme_htmlex_html_field "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>_response_body<closeparen>,HTMLExtractor)"     ___fme_htmlex_html_file <Unused>     ___fme_htmlex_search_table "uri <openbracket>property=<quote>og:url<quote><closebracket> content title <openbracket>property=<quote>og:title<quote><closebracket> content desc <openbracket>property=<quote>og:description<quote><closebracket> content"     _FME_USE_PARSER html.parser     ___fme_htmlex_result_type_name FIRST_MATCH     _FME_VERIFY_HTTPS yes  }
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { HTMLExtractor_CALLER }    INPUT { FEATURE_TYPE HTMLExtractor_READY }    SYMBOL_NAME htmlextractor.HTMLExtractor    PY_OUTPUT_TAGS { Results <REJECTED> }    OUTPUT { Results FEATURE_TYPE HTMLExtractor_Results        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager_2 }    INPUT  FEATURE_TYPE HTMLExtractor_Results    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 4    DEF_VAL_COLUMN 2    NUM_OF_COLUMNS 5    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "_creation_instance" "_creation_instance" "" "uint64" "NO_OP" }      ATTR_ACTION { "_multipart_headers<opencurly><closecurly>.name" "_multipart_headers<opencurly><closecurly>.name" "" "buffer" "NO_OP" }      ATTR_ACTION { "_multipart_headers<opencurly><closecurly>.value" "_multipart_headers<opencurly><closecurly>.value" "" "buffer" "NO_OP" }      ATTR_ACTION { "_response_body" "_response_body" "" "buffer" "NO_OP" }      ATTR_ACTION { "_http_status_code" "_http_status_code" "" "buffer" "NO_OP" }      ATTR_ACTION { "" "over" "<at>FindString<openparen><at>Value<openparen>_response_body<closeparen><comma><lt>th<gt>Sn<u00e4>vare<space>term<lt><solidus>th<gt><comma>0<comma>caseSensitive=TRUE<closeparen>" "varchar<openparen>200<closeparen>" "SET_TO" }      ATTR_ACTION { "" "snavare" "<at>Substring<openparen><at>Value<openparen>_response_body<closeparen><comma><space><at>FindString<openparen><at>Value<openparen>_response_body<closeparen><comma><lt>th<gt>Sn<u00e4>vare<space>term<lt><solidus>th<gt><comma>0<comma>caseSensitive=TRUE<closeparen><closeparen>" "varchar<openparen>200<closeparen>" "SET_TO" }      ATTR_ACTION { "" "overgripande" "<at>Substring<openparen><at>Value<openparen>_response_body<closeparen><comma>0<comma><space><at>FindString<openparen><at>Value<openparen>_response_body<closeparen><comma><lt>th<gt>Sn<u00e4>vare<space>term<lt><solidus>th<gt><comma>0<comma>caseSensitive=TRUE<closeparen><closeparen><lf>" "varchar<openparen>200<closeparen>" "SET_TO" }      ATTR_ACTION { "uri" "uri" "" "varchar<openparen>200<closeparen>" "NO_OP" }      ATTR_ACTION { "title" "title" "" "varchar<openparen>200<closeparen>" "NO_OP" }      ATTR_ACTION { "desc" "desc" "" "varchar<openparen>200<closeparen>" "NO_OP" }      ATTR_ACTION { "" "foredragen_term" "FME_CONDITIONAL:DEFAULT_VALUE'NEJ'BOOL_OP;OR;COMPOSITE_TEST;1;TEST <at>FindString<openparen><at>Value<openparen>_response_body<closeparen><comma>F<u00f6>redragen<space>term<comma>0<comma>caseSensitive=TRUE<closeparen> > 0'JA'FME_NUM_CONDITIONS2___" "varchar<openparen>200<closeparen>" "SET_TO" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_2_OUTPUT        }
+FACTORY_DEF * TeeFactory   FACTORY_NAME "AttributeManager_2 OUTPUT Splitter"   INPUT FEATURE_TYPE AttributeManager_2_OUTPUT   OUTPUT FEATURE_TYPE AttributeManager_2_OUTPUT_0_izcfsnZ6XHk=   OUTPUT FEATURE_TYPE AttributeManager_2_OUTPUT_1_lkKd8oA1YnY=
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { HTMLExtractor_3_CATCHER }    INPUT  FEATURE_TYPE AttributeManager_2_OUTPUT_0_izcfsnZ6XHk=    OUTPUT { FEATURE_TYPE HTMLExtractor_3_READY       ___fme_htmlex_xformer_name "HTMLExtractor_3"           ___fme_htmlex_html_specification Content     ___fme_htmlex_html_field "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>snavare<closeparen>,HTMLExtractor_3)"     ___fme_htmlex_html_file <Unused>     ___fme_htmlex_search_table "uri <openbracket>property=<quote>og:url<quote><closebracket> content desc <openbracket>property=<quote>og:description<quote><closebracket> content links <openbracket>class=<quote>inline-field-link<quote><closebracket> href"     _FME_USE_PARSER html.parser     ___fme_htmlex_result_type_name LIST_ATTR     _FME_VERIFY_HTTPS yes  }
+FACTORY_DEF {*} PythonFactory    FACTORY_NAME { HTMLExtractor_3_CALLER }    INPUT { FEATURE_TYPE HTMLExtractor_3_READY }    SYMBOL_NAME htmlextractor.HTMLExtractor    PY_OUTPUT_TAGS { Results <REJECTED> }    OUTPUT { Results FEATURE_TYPE HTMLExtractor_3_Results        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} ElementFactory    FACTORY_NAME { ListExploder }    INPUT  FEATURE_TYPE HTMLExtractor_3_Results    LIST_NAME { "links{}" }    ELEMENT_NUMBER_FIELD { "_element_index" }    CLONE_GEOMETRY    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "INCOMING_IF_CONFLICT" }    INCOMING_PREFIX { "<Unused>" }    OUTPUT { ELEMENT FEATURE_TYPE ListExploder_ELEMENTS         @RemoveAttributes(ElementFactory.baseCloned)          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { Tester }    INPUT  FEATURE_TYPE ListExploder_ELEMENTS    CASE_INSENSITIVE_TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>links<closeparen>,Tester)" BEGINS_WITH https:<solidus><solidus>samlingar.shm.se<solidus>term ENCODED }    BOOLEAN_OPERATOR { OR }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    OUTPUT { PASSED FEATURE_TYPE Tester_PASSED         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager_3 }    INPUT  FEATURE_TYPE Tester_PASSED    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 4    DEF_VAL_COLUMN 2    NUM_OF_COLUMNS 5    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "uri" "parent_uri" "" "varchar<openparen>200<closeparen>" "RENAME_SET_VALUE" }      ATTR_ACTION { "links" "uri" "" "varchar<openparen>200<closeparen>" "RENAME_SET_VALUE" }      ATTR_ACTION { "_element_index" "_element_index" "" "uint32" "NO_OP" }      ATTR_ACTION { "_creation_instance" "_creation_instance" "" "uint64" "REMOVE" }      ATTR_ACTION { "_multipart_headers<opencurly><closecurly>.name" "_multipart_headers<opencurly><closecurly>.name" "" "buffer" "REMOVE" }      ATTR_ACTION { "_multipart_headers<opencurly><closecurly>.value" "_multipart_headers<opencurly><closecurly>.value" "" "buffer" "REMOVE" }      ATTR_ACTION { "_response_body" "_response_body" "" "buffer" "REMOVE" }      ATTR_ACTION { "_http_status_code" "_http_status_code" "" "buffer" "REMOVE" }      ATTR_ACTION { "over" "over" "" "varchar<openparen>200<closeparen>" "REMOVE" }      ATTR_ACTION { "snavare" "snavare" "" "varchar<openparen>200<closeparen>" "REMOVE" }      ATTR_ACTION { "overgripande" "overgripande" "" "varchar<openparen>200<closeparen>" "REMOVE" }      ATTR_ACTION { "uri<opencurly><closecurly>" "uri<opencurly><closecurly>" "" "varchar<openparen>200<closeparen>" "NO_OP" }      ATTR_ACTION { "desc<opencurly><closecurly>" "desc<opencurly><closecurly>" "" "varchar<openparen>200<closeparen>" "NO_OP" }      ATTR_ACTION { "desc" "desc" "" "varchar<openparen>200<closeparen>" "REMOVE" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_3_OUTPUT        }
+# -------------------------------------------------------------------------
+# Create a FME_UUID_SAFE from the FME_UUID so we can use it for Tcl identifiers (FMEDESKTOP-11308)
+INCLUDE [ FME_CleanseFMEUUID {WorkspaceRunner_448bc376_4a40_40c6_8360_0622674bd6610} ]
+# ------------------------------------------------------------------------------
+# Determine the "NULL" device so we can ensure we don't get stray output
+# messing up our stdout if we are running workspaces in the background
+# See http://wiki.tcl.tk/1649 for a description of the tcl_platform
+# variable, the "platform" part seems to have valid values windows, unix, and
+# macintosh (the latter of which is actually pre-OS X)
+# PR#83334 - On Windows when we are creating child process asynchronously
+# (BLOCKING == NO), we use FME's @System() call (FME_Execute System) ensuring
+# that the child process doesn't inherit handles from parent process. This allows
+# parent process to close feature caches and not depend on spawned processes.
+Tcl2 if { $tcl_platform(platform) == {windows} } {         set ::null_device {NUL:};         set ::__WR_ENV_HELPER__ {};         set ::__platform__ {windows};      } else {         set ::null_device {/dev/null};         set ::__WR_ENV_HELPER__ {/usr/bin/env FME_SUBPROCESS_RUN_DETACHED=1};         set ::__platform__ {unix};      };
+# ------------------------------------------------------------------------------
+# Quote parameter strings for inclusion in command file using raw strings, with
+# a tag computed to be unique within source string ${_uniq_=_sourceString_=_uniq_}
+# [FMEENGINE-62584]
+Tcl2 proc quotifyForParameterFileV3a { sourceString } {   if {[string length $sourceString] == 0} {      return {\"\"};   };   if {[regexp {[^a-zA-Z0-9_]} $sourceString]} {     set uniq {};     while {[string first [format \"=%s\}\" $uniq] $sourceString] >= 0} {       if {[catch {incr uniq}]} { set uniq 0 };     };     return [format \"$\{%s=%s=%s\}\" $uniq $sourceString $uniq];   } else {     return $sourceString;   }; };
+# ------------------------------------------------------------------------------
+# Main runner procedure, takes in a parameter list as string which is delimited
+# by \x07 (BELL) character and the workspace to run. <parmListString> consists of
+# parameter name and value pairs. Value part is always wwjd encoded whether it is
+# literal value or resolved expression value resulting from @EvaluateExpression().
+# Each value part had to be wwjd encoded because mapping file parsing was mangling
+# the values by removing double quotes and spaces when passed in to this Tcl routine.
+Tcl2 proc $(FME_UUID_SAFE)_runner { parmListString workspaceFile } {    if {[string match "*.fme" $workspaceFile]} {       FME_LogMessage fme_warn 933458 WorkspaceRunner;    };    global $(FME_UUID_SAFE)_commands;    global $(FME_UUID_SAFE)_batch_count;    incr $(FME_UUID_SAFE)_batch_count 0;    if { [info exists $(FME_UUID_SAFE)_commands] == 0 } {       set $(FME_UUID_SAFE)_commands {};    };    set workspaceFileUnix [regsub -all {\\} [FME_DecodeText $workspaceFile] {/}];    set comment    {        Build up the command line in a list, which we'll write it out to a        parameter file.    };    set commandArguments {};    set commandArgumentsToLog {};    set workspaceToRun [quotifyForParameterFileV3a $workspaceFileUnix];    lappend commandArguments $workspaceToRun;    lappend commandArgumentsToLog $workspaceToRun;    set parameterList [split $parmListString \x07];    package require json;    package require base64;    set pwdParms {};    foreach {parmDef} [dict get [::json::json2dict [::base64::decode {eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiVEFSR0VUX1VSTCIsInByb21wdCI6IlJlcXVlc3QgVVJMIiwidmFsdWVUeXBlIjoic3RyaW5nRW5jb2RlZCIsImRlZmF1bHRWYWx1ZSI6Imh0dHBzOjxzb2xpZHVzPjxzb2xpZHVzPnNhbWxpbmdhci5zaG0uc2U8c29saWR1cz50ZXJtPHNvbGlkdXM+N2Q4MjU4MTYtNzU4OS00NmQzLWFhMzUtOGNhMTA4OTk2ZWZhIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJub25lIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoidXJsIiwidHJpbVdoaXRlc3BhY2UiOnRydWUsInNob3dFZGl0QnV0dG9uIjpmYWxzZSwidXJsU2V0dGluZ3MiOnsidmFsaWRTY2hlbWVzIjpbImh0dHBzIiwiaHR0cCJdfX0seyJuYW1lIjoicGFyZW50X1VSTF8yIiwicHJvbXB0IjoicGFyZW50IFVSTCIsInZhbHVlVHlwZSI6InN0cmluZ0VuY29kZWQiLCJkZWZhdWx0VmFsdWUiOiJodHRwczo8c29saWR1cz48c29saWR1cz5zYW1saW5nYXIuc2htLnNlPHNvbGlkdXM+dGVybTxzb2xpZHVzPiIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoidGV4dCIsImVkaXRvciI6InVybCIsInRyaW1XaGl0ZXNwYWNlIjp0cnVlLCJzaG93RWRpdEJ1dHRvbiI6ZmFsc2UsInVybFNldHRpbmdzIjp7InZhbGlkU2NoZW1lcyI6WyJodHRwcyIsImh0dHAiXX19LHsibmFtZSI6IkRlc3REYXRhc2V0X0NTVjIiLCJwcm9tcHQiOiJEZXN0aW5hdGlvbiBDU1YgKENvbW1hIFNlcGFyYXRlZCBWYWx1ZSkgRm9sZGVyIiwidmFsdWVUeXBlIjoic3RyaW5nIiwiZGVmYXVsdFZhbHVlIjoiJChGTUVfTUZfRElSKWtvZGxpc3RvciIsInR5cGUiOiJmaWxlIiwic2VsZWN0TXVsdGlwbGUiOmZhbHNlLCJpdGVtc1RvU2VsZWN0IjoiZm9sZGVycyIsImFjY2Vzc01vZGUiOiJ3cml0ZSIsInZhbGlkYXRlRXhpc3RlbmNlIjpmYWxzZX0seyJuYW1lIjoiZnRwX2ZlYXR1cmVfdHlwZV9uYW1lX2V4cCIsInByb21wdCI6InRvcHAgdGVybSIsInZhbHVlVHlwZSI6InN0cmluZyIsImRlZmF1bHRWYWx1ZSI6Im1hdGVyaWFsIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwiZWRpdG9yIjoicGxhaW50ZXh0Iiwic2hvd0VkaXRCdXR0b24iOmZhbHNlfV19}]] {parameters}] {       if {{password} == [dict get $parmDef type]} {          lappend pwdParms [dict get $parmDef name];       };    };    foreach {parmName parmValue} $parameterList {      set parmValue [quotifyForParameterFileV3a [FME_DecodeText $parmValue]];      lappend commandArguments --$parmName;      lappend commandArgumentsToLog --$parmName;      lappend commandArguments $parmValue;      if { $parmName in $pwdParms } {           lappend commandArgumentsToLog {*********};      } else {           lappend commandArgumentsToLog $parmValue;      };    };    lappend commandArguments {--FME_LAUNCH_VIEWER_APP};    lappend commandArguments {YES};    if {{HONOR} == {WORKSPACE_TIMESTAMP}} {       lappend commandArguments LOG_FILENAME {\"$\"\"(FME_MF_DIR)$\"\"(WORKSPACE_NAME)$\"\"(FME_RUN_TIMESTAMP).log\"};    } elseif {{HONOR} == {WORKSPACE}} {       lappend commandArguments LOG_FILENAME {\"$\"\"(FME_MF_DIR)$\"\"(WORKSPACE_NAME).log\"};    };    lappend $(FME_UUID_SAFE)_commands [join $commandArguments " "];    incr $(FME_UUID_SAFE)_batch_count;    if { {Yes} == {No} && {<Unused>} > 1  && $$(FME_UUID_SAFE)_batch_count <= {<Unused>} } {       FME_LogMessage fme_inform 933450 WorkspaceRunner $commandArgumentsToLog;    } else {       FME_LogMessage fme_inform 933451 WorkspaceRunner $commandArgumentsToLog;    };    if { {Yes} != {No} || $$(FME_UUID_SAFE)_batch_count == {<Unused>} } {       set $(FME_UUID_SAFE)_batch_count 0;       set commandFile [$(FME_UUID_SAFE)_writeCommandFile $$(FME_UUID_SAFE)_commands];       if { $commandFile == {} } {          return FAILURE;       };       set $(FME_UUID_SAFE)_commands {};       set fmeAbsPath {$(FME_HOME_UNIX)/fme};       if { {Yes} == {No} && $::__platform__ == {windows} }       {          set comment          {             Only on Windows in non-blocking mode we have to make sure that paths             are always quoted because we use non-Tcl method to run the final command          };          set commandFile \\"$commandFile\\";          set fmeAbsPath \\"$fmeAbsPath\\";       };       lappend cmdArgs {*}$::__WR_ENV_HELPER__ $fmeAbsPath COMMAND_FILE $commandFile;    } else {       return SUCCESS;    };    return [$(FME_UUID_SAFE)_runCommand $cmdArgs $workspaceFileUnix]; }
+# ------------------------------------------------------------------------------
+# When batching commands, any overflow commands will be run at the end. Say you
+# batch by 2 and there are 5 incoming features. Then we will have 2 batches with
+# 2 commands each and 1 overflow batch with 1 command
+Tcl2 proc $(FME_UUID_SAFE)_flushNeeded { } {    global $(FME_UUID_SAFE)_commands;    if { [info exists $(FME_UUID_SAFE)_commands] == 1 && [llength $$(FME_UUID_SAFE)_commands] > 0 } {       return YES;    } else {       return NO;    }; }
+Tcl2 proc $(FME_UUID_SAFE)_flushPending { } {    global $(FME_UUID_SAFE)_commands;    if { [info exists $(FME_UUID_SAFE)_commands] == 1 && [llength $$(FME_UUID_SAFE)_commands] > 0 } {       set workspaceToRun [lindex $$(FME_UUID_SAFE)_commands 0];       set commandFile [$(FME_UUID_SAFE)_writeCommandFile $$(FME_UUID_SAFE)_commands];       if { $commandFile == {} } {          return FAILURE;       };       set $(FME_UUID_SAFE)_commands {};       set fmeAbsPath {$(FME_HOME_UNIX)/fme};       if { {Yes} == {No} && $::__platform__ == {windows} }       {          set comment          {             Only on Windows in non-blocking mode we have to make sure that paths             are always quoted because we use non-Tcl method to run the final command          };          set commandFile \\"$commandFile\\";          set fmeAbsPath \\"$fmeAbsPath\\";       };       lappend commandArguments {*}$::__WR_ENV_HELPER__ $fmeAbsPath COMMAND_FILE $commandFile;       return [$(FME_UUID_SAFE)_runCommand $commandArguments $workspaceToRun];    };    return SUCCESS; }
+# ------------------------------------------------------------------------------
+# Build and run the command
+Tcl2 proc $(FME_UUID_SAFE)_runCommand {commandArguments workspaceFileUnix} {    if { {Yes} == {No} && $::__platform__ != {windows} } {       lappend commandArguments \">$::null_device\";       lappend commandArguments \"<$::null_device\";    };    set comment    {       Add an argument of "2>@1" to combine standard error with standard output when:        1. Not blocking on UNIX. (All output will be sent to the NULL device)        2. Blocking and not propagating standard error    };    if { ( {Yes} == {No} && $::__platform__ != {windows} ) ||         ( {Yes} != {No} && {COMBINE} == {COMBINE} ) } {       lappend commandArguments {2>@1};    };    if { {Yes} == {No} } {        lappend commandArguments {&};    };    if { {Yes} == {No} } {       after 1000;       while { [FME_CanSpawnFme <Unused>] == {0} } {             after 2000;       };    };    if { Yes == {No} && {<Unused>} > 1 } {       FME_LogMessage fme_inform 933452 WorkspaceRunner $commandArguments;    } else {       FME_LogMessage fme_inform 933453 WorkspaceRunner $commandArguments;    };    if { $::__platform__ == {windows} && {Yes} == {No} } {       set comment       {          Only on Windows in non-blocking mode we convert Tcl list to string joined          by space (affectively flattening the list). Prior to this we have already          ensured that in this mode paths are always quoted.       };       set commandArguments [join $commandArguments " "];       set catchResult [catch {FME_Execute System RETURN_PID_IF_ASYNC $commandArguments} msg];    } else {       set comment       {          When in blocking mode, the STDERR_HANDLING parameter might direct the          subworkspace's standard error to be propagated to the caller, in which          case we need to tell exec to ignore it.       };       set stderrHandling {};       if { {Yes} != {No} && {COMBINE} == {PROPAGATE} } {          set stderrHandling -ignorestderr;       };       set catchResult [catch {eval [concat exec $stderrHandling $commandArguments]} msg];    };    if { $catchResult } {       set msg [regsub {\015*\012child[^\012]*$} $msg {}];       FME_LogMessage fme_warn 933454 WorkspaceRunner $workspaceFileUnix "\n\n$msg\n";       FME_SetAttribute _failure_message $msg;       return FAILURE;    } else {       global $(FME_UUID_SAFE)_process_count;       incr $(FME_UUID_SAFE)_process_count;       if { {Yes} == {No} } {           FME_LogMessage fme_inform 933455 WorkspaceRunner $workspaceFileUnix;           global $(FME_UUID_SAFE)_all_processes;           lappend $(FME_UUID_SAFE)_all_processes $msg;       } else {           FME_LogMessage fme_inform 933456 WorkspaceRunner $workspaceFileUnix;       };       return SUCCESS;    }; }
+# ------------------------------------------------------------------------------
+# Create and write commands to command file
+Tcl2 proc $(FME_UUID_SAFE)_writeCommandFile { commands } {    set commandFile [FME_TempFilename wsr_cm_];    if { [catch { set cmdFileId [open $commandFile "w"] } msg ] } {       FME_LogMessage fme_warn 933457 WorkspaceRunner $commandFile "\n\n$msg\n";       FME_SetAttribute _failure_message $msg;       return {};    };    fconfigure $cmdFileId -encoding utf-8;    puts $cmdFileId {#! encoding=\"utf-8\"};    puts $cmdFileId DELETE_FILE_AFTER_LOAD;    foreach {command} $commands {       puts $cmdFileId $command;    };    close $cmdFileId;    return $commandFile; }
+# ------------------------------------------------------------------------------
+# Use \x07 (BELL) character as the delimiter when writing WORKSPACE_PARAMETERS
+# to mapping file
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { WorkspaceRunner_ExecutorAndRouter }    INPUT  FEATURE_TYPE AttributeManager_3_OUTPUT    TEST @Tcl2("$(FME_UUID_SAFE)_runner {TARGET_URL@Tcl2(FME_EncodeText {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>uri<closeparen>,WorkspaceRunner)})parent_URL_2@Tcl2(FME_EncodeText {@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>parent_uri<closeparen>,WorkspaceRunner)})DestDataset_CSV2.<solidus>kodlistorftp_feature_type_name_exp@EvaluateExpression(FDIV,STRING_ENCODED,$(ftp_feature_type_name_exp$encode),WorkspaceRunner)} {@EvaluateExpression(FDIV,STRING_ENCODED,$(FME_MF_DIR_ENCODED)getSHMkodlistor.fmw,WorkspaceRunner)}") == SUCCESS
+Tcl2 proc $(FME_UUID_SAFE)_summarizer { } {     global $(FME_UUID_SAFE)_process_count;     set comment { incr 0 creates the variable if it wasn't present };     incr $(FME_UUID_SAFE)_process_count 0;     FME_SetAttribute _proc_count [set $(FME_UUID_SAFE)_process_count];     global $(FME_UUID_SAFE)_all_processes;     if {[info exists $(FME_UUID_SAFE)_all_processes]} {         set index 0;         foreach pid [set $(FME_UUID_SAFE)_all_processes] {             FME_SetAttribute \"_processes{$index}\" $pid;             incr index;         }     } }
+# ------------------------------------------------------------------------------
+# Clean up the last batch, if anything was pending.
+FACTORY_DEF {*} CreationFactory    FACTORY_NAME { WorkspaceRunner_CleanerUpperOfBatchesInitiator }    CREATE_AT_END yes    OUTPUT { FEATURE_TYPE WorkspaceRunner___cleanup___ }
+# ------------------------------------------------------------------------------
+# We only want to actually trigger the flush if there was something to run
+# Otherwise we send out spurious extra features at the end of a run that are completely unnecessary
+# As it stands, we are set up here to send out one "dud" completely empty feature that will
+# go out FAILURE if there was a problem. It will have no attributes. Only sent out if there was something
+# left to process and the run did not succeed.
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { WorkspaceRunner_CleanerUpperOfBatchesDoWeNeedToDoIt }    INPUT { FEATURE_TYPE WorkspaceRunner___cleanup___ }    TEST { @Tcl2($(FME_UUID_SAFE)_flushNeeded) == YES }    OUTPUT { PASSED FEATURE_TYPE WorkspaceRunner___cleanup___ }
+# Note that we don't output anything if we succeed -- we only catch and output the failure
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { WorkspaceRunner_CleanerUpperOfBatchesRunner }    INPUT { FEATURE_TYPE WorkspaceRunner___cleanup___ }    TEST { @Tcl2($(FME_UUID_SAFE)_flushPending) == SUCCESS }
+FACTORY_DEF {*} CreationFactory    FACTORY_NAME { WorkspaceRunner_SummaryMaker }    CREATE_AT_END yes
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager_4 }    INPUT  FEATURE_TYPE AttributeManager_2_OUTPUT_1_lkKd8oA1YnY=    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 4    DEF_VAL_COLUMN 2    NUM_OF_COLUMNS 5    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "title" "title" "" "varchar<openparen>200<closeparen>" "NO_OP" }      ATTR_ACTION { "desc" "desc" "" "varchar<openparen>200<closeparen>" "NO_OP" }      ATTR_ACTION { "uri" "uri" "" "varchar<openparen>200<closeparen>" "NO_OP" }      ATTR_ACTION { "" "parent_uri" "$(parent_URL_2)" "varchar<openparen>200<closeparen>" "SET_TO" }      ATTR_ACTION { "_multipart_headers<opencurly><closecurly>.name" "_multipart_headers<opencurly><closecurly>.name" "" "buffer" "REMOVE" }      ATTR_ACTION { "_multipart_headers<opencurly><closecurly>.value" "_multipart_headers<opencurly><closecurly>.value" "" "buffer" "REMOVE" }      ATTR_ACTION { "_response_body" "_response_body" "" "buffer" "REMOVE" }      ATTR_ACTION { "_http_status_code" "_http_status_code" "" "buffer" "REMOVE" }      ATTR_ACTION { "over" "over" "" "varchar<openparen>200<closeparen>" "REMOVE" }      ATTR_ACTION { "snavare" "snavare" "" "varchar<openparen>200<closeparen>" "REMOVE" }      ATTR_ACTION { "overgripande" "overgripande" "" "varchar<openparen>200<closeparen>" "REMOVE" }      ATTR_ACTION { "_creation_instance" "_creation_instance" "" "uint64" "REMOVE" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_4_OUTPUT        }
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC AttributeManager_4_OUTPUT TO CSV2 __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>fme_template_feature_type<comma>tider<closeparen>,<at>EvaluateExpression<openparen>ATTR_CREATE_EXPR<comma>__wb_out_feat_type__<comma>$(ftp_feature_type_name_exp$encode$encode)<comma>tider<closeparen> GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
+# -------------------------------------------------------------------------
+CSV2_1_DEF tider   csv_existing_file_handling   No   csv_write_field_names        firstrow   csv_date_output_format       ISO   title                        varchar(200)   desc                         varchar(200)   uri                          varchar(200)   parent_uri                   varchar(200)   foredragen_term              varchar(200)
