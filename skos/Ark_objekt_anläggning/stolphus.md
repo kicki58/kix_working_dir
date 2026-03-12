@@ -1,6 +1,6 @@
 ﻿# stolphus
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   | långhus  |
 | Broader term | byggnad  |

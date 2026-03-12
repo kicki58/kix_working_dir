@@ -1,6 +1,6 @@
 ﻿# stratigrafisk enhet
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   |   |
 | Broader term | (arkeologisk rumslig entitet)  |

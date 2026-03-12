@@ -1,6 +1,6 @@
 ﻿# stenkrets
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   | stenrad  |
 | Broader term | gravmonument  |

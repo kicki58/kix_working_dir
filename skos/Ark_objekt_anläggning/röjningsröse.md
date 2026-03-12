@@ -1,6 +1,6 @@
 ﻿# röjningsröse
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   | hackerör  |
 | Broader term | arkeologiskt objekt  |

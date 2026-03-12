@@ -1,6 +1,6 @@
 ﻿# dymling
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   | tränagel  |
 | Broader term | konstruktion  |

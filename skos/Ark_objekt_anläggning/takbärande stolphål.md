@@ -1,6 +1,6 @@
 ﻿# takbärande stolphål
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   |   |
 | Broader term | stolphål  |

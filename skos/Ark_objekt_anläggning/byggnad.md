@@ -1,6 +1,6 @@
 ﻿# byggnad
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   | husgrund  |
 | Broader term | arkeologiskt objekt  |

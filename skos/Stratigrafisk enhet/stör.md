@@ -1,6 +1,6 @@
 ﻿# stör
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   |   |
 | Broader term | konstruktion  |
@@ -16,7 +16,7 @@
 
 # stör
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   |   |
 | Broader term | konstruktion  |

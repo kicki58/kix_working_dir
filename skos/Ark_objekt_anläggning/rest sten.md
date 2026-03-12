@@ -1,6 +1,6 @@
 ﻿# rest sten
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   | bautasten  |
 | Broader term | arkeologiskt objekt  |

@@ -1,6 +1,6 @@
 ﻿# område med bortschaktade massor
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   |   |
 | Broader term | modern aktivitet  |

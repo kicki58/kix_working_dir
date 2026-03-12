@@ -1,6 +1,6 @@
 ﻿# spis
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   |   |
 | Broader term | arkeologiskt objekt  |

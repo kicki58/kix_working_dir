@@ -1,6 +1,6 @@
 ﻿# ytvegetationslager
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   | förna  |
 | Broader term | lager  |

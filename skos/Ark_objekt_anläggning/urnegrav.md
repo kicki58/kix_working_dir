@@ -1,6 +1,6 @@
 ﻿# urnegrav
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   |   |
 | Broader term | gravmonument  |
@@ -16,7 +16,7 @@
 
 # urnegrav
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   |   |
 | Broader term | kremationsgrav  |

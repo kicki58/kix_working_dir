@@ -1,6 +1,6 @@
 ﻿# icke-antropogent lager
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   |   |
 | Broader term | lager  |

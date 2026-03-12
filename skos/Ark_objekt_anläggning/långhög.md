@@ -1,6 +1,6 @@
 ﻿# långhög
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   |   |
 | Broader term | gravmonument  |

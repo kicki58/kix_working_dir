@@ -1,6 +1,6 @@
 ﻿# stolpbod
 
-| First Header  | Second Header |
+| Etikett  | Värde |
 | ------------- | ------------- |
 |Alt. Etikett   | härbre, njalla, ajtte  |
 | Broader term | byggnad  |
