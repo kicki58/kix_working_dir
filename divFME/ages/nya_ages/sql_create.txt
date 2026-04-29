@@ -1,0 +1,164 @@
+FME_SQL_DELIMITER ;
+CREATE TABLE IF NOT EXISTS "agestest"."geodata_info" (
+	"geopackage" TEXT,
+	"gpkg_uuid" UUID NOT NULL,
+	"leverans" UUID,
+	"geom" geometry(point,3006),
+	PRIMARY KEY("gpkg_uuid")
+);
+
+
+CREATE INDEX "geodata_info_index_0"
+ON "agestest"."geodata_info" ("gpkg_uuid");
+
+CREATE TABLE IF NOT EXISTS "agestest"."rapport_info" (
+	"gpkg_uuid" UUID,
+	"rapport_uuid" UUID,
+	"titel" TEXT,
+	"forfattre" TEXT,
+	"utgivningsar" DATE,
+	"url_rapport" TEXT,
+	PRIMARY KEY("gpkg_uuid")
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS "agestest"."rel2raa_arkiv" (
+	"gpkg_uuid" UUID,
+	"raa_arkiv_uuid" UUID,
+	PRIMARY KEY("gpkg_uuid", "raa_arkiv_uuid")
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS "agestest"."rel2uppdrag" (
+	"gpkg_uuid" UUID,
+	"uppdrag_uuid" UUID,
+	PRIMARY KEY("gpkg_uuid", "uppdrag_uuid")
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS "agestest"."leverans" (
+	"lev_uuid" UUID NOT NULL UNIQUE,
+	"namn" TEXT,
+	"organisation" INTEGER,
+	"datum_lev" DATE,
+	PRIMARY KEY("lev_uuid")
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS "agestest"."geodata_metadata" (
+	"gpkg_uuid" UUID NOT NULL UNIQUE,
+	"leverans_format" INTEGER,
+	"org_koordsys" INTEGER,
+	"nytt_koordsys" INTEGER,
+	"manuell_rektifiering" BOOLEAN,
+	"lagesosakerhet_mr" TEXT,
+	"publicering_datum" DATE,
+	PRIMARY KEY("gpkg_uuid")
+);
+
+
+CREATE INDEX "geodata_metadata_index_0"
+ON "agestest"."geodata_metadata" ("gpkg_uuid");
+
+CREATE TABLE IF NOT EXISTS "agestest"."swedigarch_uppdrag" (
+	"swe_uuid" UUID NOT NULL UNIQUE,
+	"gpkg_uuid" UUID NOT NULL,
+	"beslutande_myndighet" TEXT,
+	"beslutsdatum" DATE,
+	"lst_diarienr" TEXT,
+	"uppdragstyp" TEXT,
+	"utforande_org" TEXT,
+	"nollresultat" BOOLEAN,
+	"status" TEXT,
+	"lan" TEXT,
+	"kommun" TEXT,
+	"socken" TEXT,
+	"rapport" UUID,
+	"uppdrag_uuid" UUID,
+	PRIMARY KEY("swe_uuid", "gpkg_uuid")
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS "agestest"."rapportLink" (
+	"id" INTEGER NOT NULL UNIQUE ,
+	"gpkg_uuid" UUID,
+	"url" TEXT,
+	PRIMARY KEY("id")
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS "common"."koordsys" (
+	"id" INTEGER NOT NULL UNIQUE ,
+	"sys_uri" TEXT,
+	"name" TEXT,
+	"epsg_kod" TEXT,
+	PRIMARY KEY("id")
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS "common"."format" (
+	"id" INTEGER NOT NULL UNIQUE ,
+	"name" TEXT NOT NULL,
+	"description" TEXT,
+	PRIMARY KEY("id")
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS "common"."organisation" (
+	"id" INTEGER NOT NULL UNIQUE ,
+	"org_uri" TEXT,
+	"name" TEXT,
+	PRIMARY KEY("id")
+);
+
+
+
+ALTER TABLE "agestest"."swedigarch_uppdrag"
+ADD FOREIGN KEY("gpkg_uuid") REFERENCES "agestest"."geodata_info"("gpkg_uuid")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest"."geodata_info"
+ADD FOREIGN KEY("gpkg_uuid") REFERENCES "agestest"."geodata_metadata"("gpkg_uuid")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest"."rapport_info"
+ADD FOREIGN KEY("gpkg_uuid") REFERENCES "agestest"."geodata_info"("gpkg_uuid")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest"."rel2raa_arkiv"
+ADD FOREIGN KEY("gpkg_uuid") REFERENCES "agestest"."geodata_info"("gpkg_uuid")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest"."rel2uppdrag"
+ADD FOREIGN KEY("gpkg_uuid") REFERENCES "agestest"."geodata_info"("gpkg_uuid")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest"."geodata_info"
+ADD FOREIGN KEY("leverans") REFERENCES "agestest"."leverans"("lev_uuid")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest"."geodata_metadata"
+ADD FOREIGN KEY("org_koordsys") REFERENCES "common"."koordsys"("id")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest"."geodata_metadata"
+ADD FOREIGN KEY("nytt_koordsys") REFERENCES "common"."koordsys"("id")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest"."geodata_metadata"
+ADD FOREIGN KEY("leverans_format") REFERENCES "common"."format"("id")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest"."leverans"
+ADD FOREIGN KEY("organisation") REFERENCES "common"."organisation"("id")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest"."rapportLink"
+ADD FOREIGN KEY("gpkg_uuid") REFERENCES "agestest"."geodata_info"("gpkg_uuid")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
