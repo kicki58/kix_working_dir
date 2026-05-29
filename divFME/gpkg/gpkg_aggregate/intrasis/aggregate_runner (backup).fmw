@@ -1,0 +1,826 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME\2026_1\fme.exe" C:\Github\kix\divFME\gpkg\gpkg_aggregate\intrasis\aggregate_runner.fmw
+#          --SourceDataset_PATH "C:\ny_slask\jonkoping\gpkg_export2\3006"
+#          --PATH_IN_RECURSE_DIRECTORIES_PATH_2 "YES"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAB4CAIAAABTvTPAAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAa+0lEQVR4nO3dfVRTZ5448O+9eYEEQgKEqJAQXiIg1YL1BRVfWu20HZ26O112HdbWna1dZ3tcdrrunjlTfr+eaX87p3q6O8xxbLcdd5pxVOrqpKcuR6lSsb6E8Kb1jXcINFwiEiAEEkJyc3Pv74/4Vt+KmJAXvp/j6Ym34blPruR7n+d7n/u9BMdxgBBC4YAMdgcQQmiyMGAhhMIGBiyEUNjAgIUQChsYsBBCYQMDFkIobGDAQgiFDQxYCKGwgQELIRQ2MGAhhMIGBiyEUNjAgIUQChsYsBBCYQMDFkIobPCD3QGE/IPq9wyPcgBEsDsScTguUUqokgXB7gcABiwUGRiG6xsAghQGuyORyTzIzFZwAn7wTwY4JUSRwMty+MscOCxHeL1ssHsBgCMsFFmMukOVUN3Wuy5nkxpqVeuh/F2TdKlalrUcDP8DQyvVHylNe/rUbTXw0Q741TuflNXn7tmmtgNIAKpN38atXPNRAezRqdZDeZlq80eg/1UTyKU3Gxz6pLJbljLJ1hpV6h2UqUzlzKFeWA/lZU5pzro3S1KCfYDCHZ6UUCTJXA6f967LAZhfqy3dW34eIEN2sfQMaPpMJ21fNh8wvX/4o9Ld/3ExVWXUacts897fBj2j1aV7TQDVnRcbag6Y9um0pb0UAOQoVQAgX3inwbL6Lph0a80HTOeh+uLuYzdbk8uCfGgiA4E13VEEcNPsNy0cQfIe/haj7lDl8pUlKSq/7NC/rYU6lvU+Mw+iox5xeKcJBiwUCSYRsNDUhU7AwhwWiiRG3Rv5ezW6qtVQv0IDhyohJgs2amBX5bB6aEj9bDakFqzIDHYn0dRhDgtFnC7Dp9qiGgNQpoZjnxXVGIBSS5zVZS2tGK3CHk4JUSTAKWFAhc6UEEdYCKGwwXv33XeD3QeEnpTXy/UPAkHcOQHX73q2Tv1Te+UeQtbw/r/+3LbwOXtzY53eaLcbldSXOpDbP959mqTNB39X29flkhUQlXta7Q11UJDbvG8/JclTjejeUP/XuHqoYTjvGVb3hvqtr62Dvz7QKTK7ZHJzc8Xpg1+40lLNzVfMVIeZ+uJ0VafLJTFTI0qqUQdfXNDRLhdrLn/lyDV76uyGP1TKyePrj1ifWz7cqAPKXnnMLJObmxvNVfq6pBF7M6ukfNv3ne6hXcOEkmrUAZErTTAf2tNqt9UBkdtcUfb7L8ho2qzSKA0nPz12wLOEPrLyt2TO4GlKkqe6sn/nPlcafWTDe50Ws5lq6GyqrLWnyvW7j9pT81STaYdvVhmPrHyvU2R2NVWftifLqcZW0CilAAAcx81JAj4/+OOb4PcAoUBQbv60SAVKddvO99oUEgDIVJoqACpqQKPTlu4tP0+p08XaonOWhs7mthr9vtrq0oO/+xzAqNOWDMHtVNeydeKmet/L/pic7RkeUxtF9VLakhMNZe+UdylNZ/TaohpYPPjVJ5QqU2na/xtt0Rn9Ymh6m1JlKjd/uimvbed7balqAIiWmvf/xlQBeqBMbTX685S26KClEfSpStPt7d2NfyyqAdCZ/utscX6ZwVhbXXrwbAXoe3Wm6hE6htIW1RiMOtPBb6vKagwvFm6XN2lLTGcr6wEGLd0UpSncnuFRS5zVpecaTg4NQZ/prOdKZT1Mpp2iLz7VbDr0utjUVgNm+PPWnec6lKG3aANzWCgSPEEOy1h/qBJWlhRMx5fTqHsjv/f1y4Um3x59f7XvWPGw7Xd+JFV7zxbf68fe9dTaCZ0cFgYsFAkw6R5QoROwcB0WikjGekMXZQKVGpQmQ7U6fegXjYX6jTUrKwo/kNdUygt/XaI0nAToqFWtV+krYWVWTXFF4Qc5lGo9vJd/Zt3lD9WVOt//giwo1sCh/e0xW7bID//yF+Yff7ARVmjA0EuZdAA7itRdlaaOxOKSgmB/5pkAAxaKSJlKUxkFUAM7UquLWpZf/vF2uxJe3HRIWPvexhPE2zvAqDtnGO0qO6yRbOsq3WvS/ft2eZO29LBGsg0AoFenLd2rkWyDtl51W6FhB2XqbuE+1xl3woYdTdqiUbDvWJFZAHT9CtC9UXRBsmjxNE0qZzqcEqJIEOAp4XTmuUJR6EwJMWChSIA5rIAKnYCF67BQJLh/HZaZMsZJE8CwR3fJ1iImcqUJ9buWHbFmksOskmqsV2nMu7abSf5V/YHapiZXk828QKM0+FZgJZgpY9zYiLm5vArk9spyc09DnVhu/7jcvFJuNjTW6Y32ht/WJeXcWsl1wLoq1Xyo/Kq+wbqkQGnYo7tks2cTdW+80rLwp7nN7/+y+D9PaSuv58S79MfMPbY6MZErTQjisZqC0FmHhTksFJn6yrfWbv4UtKV7ibXbxsugGJSbdxZSANCr0xb1gn3T5pzDxQe5nKPfSrYMLW0rNGh02pKh1+0A0Fee//ddOzZB2WGNZBs0XLl8tL5Fsk2dVQSZZlMZBWMHvzraPrhkm28ll2TRYmoLmBrO1h9Nz1tPacuv0M29cnuh5uIB/ddQvRM2vL86bQgAKFPDFa4hb/xdKA7ywQlfOCVEkeDhU8KprVp6XJNMck1PZ/wvdKaEGLBQJMAcVkCFTsDCKSGKLIbtZfDRDjipU/WrqFXDZ/cnvr0FfMMfao9uKEslB0olVFFYaiYsYcBCkcSoM20sVO/TaUvOrLv8mmlzbWtzvGFLqqkN1F/7sktnaeD+4vKHxRitwhJOCVEkwClhQIXOlBCXNaBIcN+yBqPujVdaFs45seG3I6KG2qYml6xA2eyrppJq3lVuJm11QNg/fqVOvcr+8e7T+iYXWXnk903kWnndG+q3PmjlcmJclP5I8W86RVeu9NCuYf2R4v8mX+cfWflbMqfhyO+byLUFhOGknfqyCuT2yt2ne1LzskcqP95tnf2csnmPDpwXdGddLsnNQjHNjfUq6vTOfa6055RSqN+17MgJqrOhyUU21IHc/nH5af3z/01tWm9vrFcR5kO3F1K88+EvKyWvb1AG89AChNKyhuD3AKEAyFRpLp7Rawq3y/uryxob2ijqa522qLqqzFcxmdIWndHffCulTherJZS27MSA/fb9gIPaogOmVYXbMzym7sY/+l7nKOHFTYeKbr3TWHvOcMJXqaa67GBLFwD0m7sp6mud9nMAGPyq5ICpV6ctOqPv1WmLagy+CjBGX/sjKb6d+grdZK3brHsWzutuVXY++Eff9o0/3p4T9GgVUnBKiCJBwKaE039TTijeBhQ6U0IMWCgSYA4roEInYOFVQhRJ7lSVKYAOnWq9qnx/++oV8rPHh9LmZq8sUer39KmBUpUUUSfrV7wIuyQH1Jffhv3VJrlcPTQE8mzIguIXCwzv3ykjc/MRYVu24DKIEIA5LBRJJl8HuajGAMrNlz8shtrqskZO4qwua2xoq4EKMBh12p2wQd7kyyipsxJNZ8UqjFYhAaeEKBJ835QwFBNDYSR0poQYsFAkwBxWQIVOwMJ1WCgSPGgdlvqtryHrpVVKwx4dFNg/lvy/CrfiB88pDb8qu0STwwShL7/15CtftZnbxWcq9lMSV7n69V/urBctT7SzZqqR0B84agcX1WGu0pufyTcb9pn156/qG6xLbDcfjSUrUEpP1hsIgqo4emnE9c2tSjLN5Tqw2ZsJgmrUHztQ0UWvWKAJ5pGaElyHhVDgXd1ZZTDqtKV7y08qN1e8YC2rMRh12pMjuqIagDtPvrqZz9pZKAeA3u8+5itVadpaA5ra6rKWVqC0RbuPldQYjJQJKFPDl1WlNYYXC7dneEynDhZLygwvwrmtO8/1yOVAmRqOfeZbgVW6txzg3Nad5zpg9KTNFsTDEQlwSogiwZSmhE9S7GVmJcVCZ0qIAQtFAsxhBVToBCzMYaFIMO05rJOE/svbP64Dyv7uf55+aUOe4aQOCGnlO++/WSnJ4ZspYx0QudIEMJy8/wn1LZUduWGSz8IcFkKBF8AcVv9dD3+vAP31Y9/uHzIYdaYK0PfWVu/3LeM6+LuiM/rzZSslJWfvf0J9EI9LGMMpIYoE057Dgsd5+PsjnkQfHkJnSogBC0UCxstdaGYABMHuSITimMVP8fh8Itj9wHsJUUTg8wjVLLCOeoJ++nW6CI7jiYQekhf8r7dfEADxUgiFaAU4wkLIjyzDnm4zTxzFLMgSEiHxBY80mHRHyD84DvoHOQBOPYfEaBUgGLAQ8o/rFs+EW5Ao9UrjMNMSKBiwEPIDluVuDHFCAZOegon/AMJTQeRzONn+IS8RsFkKSXDpKYIZPgnq7ffQDD8t2RsiyelIhQErwk24OcMVT7RAyMLtqyuMh2YA+AKhf/71PTTnZZm5qTP3d8nj4QatRJyYmZMkDHZfItzM/SWbIVgO+DzS27z7yMQyybkTIxCdtVzpjs4Q956jJKuXaMjLukbND1K8qRsT6/40mkWf7ij8yzj91bFoSfr69OFT1tyfKDr+UNnuWvzy38S0XOHl/zBTeu8uSJLzMEwwPlyoMPV7OIJMU2KCJeDwEM8ElktmZap1SLJsYc6yeFKQIvG6GYnS1nmsuzcpZZnI3NTttbt4T/ObzsHTiba+vrNdlhTRWEdf35meTrPRPvjtpVavfWhEkHV/tEITLnZ4lFTI2BhR8BeCRzxchxXhxl1c/VVGHD3lTLCVajhDJbywQhP7sHfQDCeXMbkZMzTZ3NFDO12Ql4MLr6YDTgkjX5QQ4mKm/NMJTz33ylOPfAfNwIz9qtod3pExQqMO3CUN9B0YsCKfXAoTdmNqahqPF5A5i9sD9vFANBwGqBteWRwkymbo6HL6YcCKTGNjY1euXJHJZBNu7sYgU77vN7ZR2wf/sSctLfbYAd2cwr8EYw1FpmbN4VqP9uSXFuNDrKZg2MY4Jrj8bIxW0wcDVgQ6fvx4dHTUvHm5Xq9X6OacbkYcEzN7zhy5PAnAMkaKRT3tjmGm5/opkvlJ3ssiZbA7HKb6bnhTFKRQiFeupg8m3SPN6dPV8+blzpkzx/fXcRfX18/IYr3R0dF3vcvS0gK5uQq/7NHt4ezjTKZqZg00+gc9g1b26eyoYHdkZsERVkTxeDwTE67b0cqHIEAsjv7uGxXz5/thdyzLkiRJzrx8M8eB2cJkq3GZ6HTD0WxEMRgMq1evvmcjx4HVOsIwrM02yrLA0uMjdoZl4Qn/0DTz4Z6ygQGLl+VuC8qnnn7UDVoWS0piceHVdMMRVkRxOBwSieT+7QM3+g//z/5XX9sKYLnYMKIRtfzZK+z/rDXth3nqbI3A0XLqD30byn72WKl3r9d76LM/fa777Of/8g4Lgk45j2EYPp9/d9giCIJlWQDg8/lJSXKlUpWUlBTuSwC8Xm5w2LMwVxzsjsxEGLAiHQcARHZObqo6TSQSAzgZj32UIRm3PTpHSg8z5s4OGWGPzkl53NQ7n89/9bWtxX/7d6IY2ajDMzf1UfMjr9drsVhMJtOFCxc4jmNZls/nL168OCkp6Qk+W3B0U27VHOFMnAmHAEy6Rw6O4yorKzds2HDP9q5e2uMlH/QPbTUaITMz4Qn36/Fyc1UCcfTjfYE9Hk9jY6PFYhGLRWvXruPzw+Pc6abZ9u6Jp3OmvhIXPQkMWJHDZrO1tLSsWPGAh7G43GzgRgQEAYInqKnicDiqqqpUKtWSJUv82KsAae50ZqRGi6Iw+RscIRSwuPExcN+1Ypog/XvHBxEVC6LpODF6GM465iUCdr8KjyAS4x/0hXG5XN9dvBBG2tvbOzo6Xn755WB35FHs496BQVqTJgp2R2auUAlY3Pgo/f4WNk4G0iTCYYNBivfsJjLdH9feb2EnxgU5SwMds7wsfH3BzXn5gTusbobLnwuq2d+ZQ1nOHfmKTFB6F6xZMytgew6swcFBqVQqFIbuWoGmDsdTc2PD/JpBeAuVxAHntHNxMi7jaeLGt5xyLiEQENHiYZqLEYuGR0aU311Y9Fjajd3aw5+/tfWnEpLntloImUIoFAoEgVrl6KY5kiDFMQG84E0znN15b/0pRXKqbNjhCdxeA+9mAj5Ux4mWYXpWIpZkCLJQCVgAACSPsA1wtIsYGwKOAwBZXNxHfyrfsO5ZAKiqOtLb1mHJ27p99NKJZ5+PrzuV54q6snHdC9/XqstN7y0/bB0ZfXX9OiLeSkjiHQ4Hx3EkSQIAx3EEcXOYSZIkx3EikWj+/PlPdvWKdpw88pVYkJbzgvTq4VN19LKXUrypyx5WAM8/NMs2aALT8jTy+zjRcMVJWVi4VW1VFsOTTfUJEYyH4Qv43f30Q9/BcQtzhEIBhrQACpWARQAHBADrBSDA6wWCAAA+n1fy96/6IgsAK521JH6ofVweFx8nhKi4WZO7KUIhT9T9fs/awmWEc4xISiUSvueb4HA4mpqarFZrdnY2wNRO+MJYCTvQ2atK8ZIMP3Yhz9zUnRSvGRFkFQSyAF5fH6VUqgK4g8Dz7zhxZMz7wT4bw7K384nrlsYWzL9n/RRD0yCcRLVokhSy3ke9we1hu83enLRQ+U5FpFDJYYGHpg/tApedi5UR46Pg9fJylhKz0/y4B45ledlLgDfZ3yfLuXPW1alD+i7v45zwnS7uQjMTFxvAG+tohpOImHn3Fcw7fvz4/WsawtTExIRI9KS5bZudfe3/9t+9Zd3SWMKuu14TDYuilkhd7bEFqhvnWyYSEqyelL9a4607eT1xbfrwqW43T5r/k1Sqoqq7iRDkFczPAOAx5rrric8lD1e3D4qVa569f7xMe1hFApuTjgErgELm4AqEgs2lwAQwCUMKo4B4jKvRiuTkMRDFCcDymDtSJEBiHB245PHD6k+FyrnHH5qbm91ud2Fhod9bVg60WhbOs0bPM40MC93XRgTpCd9UmBS5EpfdPjGbN3axr+/EBeuW15ebv2nqZqPJ2bHC3q5aRjhXEp0iGvt2RBBlbmma88z8QI+X0QOFzAgrtA0PD9fW1gIAQRAkScbExMhkMqlUKhKJhEKhUCgkSZJhGJvNNuHmzAPMQe0HsviEf/23UrF43O/1px5YHcHhcFy8eHHNmjVP9kFDSFdX1zffXPzBD16Ij4+fWgsPHGEtW/CwMGPp7oIMzdQrWOAIaxrgwZ2UxMTEH/3oR77XHMc5HA6r1epwOCwWi9vt9ng8Xi9D07RSqXLR3KiNGbOPdRk7+vvNmZm86ak/deHChcWLFweg4aDRaDQZGRlnznw9OjqmVqfm5y+8lc2cukQZX/LQZS2KvLwnatwd1tdowwSOsPzM6eJ6+xnHiDE9XXPX7SYBrz9VUVGxceNGv7Qfgvr6qEuXLgOAb3ir0WiSk5O/N37dP8La8WqCOmm8va1l+YpVfr8H20Wz4xNshhIHAQGEB9f/7E5ISMqxOe7eplAkw5DNP+3THrjnqzowMDDleVNYUCpVty+AOhyOrq7Oa9eu+Qra+OKO77++yhC+F1Kp1OHkbP3Dd7dz7bKkg+v/xS9K3nzzrbdL3+vpbrAam9pvJD+1JntqJSvQNMOA5X8SMSRKby7vethp3FeJ5bGaZVn2zJlTq1ev9XK8u5PuTqezuvpUcfHfPkmfw0hsbGx+/sL8/Ee9h2EYl8s16mAl8ht3b9dkx0sFir/+680/+8d/BgCAcRtJ9nRelyUTUytZgaYZTgn9zDclvG66NHCjPz9/UXKKsuvaqZ52M0+WFRcjTl7+FNlyrmMInCL1S0se71xO0/Tzawuksvi3dvwfL8tPVvAnJiZcLhfLsuvXrw+XagfT6f4p4b+8mvBMtui7J5LB1laYN88PVW5cNOt04ZQwsPDgBsSiRUs7OtqSb56wXdGx/W0XCXmGwD0i81691sosXfT4+V2CIJ5ZtGTTptcys+aPT3jTUwQCgUAsxjJyj5KiIFQK0jLCdps5ACAACALuRCu3bRSScnMf8IO3h8CTGQuPj9tjYiR41840wBGWn/lGWHPkAVk46vvyzMyHPkyBzc7u0g40d7OzEsj0FGJkjNuwSrYgkz8w0E/TdEaG5uxxnTAlWypMTIDOb8cAAOLSChKsho4hcIpS8mPMkxkLj42NdrQ3y5NmJ81SuWgCR1gBhWV9pgfjdrvc7pt3LDPMvbcuT5Lb7fJfl2YQm4NlWRBFEQAgEAgaG2udTgcAzF8Q/Y2hoYvqMts42sWNdPUN2ro7rl5r7RXJowduvfiexr1eb0xMnLmPomn3NHyWGQ5HWH7mG2F5nGaFYrZtxDp7TnJb3TGGY4xcoqe9L/eHP06w1l8eVz5uAgsAHA57a8tVxazkpFkqp4vDEdb3stnZX31yQyEjXR641un1srDj1YRncvxczYqmaWNXe3rGXCCFuKwh0PDgBkRUVPQftZ/8w7Z/AoAoRZzd+OXVq3lxozeSbN32IZl8SisQGIaJi4s391FxsiQAfBzepHT3cd19d25ZdkzA2IPuanoywhT1AtoLrgkWs1iBhgHLzziO87IwWzH7Z2/+HABYjlOnr1Knr1r0/K13ZINv++O2HBUtohlP/jOLSFJ8fz0sNBmxIoh7wEp319gYxMVFw5SWmzAM09NjzMycKxTA+IR/+okeBgOWn8WIyCQZ12ehA1AimReflGsdAxbonPTQLcsZ4jweT03NGYbxPv/8S211xxgulswV1/7ZvWGFZ2rLTez2MdrtrjWcn5+3BAD/XQILA5b/KRJ5SQk8vMgdmgQCQUJCYmZmFtycrTdQFxaNjg50XB2Y8nKTCddEkmIWj8dnWP93GN0Nk+4oYj3wXkK/J90BwGYbkcni8V7CaYAHF80gLHfvbZh+IZHEkmRAWkb3wICFZhCSALfb43SOezweuTwJ3LZRkEmf7Iqr0zl+7erltLQMiSz8nmIddjBgoZmFz+dXHv9ftTpdLk86e+qUMCVbKuRNmFtd0bEWi0OhUMnnLVX0Hz3dxKQULFWAPCPje25+crvdifKk7u7OnKckACH4uJ+IgqNYFLEemJ8lCOKviopXFK6GOyvdB2xkrIvun3DFuugR4Zip60Z9y/WFcZerbIrvv1VTFC2y2Ubm5S4Qi2I4wIxwYGHSHUUsjgPdKft1C8PdumKbpRamzprkHQKWK5fcTy1UTWYO4iv/4GW57DRhtBAvDwcQBiwU4byPfDaXPxEcj8RoFVgYsBBCYQNzWAihsIEBCyEUNjBgIYTCBgYshFDYwICFEAobGLAQQmEDAxZCKGxgwEIIhQ0MWAihsIEBCyEUNjBgIYTCBgYshFDYwICFEAob/x9n9lds+1HRfwAAAABJRU5ErkJggg=="
+#!   AI_CONTEXT_ENABLED="Yes"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="4047.17 930.907"
+#!   DOC_TOP_LEFT="-1645.67 -79.0533"
+#!   ENABLE_DATA_CACHING="No"
+#!   ENABLE_FEATURE_COUNTING="Yes"
+#!   ENABLE_PERFORMANCE_PROFILING="No"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="26121"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="01246629-fa09-4577-ac17-fd8578f5040c"
+#!   FME_DOCUMENT_PRIORGUID="dc25d56e-ca8a-4409-ae4d-223716b037da,9c694e34-bd4f-41bd-9ae8-49fbca94153e,3c0a72af-89d4-42c3-b83a-e7301a9a4932,c8180e44-2887-4e55-88ba-f9950952ed51,0dec0ce0-ec2a-494f-b847-05978bf4e0ca,d9117604-d74d-4525-ab38-cc6417141f81,33403e0a-3689-4055-856e-b1a9f50faa5a,3c2d6311-5053-4165-918c-8ce25b2e1664,33351fc1-a9ba-4baa-8a94-95fadac210a2,8ce23061-ed43-437a-a9fa-a7a02f1499df,f44a82ab-9721-4f96-9060-98afab52e66e,6c756477-d9b1-472f-ac23-30a2691434e0,8146508b-92c3-4d7a-adc3-3bc596b56f5f,cc359913-44da-4dbf-a7c6-951c4df06af5,5fb579c8-ce9f-4458-a30f-ce90de1efcc5,02eaf47b-d355-40e9-8f36-a7e061de4d13,88dff314-e10f-485d-94e6-19a0044cd582,00e84f6a-7f82-434f-a1ea-5844c8bc0092,56b83506-52cc-4729-a9c1-692f400ce54b,e1cb5069-8361-46ce-aa73-4c1b81a042e1,155c18dd-9a50-45c2-b5e8-31cb6411b0b1,5c90e5b9-e14c-4d0a-899b-6274ff7faf6a,dd552b1e-e9cd-4c62-bca8-acf0e35f9dd0,e258e9d8-c7cf-4568-9bb6-510410cbdc43,f7e531ff-4232-48e4-ab6f-db2b155e34e0,d63f5225-870f-483f-b8b2-c465acec6bd8,8ff1bb5a-d69a-4eff-a389-5fc09f96402c,b3deeef1-62c5-4b40-b70d-fa130908ed72,ef86cce3-1f51-4d33-957c-a3b3a3815cdb,5185d870-9536-49b6-86ab-a59efcfa5e08,584644e2-8c2c-4198-8fc2-f7240b884b69,9a4956c4-1a50-48e7-8202-4d4ef0028631,598dd068-220d-42a5-9e72-7496a3a89b48,e0d0be82-86cd-4d60-809f-aca8aa58865b,24bc4375-bf70-40f0-bb93-e1e4101e090a,7a2bf1da-cf97-4271-b4a4-25d397202b4c,ba151c13-93f2-4549-ac11-368d6f6addf6,99c29904-d188-4799-b4ae-94e5bc7cfff9,0d5934b3-4d2b-44f4-b3b8-e91cfeb289f5,28e3bb13-753e-4a35-bfd7-a7317eee7b3e,fe09bd0a-4650-4014-a5a0-897d927b7157"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   INCOMPLETE_CACHE_HANDLING="Stale"
+#!   LAST_SAVE_BUILD="FME(R) 2026.1.1.0 (20260415 - Build 26121 - WIN64)"
+#!   LAST_SAVE_DATE="2026-05-22T10:26:30"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PROMPT_FOR_PARAMS="Yes"
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   STOP_AT_BREAKPOINTS="No"
+#!   TERMINATE_REJECTED="NO"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="-1506.34 1755.64"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="89"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="PATH"
+#!   DATASET="$(SourceDataset_PATH)"
+#!   KEYWORD="PATH_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   FEATURE_TYPE_CASE=""
+#!   FEATURE_TYPE_LENGTH="0"
+#!   FEATURE_TYPE_INVALID_CHARS=""
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="false"
+#!   DEFLINE_TEMPLATE=""
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_basename char(50) fme_color char(50) fme_dataset char(50) fme_feature_type char(50) fme_fill_color char(50) fme_geometry char(50) fme_primary_axis number(31,15) fme_rotation number(31,15) fme_secondary_axis number(31,15) fme_start_angle number(31,15) fme_sweep_angle number(31,15) fme_text_size number(31,15) fme_text_string char(50) fme_type char(50) multi_reader_full_id number(11,0) multi_reader_id number(11,0) multi_reader_keyword char(50) multi_reader_type char(50) path_geom char(13)"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="DIRONLY"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="24627"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="PATH"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Specify the Folder or Files pathnames"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_FEATURE_TYPE_EDITING"
+#!   VALUE="NO"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="buffer"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(20)"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="char(12)"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(31,15)"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(15,7)"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(11,0)"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(20,0)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="logical"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(6,0)"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(4,0)"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="PATH"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="number(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="PATH"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="PATH"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="path_none"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="PATH"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="PATH"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="3"
+#!   POSITION="-1645.6689955663592 19.345292329327791"
+#!   BOUNDING_RECT="-1645.6689955663592 19.345292329327791 436 65"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="PATH_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   FEAT_GEOMTYPE="path_none"
+#!   HIDDEN_USER_ATTRS=""
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_GEOMETRY NAME="" TYPE="path_none" SPATIAL_TYPE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_unix" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_windows" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_rootname" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_filename" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_extension" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_directory_unix" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_directory_windows" ATTR_TYPE="buffer" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="path_type" ATTR_TYPE="char(10)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="PATH_1"
+#!   OVERRIDE="-PATH_1_DATASET"
+#!   DATASET="PATH_1/3006"
+#! />
+#! </READER_DATASETS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIDIRECTORY SourceDataset_PATH INCLUDE_WEB_BROWSER Source Folder and File Pathnames Folder"
+#!   DEFAULT_VALUE="C:\ny_slask\jonkoping\gpkg_export2\3006"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI CHOICE PATH_IN_RECURSE_DIRECTORIES_PATH_2 YES%NO Recurse Into Subfolders"
+#!   DEFAULT_VALUE="YES"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiU291cmNlRGF0YXNldF9QQVRIIiwicHJvbXB0IjoiU291cmNlIEZvbGRlciBhbmQgRmlsZSBQYXRobmFtZXMgRm9sZGVyIiwidmFsdWVUeXBlIjoic3RyaW5nIiwiZGVmYXVsdFZhbHVlIjoiQzpcXG55X3NsYXNrXFxqb25rb3BpbmdcXGdwa2dfZXhwb3J0MlxcMzAwNiIsInR5cGUiOiJmaWxlIiwiYWNjZXNzTW9kZSI6InJlYWQiLCJpdGVtc1RvU2VsZWN0IjoiZm9sZGVycyIsInNlbGVjdE11bHRpcGxlIjp0cnVlLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2UsImluY2x1ZGVXZWJCcm93c2VyIjp0cnVlfSx7Im5hbWUiOiJQQVRIX0lOX1JFQ1VSU0VfRElSRUNUT1JJRVNfUEFUSF8yIiwicHJvbXB0IjoiUmVjdXJzZSBJbnRvIFN1YmZvbGRlcnMiLCJ2YWx1ZVR5cGUiOiJzdHJpbmciLCJkZWZhdWx0VmFsdWUiOiJZRVMiLCJjaG9pY2VTZXR0aW5ncyI6eyJzb3J0Ijoibm9Tb3J0IiwiY2hvaWNlcyI6W3siZGlzcGxheSI6IllFUyIsInZhbHVlIjoiWUVTIn0seyJkaXNwbGF5IjoiTk8iLCJ2YWx1ZSI6Ik5PIn1dLCJjaG9pY2VTZXQiOiJ1c2VyRGVmaW5lZCJ9LCJ0eXBlIjoiZHJvcGRvd24ifV19"
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="SourceDataset_PATH" 
+#!   DEFAULT_VALUE="C:\ny_slask\jonkoping\gpkg_export2\3006"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI MULTIDIRECTORY SourceDataset_PATH INCLUDE_WEB_BROWSER Source Folder and File Pathnames Folder"
+#! />
+#!     <INFO NAME="PATH_IN_RECURSE_DIRECTORIES_PATH_2" 
+#!   DEFAULT_VALUE="YES"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI CHOICE PATH_IN_RECURSE_DIRECTORIES_PATH_2 YES%NO Recurse Into Subfolders"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="9"
+#!   COMMENT_VALUE="&lt;b&gt;WorkspaceRunner&amp;nbsp;[WorkspaceRunner]&lt;/b&gt;&lt;br&gt;General:&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;FME&amp;nbsp;Workspace:&amp;nbsp;C:\Github\kix\divFME\gpkg\gpkg_aggregate\intrasis\aggregate.fmw&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Wait&amp;nbsp;for&amp;nbsp;Job&amp;nbsp;to&amp;nbsp;Complete:&amp;nbsp;Yes&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Log&amp;nbsp;File&amp;nbsp;Name:&amp;nbsp;Honor&amp;nbsp;Workspace&amp;nbsp;Setting&lt;br&gt;Advanced:&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Standard&amp;nbsp;Error&amp;nbsp;Output&amp;nbsp;for&amp;nbsp;Job:&amp;nbsp;Include&amp;nbsp;in&amp;nbsp;Error&amp;nbsp;Report&lt;br&gt;Workspace&amp;nbsp;Parameters:&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;GeoPackage&amp;nbsp;File:&amp;nbsp;@Value(path_windows)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;GeoPackage&amp;nbsp;File:&amp;nbsp;@Value(aggregated_gpkg)"
+#!   POSITION="870.2334214353383 851.8536674130786"
+#!   TOP_LEFT="870.2334214353383 851.8536674130786"
+#!   BOTTOM_RIGHT="2401.4982340834649 852.8536674130786"
+#!   BOUNDING_RECT="870.2334214353383 851.8536674130786 1531.2648126481265 -1"
+#!   ORDER="500000000000008"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="true"
+#!   CUSTOM_USER_COLOR="false"
+#!   UUID="{8b724649-5e5f-48bb-bfd9-c42776b05ff7}"
+#!   ANCHORED_NODE="2"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="2"
+#!   TYPE="WorkspaceRunner"
+#!   VERSION="5"
+#!   POSITION="961.5264691972767 -14.053268060770506"
+#!   BOUNDING_RECT="961.5264691972767 -14.053268060770506 490 65"
+#!   ORDER="500000000000001"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#! >
+#!     <OUTPUT_FEAT NAME="SUCCEEDED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="aggregated_gpkg" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="aggregated_gpkg" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="_failure_message" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="SUMMARY"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="_proc_count" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_processes{}" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BLOCKING" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="LAST_KNOWN_PARAM_DEFS" PARM_VALUE="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiU291cmNlRGF0YXNldF9PR0NHRU9QQUNLQUdFIiwicHJvbXB0IjoiR2VvUGFja2FnZSBGaWxlOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjp0cnVlLCJkZWZhdWx0VmFsdWUiOiJDOlxcVXNlcnNcXGtyaW1hMzU0XFxCb3hcXFVyZGFyXFxncGtnX2NzdlxcYWxsYV9ncGtnX2Nzdl9zbHV0bGV2ZXJhbnNcXGIyMDAwMS5ncGtnIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6ImZpbGUiLCJzZWxlY3RNdWx0aXBsZSI6dHJ1ZSwiaXRlbXNUb1NlbGVjdCI6ImZpbGVzIiwiYWNjZXNzTW9kZSI6InJlYWQiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2UsImluY2x1ZGVXZWJCcm93c2VyIjp0cnVlLCJmaWx0ZXJzIjpbeyJkZXNjcmlwdGlvbiI6Ikdlb1BhY2thZ2UgRmlsZXMiLCJmaWx0ZXIiOlsiKi5ncGtnIl19LHsiZGVzY3JpcHRpb24iOiJBcmNoaXZlIEZpbGVzIiwiZmlsdGVyIjpbIiouN3oiLCIqLjd6aXAiLCIqLnJhciIsIioucnZ6IiwiKi50YXIiLCIqLnRhci5iejIiLCIqLnRhci5neiIsIioudGd6IiwiKi56aXAiLCIqLnppcHgiXX0seyJkZXNjcmlwdGlvbiI6IkNvbXByZXNzZWQgRmlsZXMiLCJmaWx0ZXIiOlsiKi5iejIiLCIqLmd6Il19LHsiZGVzY3JpcHRpb24iOiJBbGwgZmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV19LHsibmFtZSI6IkRlc3REYXRhc2V0X09HQ0dFT1BBQ0tBR0UiLCJwcm9tcHQiOiJHZW9QYWNrYWdlIEZpbGU6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOnRydWUsImRlZmF1bHRWYWx1ZSI6IkM6XFxueV9zbGFza1xcYWdncmVnZXJhZF9kYXRhLmdwa2ciLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoiZmlsZSIsInNlbGVjdE11bHRpcGxlIjpmYWxzZSwiaXRlbXNUb1NlbGVjdCI6ImZpbGVzIiwiYWNjZXNzTW9kZSI6IndyaXRlIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJmaWx0ZXJzIjpbeyJkZXNjcmlwdGlvbiI6Ikdlb1BhY2thZ2UgRmlsZXMiLCJmaWx0ZXIiOlsiKi5ncGtnIl19LHsiZGVzY3JpcHRpb24iOiJBbGwgZmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV19XX0="/>
+#!     <XFORM_PARM PARM_NAME="MAX_PROC" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MAX_TO_BATCH" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OVERWRITE_LOG_FILE" PARM_VALUE="HONOR"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="STDERR_HANDLING" PARM_VALUE="COMBINE"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="WORKSPACE_FILE" PARM_VALUE="$(FME_MF_DIR_ENCODED)aggregate.fmw"/>
+#!     <XFORM_PARM PARM_NAME="WORKSPACE_PARAMETERS" PARM_VALUE="SourceDataset_OGCGEOPACKAGE,&lt;at&gt;Value&lt;openparen&gt;path_windows&lt;closeparen&gt;,DestDataset_OGCGEOPACKAGE,&lt;at&gt;Value&lt;openparen&gt;aggregated_gpkg&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="WS_PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="WorkspaceRunner"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="AttributeManager"
+#!   VERSION="5"
+#!   POSITION="-136.38100403475903 231.73570668290949"
+#!   BOUNDING_RECT="-136.38100403475903 231.73570668290949 436 65"
+#!   ORDER="500000000000006"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="24627"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="aggregated_gpkg" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="path_unix path_unix  buffer NO_OP path_windows path_windows  buffer NO_OP path_rootname path_rootname  buffer NO_OP path_filename path_filename  buffer NO_OP path_extension path_extension  buffer NO_OP path_directory_unix path_directory_unix  buffer NO_OP path_directory_windows path_directory_windows  buffer NO_OP path_type path_type  varchar&lt;openparen&gt;10&lt;closeparen&gt; NO_OP  aggregated_gpkg $(SourceDataset_PATH)&lt;backslash&gt;aggregated.gpkg varchar&lt;openparen&gt;200&lt;closeparen&gt; SET_TO"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE" PARM_VALUE="NO_OP"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_EXPOSED_ATTRIBUTES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_MODIFIED_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeManager"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_IS_LOOKUP="true" PARM_VALUE="No Substitution"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="Tester"
+#!   VERSION="4"
+#!   POSITION="-764.61924136095251 19.345292329327791"
+#!   BOUNDING_RECT="-764.61924136095251 19.345292329327791 436 65"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="25615"
+#! >
+#!     <OUTPUT_FEAT NAME="PASSED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="FAILED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="path_unix" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_rootname" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_filename" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_extension" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_unix" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_directory_windows" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="path_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="BOOL_OP" PARM_VALUE="AND"/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_MSG" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="COMPOSITE_TEST" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="PER_OUTPUT_PORT"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE" PARM_VALUE="CASE_INSENSITIVE_TEST &lt;at&gt;Value&lt;openparen&gt;path_rootname&lt;closeparen&gt; NOT_BEGINS_WITH agg&#10;CASE_INSENSITIVE_TEST &lt;at&gt;Value&lt;openparen&gt;path_rootname&lt;closeparen&gt; NOT_BEGINS_WITH alla&#10;CASE_INSENSITIVE_TEST &lt;at&gt;Value&lt;openparen&gt;path_rootname&lt;closeparen&gt; NOT_BEGINS_WITH upp"/>
+#!     <XFORM_PARM PARM_NAME="TEST_CLAUSE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_MODE" PARM_VALUE="CASE_INSENSITIVE_TEST"/>
+#!     <XFORM_PARM PARM_NAME="TEST_PREVIEW_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Tester"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="2"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="16"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="4"
+#!   SOURCE_PORT_DESC="fo 0 PASSED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE PATH_IN_FME_GROUP_NAMED1_PATH_1,PATH_IN_GLOB_PATTERN_PATH_1,PATH_IN_RECURSE_DIRECTORIES_PATH_1,PATH_IN_TYPE_PATH_1,PATH_IN_HIDDEN_FILES_PATH_1,SourceDataset_PATH_1,PATH_IN_NETWORK_AUTHENTICATION_PATH_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_PATH C:\ny_slask\jonkoping\gpkg_export2\3006
+
+DEFAULT_MACRO PATH_IN_RECURSE_DIRECTORIES_PATH_2 YES
+
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_PATH$encode)} == {}} { puts_real {Parameter 'SourceDataset_PATH' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(PATH_IN_RECURSE_DIRECTORIES_PATH_2$encode)} == {}} { puts_real {Parameter 'PATH_IN_RECURSE_DIRECTORIES_PATH_2' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} PATH
+MULTI_READER_KEYWORD{0} PATH_1
+MULTI_READER_GEN_DIRECTIVES{0} PATH_EXPOSE_FORMAT_ATTRS,,_MERGE_SCHEMAS,YES,RECURSE_DIRECTORIES,NO,RETRIEVE_FILE_PROPERTIES,NO,TYPE,ANY,USE_NON_STRING_ATTR,yes,OFFSET_DATETIME,yes,HIDDEN_FILES,INCLUDE,NO_EMPTY_PROPERTIES,YES,EXPOSE_ATTRS_GROUP,,GLOB_PATTERN,*.gpkg
+WRITER_TYPE MULTI_WRITER
+WRITER_KEYWORD MULTI_DEST
+MULTI_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "PATH_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PATH PATH_1
+DEFAULT_MACRO PATH_IN_FME_GROUP_NAMED1_PATH_1 FME_DISCLOSURE_OPEN
+GUI OPTIONAL DISCLOSUREGROUP PATH_IN_FME_GROUP_NAMED1_PATH_1 PATH_IN_GLOB_PATTERN_PATH_1%PATH_IN_RECURSE_DIRECTORIES_PATH_1%PATH_IN_TYPE_PATH_1%PATH_IN_HIDDEN_FILES_PATH_1%PATH_IN_RETRIEVE_FILE_PROPERTIES Path Parameters
+# =============================================================================
+DEFAULT_MACRO PATH_IN_OFFSET_DATETIME_PATH_1 yes
+PATH_1_OFFSET_DATETIME "$(PATH_IN_OFFSET_DATETIME_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_USE_NON_STRING_ATTR_PATH_1 yes
+PATH_1_USE_NON_STRING_ATTR "$(PATH_IN_USE_NON_STRING_ATTR_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_GLOB_PATTERN_PATH_1 *.gpkg
+PATH_1_GLOB_PATTERN "$(PATH_IN_GLOB_PATTERN_PATH_1)"
+GUI OPTIONAL TEXT_ENCODED PATH_IN_GLOB_PATTERN_PATH_1 Path Filter:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_RECURSE_DIRECTORIES_PATH_1 $(PATH_IN_RECURSE_DIRECTORIES_PATH_2)
+PATH_1_RECURSE_DIRECTORIES "$(PATH_IN_RECURSE_DIRECTORIES_PATH_1)"
+GUI CHOICE PATH_IN_RECURSE_DIRECTORIES_PATH_1 YES%NO Recurse Into Subfolders:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_TYPE_PATH_1 ANY
+PATH_1_TYPE "$(PATH_IN_TYPE_PATH_1)"
+GUI LOOKUP_CHOICE PATH_IN_TYPE_PATH_1 Any,ANY%Directory,DIRECTORY%File,FILE Allowed Path Type:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_HIDDEN_FILES_PATH_1 INCLUDE
+PATH_1_HIDDEN_FILES "$(PATH_IN_HIDDEN_FILES_PATH_1)"
+GUI LOOKUP_CHOICE PATH_IN_HIDDEN_FILES_PATH_1 Include,INCLUDE%Exclude,EXCLUDE Hidden Files and Folders:
+# =============================================================================
+DEFAULT_MACRO PATH_IN_RETRIEVE_FILE_PROPERTIES_PATH_1 NO
+PATH_1_RETRIEVE_FILE_PROPERTIES "$(PATH_IN_RETRIEVE_FILE_PROPERTIES_PATH_1)"
+# =============================================================================
+DEFAULT_MACRO PATH_IN_NO_EMPTY_PROPERTIES_PATH_1 YES
+PATH_1_NO_EMPTY_PROPERTIES "$(PATH_IN_NO_EMPTY_PROPERTIES_PATH_1)"
+DEFAULT_MACRO PATH_IN_EXPOSE_ATTRS_GROUP_PATH_1 
+PATH_1_EXPOSE_ATTRS_GROUP "$(PATH_IN_EXPOSE_ATTRS_GROUP_PATH_1)"
+# =====================================================================
+# The following GUI line prompts for the folder from which to
+# read
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_PATH_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER PATH PATH_1
+DEFAULT_MACRO SourceDataset_PATH_1 $(SourceDataset_PATH)
+GUI MULTIDIR SourceDataset_PATH_1 Source Folder and File Pathnames Folder:
+# ===========================================================================
+DEFAULT_MACRO PATH_IN_NETWORK_AUTHENTICATION_PATH_1 
+PATH_1_NETWORK_AUTHENTICATION "$(PATH_IN_NETWORK_AUTHENTICATION_PATH_1)"
+GUI OPTIONAL AUTHENTICATOR PATH_IN_NETWORK_AUTHENTICATION_PATH_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO PATH_IN_ATTRIBUTE_READING_PATH_1 ALL
+PATH_1_ATTRIBUTE_READING "$(PATH_IN_ATTRIBUTE_READING_PATH_1)"
+# ============================================================================
+PATH_1_GENERATE_FME_BUILD_NUM 24627
+PATH_1_DATASET "$(SourceDataset_PATH_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)$(WORKSPACE_NAME).log"
+LOG_APPEND YES
+LOG_TIMINGS YES
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2026.1.1.0 (20260415 - Build 26121 - WIN64)"
+DEFAULT_MACRO DATASET_KEYWORD_PATH_1 PATH_1
+# -------------------------------------------------------------------------
+
+PATH_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_PATH_1)   INPUT FEATURE_TYPE *    ROUTE PATH PATH_1::PATH multi_reader_keyword,$(DATASET_KEYWORD_PATH_1) TO FME_GENERIC ::PATH ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+PATH_1_MERGE_DEF PATH_1::PATH EXACT PATH
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "PATH_PATH_1 Splitter"    INPUT FEATURE_TYPE PATH    OUTPUT FEATURE_TYPE PATH_PATH_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { Tester }    INPUT  FEATURE_TYPE PATH_PATH_1    CASE_INSENSITIVE_TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>path_rootname<closeparen>,Tester)" NOT_BEGINS_WITH agg ENCODED } CASE_INSENSITIVE_TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>path_rootname<closeparen>,Tester)" NOT_BEGINS_WITH alla ENCODED } CASE_INSENSITIVE_TEST { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>path_rootname<closeparen>,Tester)" NOT_BEGINS_WITH upp ENCODED }    BOOLEAN_OPERATOR { AND }    COMPOSITE_TEST_EXPR { "<Unused>" }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    OUTPUT { PASSED FEATURE_TYPE Tester_PASSED         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeManager }    INPUT  FEATURE_TYPE Tester_PASSED    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ACTION_COLUMN 4    DEF_VAL_COLUMN 2    NUM_OF_COLUMNS 5    MISSING_INPUT_ATTR_HANDLING RENAME_SET_VALUE REMOVE    ATTR_ACTION { "path_unix" "path_unix" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_windows" "path_windows" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_rootname" "path_rootname" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_filename" "path_filename" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_extension" "path_extension" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_directory_unix" "path_directory_unix" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_directory_windows" "path_directory_windows" "" "buffer" "NO_OP" }      ATTR_ACTION { "path_type" "path_type" "" "varchar<openparen>10<closeparen>" "NO_OP" }      ATTR_ACTION { "" "aggregated_gpkg" "$(SourceDataset_PATH$encode)<backslash>aggregated.gpkg" "varchar<openparen>200<closeparen>" "SET_TO" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeManager_OUTPUT        }
+# -------------------------------------------------------------------------
+# Create a FME_UUID_SAFE from the FME_UUID so we can use it for Tcl identifiers (FMEDESKTOP-11308)
+INCLUDE [ FME_CleanseFMEUUID {WorkspaceRunner_3049dbcd_be24_4a52_a9f3_1a8ac2f1135111} ]
+# ------------------------------------------------------------------------------
+# Determine the "NULL" device so we can ensure we don't get stray output
+# messing up our stdout if we are running workspaces in the background
+# See http://wiki.tcl.tk/1649 for a description of the tcl_platform
+# variable, the "platform" part seems to have valid values windows, unix, and
+# macintosh (the latter of which is actually pre-OS X)
+# PR#83334 - On Windows when we are creating child process asynchronously
+# (BLOCKING == NO), we use FME's @System() call (FME_Execute System) ensuring
+# that the child process doesn't inherit handles from parent process. This allows
+# parent process to close feature caches and not depend on spawned processes.
+Tcl2 if { $tcl_platform(platform) == {windows} } {         set ::null_device {NUL:};         set ::__WR_ENV_HELPER__ {};         set ::__platform__ {windows};      } else {         set ::null_device {/dev/null};         set ::__WR_ENV_HELPER__ {/usr/bin/env FME_SUBPROCESS_RUN_DETACHED=1};         set ::__platform__ {unix};      };
+# ------------------------------------------------------------------------------
+# Quote parameter strings for inclusion in command file using raw strings, with
+# a tag computed to be unique within source string ${_uniq_=_sourceString_=_uniq_}
+# [FMEENGINE-62584]
+Tcl2 proc quotifyForParameterFileV3a { sourceString } {   if {[string length $sourceString] == 0} {      return {\"\"};   };   if {[regexp {[^a-zA-Z0-9_]} $sourceString]} {     set uniq {};     while {[string first [format \"=%s\}\" $uniq] $sourceString] >= 0} {       if {[catch {incr uniq}]} { set uniq 0 };     };     return [format \"$\{%s=%s=%s\}\" $uniq $sourceString $uniq];   } else {     return $sourceString;   }; };
+# ------------------------------------------------------------------------------
+# Main runner procedure, takes in a parameter list as string which is delimited
+# by \x07 (BELL) character and the workspace to run. <parmListString> consists of
+# parameter name and value pairs. Value part is always wwjd encoded whether it is
+# literal value or resolved expression value resulting from @EvaluateExpression().
+# Each value part had to be wwjd encoded because mapping file parsing was mangling
+# the values by removing double quotes and spaces when passed in to this Tcl routine.
+Tcl2 proc $(FME_UUID_SAFE)_runner { parmListString workspaceFile } {    if {[string match "*.fme" $workspaceFile]} {       FME_LogMessage fme_warn 933458 WorkspaceRunner;    };    global $(FME_UUID_SAFE)_commands;    global $(FME_UUID_SAFE)_batch_count;    incr $(FME_UUID_SAFE)_batch_count 0;    if { [info exists $(FME_UUID_SAFE)_commands] == 0 } {       set $(FME_UUID_SAFE)_commands {};    };    set workspaceFileUnix [regsub -all {\\} [FME_DecodeText $workspaceFile] {/}];    set comment    {        Build up the command line in a list, which we'll write it out to a        parameter file.    };    set commandArguments {};    set commandArgumentsToLog {};    set workspaceToRun [quotifyForParameterFileV3a $workspaceFileUnix];    lappend commandArguments $workspaceToRun;    lappend commandArgumentsToLog $workspaceToRun;    set parameterList [split $parmListString \x07];    package require json;    package require base64;    set pwdParms {};    foreach {parmDef} [dict get [::json::json2dict [::base64::decode {eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiU291cmNlRGF0YXNldF9PR0NHRU9QQUNLQUdFIiwicHJvbXB0IjoiR2VvUGFja2FnZSBGaWxlOiIsInZhbHVlVHlwZSI6InN0cmluZyIsInJlcXVpcmVkIjp0cnVlLCJkZWZhdWx0VmFsdWUiOiJDOlxcVXNlcnNcXGtyaW1hMzU0XFxCb3hcXFVyZGFyXFxncGtnX2NzdlxcYWxsYV9ncGtnX2Nzdl9zbHV0bGV2ZXJhbnNcXGIyMDAwMS5ncGtnIiwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJnbG9iYWxQYXJhbWV0ZXIiXSwidHlwZSI6ImZpbGUiLCJzZWxlY3RNdWx0aXBsZSI6dHJ1ZSwiaXRlbXNUb1NlbGVjdCI6ImZpbGVzIiwiYWNjZXNzTW9kZSI6InJlYWQiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2UsImluY2x1ZGVXZWJCcm93c2VyIjp0cnVlLCJmaWx0ZXJzIjpbeyJkZXNjcmlwdGlvbiI6Ikdlb1BhY2thZ2UgRmlsZXMiLCJmaWx0ZXIiOlsiKi5ncGtnIl19LHsiZGVzY3JpcHRpb24iOiJBcmNoaXZlIEZpbGVzIiwiZmlsdGVyIjpbIiouN3oiLCIqLjd6aXAiLCIqLnJhciIsIioucnZ6IiwiKi50YXIiLCIqLnRhci5iejIiLCIqLnRhci5neiIsIioudGd6IiwiKi56aXAiLCIqLnppcHgiXX0seyJkZXNjcmlwdGlvbiI6IkNvbXByZXNzZWQgRmlsZXMiLCJmaWx0ZXIiOlsiKi5iejIiLCIqLmd6Il19LHsiZGVzY3JpcHRpb24iOiJBbGwgZmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV19LHsibmFtZSI6IkRlc3REYXRhc2V0X09HQ0dFT1BBQ0tBR0UiLCJwcm9tcHQiOiJHZW9QYWNrYWdlIEZpbGU6IiwidmFsdWVUeXBlIjoic3RyaW5nIiwicmVxdWlyZWQiOnRydWUsImRlZmF1bHRWYWx1ZSI6IkM6XFxueV9zbGFza1xcYWdncmVnZXJhZF9kYXRhLmdwa2ciLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoiZmlsZSIsInNlbGVjdE11bHRpcGxlIjpmYWxzZSwiaXRlbXNUb1NlbGVjdCI6ImZpbGVzIiwiYWNjZXNzTW9kZSI6IndyaXRlIiwidmFsaWRhdGVFeGlzdGVuY2UiOmZhbHNlLCJmaWx0ZXJzIjpbeyJkZXNjcmlwdGlvbiI6Ikdlb1BhY2thZ2UgRmlsZXMiLCJmaWx0ZXIiOlsiKi5ncGtnIl19LHsiZGVzY3JpcHRpb24iOiJBbGwgZmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV19XX0=}]] {parameters}] {       if {{password} == [dict get $parmDef type]} {          lappend pwdParms [dict get $parmDef name];       };    };    foreach {parmName parmValue} $parameterList {      set parmValue [quotifyForParameterFileV3a [FME_DecodeText $parmValue]];      lappend commandArguments --$parmName;      lappend commandArgumentsToLog --$parmName;      lappend commandArguments $parmValue;      if { $parmName in $pwdParms } {           lappend commandArgumentsToLog {*********};      } else {           lappend commandArgumentsToLog $parmValue;      };    };    lappend commandArguments {--FME_LAUNCH_VIEWER_APP};    lappend commandArguments {YES};    if {{HONOR} == {WORKSPACE_TIMESTAMP}} {       lappend commandArguments LOG_FILENAME {\"$\"\"(FME_MF_DIR)$\"\"(WORKSPACE_NAME)$\"\"(FME_RUN_TIMESTAMP).log\"};    } elseif {{HONOR} == {WORKSPACE}} {       lappend commandArguments LOG_FILENAME {\"$\"\"(FME_MF_DIR)$\"\"(WORKSPACE_NAME).log\"};    };    lappend $(FME_UUID_SAFE)_commands [join $commandArguments " "];    incr $(FME_UUID_SAFE)_batch_count;    if { {Yes} == {No} && {<Unused>} > 1  && $$(FME_UUID_SAFE)_batch_count <= {<Unused>} } {       FME_LogMessage fme_inform 933450 WorkspaceRunner $commandArgumentsToLog;    } else {       FME_LogMessage fme_inform 933451 WorkspaceRunner $commandArgumentsToLog;    };    if { {Yes} != {No} || $$(FME_UUID_SAFE)_batch_count == {<Unused>} } {       set $(FME_UUID_SAFE)_batch_count 0;       set commandFile [$(FME_UUID_SAFE)_writeCommandFile $$(FME_UUID_SAFE)_commands];       if { $commandFile == {} } {          return FAILURE;       };       set $(FME_UUID_SAFE)_commands {};       set fmeAbsPath {$(FME_HOME_UNIX)/fme};       if { {Yes} == {No} && $::__platform__ == {windows} }       {          set comment          {             Only on Windows in non-blocking mode we have to make sure that paths             are always quoted because we use non-Tcl method to run the final command          };          set commandFile \\"$commandFile\\";          set fmeAbsPath \\"$fmeAbsPath\\";       };       lappend cmdArgs {*}$::__WR_ENV_HELPER__ $fmeAbsPath COMMAND_FILE $commandFile;    } else {       return SUCCESS;    };    return [$(FME_UUID_SAFE)_runCommand $cmdArgs $workspaceFileUnix]; }
+# ------------------------------------------------------------------------------
+# When batching commands, any overflow commands will be run at the end. Say you
+# batch by 2 and there are 5 incoming features. Then we will have 2 batches with
+# 2 commands each and 1 overflow batch with 1 command
+Tcl2 proc $(FME_UUID_SAFE)_flushNeeded { } {    global $(FME_UUID_SAFE)_commands;    if { [info exists $(FME_UUID_SAFE)_commands] == 1 && [llength $$(FME_UUID_SAFE)_commands] > 0 } {       return YES;    } else {       return NO;    }; }
+Tcl2 proc $(FME_UUID_SAFE)_flushPending { } {    global $(FME_UUID_SAFE)_commands;    if { [info exists $(FME_UUID_SAFE)_commands] == 1 && [llength $$(FME_UUID_SAFE)_commands] > 0 } {       set workspaceToRun [lindex $$(FME_UUID_SAFE)_commands 0];       set commandFile [$(FME_UUID_SAFE)_writeCommandFile $$(FME_UUID_SAFE)_commands];       if { $commandFile == {} } {          return FAILURE;       };       set $(FME_UUID_SAFE)_commands {};       set fmeAbsPath {$(FME_HOME_UNIX)/fme};       if { {Yes} == {No} && $::__platform__ == {windows} }       {          set comment          {             Only on Windows in non-blocking mode we have to make sure that paths             are always quoted because we use non-Tcl method to run the final command          };          set commandFile \\"$commandFile\\";          set fmeAbsPath \\"$fmeAbsPath\\";       };       lappend commandArguments {*}$::__WR_ENV_HELPER__ $fmeAbsPath COMMAND_FILE $commandFile;       return [$(FME_UUID_SAFE)_runCommand $commandArguments $workspaceToRun];    };    return SUCCESS; }
+# ------------------------------------------------------------------------------
+# Build and run the command
+Tcl2 proc $(FME_UUID_SAFE)_runCommand {commandArguments workspaceFileUnix} {    if { {Yes} == {No} && $::__platform__ != {windows} } {       lappend commandArguments \">$::null_device\";       lappend commandArguments \"<$::null_device\";    };    set comment    {       Add an argument of "2>@1" to combine standard error with standard output when:        1. Not blocking on UNIX. (All output will be sent to the NULL device)        2. Blocking and not propagating standard error    };    if { ( {Yes} == {No} && $::__platform__ != {windows} ) ||         ( {Yes} != {No} && {COMBINE} == {COMBINE} ) } {       lappend commandArguments {2>@1};    };    if { {Yes} == {No} } {        lappend commandArguments {&};    };    if { {Yes} == {No} } {       after 1000;       while { [FME_CanSpawnFme <Unused>] == {0} } {             after 2000;       };    };    if { Yes == {No} && {<Unused>} > 1 } {       FME_LogMessage fme_inform 933452 WorkspaceRunner $commandArguments;    } else {       FME_LogMessage fme_inform 933453 WorkspaceRunner $commandArguments;    };    if { $::__platform__ == {windows} && {Yes} == {No} } {       set comment       {          Only on Windows in non-blocking mode we convert Tcl list to string joined          by space (affectively flattening the list). Prior to this we have already          ensured that in this mode paths are always quoted.       };       set commandArguments [join $commandArguments " "];       set catchResult [catch {FME_Execute System RETURN_PID_IF_ASYNC $commandArguments} msg];    } else {       set comment       {          When in blocking mode, the STDERR_HANDLING parameter might direct the          subworkspace's standard error to be propagated to the caller, in which          case we need to tell exec to ignore it.       };       set stderrHandling {};       if { {Yes} != {No} && {COMBINE} == {PROPAGATE} } {          set stderrHandling -ignorestderr;       };       set catchResult [catch {eval [concat exec $stderrHandling $commandArguments]} msg];    };    if { $catchResult } {       set msg [regsub {\015*\012child[^\012]*$} $msg {}];       FME_LogMessage fme_warn 933454 WorkspaceRunner $workspaceFileUnix "\n\n$msg\n";       FME_SetAttribute _failure_message $msg;       return FAILURE;    } else {       global $(FME_UUID_SAFE)_process_count;       incr $(FME_UUID_SAFE)_process_count;       if { {Yes} == {No} } {           FME_LogMessage fme_inform 933455 WorkspaceRunner $workspaceFileUnix;           global $(FME_UUID_SAFE)_all_processes;           lappend $(FME_UUID_SAFE)_all_processes $msg;       } else {           FME_LogMessage fme_inform 933456 WorkspaceRunner $workspaceFileUnix;       };       return SUCCESS;    }; }
+# ------------------------------------------------------------------------------
+# Create and write commands to command file
+Tcl2 proc $(FME_UUID_SAFE)_writeCommandFile { commands } {    set commandFile [FME_TempFilename wsr_cm_];    if { [catch { set cmdFileId [open $commandFile "w"] } msg ] } {       FME_LogMessage fme_warn 933457 WorkspaceRunner $commandFile "\n\n$msg\n";       FME_SetAttribute _failure_message $msg;       return {};    };    fconfigure $cmdFileId -encoding utf-8;    puts $cmdFileId {#! encoding=\"utf-8\"};    puts $cmdFileId DELETE_FILE_AFTER_LOAD;    foreach {command} $commands {       puts $cmdFileId $command;    };    close $cmdFileId;    return $commandFile; }
+# ------------------------------------------------------------------------------
+# Use \x07 (BELL) character as the delimiter when writing WORKSPACE_PARAMETERS
+# to mapping file
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { WorkspaceRunner_ExecutorAndRouter }    INPUT  FEATURE_TYPE AttributeManager_OUTPUT    TEST @Tcl2("$(FME_UUID_SAFE)_runner {SourceDataset_OGCGEOPACKAGE@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>path_windows<closeparen>,WorkspaceRunner)DestDataset_OGCGEOPACKAGE@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>aggregated_gpkg<closeparen>,WorkspaceRunner)} {@EvaluateExpression(FDIV,STRING_ENCODED,$(FME_MF_DIR_ENCODED)aggregate.fmw,WorkspaceRunner)}") == SUCCESS
+Tcl2 proc $(FME_UUID_SAFE)_summarizer { } {     global $(FME_UUID_SAFE)_process_count;     set comment { incr 0 creates the variable if it wasn't present };     incr $(FME_UUID_SAFE)_process_count 0;     FME_SetAttribute _proc_count [set $(FME_UUID_SAFE)_process_count];     global $(FME_UUID_SAFE)_all_processes;     if {[info exists $(FME_UUID_SAFE)_all_processes]} {         set index 0;         foreach pid [set $(FME_UUID_SAFE)_all_processes] {             FME_SetAttribute \"_processes{$index}\" $pid;             incr index;         }     } }
+# ------------------------------------------------------------------------------
+# Clean up the last batch, if anything was pending.
+FACTORY_DEF {*} CreationFactory    FACTORY_NAME { WorkspaceRunner_CleanerUpperOfBatchesInitiator }    CREATE_AT_END yes    OUTPUT { FEATURE_TYPE WorkspaceRunner___cleanup___ }
+# ------------------------------------------------------------------------------
+# We only want to actually trigger the flush if there was something to run
+# Otherwise we send out spurious extra features at the end of a run that are completely unnecessary
+# As it stands, we are set up here to send out one "dud" completely empty feature that will
+# go out FAILURE if there was a problem. It will have no attributes. Only sent out if there was something
+# left to process and the run did not succeed.
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { WorkspaceRunner_CleanerUpperOfBatchesDoWeNeedToDoIt }    INPUT { FEATURE_TYPE WorkspaceRunner___cleanup___ }    TEST { @Tcl2($(FME_UUID_SAFE)_flushNeeded) == YES }    OUTPUT { PASSED FEATURE_TYPE WorkspaceRunner___cleanup___ }
+# Note that we don't output anything if we succeed -- we only catch and output the failure
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { WorkspaceRunner_CleanerUpperOfBatchesRunner }    INPUT { FEATURE_TYPE WorkspaceRunner___cleanup___ }    TEST { @Tcl2($(FME_UUID_SAFE)_flushPending) == SUCCESS }
+FACTORY_DEF {*} CreationFactory    FACTORY_NAME { WorkspaceRunner_SummaryMaker }    CREATE_AT_END yes
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
