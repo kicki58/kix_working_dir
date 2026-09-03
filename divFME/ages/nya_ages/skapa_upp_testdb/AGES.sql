@@ -48,13 +48,13 @@ CREATE TABLE IF NOT EXISTS "agestest.geodata_metadata" (
 	"publicering_datum" DATE,
 	"leverans" UUID,
 	-- Vad ska vi ha hyär
-	"kommentar" TEXT,
-	"publiceringsformat" INTEGER,
+	"kommentar_databas" TEXT,
+	"publicering_format" INTEGER,
 	PRIMARY KEY("gpkg_uuid")
 );
 
 COMMENT ON TABLE "agestest.geodata_metadata" IS 'En tabell som står 1:1 med geodata_info';
-COMMENT ON COLUMN "agestest.geodata_metadata"."kommentar" IS 'Vad ska vi ha hyär';
+COMMENT ON COLUMN "agestest.geodata_metadata"."kommentar_databas" IS 'Vad ska vi ha hyär';
 CREATE INDEX "geodata_metadata_index_0"
 ON "agestest.geodata_metadata" ("gpkg_uuid");
 
@@ -180,5 +180,5 @@ ALTER TABLE "agestest.geodata_metadata"
 ADD FOREIGN KEY("leverans") REFERENCES "agestest.leverans"("lev_uuid")
 ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE "agestest.geodata_metadata"
-ADD FOREIGN KEY("publiceringsformat") REFERENCES "common.format"("id")
+ADD FOREIGN KEY("publicering_format") REFERENCES "common.format"("id")
 ON UPDATE NO ACTION ON DELETE NO ACTION;
