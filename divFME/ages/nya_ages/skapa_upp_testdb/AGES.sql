@@ -1,27 +1,16 @@
-CREATE TABLE IF NOT EXISTS "agestest.geodata_info" (
-	"gpkg_uuid" UUID NOT NULL,
-	"geopackage" TEXT NOT NULL UNIQUE,
-	"geom" BLOB(point,3006) NOT NULL,
-	PRIMARY KEY("gpkg_uuid")
-);
-
-COMMENT ON TABLE "agestest.geodata_info" IS 'Huvudtabellen för ages-en rad= ett geopackage';
-CREATE INDEX "geodata_info_index_0"
-ON "agestest.geodata_info" ("gpkg_uuid");
-
 CREATE TABLE IF NOT EXISTS "agestest.rel2raa_arkiv" (
-	"gpkg_uuid" UUID UNIQUE,
+	"geodata_uuid" UUID UNIQUE,
 	"raa_arkiv_uuid" UUID,
-	PRIMARY KEY("gpkg_uuid", "raa_arkiv_uuid")
+	PRIMARY KEY("geodata_uuid", "raa_arkiv_uuid")
 );
 
 COMMENT ON TABLE "agestest.rel2raa_arkiv" IS 'Här anges relationen för de gpkg som finns arkiverade hos RAÄ (ie URDAR-gpkg)';
 
 
 CREATE TABLE IF NOT EXISTS "agestest.rel2uppdrag" (
-	"gpkg_uuid" UUID,
+	"geodata_uuid" UUID,
 	"uppdrag_uuid" UUID,
-	PRIMARY KEY("gpkg_uuid", "uppdrag_uuid")
+	PRIMARY KEY("geodata_uuid", "uppdrag_uuid")
 );
 
 COMMENT ON TABLE "agestest.rel2uppdrag" IS 'En länktabell mellan uppdrag och geopackage, så att vi kan ha många till många relationer.';
@@ -29,9 +18,9 @@ COMMENT ON TABLE "agestest.rel2uppdrag" IS 'En länktabell mellan uppdrag och ge
 
 CREATE TABLE IF NOT EXISTS "agestest.leverans" (
 	"lev_uuid" UUID NOT NULL UNIQUE,
-	"namn" TEXT,
-	"leverans_organisation" INTEGER,
-	"datum_lev" DATE,
+	"lev_namn" TEXT,
+	"lev_organisation" INTEGER,
+	"lev_datum" DATE,
 	PRIMARY KEY("lev_uuid")
 );
 
@@ -39,28 +28,29 @@ COMMENT ON TABLE "agestest.leverans" IS 'Information om leveransen av gpkg till 
 
 
 CREATE TABLE IF NOT EXISTS "agestest.geodata_metadata" (
-	"gpkg_uuid" UUID NOT NULL UNIQUE,
-	"leverans_format" INTEGER,
-	"org_koordsys" INTEGER,
-	"nytt_koordsys" INTEGER,
-	"manuell_rektifiering" BOOLEAN,
-	"rektifiering_precision" TEXT,
-	"publicering_datum" DATE,
-	"leverans" UUID,
-	-- Vad ska vi ha hyär
-	"kommentar_databas" TEXT,
-	"publicering_format" INTEGER,
-	PRIMARY KEY("gpkg_uuid")
+	"geodata_uuid" UUID NOT NULL UNIQUE,
+	"geodata_namn" TEXT,
+	-- indataformat i leveransen
+	"lev_format" INTEGER,
+	"pub_format" INTEGER,
+	"lev_koordsys" INTEGER,
+	"pub_koordsys" INTEGER,
+	"pub_datum" DATE,
+	-- Information om brister datakvalitet, kapade koordinater mm
+	"kommentar_geodata" TEXT,
+	"lev_uuid" UUID,
+	PRIMARY KEY("geodata_uuid")
 );
 
 COMMENT ON TABLE "agestest.geodata_metadata" IS 'En tabell som står 1:1 med geodata_info';
-COMMENT ON COLUMN "agestest.geodata_metadata"."kommentar_databas" IS 'Vad ska vi ha hyär';
+COMMENT ON COLUMN "agestest.geodata_metadata"."lev_format" IS 'indataformat i leveransen';
+COMMENT ON COLUMN "agestest.geodata_metadata"."kommentar_geodata" IS 'Information om brister datakvalitet, kapade koordinater mm';
 CREATE INDEX "geodata_metadata_index_0"
-ON "agestest.geodata_metadata" ("gpkg_uuid");
+ON "agestest.geodata_metadata" ("geodata_uuid");
 
 CREATE TABLE IF NOT EXISTS "agestest.swedigarch_uppdrag" (
 	"swedigarch_uuid" UUID NOT NULL UNIQUE,
-	"gpkg_uuid" UUID NOT NULL,
+	"geodata_uuid" UUID NOT NULL,
 	-- Vad ska vi ha för konvention för uppdragsnr?
 	"swedigarch_uppdrag" TEXT,
 	"beslutande_myndighet" TEXT,
@@ -70,8 +60,8 @@ CREATE TABLE IF NOT EXISTS "agestest.swedigarch_uppdrag" (
 	"utforande_org" INTEGER,
 	"nollresultat" BOOLEAN,
 	"status" TEXT,
-	"rapport" UUID,
-	PRIMARY KEY("swedigarch_uuid", "gpkg_uuid")
+	"rapport_uuid" UUID,
+	PRIMARY KEY("swedigarch_uuid")
 );
 
 COMMENT ON TABLE "agestest.swedigarch_uppdrag" IS 'Här finns information om de gpkg som för närvarande inte har något uppdarsnummer.';
@@ -111,7 +101,7 @@ COMMENT ON TABLE "common.organisation" IS 'Organisationer, kopplar mot leverans 
 
 CREATE TABLE IF NOT EXISTS "agestest.rapport" (
 	"rapport_uuid" UUID UNIQUE,
-	"rapportlank" TEXT,
+	"rapport_url" TEXT,
 	"titel" TEXT,
 	"forfattare" TEXT,
 	"utgivningsar" TEXT,
@@ -133,52 +123,88 @@ CREATE TABLE IF NOT EXISTS "common.rapport_arkiv" (
 
 
 CREATE TABLE IF NOT EXISTS "agestest.rel2rapport" (
-	"gpkg_uuid" UUID,
+	"geodata_uuid" UUID,
 	"rapport_uuid" UUID,
-	PRIMARY KEY("gpkg_uuid", "rapport_uuid")
+	PRIMARY KEY("geodata_uuid", "rapport_uuid")
 );
 
 COMMENT ON TABLE "agestest.rel2rapport" IS 'Här anges relationen för de gpkg som finns arkiverade hos RAÄ (ie URDAR-gpkg)';
 
-ALTER TABLE "agestest.rel2raa_arkiv"
-ADD FOREIGN KEY("gpkg_uuid") REFERENCES "agestest.geodata_info"("gpkg_uuid")
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE "agestest.geodata_info"
-ADD FOREIGN KEY("gpkg_uuid") REFERENCES "agestest.geodata_metadata"("gpkg_uuid")
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE "agestest.rel2uppdrag"
-ADD FOREIGN KEY("gpkg_uuid") REFERENCES "agestest.geodata_info"("gpkg_uuid")
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE "agestest.geodata_metadata"
-ADD FOREIGN KEY("org_koordsys") REFERENCES "common.koordsys"("id")
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE "agestest.geodata_metadata"
-ADD FOREIGN KEY("nytt_koordsys") REFERENCES "common.koordsys"("id")
+
+CREATE TABLE IF NOT EXISTS "agestest.manuell_rektifiering" (
+	"id" INTEGER NOT NULL UNIQUE GENERATED BY DEFAULT AS IDENTITY,
+	"geodata_uuid" UUID,
+	"rektifiering_precision" TEXT,
+	"rektifiering_kommentar" TEXT,
+	PRIMARY KEY("id")
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS "agestest.swedigarch_uppdrag2lamning" (
+	"swedigarch_uuid" UUID,
+	"lamning_uuid" UUID,
+	PRIMARY KEY("swedigarch_uuid", "lamning_uuid")
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS "agestest.geodata_info" (
+	"geodata_uuid" UUID NOT NULL,
+	"geom" BLOB(point,3006) NOT NULL,
+	PRIMARY KEY("geodata_uuid")
+);
+
+COMMENT ON TABLE "agestest.geodata_info" IS 'Huvudtabellen för ages-en rad= ett geopackage';
+CREATE UNIQUE INDEX "geodata_info_index_0"
+ON "agestest.geodata_info" ("geodata_uuid");
+ALTER TABLE "agestest.rel2rapport"
+ADD FOREIGN KEY("geodata_uuid") REFERENCES "agestest.geodata_info"("geodata_uuid")
 ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE "agestest.swedigarch_uppdrag"
-ADD FOREIGN KEY("gpkg_uuid") REFERENCES "agestest.geodata_info"("gpkg_uuid")
+ADD FOREIGN KEY("geodata_uuid") REFERENCES "agestest.geodata_info"("geodata_uuid")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest.rel2uppdrag"
+ADD FOREIGN KEY("geodata_uuid") REFERENCES "agestest.geodata_info"("geodata_uuid")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest.geodata_info"
+ADD FOREIGN KEY("geodata_uuid") REFERENCES "agestest.geodata_metadata"("geodata_uuid")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest.rel2raa_arkiv"
+ADD FOREIGN KEY("geodata_uuid") REFERENCES "agestest.geodata_info"("geodata_uuid")
 ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE "agestest.geodata_metadata"
-ADD FOREIGN KEY("leverans_format") REFERENCES "common.format"("id")
+ADD FOREIGN KEY("lev_koordsys") REFERENCES "common.koordsys"("id")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest.geodata_metadata"
+ADD FOREIGN KEY("pub_koordsys") REFERENCES "common.koordsys"("id")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest.geodata_metadata"
+ADD FOREIGN KEY("lev_format") REFERENCES "common.format"("id")
 ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE "agestest.leverans"
-ADD FOREIGN KEY("leverans_organisation") REFERENCES "common.organisation"("id")
+ADD FOREIGN KEY("lev_organisation") REFERENCES "common.organisation"("id")
 ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE "agestest.swedigarch_uppdrag"
 ADD FOREIGN KEY("utforande_org") REFERENCES "common.organisation"("id")
 ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE "agestest.swedigarch_uppdrag"
-ADD FOREIGN KEY("rapport") REFERENCES "agestest.rapport"("rapport_uuid")
+ADD FOREIGN KEY("rapport_uuid") REFERENCES "agestest.rapport"("rapport_uuid")
 ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE "agestest.rel2rapport"
 ADD FOREIGN KEY("rapport_uuid") REFERENCES "agestest.rapport"("rapport_uuid")
 ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE "agestest.rel2rapport"
-ADD FOREIGN KEY("gpkg_uuid") REFERENCES "agestest.geodata_info"("gpkg_uuid")
+ALTER TABLE "agestest.geodata_metadata"
+ADD FOREIGN KEY("lev_uuid") REFERENCES "agestest.leverans"("lev_uuid")
 ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE "agestest.geodata_metadata"
-ADD FOREIGN KEY("leverans") REFERENCES "agestest.leverans"("lev_uuid")
+ADD FOREIGN KEY("pub_format") REFERENCES "common.format"("id")
 ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE "agestest.geodata_metadata"
-ADD FOREIGN KEY("publicering_format") REFERENCES "common.format"("id")
+ALTER TABLE "agestest.manuell_rektifiering"
+ADD FOREIGN KEY("geodata_uuid") REFERENCES "agestest.geodata_metadata"("geodata_uuid")
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE "agestest.swedigarch_uppdrag2lamning"
+ADD FOREIGN KEY("swedigarch_uuid") REFERENCES "agestest.swedigarch_uppdrag"("swedigarch_uuid")
 ON UPDATE NO ACTION ON DELETE NO ACTION;

@@ -3,9 +3,10 @@
 #    Command line to run this workspace:
 #        "C:\Program Files\FME\2026_1\fme.exe" C:\Github\kix\divFME\ages\nya_ages\3_addConstriants.fmw
 #          --PostgreSQL_CONNECTION "ages_test<at>localhost_5434"
+#          --file "$(FME_MF_DIR)add_constraint.sql"
 #          --FME_LAUNCH_VIEWER_APP "YES"
 #    
-#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
 #!   AI_CONTEXT_ENABLED="Yes"
 #!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
 #!   ATTR_TYPE_ENCODING="SDF"
@@ -15,8 +16,8 @@
 #!   DESCRIPTION=""
 #!   DESTINATION="NONE"
 #!   DESTINATION_ROUTING_FILE=""
-#!   DOC_EXTENTS="1600.07 263.13"
-#!   DOC_TOP_LEFT="332.816 -577.717"
+#!   DOC_EXTENTS="2500.08 563.75"
+#!   DOC_TOP_LEFT="332.816 -401.459"
 #!   ENABLE_DATA_CACHING="Yes"
 #!   ENABLE_FEATURE_COUNTING="Yes"
 #!   ENABLE_PERFORMANCE_PROFILING="No"
@@ -25,8 +26,8 @@
 #!   EXPLICIT_BOOKMARK_ORDER="false"
 #!   FME_BUILD_NUM="26121"
 #!   FME_BULK_MODE_THRESHOLD="2000"
-#!   FME_DOCUMENT_GUID="efd3b5bd-d806-4045-810d-b590cc962e18"
-#!   FME_DOCUMENT_PRIORGUID="77fbc295-f091-45d1-b68c-e10de729e72d,7033586b-31cc-41fd-b60e-5ff096ddfbff,d7dc35f1-b19c-4813-ba08-773266dccddb,7319dbd3-837b-4e62-88c6-21df42a38547,43c997e3-0e11-4743-a688-6fd0b17e3902,76868bcb-4aa1-48dc-91d6-be19353b41fe,69b8dca8-f882-4b78-a7aa-556b7603029e"
+#!   FME_DOCUMENT_GUID="4480371a-af13-4569-a295-81da12098048"
+#!   FME_DOCUMENT_PRIORGUID="77fbc295-f091-45d1-b68c-e10de729e72d,7033586b-31cc-41fd-b60e-5ff096ddfbff,d7dc35f1-b19c-4813-ba08-773266dccddb,7319dbd3-837b-4e62-88c6-21df42a38547,43c997e3-0e11-4743-a688-6fd0b17e3902,76868bcb-4aa1-48dc-91d6-be19353b41fe,69b8dca8-f882-4b78-a7aa-556b7603029e,efd3b5bd-d806-4045-810d-b590cc962e18"
 #!   FME_GEOMETRY_HANDLING="Enhanced"
 #!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
 #!   FME_NAMES_ENCODING="UTF-8"
@@ -37,7 +38,7 @@
 #!   IGNORE_READER_FAILURE="No"
 #!   INCOMPLETE_CACHE_HANDLING="Stale"
 #!   LAST_SAVE_BUILD="FME(R) 2026.1.1.0 (20260415 - Build 26121 - WIN64)"
-#!   LAST_SAVE_DATE="2026-08-26T14:48:17"
+#!   LAST_SAVE_DATE="2026-09-30T09:03:10"
 #!   LOG_FILE=""
 #!   LOG_MAX_RECORDED_FEATURES="200"
 #!   MARKDOWN_DESCRIPTION=""
@@ -58,7 +59,7 @@
 #!   TITLE=""
 #!   USAGE=""
 #!   USE_MARKDOWN=""
-#!   VIEW_POSITION="-1690.64 1753.14"
+#!   VIEW_POSITION="6.25006 671.882"
 #!   WARN_INVALID_XFORM_PARAM="Yes"
 #!   WORKSPACE_VERSION="1"
 #!   ZOOM_SCALE="100"
@@ -72,6 +73,13 @@
 #! <FEATURE_TYPES>
 #! </FEATURE_TYPES>
 #! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="FeatureReader"
+#!   OVERRIDE="--FeatureReaderDataset_FeatureReader"
+#!   DATASET="FeatureReader/add_constraint.sql"
+#! />
+#! </READER_DATASETS>
 #! <CONNECTIONS>
 #! <CONNECTION
 #!   NAME="ages_test@localhost_5434"
@@ -87,9 +95,14 @@
 #!   DEFAULT_VALUE="ages_test&lt;at&gt;localhost_5434"
 #!   IS_STAND_ALONE="false"
 #! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIFILE_OR_ATTR file INCLUDE_WEB_BROWSER%Text/Compressed_Text_Files(*.txt;*.txt.gz)|*.txt;*.txt.gz|Text_Files(*.txt)|*.txt|Compressed_Text_Files(*.txt.gz)|*.txt.gz|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|All_Files(*)|* File"
+#!   DEFAULT_VALUE="$(FME_MF_DIR)add_constraint.sql"
+#!   IS_STAND_ALONE="false"
+#! />
 #! </GLOBAL_PARAMETERS>
 #! <USER_PARAMETERS
-#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiUG9zdGdyZVNRTF9DT05ORUNUSU9OIiwicHJvbXB0IjoiQ29ubmVjdGlvbiIsInZhbHVlVHlwZSI6InN0cmluZ0VuY29kZWQiLCJkZWZhdWx0VmFsdWUiOiJhZ2VzX3Rlc3Q8YXQ+bG9jYWxob3N0XzU0MzQiLCJjaG9pY2VTZXR0aW5ncyI6eyJjaG9pY2VTZXQiOiJkYkNvbm5lY3Rpb25zIiwiZmFtaWx5IjoiUG9zdGdyZVNRTCIsImZvcm1hdCI6IlBPU1RHUkVTIiwiaW5jbHVkZUV4cGFuZCI6dHJ1ZX0sInR5cGUiOiJkcm9wZG93biJ9XX0="
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJuYW1lIjoiUG9zdGdyZVNRTF9DT05ORUNUSU9OIiwicHJvbXB0IjoiQ29ubmVjdGlvbiIsInZhbHVlVHlwZSI6InN0cmluZ0VuY29kZWQiLCJkZWZhdWx0VmFsdWUiOiJhZ2VzX3Rlc3Q8YXQ+bG9jYWxob3N0XzU0MzQiLCJjaG9pY2VTZXR0aW5ncyI6eyJjaG9pY2VTZXQiOiJkYkNvbm5lY3Rpb25zIiwiZmFtaWx5IjoiUG9zdGdyZVNRTCIsImZvcm1hdCI6IlBPU1RHUkVTIiwiaW5jbHVkZUV4cGFuZCI6dHJ1ZX0sInR5cGUiOiJkcm9wZG93biJ9LHsibmFtZSI6ImZpbGUiLCJwcm9tcHQiOiJGaWxlIiwidmFsdWVUeXBlIjoic3RyaW5nIiwiZGVmYXVsdFZhbHVlIjoiJChGTUVfTUZfRElSKWFkZF9jb25zdHJhaW50LnNxbCIsInN1cHBvcnRlZFZhbHVlVHlwZXMiOlsiZXhwcmVzc2lvbiIsImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoiZmlsZSIsImFjY2Vzc01vZGUiOiJyZWFkIiwiaXRlbXNUb1NlbGVjdCI6ImZpbGVzIiwic2VsZWN0TXVsdGlwbGUiOnRydWUsInZhbGlkYXRlRXhpc3RlbmNlIjpmYWxzZSwiZmlsdGVycyI6W3siZmlsdGVyIjpbIioudHh0IiwiKi50eHQuZ3oiXSwiZGVzY3JpcHRpb24iOiJUZXh0L0NvbXByZXNzZWQgVGV4dCBGaWxlcyJ9LHsiZmlsdGVyIjpbIioudHh0Il0sImRlc2NyaXB0aW9uIjoiVGV4dCBGaWxlcyJ9LHsiZmlsdGVyIjpbIioudHh0Lmd6Il0sImRlc2NyaXB0aW9uIjoiQ29tcHJlc3NlZCBUZXh0IEZpbGVzIn0seyJmaWx0ZXIiOlsiKi5iejIiLCIqLmd6Il0sImRlc2NyaXB0aW9uIjoiQ29tcHJlc3NlZCBGaWxlcyJ9LHsiZmlsdGVyIjpbIiouN3oiLCIqLjd6aXAiLCIqLnJhciIsIioucnZ6IiwiKi50YXIiLCIqLnRhci5iejIiLCIqLnRhci5neiIsIioudGd6IiwiKi56aXAiLCIqLnppcHgiXSwiZGVzY3JpcHRpb24iOiJBcmNoaXZlIEZpbGVzIn0seyJmaWx0ZXIiOlsiKiJdLCJkZXNjcmlwdGlvbiI6IkFsbCBGaWxlcyJ9XSwiaW5jbHVkZVdlYkJyb3dzZXIiOnRydWV9XX0="
 #! >
 #! <PARAMETER_INFO>
 #!     <INFO NAME="PostgreSQL_CONNECTION" 
@@ -97,6 +110,12 @@
 #!   SCOPE="DEPENDENT"
 #!   GENERATED_GUI_LINE="true"
 #!   GUI_LINE="GUI NAMED_DB_CONNECTION_ENCODED PostgreSQL_CONNECTION FMT:POSTGRES%FAMILY:PostgreSQL Connection"
+#! />
+#!     <INFO NAME="file" 
+#!   DEFAULT_VALUE="$(FME_MF_DIR)add_constraint.sql"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI MULTIFILE_OR_ATTR file INCLUDE_WEB_BROWSER%Text/Compressed_Text_Files(*.txt;*.txt.gz)|*.txt;*.txt.gz|Text_Files(*.txt)|*.txt|Compressed_Text_Files(*.txt.gz)|*.txt.gz|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|All_Files(*)|* File"
 #! />
 #! </PARAMETER_INFO>
 #! </USER_PARAMETERS>
@@ -137,8 +156,8 @@
 #!   IDENTIFIER="3"
 #!   TYPE="SQLExecutor"
 #!   VERSION="11"
-#!   POSITION="1496.8899688996889 -512.71651049843831"
-#!   BOUNDING_RECT="1496.8899688996889 -512.71651049843831 436 65"
+#!   POSITION="2396.8989689896894 162.29023956906235"
+#!   BOUNDING_RECT="2396.8989689896894 162.29023956906235 436 65"
 #!   ORDER="500000000000003"
 #!   PARMS_EDITED="true"
 #!   ENABLED="true"
@@ -148,11 +167,11 @@
 #!     <FEAT_COLLAPSED COLLAPSED="0"/>
 #!     <OUTPUT_FEAT NAME="INITIATOR"/>
 #!     <FEAT_COLLAPSED COLLAPSED="1"/>
-#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="text_line_data" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <XFORM_ATTR ATTR_NAME="_matched_records" IS_USER_CREATED="false" FEAT_INDEX="1" />
 #!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
 #!     <FEAT_COLLAPSED COLLAPSED="2"/>
-#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="text_line_data" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_ATTR ATTR_NAME="_reader_error" IS_USER_CREATED="false" FEAT_INDEX="2" />
 #!     <XFORM_PARM PARM_NAME="ATTRIBUTE_TYPES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="ATTR_IGNORE_NULLS" PARM_VALUE="&lt;Unused&gt;"/>
@@ -165,7 +184,7 @@
 #!     <XFORM_PARM PARM_NAME="FEATURETYPES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="FORMAT" PARM_VALUE="POSTGRES"/>
 #!     <XFORM_PARM PARM_NAME="FORMAT_ATTRIBUTE_TYPES" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="&quot;{&quot;&quot;name&quot;&quot;:&quot;&quot;POSTGRES_SCHEMAS_FOR_TABLE_LISTING&quot;&quot;,&quot;&quot;prompt&quot;&quot;:&quot;&quot;POSTGRESSchemas for Tables:&quot;&quot;,&quot;&quot;valueType&quot;&quot;:&quot;&quot;string&quot;&quot;,&quot;&quot;required&quot;&quot;:false,&quot;&quot;visibility&quot;&quot;:&quot;&quot;hiddenEnabled&quot;&quot;,&quot;&quot;choiceSettings&quot;&quot;:{&quot;&quot;choiceSet&quot;&quot;:&quot;&quot;readerValues&quot;&quot;,&quot;&quot;valuesToUse&quot;&quot;:&quot;&quot;featureTypes&quot;&quot;,&quot;&quot;dataset&quot;&quot;:{&quot;&quot;parameter&quot;&quot;:&quot;&quot;NAMED_CONNECTION&quot;&quot;},&quot;&quot;configuration&quot;&quot;:[{&quot;&quot;name&quot;&quot;:&quot;&quot;READ_SCHEMA_MODE&quot;&quot;,&quot;&quot;value&quot;&quot;:&quot;&quot;SCHEMALIST&quot;&quot;},{&quot;&quot;name&quot;&quot;:&quot;&quot;RETRIEVE_ALL_TABLE_NAMES&quot;&quot;,&quot;&quot;value&quot;&quot;:&quot;&quot;YES&quot;&quot;}]},&quot;&quot;type&quot;&quot;:&quot;&quot;text&quot;&quot;}&quot;,&quot;{&quot;&quot;name&quot;&quot;:&quot;&quot;POSTGRES_NAMED_CONNECTION&quot;&quot;,&quot;&quot;prompt&quot;&quot;:&quot;&quot;POSTGRESConnection:&quot;&quot;,&quot;&quot;valueType&quot;&quot;:&quot;&quot;stringEncoded&quot;&quot;,&quot;&quot;visibility&quot;&quot;:&quot;&quot;hiddenEnabled&quot;&quot;,&quot;&quot;choiceSettings&quot;&quot;:{&quot;&quot;choiceSet&quot;&quot;:&quot;&quot;dbConnections&quot;&quot;,&quot;&quot;family&quot;&quot;:&quot;&quot;PostgreSQL&quot;&quot;},&quot;&quot;type&quot;&quot;:&quot;&quot;text&quot;&quot;}&quot;,&quot;{&quot;&quot;name&quot;&quot;:&quot;&quot;POSTGRES_READ_TIME_WITH_TIMEZONE&quot;&quot;,&quot;&quot;prompt&quot;&quot;:&quot;&quot;POSTGRES &quot;&quot;,&quot;&quot;valueType&quot;&quot;:&quot;&quot;string&quot;&quot;,&quot;&quot;visibility&quot;&quot;:&quot;&quot;hiddenEnabled&quot;&quot;,&quot;&quot;type&quot;&quot;:&quot;&quot;text&quot;&quot;}&quot;,&quot;{&quot;&quot;name&quot;&quot;:&quot;&quot;POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS&quot;&quot;,&quot;&quot;prompt&quot;&quot;:&quot;&quot;POSTGRES &quot;&quot;,&quot;&quot;valueType&quot;&quot;:&quot;&quot;string&quot;&quot;,&quot;&quot;visibility&quot;&quot;:&quot;&quot;hiddenEnabled&quot;&quot;,&quot;&quot;type&quot;&quot;:&quot;&quot;text&quot;&quot;}&quot;,&quot;{&quot;&quot;name&quot;&quot;:&quot;&quot;POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA&quot;&quot;,&quot;&quot;prompt&quot;&quot;:&quot;&quot;POSTGRES &quot;&quot;,&quot;&quot;valueType&quot;&quot;:&quot;&quot;string&quot;&quot;,&quot;&quot;visibility&quot;&quot;:&quot;&quot;hiddenEnabled&quot;&quot;,&quot;&quot;type&quot;&quot;:&quot;&quot;text&quot;&quot;}&quot;"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="&quot;{&quot;&quot;name&quot;&quot;:&quot;&quot;POSTGRES_NAMED_CONNECTION&quot;&quot;,&quot;&quot;prompt&quot;&quot;:&quot;&quot;POSTGRESConnection:&quot;&quot;,&quot;&quot;valueType&quot;&quot;:&quot;&quot;stringEncoded&quot;&quot;,&quot;&quot;visibility&quot;&quot;:&quot;&quot;hiddenEnabled&quot;&quot;,&quot;&quot;choiceSettings&quot;&quot;:{&quot;&quot;choiceSet&quot;&quot;:&quot;&quot;dbConnections&quot;&quot;,&quot;&quot;family&quot;&quot;:&quot;&quot;PostgreSQL&quot;&quot;},&quot;&quot;type&quot;&quot;:&quot;&quot;text&quot;&quot;}&quot;,&quot;{&quot;&quot;name&quot;&quot;:&quot;&quot;POSTGRES_SCHEMAS_FOR_TABLE_LISTING&quot;&quot;,&quot;&quot;prompt&quot;&quot;:&quot;&quot;POSTGRESSchemas for Tables:&quot;&quot;,&quot;&quot;valueType&quot;&quot;:&quot;&quot;string&quot;&quot;,&quot;&quot;required&quot;&quot;:false,&quot;&quot;visibility&quot;&quot;:&quot;&quot;hiddenEnabled&quot;&quot;,&quot;&quot;choiceSettings&quot;&quot;:{&quot;&quot;choiceSet&quot;&quot;:&quot;&quot;readerValues&quot;&quot;,&quot;&quot;valuesToUse&quot;&quot;:&quot;&quot;featureTypes&quot;&quot;,&quot;&quot;dataset&quot;&quot;:{&quot;&quot;parameter&quot;&quot;:&quot;&quot;NAMED_CONNECTION&quot;&quot;},&quot;&quot;configuration&quot;&quot;:[{&quot;&quot;name&quot;&quot;:&quot;&quot;READ_SCHEMA_MODE&quot;&quot;,&quot;&quot;value&quot;&quot;:&quot;&quot;SCHEMALIST&quot;&quot;},{&quot;&quot;name&quot;&quot;:&quot;&quot;RETRIEVE_ALL_TABLE_NAMES&quot;&quot;,&quot;&quot;value&quot;&quot;:&quot;&quot;YES&quot;&quot;}]},&quot;&quot;type&quot;&quot;:&quot;&quot;text&quot;&quot;}&quot;,&quot;{&quot;&quot;name&quot;&quot;:&quot;&quot;POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS&quot;&quot;,&quot;&quot;prompt&quot;&quot;:&quot;&quot;POSTGRES &quot;&quot;,&quot;&quot;valueType&quot;&quot;:&quot;&quot;string&quot;&quot;,&quot;&quot;visibility&quot;&quot;:&quot;&quot;hiddenEnabled&quot;&quot;,&quot;&quot;type&quot;&quot;:&quot;&quot;text&quot;&quot;}&quot;,&quot;{&quot;&quot;name&quot;&quot;:&quot;&quot;POSTGRES_READ_TIME_WITH_TIMEZONE&quot;&quot;,&quot;&quot;prompt&quot;&quot;:&quot;&quot;POSTGRES &quot;&quot;,&quot;&quot;valueType&quot;&quot;:&quot;&quot;string&quot;&quot;,&quot;&quot;visibility&quot;&quot;:&quot;&quot;hiddenEnabled&quot;&quot;,&quot;&quot;type&quot;&quot;:&quot;&quot;text&quot;&quot;}&quot;,&quot;{&quot;&quot;name&quot;&quot;:&quot;&quot;POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA&quot;&quot;,&quot;&quot;prompt&quot;&quot;:&quot;&quot;POSTGRES &quot;&quot;,&quot;&quot;valueType&quot;&quot;:&quot;&quot;string&quot;&quot;,&quot;&quot;visibility&quot;&quot;:&quot;&quot;hiddenEnabled&quot;&quot;,&quot;&quot;type&quot;&quot;:&quot;&quot;text&quot;&quot;}&quot;"/>
 #!     <XFORM_PARM PARM_NAME="FORMAT_PROMPT" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="GEOMETRY_TYPES" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES" PARM_VALUE="DATA_ONLY"/>
@@ -176,20 +195,190 @@
 #!     <XFORM_PARM PARM_NAME="POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS" PARM_VALUE="Yes"/>
 #!     <XFORM_PARM PARM_NAME="POSTGRES_READ_TIME_WITH_TIMEZONE" PARM_VALUE="Yes"/>
 #!     <XFORM_PARM PARM_NAME="POSTGRES_SCHEMAS_FOR_TABLE_LISTING" PARM_VALUE=""/>
-#!     <XFORM_PARM PARM_NAME="SQL_STATEMENT" PARM_VALUE="FME_SQL_DELIMITER&lt;space&gt;&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;rel2raa_arkiv&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;gpkg_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;geodata_info&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;gpkg_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;geodata_info&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;gpkg_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;geodata_metadata&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;gpkg_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;rel2uppdrag&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;gpkg_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;geodata_info&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;gpkg_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;geodata_metadata&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;org_koordsys&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;common&lt;quote&gt;.&lt;quote&gt;koordsys&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;id&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;geodata_metadata&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;nytt_koordsys&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;common&lt;quote&gt;.&lt;quote&gt;koordsys&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;id&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;swedigarch_uppdrag&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;gpkg_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;geodata_info&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;gpkg_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;geodata_metadata&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;leverans_format&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;common&lt;quote&gt;.&lt;quote&gt;format&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;id&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;leverans&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;leverans_organisation&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;common&lt;quote&gt;.&lt;quote&gt;organisation&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;id&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;swedigarch_uppdrag&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;utforande_org&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;common&lt;quote&gt;.&lt;quote&gt;organisation&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;id&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;swedigarch_uppdrag&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;rapport&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;rapport&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;rapport_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;rel2rapport&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;rapport_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;rapport&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;rapport_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;rel2rapport&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;gpkg_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;geodata_info&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;gpkg_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;geodata_metadata&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;leverans&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;leverans&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;lev_uuid&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;&lt;lf&gt;ALTER&lt;space&gt;TABLE&lt;space&gt;&lt;quote&gt;agestest&lt;quote&gt;.&lt;quote&gt;geodata_metadata&lt;quote&gt;&lt;lf&gt;ADD&lt;space&gt;FOREIGN&lt;space&gt;KEY&lt;openparen&gt;&lt;quote&gt;publiceringsformat&lt;quote&gt;&lt;closeparen&gt;&lt;space&gt;REFERENCES&lt;space&gt;&lt;quote&gt;common&lt;quote&gt;.&lt;quote&gt;format&lt;quote&gt;&lt;openparen&gt;&lt;quote&gt;id&lt;quote&gt;&lt;closeparen&gt;&lt;lf&gt;ON&lt;space&gt;UPDATE&lt;space&gt;NO&lt;space&gt;ACTION&lt;space&gt;ON&lt;space&gt;DELETE&lt;space&gt;NO&lt;space&gt;ACTION&lt;semicolon&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SQL_STATEMENT" PARM_VALUE="FME_SQL_DELIMITER&lt;space&gt;&lt;semicolon&gt;&lt;lf&gt;&lt;at&gt;Value&lt;openparen&gt;text_line_data&lt;closeparen&gt;"/>
 #!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
 #!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SQLExecutor"/>
 #!     <XFORM_PARM PARM_NAME="COMBINE_ATTRS" PARM_IS_LOOKUP="true" PARM_VALUE="Result Attributes Only"/>
 #!     <XFORM_PARM PARM_NAME="COMBINE_GEOM" PARM_IS_LOOKUP="true" PARM_VALUE="Initiator Geometry Only"/>
 #! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="FeatureReader"
+#!   VERSION="17"
+#!   POSITION="1142.1720317041425 -336.45929187189506"
+#!   BOUNDING_RECT="1142.1720317041425 -336.45929187189506 436 65"
+#!   ORDER="500000000000004"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="26121"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;SCHEMA&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.fme_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.native_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_format_short_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_format_long_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_schema_handling" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="text_line"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="text_line_data" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_geometry{0}" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="&lt;OTHER&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <OUTPUT_FEAT NAME="INITIATOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_matched_records" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="_creation_instance" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="_reader_error" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTES" PARM_VALUE="text_line,&quot;text_line_data,fme_geometry{0}&quot;"/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_TYPES" PARM_VALUE="text_line,&quot;buffer,fme_no_geom&quot;"/>
+#!     <XFORM_PARM PARM_NAME="ATTRS_TO_EXPOSE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Only Use Result"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_IGNORE_NULLS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AVAILABLE_FEATURE_TYPES" PARM_VALUE="_FEATUREREADER_OPTIONAL_FTTR_%text_line"/>
+#!     <XFORM_PARM PARM_NAME="CACHE_TIMEOUT_HRS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CLIP_TO_ENVELOPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMBINE_GEOM" PARM_VALUE="Use Result"/>
+#!     <XFORM_PARM PARM_NAME="CONSTRAINTS_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DATASET" PARM_VALUE="$(file)"/>
+#!     <XFORM_PARM PARM_NAME="DYNGROUP_0" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ENABLE_CACHE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="FEATURETYPES" PARM_VALUE="text_line"/>
+#!     <XFORM_PARM PARM_NAME="FORCE_REFRESH_OUTPUTS" PARM_VALUE="on_parm_change"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT" PARM_VALUE="TEXTLINE"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_ATTRIBUTE_TYPES" PARM_VALUE="text_line,"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_DIRECTIVES" PARM_VALUE="METAFILE,TEXTLINE"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="TEXTLINE_SKIP_LINES,&quot;OPTIONAL INTEGER&quot;,TEXTLINE&lt;space&gt;Number&lt;space&gt;of&lt;space&gt;Lines&lt;space&gt;to&lt;space&gt;Skip:,TEXTLINE_READ_BOTTOM_UP,&quot;OPTIONAL CHOICE Yes%No&quot;,TEXTLINE&lt;space&gt;Read&lt;space&gt;Bottom&lt;space&gt;Up:,TEXTLINE_CREATE_FEATURE_TABLES_FROM_DATA,&quot;OPTIONAL NO_EDIT TEXT&quot;,TEXTLINE&lt;space&gt;,TEXTLINE_SKIP_FOOTER,&quot;OPTIONAL INTEGER&quot;,TEXTLINE&lt;space&gt;Number&lt;space&gt;of&lt;space&gt;Footer&lt;space&gt;Lines&lt;space&gt;to&lt;space&gt;Skip:,TEXTLINE_READ_WHOLE_FILE_AT_ONCE,&quot;OPTIONAL ACTIVECHOICE YES,READ_BOTTOM_UP,SKIP_LINES,SKIP_FOOTER%NO&quot;,TEXTLINE&lt;space&gt;Read&lt;space&gt;Whole&lt;space&gt;File&lt;space&gt;at&lt;space&gt;Once:,TEXTLINE_ENCODING,&quot;OPTIONAL STRING_OR_ENCODING fme-system%*&quot;,TEXTLINE&lt;space&gt;Character&lt;space&gt;Encoding:,TEXTLINE_EXPOSE_ATTRS_GROUP,&quot;OPTIONAL DISCLOSUREGROUP TEXTLINE_EXPOSE_FORMAT_ATTRS&quot;,TEXTLINE&lt;space&gt;Schema&lt;space&gt;Attributes,TEXTLINE_TEXTLINE_EXPOSE_FORMAT_ATTRS,&quot;OPTIONAL LITERAL EXPOSED_ATTRS TEXTLINE%Source&quot;,TEXTLINE&lt;space&gt;Additional&lt;space&gt;Attributes&lt;space&gt;to&lt;space&gt;Expose:"/>
+#!     <XFORM_PARM PARM_NAME="FTTR_SEPARATOR" PARM_VALUE="SPACE"/>
+#!     <XFORM_PARM PARM_NAME="GENERIC_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="GEOMETRY_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="INITIATOR_FIRST_OUTPUT" PARM_VALUE="default"/>
+#!     <XFORM_PARM PARM_NAME="INPUT_PORT_INITIATOR_CONNECTED" PARM_VALUE="CONNECTED"/>
+#!     <XFORM_PARM PARM_NAME="INTERACT" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MAX_FEATURES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MERGE_HANDLING_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ORDER_RESULTS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUTPORTS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_ADD_SCHEMA_ATTRIBUTES" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_DISPLAY" PARM_VALUE="Schema and Data Features"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_PORTS_MODE" PARM_VALUE="PORTS_FROM_FTTR"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_USE_SCHEMA_CACHE" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="PORTS_FROM_FTTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="READER_BEHAVIOR" PARM_VALUE="Constraint Parameters"/>
+#!     <XFORM_PARM PARM_NAME="READER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="READ_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SELECTED_PORTS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SINGLE_PORT" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SUPPORTED_SPATIAL_INTERACTIONS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEXTLINE_CREATE_FEATURE_TABLES_FROM_DATA" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="TEXTLINE_ENCODING" PARM_VALUE="windows-1252"/>
+#!     <XFORM_PARM PARM_NAME="TEXTLINE_EXPOSE_ATTRS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEXTLINE_READ_BOTTOM_UP" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="TEXTLINE_READ_WHOLE_FILE_AT_ONCE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="TEXTLINE_SKIP_FOOTER" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="TEXTLINE_SKIP_LINES" PARM_VALUE="0"/>
+#!     <XFORM_PARM PARM_NAME="TEXTLINE_TEXTLINE_EXPOSE_FORMAT_ATTRS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="USER_QUERY" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="WHERE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureReader"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="Aggregator"
+#!   VERSION="19"
+#!   POSITION="1740.6155161389865 -314.58647919812529"
+#!   BOUNDING_RECT="1740.6155161389865 -314.58647919812529 436 65"
+#!   ORDER="500000000000005"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="26121"
+#! >
+#!     <OUTPUT_FEAT NAME="AGGREGATE"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="text_line_data" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ACCUM_ATTRS" PARM_VALUE="None"/>
+#!     <XFORM_PARM PARM_NAME="AGGREGATE_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="ASSEMBLE_HIERARCHY_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="ASSEMBLE_ONE_LEVEL_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TO_TRAIT" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="AV" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CHILD_ID_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONCAT_ATTRS" PARM_VALUE="text_line_data"/>
+#!     <XFORM_PARM PARM_NAME="COUNT_ATTR" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="CYCLE_ID_ERROR_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_LABEL_FIELD" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="ID_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="ID_SELECTION" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MODE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARENT_ID_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_ID" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SEP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SUM" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="WEIGHT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Aggregator"/>
+#! </TRANSFORMER>
 #! </TRANSFORMERS>
 #! <FEAT_LINKS>
 #! <FEAT_LINK
-#!   IDENTIFIER="6"
+#!   IDENTIFIER="8"
 #!   SOURCE_NODE="2"
-#!   TARGET_NODE="3"
+#!   TARGET_NODE="4"
 #!   SOURCE_PORT_DESC="fo 0 CREATED"
 #!   TARGET_PORT_DESC="fi 0 INITIATOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 AGGREGATE"
+#!   TARGET_PORT_DESC="fi 0 INITIATOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.050980392156862744,0.050980392156862744,0.047058823529411764,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 1 text_line"
+#!   TARGET_PORT_DESC="fi 0 "
 #!   ENABLED="true"
 #!   EXECUTION_IDX="0"
 #!   HIDDEN="false"
@@ -215,8 +404,11 @@ ARCGIS_COMPATIBILITY ARCGIS_AUTO
 # ============================================================================
 DEFAULT_MACRO PostgreSQL_CONNECTION ages_test<at>localhost_5434
 
+DEFAULT_MACRO file $(FME_MF_DIR)add_constraint.sql
+
 # ============================================================================
 INCLUDE [ if {{$(PostgreSQL_CONNECTION$encode)} == {}} { puts_real {Parameter 'PostgreSQL_CONNECTION' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(file$encode)} == {}} { puts_real {Parameter 'file' must be given a value.}; exit 1; }; ]
 #! START_HEADER
 #! START_WB_HEADER
 READER_TYPE MULTI_READER
@@ -257,12 +449,27 @@ INCLUDE [ if { {Geometry Object} == {GeoJSON} } {            puts {MACRO Creator
 FACTORY_DEF {$(Creator_XML)} CreationFactory    FACTORY_NAME { Creator_XML_Creator }    CREATE_AT_END { no }    OUTPUT { FEATURE_TYPE _____CREATED______        @Geometry(FROM_ENCODED_STRING,<lt>?xml<space>version=<quote>1.0<quote><space>encoding=<quote>US_ASCII<quote><space>standalone=<quote>no<quote><space>?<gt><lt>geometry<space>dimension=<quote>2<quote><gt><lt>null<solidus><gt><lt><solidus>geometry<gt>) }
 FACTORY_DEF {$(Creator_GEOJSON)} CreationFactory    FACTORY_NAME { Creator_GEOJSON_Creator }    CREATE_AT_END { no }    OUTPUT { FEATURE_TYPE _____CREATED______ 	   @SupplyAttributes(ENCODED,__GeoJSONCreatorTemp__,<Unused>)        @JSONGeometry(FROM_ATTRIBUTE,GEOJSON,__GeoJSONCreatorTemp__, PREFER_ERROR_OVER_REJECTION) 	   @RemoveAttributes(__GeoJSONCreatorTemp__) }
 FACTORY_DEF {*} TeeFactory    FACTORY_NAME { Creator_Cloner }    INPUT FEATURE_TYPE _____CREATED______        @Tcl2(Creator_CoordSysRemover)        @CoordSys()    NUMBER_OF_COPIES { 1 }    COPY_NUMBER_ATTRIBUTE { "_creation_instance" }    OUTPUT { FEATURE_TYPE Creator_CREATED        fme_feature_type Creator         }
-FACTORY_DEF * BranchingFactory   FACTORY_NAME "Creator_CREATED Brancher -1 6"   INPUT FEATURE_TYPE Creator_CREATED   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "Creator_CREATED Brancher -1 8"   INPUT FEATURE_TYPE Creator_CREATED   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
 # -------------------------------------------------------------------------
 FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
 # -------------------------------------------------------------------------
+MACRO FeatureReader_OUTPUT_PORTS_ENCODED text_line
+MACRO FeatureReader_DIRECTIVES CREATE_FEATURE_TABLES_FROM_DATA,Yes,ENCODING,windows-1252,EXPOSE_ATTRS_GROUP,,READ_BOTTOM_UP,No,READ_WHOLE_FILE_AT_ONCE,NO,SKIP_FOOTER,0,SKIP_LINES,0,TEXTLINE_EXPOSE_FORMAT_ATTRS,
+# Always provide an INTERACTION, otherwise the factory defaults to ENVELOPE_INTERSECTS
+INCLUDE [if { ( {<Unused>} == {<Unused>} ) || ( {($INTERACT)} == {} ) } {             puts {MACRO FCTQUERY_INTERACTION_LINE FCTQUERY_INTERACTION NONE};          } else {             puts {MACRO FCTQUERY_INTERACTION_LINE FCTQUERY_INTERACTION "<Unused>"};          }         ]
+# Consolidate the attribute merge options to what the factory expects
+DEFAULT_MACRO FeatureReader_COMBINE_ATTRS
+INCLUDE [       if { {RESULT_ONLY} == {MERGE} } {          puts "MACRO FeatureReader_COMBINE_ATTRS <Unused>";       } else {          puts "MACRO FeatureReader_COMBINE_ATTRS RESULT_ONLY";       };    ]
+INCLUDE [    puts {DEFAULT_MACRO FeatureReaderDataset_FeatureReader @EvaluateExpression(FDIV,STRING_ENCODED,$(file$encode),FeatureReader)}; ]
+FACTORY_DEF {CONNECTED} CreationFactory    FACTORY_NAME { FeatureReader_Creator }    OUTPUT { FEATURE_TYPE FeatureReader_____CREATED______ }
+FACTORY_DEF {*} QueryFactory    FACTORY_NAME { FeatureReader }    INPUT { FEATURE_TYPE FeatureReader_____CREATED______ }    INPUT INITIATOR FEATURE_TYPE Creator_CREATED    $(FCTQUERY_INTERACTION_LINE)    CLIP_TO_INITIATOR_ENVELOPE { "<Unused>" }    COMBINE_ATTRIBUTES  { $(FeatureReader_COMBINE_ATTRS) }    IGNORE_NULLS        { <Unused> }    REJECT_POINTS       { YES }    QUERYFCT_ATTRIBUTE_PREFIX { <Unused> }    COMBINE_GEOMETRY    { RESULT_ONLY }    ENABLE_CACHE        { NO }    QUERYFCT_TABLE_SEPARATOR { SPACE }    READER_TYPE         { TEXTLINE  }    READER_DATASET      { "$(FeatureReaderDataset_FeatureReader)" }    QUERYFCT_IDS        { "text_line" }    QUERYFCT_IDS_FORMAT WWJD_PARTS    READER_DIRECTIVES   { METAFILE,TEXTLINE }    QUERYFCT_OUTPUT     { "BASED_ON_CONNECTIONS" }    QUERYFCT_ADD_SCHEMA { "NO" }    QUERYFCT_USE_SCHEMA_CACHE { "YES" }    QUERYFCT_INITIATOR_FIRST_OUTPUT { "default" }    QUERYFCT_DEDUPE_GEOM YES    CONTINUE_ON_READER_ERROR YES    ORDER_RESULTS { "No" }    QUERYFCT_RESULT_TAGS { $(FeatureReader_OUTPUT_PORTS_ENCODED) }    QUERYFCT_SET_FME_FEATURE_TYPE YES    QUERYFCT_SET_FME_META_ATTRS YES    READER_PARAMS_WWJD     { $(FeatureReader_DIRECTIVES) }    TREAT_READER_PARAM_AMPERSANDS_AS_LITERALS YES    HONOR_INITIATOR_COORDSYS YES    OUTPUT { READER_ERROR FEATURE_TYPE FeatureReader_<REJECTED>           }    OUTPUT text_line FEATURE_TYPE FeatureReader_text_line
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME FeatureReader_<Rejected> INPUT FEATURE_TYPE FeatureReader_<REJECTED>  NO_LOGGING   OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, FeatureReader<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Log<space>and<space>Troubleshoot<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AggregateFactory    FACTORY_NAME { Aggregator }    INPUT  FEATURE_TYPE FeatureReader_text_line    MODE { ONE_LEVEL }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    REMOVE_GEOMETRY { YES }    ACCUMULATE_ATTRIBUTES { None }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    CONCATENATE_FIELDS { text_line_data }    AGGREGATE_TYPE { <Unused> }    ALL_ATTRS_LIST_GROUP_BY_MODE ADD    TREAT_NO_GEOM_AS_NULL { NO }    OUTPUT { AGGREGATE FEATURE_TYPE Aggregator_AGGREGATE          }
+# -------------------------------------------------------------------------
 MACRO SQLExecutor_DIRECTIVES CREATE_FEATURE_TABLES_FROM_DATA Yes NAMED_CONNECTION "$(PostgreSQL_CONNECTION)" QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS Yes READ_TIME_WITH_TIMEZONE Yes SCHEMAS_FOR_TABLE_LISTING ""
-FACTORY_DEF {*} QueryFactory    FACTORY_NAME { SQLExecutor }    INPUT  FEATURE_TYPE Creator_CREATED    QUERY_SQL            { "FME_SQL_DELIMITER<space><semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>rel2raa_arkiv<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>gpkg_uuid<quote><closeparen><space>REFERENCES<space><quote>agestest<quote>.<quote>geodata_info<quote><openparen><quote>gpkg_uuid<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>geodata_info<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>gpkg_uuid<quote><closeparen><space>REFERENCES<space><quote>agestest<quote>.<quote>geodata_metadata<quote><openparen><quote>gpkg_uuid<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>rel2uppdrag<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>gpkg_uuid<quote><closeparen><space>REFERENCES<space><quote>agestest<quote>.<quote>geodata_info<quote><openparen><quote>gpkg_uuid<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>geodata_metadata<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>org_koordsys<quote><closeparen><space>REFERENCES<space><quote>common<quote>.<quote>koordsys<quote><openparen><quote>id<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>geodata_metadata<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>nytt_koordsys<quote><closeparen><space>REFERENCES<space><quote>common<quote>.<quote>koordsys<quote><openparen><quote>id<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>swedigarch_uppdrag<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>gpkg_uuid<quote><closeparen><space>REFERENCES<space><quote>agestest<quote>.<quote>geodata_info<quote><openparen><quote>gpkg_uuid<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>geodata_metadata<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>leverans_format<quote><closeparen><space>REFERENCES<space><quote>common<quote>.<quote>format<quote><openparen><quote>id<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>leverans<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>leverans_organisation<quote><closeparen><space>REFERENCES<space><quote>common<quote>.<quote>organisation<quote><openparen><quote>id<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>swedigarch_uppdrag<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>utforande_org<quote><closeparen><space>REFERENCES<space><quote>common<quote>.<quote>organisation<quote><openparen><quote>id<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>swedigarch_uppdrag<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>rapport<quote><closeparen><space>REFERENCES<space><quote>agestest<quote>.<quote>rapport<quote><openparen><quote>rapport_uuid<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>rel2rapport<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>rapport_uuid<quote><closeparen><space>REFERENCES<space><quote>agestest<quote>.<quote>rapport<quote><openparen><quote>rapport_uuid<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>rel2rapport<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>gpkg_uuid<quote><closeparen><space>REFERENCES<space><quote>agestest<quote>.<quote>geodata_info<quote><openparen><quote>gpkg_uuid<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>geodata_metadata<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>leverans<quote><closeparen><space>REFERENCES<space><quote>agestest<quote>.<quote>leverans<quote><openparen><quote>lev_uuid<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon><lf>ALTER<space>TABLE<space><quote>agestest<quote>.<quote>geodata_metadata<quote><lf>ADD<space>FOREIGN<space>KEY<openparen><quote>publiceringsformat<quote><closeparen><space>REFERENCES<space><quote>common<quote>.<quote>format<quote><openparen><quote>id<quote><closeparen><lf>ON<space>UPDATE<space>NO<space>ACTION<space>ON<space>DELETE<space>NO<space>ACTION<semicolon>" }    READER_TYPE          { POSTGRES }    READER_DATASET       { "@EvaluateExpression(FDIV,STRING_ENCODED,$(PostgreSQL_CONNECTION),SQLExecutor)" }    COMBINE_ATTRIBUTES   { RESULT_ONLY }    IGNORE_NULLS         { <Unused> }    COMBINE_GEOMETRY     { QUERY_ONLY }    QUERYFCT_OUTPUT      { "DATA_ONLY" }    CONTINUE_ON_READER_ERROR YES    QUERYFCT_PROPAGATE_IDS_ON_SQL_EXECUTE YES    READER_PARAMS        { $(SQLExecutor_DIRECTIVES) }    TREAT_READER_PARAM_AMPERSANDS_AS_LITERALS YES    OUTPUT { READER_ERROR FEATURE_TYPE SQLExecutor_<REJECTED>         }
+FACTORY_DEF {*} QueryFactory    FACTORY_NAME { SQLExecutor }    INPUT  FEATURE_TYPE Aggregator_AGGREGATE    QUERY_SQL            { "@EvaluateExpression(FDIV,STRING_ENCODED,FME_SQL_DELIMITER<space><semicolon><lf><at>Value<openparen>text_line_data<closeparen>,SQLExecutor)" }    READER_TYPE          { POSTGRES }    READER_DATASET       { "@EvaluateExpression(FDIV,STRING_ENCODED,$(PostgreSQL_CONNECTION),SQLExecutor)" }    COMBINE_ATTRIBUTES   { RESULT_ONLY }    IGNORE_NULLS         { <Unused> }    COMBINE_GEOMETRY     { QUERY_ONLY }    QUERYFCT_OUTPUT      { "DATA_ONLY" }    CONTINUE_ON_READER_ERROR YES    QUERYFCT_PROPAGATE_IDS_ON_SQL_EXECUTE YES    READER_PARAMS        { $(SQLExecutor_DIRECTIVES) }    TREAT_READER_PARAM_AMPERSANDS_AS_LITERALS YES    OUTPUT { READER_ERROR FEATURE_TYPE SQLExecutor_<REJECTED>         }
 DEFAULT_MACRO _WB_BYPASS_TERMINATION No
 FACTORY_DEF * TeeFactory FACTORY_NAME SQLExecutor_<Rejected> INPUT FEATURE_TYPE SQLExecutor_<REJECTED>  NO_LOGGING   OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, SQLExecutor<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Log<space>and<space>Troubleshoot<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
 # -------------------------------------------------------------------------
